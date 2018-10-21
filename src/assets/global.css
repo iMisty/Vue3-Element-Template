@@ -1,0 +1,19 @@
+body{
+    overflow: hidden;
+    padding: 0;
+}
+body,h1,h2,p{
+    font-family: 'Chelsea', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    margin: 0;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 10px;
+    transition: .2s ease;
+}
+body{
+    background-image: url("https://ww4.sinaimg.cn/large/0060lm7Tly1fjfi87rzn0j31hc0u0djp.jpg");
+}
