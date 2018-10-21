@@ -55,4 +55,13 @@ a:hover {
   color: #000;
   transition: 0.2s ease;
 }
+@media screen and (max-width: 1060px){
+    ul{
+        flex-direction: column;
+    }
+    li{
+        font-size: 4vw;
+        padding: 20px;
+    }
+}
 </style>
