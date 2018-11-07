@@ -3,6 +3,7 @@
   <ul>
     <li v-for="item of list" :key="item.index">
       <a :href="item.link">
+        <i class="fa" :class="item.icon"></i>
         <span>{{ item.value }}</span>
       </a>
     </li>
@@ -15,14 +16,17 @@ export default {
     return {
       list: [
         {
+          icon: 'fa-github',
           link: 'https://github.com/Miya-Yukarin/Vue-LandingPage',
           value: 'GitHub'
         },
         {
+          icon: 'fa-book',
           link: 'https://github.com/Miya-Yukarin/Vue-LandingPage/blob/master/README.md',
           value: 'Manual'
         },
         {
+          icon: 'fa-level-up',
           link: 'https://shizu17.pw/old',
           value: 'Another Demo'
         }

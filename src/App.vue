@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <Links></Links>
+    <v-Header/>
+    <Links/>
     <p id="hitokoto">加载中...</p>
   </div>
 </template>
@@ -14,7 +14,7 @@ import './assets/global.css'
 export default {
   name: 'App',
   components: {
-    'Header': header,
+    'v-Header': header,
     'Links': Links
   }
 }
