@@ -3,8 +3,11 @@
 ## 项目说明
 一个基于 Vue 的可供做为导航页面使用的落地页
 
+## 目前状况
+待重构 ~~更新个模块就要炸项目是会要命的，即使项目很小~~
+
 ## Demo 地址(静态版)
-[Demo](https://Miya-Yukarin.github.io/LandingPage/)
+[Demo](https://imisty.github.io/LandingPage/)
 
 ## 包含内容
 
@@ -22,7 +25,7 @@
 
 请确认计算机内已安装 `Node` 与 `npm` 
 
-> git clone https://github.com/Miya-Yukarin/Vue-LandingPage.git
+> git clone https://github.com/iMisty/Vue-LandingPage.git
 
 2. 在命令行窗口中定位项目根目录,然后输入以下命令以安装所需要的模块
 
