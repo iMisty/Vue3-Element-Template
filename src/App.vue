@@ -44,6 +44,7 @@ export default {
 
 <style lang='less' scoped>
 .wrap {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,8 +52,20 @@ export default {
   text-align: center;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
   background-image: url('http://www.dmoe.cc/random.php');
   background-size: cover;
   background-repeat: no-repeat;
+  &::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.38);
+  }
+  *{
+    position: relative;
+    z-index: 4;
+  }
 }
 </style>
