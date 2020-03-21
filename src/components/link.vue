@@ -1,6 +1,10 @@
 <template>
   <div class="links">
-    {{links}}
+    <ul>
+      <li v-for="item in links" :key="item.index" @click="open(item.link)">
+        <p>{{item.name}}</p>
+        </li>
+    </ul>
   </div>
 </template>
 
@@ -27,11 +31,14 @@ export default {
         .get("http://localhost:8080/data.json")
         .then(res => {
           console.log(res);
-          this.$data.links = res.links;
+          this.$data.links = res.data.links;
         })
         .catch(err => {
           console.log(err);
         });
+    },
+    open(link){
+      window.location.href = link;
     }
   },
   //请求数据
