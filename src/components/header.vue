@@ -46,8 +46,12 @@ export default {
 <style lang='less' scoped>
 h1{
   font-size: 6vw;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0,0,0,.18);
 }
 h2{
   font-size: 4vw;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0,0,0,.18);
 }
 </style>
