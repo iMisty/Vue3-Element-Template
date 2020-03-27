@@ -4,7 +4,10 @@
 一个基于 Vue 的可供做为导航页面使用的落地页
 
 ## 目前状况
-待重构 ~~更新个模块就要炸项目是会要命的，即使项目很小~~
+[] 可切换 API 或自定义背景
+[] 解决 Chrome 屏蔽 JSON 问题
+
+已更新重制,重制版取消 jQuery 内置,所有可修改内容放在 data.json 中
 
 ## Demo 地址(静态版)
 [Demo](https://imisty.github.io/LandingPage/)
@@ -25,7 +28,7 @@
 
 请确认计算机内已安装 `Node` 与 `npm` 
 
-> git clone https://github.com/iMisty/Vue-LandingPage.git
+> git clone https://github.com/iMisty/LandingPage.git
 
 2. 在命令行窗口中定位项目根目录,然后输入以下命令以安装所需要的模块
 
@@ -39,7 +42,7 @@
 
 ## 食用方法
 
-所有可修改部分均位于 `src/components` 中
+所有可修改部分均位于 `data.json` 中
 
 ### 可修改部分
 - 标题栏标题
