@@ -47,4 +47,13 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.hitokoto{
+  padding: 2rem 2%;
+  color: #fff;
+  font-size: 1.4em;
+  p{
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
 </style>
