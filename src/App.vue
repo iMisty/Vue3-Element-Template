@@ -35,7 +35,7 @@ export default {
   //方法表示一个具体的操作，主要书写业务逻辑；
   methods: {
     getBGMode(){
-      this.$axios.get('http://localhost:8080/data.json')
+      this.$axios.get('./data.json')
       .then(res => {
         const data = res.data.backgroundType;
         console.log(data);

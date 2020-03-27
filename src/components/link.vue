@@ -29,7 +29,7 @@ export default {
   methods: {
     getLinks() {
       this.$axios
-        .get("http://localhost:8080/data.json")
+        .get("./data.json")
         .then(res => {
           console.log(res);
           this.$data.links = res.data.links;
