@@ -18,7 +18,7 @@
       "icon": "fa-plane"
     }
   ],
-  "backgroundType": "api",
+  "backgroundType": "false",
   "backgroundImage": [
     "https://ww1.sinaimg.cn/large/0060lm7Tly1fjfi896lfbj31hc0u079s.jpg",
     "https://ww2.sinaimg.cn/large/0060lm7Tly1fjfivy5o6zj31hc0u0wli.jpg",

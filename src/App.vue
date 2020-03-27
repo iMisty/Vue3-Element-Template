@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="wrap">
+    <div class="wrap" :class="{ api : isApi }">
       <v-header></v-header>
       <links></links>
       <hitokoto></hitokoto>
@@ -24,7 +24,8 @@ export default {
   //保存数据用
   data() {
     return {
-      links: ''
+      links: '',
+      isApi: ''
     };
   },
   //对象内部的属性监听，也叫深度监听
@@ -33,11 +34,22 @@ export default {
   computed: {},
   //方法表示一个具体的操作，主要书写业务逻辑；
   methods: {
-    
+    getBGMode(){
+      this.$axios.get('http://localhost:8080/data.json')
+      .then(res => {
+        const data = res.data.backgroundType;
+        console.log(data);
+        this.$data.isApi = data;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
   },
   //请求数据
   created() {},
   mounted() {
+    this.getBGMode();
   }
 };
 </script>
@@ -48,7 +60,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   text-align: center;
   width: 100vw;
   height: 100vh;
