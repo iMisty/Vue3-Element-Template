@@ -4,18 +4,21 @@
   "links": [
     {
       "name": "Github",
-      "link": "https://github.com/imisty"
-    },
+      "link": "https://github.com/imisty",
+      "icon": "fa-github"
+        },
     {
       "name": "Demo",
-      "link": "https://imisty.github.io/LandingPage"
+      "link": "https://imisty.github.io/LandingPage",
+      "icon": "fa-wechat"
     },
     {
       "name": "Another",
-      "link": "https://github.com/imisty"
+      "link": "https://github.com/imisty",
+      "icon": "fa-plane"
     }
   ],
-  "backgroundType": "52ecy",
+  "backgroundType": "api",
   "backgroundImage": [
     "https://ww1.sinaimg.cn/large/0060lm7Tly1fjfi896lfbj31hc0u079s.jpg",
     "https://ww2.sinaimg.cn/large/0060lm7Tly1fjfivy5o6zj31hc0u0wli.jpg",
