@@ -1,8 +1,8 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({})
-export default class Home extends Vue {
+export default class About extends Vue {
   private render() {
-    return <div class="index">home</div>;
+    return <div class="about">about</div>;
   }
 }
