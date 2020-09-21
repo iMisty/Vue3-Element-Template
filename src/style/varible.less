@@ -1,3 +1,4 @@
+// 基础颜色
 @primary: #5e72e4;
 @info: #11cdef;
 @success: #2dce89;
@@ -5,9 +6,12 @@
 @danger: #f5365c;
 @default: #172b4d;
 
+// 文字颜色
+@nav-text: rgba(255, 255, 255, 0.95);
 @header-text: #32325d;
 @paragraph-text: #525f7f;
 
+// 文字大小
 @fontsize-h1: 40px;
 @fontsize-h2: 32px;
 @fontsize-h3: 28px;
@@ -15,3 +19,21 @@
 @fontsize-h5: 20px;
 @fontsize-h6: 16px;
 @fontsize-p: 16px;
+
+// CSS3
+@border-radius: .25rem;
+@transition-duration: .4s;
+
+// 快速布局参数
+.layout(@display, @arrange, @horizon: flex-start, @vertial: stretch, @allowwrap: wrap) {
+  display: @display;
+  flex-direction: @arrange;
+  justify-content: @horizon;
+  align-items: @vertial;
+  flex-wrap: @allowwrap;
+}
+.absolute(@top,@left: auto) {
+  position: absolute;
+  top: @top;
+  left: @left;
+}

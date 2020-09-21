@@ -1,0 +1,46 @@
+// 导航栏聚焦背景颜色
+@hover-bgcolor: #f6f9fc;
+
+.app {
+  // 导航栏整体
+  &__navigation {
+    .layout(flex, row, flex-end, center, nowrap);
+    background-color: @primary;
+
+    // 导航菜单选项
+    &--item {
+      .layout(flex, row, center, center, nowrap);
+      position: relative;
+      padding: 1rem;
+      height: 100%;
+      color: @nav-text;
+      transition-duration: @transition-duration;
+
+      // // 拥有子菜单情况下
+      // &-sub {
+      //   display: none;
+      //   .absolute(102%);
+      //   padding: 0.5rem;
+      //   min-width: 6rem;
+      //   background-color: #fff;
+      //   border-radius: @border-radius;
+      //   transition-duration: @transition-duration;
+      // }
+
+      // // 导航菜单子选项
+      // &-child {
+      //   padding: 0.5rem 1rem;
+      //   color: @paragraph-text;
+      //   &:hover {
+      //     background-color: @hover-bgcolor;
+      //   }
+      // }
+
+      // 聚焦时若有子菜单
+      &:hover {
+        color: fade(@nav-text,50%);
+        transition-duration: @transition-duration;
+      }
+    }
+  }
+}
