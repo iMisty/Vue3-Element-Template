@@ -21,8 +21,8 @@
 @fontsize-p: 16px;
 
 // CSS3
-@border-radius: .25rem;
-@transition-duration: .4s;
+@border-radius: 0.25rem;
+@transition-duration: 0.4s;
 
 // 快速布局参数
 .layout(@display, @arrange, @horizon: flex-start, @vertial: stretch, @allowwrap: wrap) {
@@ -32,8 +32,10 @@
   align-items: @vertial;
   flex-wrap: @allowwrap;
 }
-.absolute(@top,@left: auto) {
-  position: absolute;
+.position(@position,@top,@left: auto,@width: auto,@height: auto) {
+  position: @position;
   top: @top;
   left: @left;
+  width: @width;
+  height: @height;
 }

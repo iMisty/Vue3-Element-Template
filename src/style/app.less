@@ -4,17 +4,30 @@
 .app {
   // 导航栏整体
   &__navigation {
-    .layout(flex, row, flex-end, center, nowrap);
     background-color: @primary;
+    .position(fixed, 0, 0, 100%, 4rem);
+
+    & > .container {
+      .layout(flex, row, space-between, center, nowrap);
+      height: 100%;
+    }
+
+    // Logo
+    &--logo {
+      height: 4rem;
+      img {
+        height: 100%;
+      }
+    }
 
     // 导航菜单选项
-    &--item {
+    &--nav {
       .layout(flex, row, center, center, nowrap);
       position: relative;
-      padding: 1rem;
       height: 100%;
       color: @nav-text;
       transition-duration: @transition-duration;
+      cursor: default;
 
       // // 拥有子菜单情况下
       // &-sub {
@@ -35,11 +48,15 @@
       //     background-color: @hover-bgcolor;
       //   }
       // }
+    }
+
+    &--item {
+      padding: 1rem;
+      transition-duration: @transition-duration;
 
       // 聚焦时若有子菜单
       &:hover {
-        color: fade(@nav-text,50%);
-        transition-duration: @transition-duration;
+        color: fade(@nav-text, 50%);
       }
     }
   }

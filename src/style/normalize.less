@@ -4,6 +4,10 @@
   margin: 0;
   padding: 0;
 }
+html,
+body {
+  overflow-x: hidden;
+}
 img {
   display: block;
   max-width: 100%;
@@ -36,9 +40,16 @@ p {
   font-size: @fontsize-p;
   color: @paragraph-text;
 }
-ul,li{
+ul,
+li {
   list-style: none;
 }
-a{
+a {
   text-decoration: none;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
