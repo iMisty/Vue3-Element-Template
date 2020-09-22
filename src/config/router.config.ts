@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 18:17:43
- * @LastEditTime: 2020-09-22 00:54:47
+ * @LastEditTime: 2020-09-23 01:01:40
  * @LastEditors: Miya
  * @Description: 导航栏配置
  * @FilePath: /Kagura-LandingPage/src/config/router.config.ts
@@ -17,12 +17,12 @@ interface Route {
 export const Router: Route[] = [
   {
     icon: '',
-    text: '首页',
+    text: 'Index',
     link: '/'
   },
   {
     icon: '',
-    text: '项目',
+    text: 'Work',
     link: '/work',
     // child: [
     //   {
@@ -44,17 +44,17 @@ export const Router: Route[] = [
   },
   {
     icon: '',
-    text: '关于',
+    text: 'About',
     link: '/about'
   },
   {
     icon: '',
-    text: '联系',
+    text: 'Contact',
     link: '/content'
   },
   {
     icon: '',
-    text: '后台',
+    text: 'Admin',
     link: '/loading'
   }
 ];
