@@ -4,8 +4,9 @@
 .app {
   // 导航栏整体
   &__navigation {
-    background-color: @primary;
     .position(fixed, 0, 0, 100%, 4rem);
+    background-color: transparent;
+    transition-duration: @transition-duration;
 
     & > .container {
       .layout(flex, row, space-between, center, nowrap);
@@ -58,6 +59,12 @@
       &:hover {
         color: fade(@nav-text, 50%);
       }
+    }
+
+    // fixed状态
+    &.fixed {
+      background-color: @primary;
+      transition-duration: @transition-duration;
     }
   }
 }

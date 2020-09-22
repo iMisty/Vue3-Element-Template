@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-09-22 18:23:28
+ * @LastEditTime: 2020-09-22 18:35:38
  * @LastEditors: Miya
  * @Description: 入口页面
  * @FilePath: \LandingPage\src\App.tsx
@@ -22,18 +22,18 @@ export default class App extends Vue {
   private mounted() {
     const screenHeight = window.screen.height;
     console.log(`当前设备屏幕高度：${screenHeight}`);
-    // // 检测滑动
-    // this.$nextTick(() => {
-    //   window.addEventListener('scroll', () => {
-    //     const top = document.documentElement.scrollTop;
-    //     console.log(top);
-    //     if (top < screenHeight - 164) {
-    //       this.transparentNav = true;
-    //       return;
-    //     }
-    //     this.transparentNav = false;
-    //   });
-    // });
+    // 检测滑动
+    this.$nextTick(() => {
+      window.addEventListener('scroll', () => {
+        const top = document.documentElement.scrollTop;
+        console.log(top);
+        if (top < screenHeight - 164) {
+          this.transparentNav = true;
+          return;
+        }
+        this.transparentNav = false;
+      });
+    });
   }
 
   private render() {
