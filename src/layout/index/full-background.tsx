@@ -1,14 +1,18 @@
-import { Component, Vue } from 'vue-property-decorator';
-import { Index } from '@/config/index.config';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+interface Header {
+  background: string | object;
+}
 
 @Component({})
 export default class HomeBackground extends Vue {
-  private background = Index.header.background;
+  @Prop()
+  private data!: Header;
   private render() {
     return (
       <div
         class="index__header"
-        style={`background-image: url(${this.background})`}
+        style={`background-image: url(${this.data.background})`}
       ></div>
     );
   }
