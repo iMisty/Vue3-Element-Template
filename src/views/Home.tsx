@@ -2,13 +2,15 @@ import { Component, Vue } from 'vue-property-decorator';
 import fullBackground from '@/layout/index/full-background';
 import concept from '@/layout/index/concept';
 import work from '@/layout/index/work';
+import project from '@/layout/index/last-project';
 import { Index } from '@/config/index.config';
 
 @Component({
   components: {
     'full-background': fullBackground,
     'index-concept': concept,
-    'index-work': work
+    'index-work': work,
+    'index-project': project
   }
 })
 export default class Home extends Vue {
@@ -22,6 +24,8 @@ export default class Home extends Vue {
         <index-concept data={this.indexData.concept}></index-concept>
         {/* Works */}
         <index-work data={this.indexData.work}></index-work>
+        {/* Project */}
+        <index-project data={this.indexData.lastProject}></index-project>
       </div>
     );
   }
