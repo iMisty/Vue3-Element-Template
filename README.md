@@ -1,24 +1,7 @@
-# landing
+## Kagura Design Homepage
 
-## Project setup
-```
-yarn install
-```
+This project is homepage for Kagura design and Platinum Prism.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+Now: Coding
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Stay your determination
