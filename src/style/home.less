@@ -1,3 +1,20 @@
+.title {
+  position: relative;
+  font-family: 'MingLiU';
+  &::after {
+    content: '';
+    .position(absolute, auto, 50%);
+    bottom: -1rem;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.38);
+  }
+}
+.wrap {
+  padding: 8rem 0;
+  text-align: center;
+}
 .index {
   // header
   &__header {
@@ -10,13 +27,40 @@
 
   // concept
   &__concept {
-    padding: 8rem 0;
-    text-align: center;
     &--title {
-      font-family: 'MingLiU';
+      // font-family: 'MingLiU';
     }
     &--text {
+      margin-bottom: 0;
       line-height: 2.5rem;
+    }
+  }
+
+  // work
+  &__work {
+    background-color: #f3f4f5;
+    // list
+    &--list {
+      .layout(flex, row, space-around, flex-start, nowrap);
+      padding-top: 4rem;
+    }
+    // list-item
+    &--item {
+      width: 16rem;
+      &-icon {
+        img {
+          margin: 0 auto;
+          max-width: 8rem;
+        }
+      }
+      &-wrap {
+        &-title {
+          margin-bottom: 0;
+        }
+        &-intro {
+          line-height: 2.5rem;
+        }
+      }
     }
   }
 }

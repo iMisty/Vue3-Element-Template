@@ -11,9 +11,11 @@ export default class HomeConcept extends Vue {
 
   private render() {
     return (
-      <div class="index__concept">
-        <h1 class="index__concept--title">{this.data.title}</h1>
-        <p class="index__concept--text">{this.data.text}</p>
+      <div class="index__concept wrap">
+        <div class="container">
+          <h1 class="index__concept--title title">{this.data.title}</h1>
+          <p class="index__concept--text">{this.data.text}</p>
+        </div>
       </div>
     );
   }

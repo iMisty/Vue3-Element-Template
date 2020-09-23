@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 16:49:55
- * @LastEditTime: 2020-09-23 01:26:47
+ * @LastEditTime: 2020-09-23 16:15:56
  * @LastEditors: Miya
  * @Description: 首页使用配置
- * @FilePath: /Kagura-LandingPage/src/config/index.config.ts
+ * @FilePath: \LandingPage\src\config\index.config.ts
  * @Version: 1.0
  */
 export const Index = {
@@ -23,7 +23,7 @@ export const Index = {
 人は癒やされ、こころ満たされます
 
 私たちは、プラチナプリズム
-私たちは、デザインとウェブサイト作る組織です
+私たちは、デザインとウェブサイト作るスタジオです
 しあわせな日々をお届けしたいと願っています`
   },
   work: {
@@ -32,16 +32,19 @@ export const Index = {
       {
         title: 'Website',
         text: 'ウェブ制作',
+        icon: require('@/assets/test.svg'),
         intro: 'Webサイト制作・システム開発'
       },
       {
         title: 'Design',
         text: 'UIデザイン',
+        icon: require('@/assets/test.svg'),
         intro: 'UI、UE制作・管理'
       },
       {
         title: 'Program',
         text: 'プログラム制作',
+        icon: require('@/assets/test.svg'),
         intro: 'プログラム開発・管理'
       },
     ]

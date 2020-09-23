@@ -11,7 +11,7 @@ export default class HomeBackground extends Vue {
   private render() {
     return (
       <div
-        class="index__header"
+        class="index__header wrap"
         style={`background-image: url(${this.data.background})`}
       ></div>
     );

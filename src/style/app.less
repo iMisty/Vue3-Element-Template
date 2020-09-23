@@ -1,10 +1,34 @@
 // 导航栏聚焦背景颜色
 @hover-bgcolor: #f6f9fc;
 
+@keyframes mask {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .app {
+  &__mask {
+    .position(fixed, 0, 0, 100%, 100%);
+    opacity: 1;
+    background-color: #222;
+    &.loading {
+      z-index: 16;
+      transition-duration: @transition-duration * 1.5;
+    }
+    &.loaded {
+      animation: mask 0.6s forwards;
+      z-index: -2;
+      transition-duration: @transition-duration * 1.5;
+    }
+  }
   // 导航栏整体
   &__navigation {
     .position(fixed, 0, 0, 100%, 4rem);
+    z-index: 4;
     background-color: transparent;
     transition-duration: @transition-duration;
 
