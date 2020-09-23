@@ -7,7 +7,9 @@ export default class AppFooter extends Vue {
 
   private render() {
     return (
-      <div class="app__footer"></div>
+      <div class="app__footer">
+        <div class="container"></div>
+      </div>
     );
   }
 }
