@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-09-23 18:01:36
+ * @LastEditTime: 2020-09-25 18:32:47
  * @LastEditors: Miya
  * @Description: 入口页面
  * @FilePath: \LandingPage\src\App.tsx
@@ -10,11 +10,22 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { Router } from '@/config/router.config';
 import { Index } from './config/index.config';
-@Component({})
+import footer from '@/layout/AppFooter';
+
+@Component({
+  components: {
+    'app-footer': footer
+  }
+})
 export default class App extends Vue {
   private navLogo = Index.navbar.logo;
   private transparentNav = true;
   private loading = false;
+
+  private a = {
+    year: 2020,
+    name: 'Kagura'
+  }
 
   private scrollNavBar(screenHeight: number) {
     window.addEventListener('scroll', () => {
@@ -92,6 +103,7 @@ export default class App extends Vue {
         <div class="app__view">
           <router-view></router-view>
         </div>
+        <app-footer logo={this.navLogo} data={this.a}></app-footer>
       </div>
     );
   }

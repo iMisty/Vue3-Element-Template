@@ -10,7 +10,7 @@ import { Index } from '@/config/index.config';
     'full-background': fullBackground,
     'index-concept': concept,
     'index-work': work,
-    'index-project': project
+    'index-project': project,
   }
 })
 export default class Home extends Vue {
