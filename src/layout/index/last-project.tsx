@@ -16,6 +16,7 @@ export default class HomeLastProject extends Vue {
   private render() {
     return (
       <div class="index__project">
+        <div class="container">
         {this.data.map(item => {
           return (
             <article class="index__project--item" data-project-id={item.id}>
@@ -34,6 +35,7 @@ export default class HomeLastProject extends Vue {
             </article>
           );
         })}
+        </div>
       </div>
     );
   }
