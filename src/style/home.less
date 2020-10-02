@@ -29,6 +29,7 @@
   &__concept {
     &--title {
       // font-family: 'MingLiU';
+      font-family: inherit;
     }
     &--text {
       margin-bottom: 0;
@@ -60,6 +61,25 @@
         &-intro {
           line-height: 2.5rem;
         }
+      }
+    }
+  }
+
+  //project
+  &__project {
+    .layout(flex, column);
+    // project-item
+    &--item {
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      grid-gap: 1rem;
+      padding: 2rem 0;
+      &--text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     }
   }
