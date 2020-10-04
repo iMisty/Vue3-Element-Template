@@ -73,6 +73,7 @@
       display: grid;
       grid-template-columns: 4fr 6fr;
       grid-gap: 1rem;
+      align-items: center;
       padding: 2rem 0;
       max-height: 18rem;
       // 封面图
@@ -84,7 +85,9 @@
           object-fit: cover;
         }
       }
-      &--text {
+      // 文字
+      &-text {
+        margin-bottom: 0;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;

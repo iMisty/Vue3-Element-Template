@@ -1,4 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import IndexProjectItem from '@/components/IndexProjectItem';
 
 interface Project {
   id: number;
@@ -8,7 +9,11 @@ interface Project {
   intro: string;
 }
 
-@Component({})
+@Component({
+  components: {
+    'project-item': IndexProjectItem
+  }
+})
 export default class HomeLastProject extends Vue {
   @Prop()
   private data!: Project[];
@@ -17,24 +22,9 @@ export default class HomeLastProject extends Vue {
     return (
       <div class="index__project">
         <div class="container">
-        {this.data.map(item => {
-          return (
-            <article class="index__project--item" data-project-id={item.id}>
-              <section class="index__project--item-avatar">
-                <img src={item.avatar} alt={item.title} />
-              </section>
-              <section class="index__project--item-wrap">
-                <h4 class="index__project--item-title">{item.title}</h4>
-                <ul>
-                  {item.tag.map(child => {
-                    return <li class="index__project--item-tage">{child}</li>;
-                  })}
-                </ul>
-                <p class="index__project--item-text">{item.intro}</p>
-              </section>
-            </article>
-          );
-        })}
+          {this.data.map(item => {
+            return <project-item data={item}></project-item>;
+          })}
         </div>
       </div>
     );
