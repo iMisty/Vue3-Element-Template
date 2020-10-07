@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import fullBackground from '@/layout/index/full-background';
 import concept from '@/layout/index/concept';
 import work from '@/layout/index/work';
-import project from '@/layout/index/last-project';
+import blog from '@/layout/index/blog';
 import { Index } from '@/config/index.config';
 
 @Component({
@@ -10,7 +10,7 @@ import { Index } from '@/config/index.config';
     'full-background': fullBackground,
     'index-concept': concept,
     'index-work': work,
-    'index-project': project,
+    'index-blog': blog,
   }
 })
 export default class Home extends Vue {
@@ -24,8 +24,8 @@ export default class Home extends Vue {
         <index-concept data={this.indexData.concept}></index-concept>
         {/* Works */}
         <index-work data={this.indexData.work}></index-work>
-        {/* Project */}
-        <index-project data={this.indexData.lastProject}></index-project>
+        {/* blog */}
+        <index-blog data={this.indexData.blog}></index-blog>
       </div>
     );
   }

@@ -13,18 +13,18 @@ export default class IndexProjectItem extends Vue {
 
   private render() {
     return (
-      <article class="index__project--item" data-project-id={this.data.id}>
-        <section class="index__project--item-avatar">
+      <article class="index__blog--item" data-project-id={this.data.id}>
+        <section class="index__blog--item-avatar">
           <img src={this.data.avatar} alt={this.data.title} />
         </section>
-        <section class="index__project--item-wrap">
-          <h4 class="index__project--item-title">{this.data.title}</h4>
+        <section class="index__blog--item-wrap">
+          <h4 class="index__blog--item-title">{this.data.title}</h4>
           <ul>
             {this.data.tag.map(child => {
-              return <li class="index__project--item-tage">{child}</li>;
+              return <li class="index__blog--item-tag">{child}</li>;
             })}
           </ul>
-          <p class="index__project--item-text">{this.data.intro}</p>
+          <p class="index__blog--item-text">{this.data.intro}</p>
         </section>
       </article>
     );

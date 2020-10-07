@@ -1,7 +1,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import IndexProjectItem from '@/components/IndexProjectItem';
 
-interface ProjectList {
+interface BlogList {
   title: string;
   list: object[];
 }
@@ -11,14 +11,14 @@ interface ProjectList {
     'project-item': IndexProjectItem
   }
 })
-export default class HomeLastProject extends Vue {
+export default class HomeBlog extends Vue {
   @Prop()
-  private data!: ProjectList;
+  private data!: BlogList;
 
   private render() {
     return (
-      <div class="index__project">
-        <h1 class="index__project--title title">{this.data.title}</h1>
+      <div class="index__blog">
+        <h1 class="index__blog--title title">{this.data.title}</h1>
         <div class="container">
           {this.data.list.map(item => {
             return <project-item data={item}></project-item>;

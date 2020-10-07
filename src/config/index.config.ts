@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 16:49:55
- * @LastEditTime: 2020-10-04 18:56:34
+ * @LastEditTime: 2020-10-06 16:43:37
  * @LastEditors: Miya
  * @Description: 首页使用配置
  * @FilePath: /Kagura-LandingPage/src/config/index.config.ts
@@ -49,8 +49,8 @@ export const Index = {
       }
     ]
   },
-  lastProject: {
-    title: 'Project',
+  blog: {
+    title: 'Blog',
     list: [
       {
         id: 1,
