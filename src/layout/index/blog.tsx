@@ -1,5 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import IndexProjectItem from '@/components/IndexProjectItem';
+import IndexBlogItem from '@/components/IndexBlogItem';
 
 interface BlogList {
   title: string;
@@ -8,7 +8,7 @@ interface BlogList {
 
 @Component({
   components: {
-    'project-item': IndexProjectItem
+    'blog-item': IndexBlogItem
   }
 })
 export default class HomeBlog extends Vue {
@@ -21,7 +21,7 @@ export default class HomeBlog extends Vue {
         <h1 class="index__blog--title title">{this.data.title}</h1>
         <div class="container">
           {this.data.list.map(item => {
-            return <project-item data={item}></project-item>;
+            return <blog-item data={item}></blog-item>;
           })}
         </div>
       </div>

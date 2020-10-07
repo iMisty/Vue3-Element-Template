@@ -27,6 +27,13 @@ interface Contact {
 export default class AppFooter extends Vue {
   @Prop()
   private data!: Footer;
+
+  private nowDate = 9102;
+
+  private mounted() {
+    const date = new Date().getFullYear();
+    this.nowDate = date;
+  }
   private render() {
     return (
       <div class="app__footer">
@@ -56,7 +63,8 @@ export default class AppFooter extends Vue {
           </section>
           <section class="app__footer--copyright">
             <p>
-              ©{this.data.copyright.startYear} {this.data.copyright.author}
+              ©{this.data.copyright.startYear} - {this.nowDate}{' '}
+              {this.data.copyright.author}
             </p>
           </section>
         </div>
