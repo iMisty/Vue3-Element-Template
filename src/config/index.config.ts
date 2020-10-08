@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 16:49:55
- * @LastEditTime: 2020-10-06 16:43:37
+ * @LastEditTime: 2020-10-08 23:45:01
  * @LastEditors: Miya
  * @Description: 首页使用配置
  * @FilePath: /Kagura-LandingPage/src/config/index.config.ts
@@ -46,6 +46,47 @@ export const Index = {
         text: 'プログラム制作',
         icon: require('@/assets/test.svg'),
         intro: 'プログラム開発・管理'
+      }
+    ]
+  },
+  project: {
+    title: 'Project',
+    items: [
+      {
+        id: 1,
+        avatar: require('@/assets/test.jpg'),
+        tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        title: '测试标题 1'
+      },
+      {
+        id: 2,
+        avatar: require('@/assets/test.jpg'),
+        tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        title: '测试标题 2'
+      },
+      {
+        id: 3,
+        avatar: require('@/assets/test.jpg'),
+        tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        title: '测试标题 3'
+      },
+      {
+        id: 4,
+        avatar: require('@/assets/test.jpg'),
+        tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        title: '测试标题 4'
+      },
+      {
+        id: 5,
+        avatar: require('@/assets/test.jpg'),
+        tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        title: '测试标题 5'
+      },
+      {
+        id: 6,
+        avatar: require('@/assets/test.jpg'),
+        tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        title: '测试标题 6'
       }
     ]
   },

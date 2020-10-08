@@ -3,6 +3,7 @@ import fullBackground from '@/layout/index/full-background';
 import concept from '@/layout/index/concept';
 import work from '@/layout/index/work';
 import blog from '@/layout/index/blog';
+import project from '@/layout/index/project';
 import { Index } from '@/config/index.config';
 
 @Component({
@@ -10,7 +11,8 @@ import { Index } from '@/config/index.config';
     'full-background': fullBackground,
     'index-concept': concept,
     'index-work': work,
-    'index-blog': blog,
+    'index-project': project,
+    'index-blog': blog
   }
 })
 export default class Home extends Vue {
@@ -24,6 +26,8 @@ export default class Home extends Vue {
         <index-concept data={this.indexData.concept}></index-concept>
         {/* Works */}
         <index-work data={this.indexData.work}></index-work>
+        {/* Project */}
+        <index-project data={this.indexData.project}></index-project>
         {/* blog */}
         <index-blog data={this.indexData.blog}></index-blog>
       </div>
