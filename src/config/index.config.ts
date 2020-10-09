@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 16:49:55
- * @LastEditTime: 2020-10-08 23:45:01
+ * @LastEditTime: 2020-10-09 15:17:14
  * @LastEditors: Miya
  * @Description: 首页使用配置
- * @FilePath: /Kagura-LandingPage/src/config/index.config.ts
+ * @FilePath: \LandingPage\src\config\index.config.ts
  * @Version: 1.0
  */
 export const Index = {
@@ -56,36 +56,42 @@ export const Index = {
         id: 1,
         avatar: require('@/assets/test.jpg'),
         tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        link: 'https://github.com/imisty',
         title: '测试标题 1'
       },
       {
         id: 2,
         avatar: require('@/assets/test.jpg'),
         tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        link: 'https://github.com/imisty',
         title: '测试标题 2'
       },
       {
         id: 3,
         avatar: require('@/assets/test.jpg'),
         tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        link: 'https://github.com/imisty',
         title: '测试标题 3'
       },
       {
         id: 4,
         avatar: require('@/assets/test.jpg'),
         tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        link: 'https://github.com/imisty',
         title: '测试标题 4'
       },
       {
         id: 5,
         avatar: require('@/assets/test.jpg'),
         tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        link: 'https://github.com/imisty',
         title: '测试标题 5'
       },
       {
         id: 6,
         avatar: require('@/assets/test.jpg'),
         tag: ['tag1', 'tag2', 'tag3', 'tag4'],
+        link: 'https://github.com/imisty',
         title: '测试标题 6'
       }
     ]
