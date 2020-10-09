@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-09 17:44:44
+ * @LastEditTime: 2020-10-09 18:27:26
  * @LastEditors: Miya
  * @Description: 入口页面
  * @FilePath: \LandingPage\src\App.tsx
@@ -47,10 +47,8 @@ export default class App extends Vue {
    * @param {boolean} status
    * @return {type}
    */
-  private toggleNavBar(status?: boolean) {
-    if (!status) {
-      return (this.navBarStatus = !this.navBarStatus);
-    }
+  private toggleNavBar() {
+    return (this.navBarStatus = !this.navBarStatus);
   }
 
   // 是否实现透明导航栏
@@ -91,15 +89,12 @@ export default class App extends Vue {
             <div class="app__navigation--logo">
               <img src={this.navLogo}></img>
             </div>
-            <div
-              class={`app__navigation--nav ${this.getNavBarStatus}`}
-              onClick={() => this.toggleNavBar()}
-            >
-              <section class="navbar">
+            <div class={`app__navigation--nav ${this.getNavBarStatus}`}>
+              <section class="navbar" onClick={() => this.toggleNavBar()}>
                 <span class="line top"></span>
                 <span class="line bottom"></span>
               </section>
-              <section class="navbar-list">
+              <section class="navbar-list" onClick={() => this.toggleNavBar()}>
                 {Router.map(item => {
                   return (
                     <router-link
@@ -108,21 +103,6 @@ export default class App extends Vue {
                       tag="section"
                     >
                       {item.text}
-                      {/* {item.child ? (
-                  <ul class={`app__navigation--item-sub ${this.aa}`}>
-                    {item.child.map(childitem => {
-                      return (
-                        <router-link
-                          class={`app__navigation--item-child`}
-                          to={`${item.link}${childitem.link}`}
-                          tag="li"
-                        >
-                          {childitem.text}
-                        </router-link>
-                      );
-                    })}
-                  </ul>
-                ) : null} */}
                     </router-link>
                   );
                 })}
