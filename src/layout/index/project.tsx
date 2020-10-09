@@ -1,4 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import IndexProjectItem from '@/components/IndexProjectItem';
 
 interface Project {
   title: string;
@@ -8,11 +9,16 @@ interface Project {
 interface ProjectItem {
   id: number;
   avatar: string | object;
+  link: string;
   tag: string[];
   title: string;
 }
 
-@Component({})
+@Component({
+  components: {
+    'project-item': IndexProjectItem
+  }
+})
 export default class IndexProject extends Vue {
   @Prop()
   private data!: Project;
@@ -25,12 +31,20 @@ export default class IndexProject extends Vue {
           <section class="index__project--items">
             {this.data.items.map(item => {
               return (
-                <article class="index__project--item" data-id={item.id}>
-                  <img src={item.avatar} />
-                  <h5>{item.title}</h5>
-                </article>
+                // <article
+                //   class="index__project--item"
+                //   data-id={item.id}
+                //   onClick={() => this.openProject(item.link)}
+                // >
+                //   <img src={item.avatar} />
+                //   <h5>{item.title}</h5>
+                // </article>
+                <project-item data={item}></project-item>
               );
             })}
+          </section>
+          <section class="more-button">
+            <button>查看更多</button>
           </section>
         </div>
       </div>
