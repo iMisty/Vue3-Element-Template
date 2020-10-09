@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-05 02:23:30
+ * @LastEditTime: 2020-10-09 17:44:44
  * @LastEditors: Miya
  * @Description: 入口页面
- * @FilePath: /Kagura-LandingPage/src/App.tsx
+ * @FilePath: \LandingPage\src\App.tsx
  * @Version: 1.0
  */
 import { Component, Vue } from 'vue-property-decorator';
@@ -19,9 +19,14 @@ import footer from '@/layout/AppFooter';
   }
 })
 export default class App extends Vue {
+  // Logo
   private navLogo = Index.navbar.logo;
+  // 透明导航栏
   private transparentNav = true;
+  // TODO: 预加载
   private loading = false;
+  // 移动端导航栏
+  private navBarStatus = false;
 
   private footerData = Footer;
 
@@ -37,10 +42,28 @@ export default class App extends Vue {
     });
   }
 
+  /**
+   * @description: 控制移动端导航栏
+   * @param {boolean} status
+   * @return {type}
+   */
+  private toggleNavBar(status?: boolean) {
+    if (!status) {
+      return (this.navBarStatus = !this.navBarStatus);
+    }
+  }
+
+  // 是否实现透明导航栏
   private get getTransparentNav() {
     return this.transparentNav ? '' : 'fixed';
   }
 
+  // 控制移动端导航栏是否开启
+  private get getNavBarStatus() {
+    return this.navBarStatus ? 'nav-active' : '';
+  }
+
+  // TODO: 是否显示全屏遮罩
   private get getLoading() {
     return this.loading ? 'loading' : 'loaded';
   }
@@ -68,16 +91,24 @@ export default class App extends Vue {
             <div class="app__navigation--logo">
               <img src={this.navLogo}></img>
             </div>
-            <div class="app__navigation--nav">
-              {Router.map(item => {
-                return (
-                  <router-link
-                    class="app__navigation--item"
-                    to={item.link}
-                    tag="section"
-                  >
-                    {item.text}
-                    {/* {item.child ? (
+            <div
+              class={`app__navigation--nav ${this.getNavBarStatus}`}
+              onClick={() => this.toggleNavBar()}
+            >
+              <section class="navbar">
+                <span class="line top"></span>
+                <span class="line bottom"></span>
+              </section>
+              <section class="navbar-list">
+                {Router.map(item => {
+                  return (
+                    <router-link
+                      class="app__navigation--item"
+                      to={item.link}
+                      tag="section"
+                    >
+                      {item.text}
+                      {/* {item.child ? (
                   <ul class={`app__navigation--item-sub ${this.aa}`}>
                     {item.child.map(childitem => {
                       return (
@@ -92,9 +123,10 @@ export default class App extends Vue {
                     })}
                   </ul>
                 ) : null} */}
-                  </router-link>
-                );
-              })}
+                    </router-link>
+                  );
+                })}
+              </section>
             </div>
           </div>
         </nav>

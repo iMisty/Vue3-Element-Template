@@ -54,6 +54,80 @@
       transition-duration: @transition-duration;
       cursor: default;
 
+      .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 3rem;
+        height: 3rem;
+        z-index: 4;
+        .line {
+          position: relative;
+          width: 2rem;
+          height: 2px;
+          background-color: #fff;
+          transition-duration: @transition-duration;
+          &.top {
+            top: 24px;
+          }
+          &.bottom {
+            top: 30px;
+          }
+        }
+      }
+
+      .navbar-list {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 4rem;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.72);
+        transition-duration: @transition-duration;
+        cursor: default;
+      }
+
+      &.nav-active {
+        & > .navbar {
+          .top {
+            top: 28px;
+            transform: rotate(45deg);
+            transition-duration: @transition-duration;
+          }
+          .bottom {
+            top: 26px;
+            transform: rotate(-45deg);
+            transition-duration: @transition-duration;
+          }
+        }
+        & > .navbar-list {
+          display: flex;
+        }
+      }
+
+      @media screen and (min-width: 600px) {
+        & {
+          .navbar {
+            display: none;
+          }
+          .navbar-list {
+            .layout(flex, row, center, center, nowrap);
+            position: relative;
+            top: 0;
+            width: auto;
+            padding-top: 0;
+            height: 100%;
+            background-color: transparent;
+            color: @nav-text;
+            transition-duration: @transition-duration;
+          }
+        }
+      }
+
       // // 拥有子菜单情况下
       // &-sub {
       //   display: none;
@@ -78,6 +152,13 @@
     &--item {
       padding: 1rem;
       transition-duration: @transition-duration;
+
+      @media screen and (max-width: 600px) {
+        & {
+          text-align: right;
+          padding-right: 2rem;
+        }
+      }
 
       // 聚焦时若有子菜单
       &:hover {

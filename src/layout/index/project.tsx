@@ -6,12 +6,11 @@ interface Project {
   items: ProjectItem[];
 }
 
-interface ProjectItem {
+interface ProjectItem extends Project {
   id: number;
   avatar: string | object;
   link: string;
   tag: string[];
-  title: string;
 }
 
 @Component({
@@ -42,9 +41,6 @@ export default class IndexProject extends Vue {
                 <project-item data={item}></project-item>
               );
             })}
-          </section>
-          <section class="more-button">
-            <button>查看更多</button>
           </section>
         </div>
       </div>

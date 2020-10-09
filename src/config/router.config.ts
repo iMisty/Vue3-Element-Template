@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 18:17:43
- * @LastEditTime: 2020-09-23 01:01:40
+ * @LastEditTime: 2020-10-09 17:57:50
  * @LastEditors: Miya
  * @Description: 导航栏配置
- * @FilePath: /Kagura-LandingPage/src/config/router.config.ts
+ * @FilePath: \LandingPage\src\config\router.config.ts
  * @Version: 1.0
  */
 interface Route {
@@ -17,12 +17,12 @@ interface Route {
 export const Router: Route[] = [
   {
     icon: '',
-    text: 'Index',
+    text: '首页',
     link: '/'
   },
   {
     icon: '',
-    text: 'Work',
+    text: '作品',
     link: '/work',
     // child: [
     //   {
@@ -44,12 +44,12 @@ export const Router: Route[] = [
   },
   {
     icon: '',
-    text: 'About',
+    text: '关于',
     link: '/about'
   },
   {
     icon: '',
-    text: 'Contact',
+    text: '联系',
     link: '/content'
   },
   {
