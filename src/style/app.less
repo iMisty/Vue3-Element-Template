@@ -9,7 +9,10 @@
     opacity: 0;
   }
 }
-
+#app {
+  min-height: 100vh;
+  background-color: #f4f5f7;
+}
 .app {
   &__mask {
     .position(fixed, 0, 0, 100%, 100%);
@@ -173,10 +176,42 @@
     }
   }
 
+  // wrap
+  &__wrap {
+    &--header {
+      position: relative;
+      height: 72vh;
+      background: linear-gradient(
+        150deg,
+        #281483 15%,
+        #8f6ed5 70%,
+        #d782d9 94%
+      );
+      overflow: hidden;
+      img {
+        max-width: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.72);
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -80px;
+        left: 0px;
+        width: 128%;
+        height: 13rem;
+        background: #f4f5f7;
+        transform: rotate(-2deg);
+      }
+    }
+  }
+
   // footer
   &__footer {
     padding-top: 4rem;
-    background-color: #f3f4f5;
+    background-color: #f4f5f7;
     overflow: hidden;
     & > .container {
       display: grid;
@@ -218,6 +253,67 @@
     }
     &--copyright {
       margin-top: 1rem;
+    }
+  }
+}
+
+// circles
+.circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  span {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 64%;
+    &:nth-child(1) {
+      top: 4%;
+      left: -4%;
+      width: 8rem;
+      height: 8rem;
+      opacity: 0.32;
+    }
+    &:nth-child(2) {
+      top: 1%;
+      left: 20%;
+      width: 16rem;
+      height: 16rem;
+      opacity: 0.2;
+    }
+    &:nth-child(3) {
+      top: -8%;
+      left: 40%;
+      width: 5rem;
+      height: 5rem;
+      opacity: 0.16;
+    }
+    &:nth-child(4) {
+      top: 68%;
+      left: 86%;
+      width: 10rem;
+      height: 10rem;
+      opacity: 0.32;
+    }
+    &:nth-child(5) {
+      top: 40%;
+      left: 96%;
+      width: 4rem;
+      height: 4rem;
+      opacity: 0.24;
+    }
+    &:nth-child(6) {
+      top: 60%;
+      left: 60%;
+      width: 12rem;
+      height: 12rem;
+      opacity: 0.32;
+    }
+    &:nth-child(7) {
+      top: -8%;
+      left: 72%;
+      width: 6rem;
+      height: 6rem;
+      opacity: 0.2;
     }
   }
 }

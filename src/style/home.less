@@ -18,11 +18,23 @@
 .index {
   // header
   &__header {
+    position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 88vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow: hidden;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -12%;
+      left: -4%;
+      width: 128%;
+      height: 20vh;
+      background-color: #f4f5f7;
+      transform: rotate(-5deg);
+    }
   }
 
   // concept
@@ -39,7 +51,7 @@
 
   // work
   &__work {
-    background-color: #f3f4f5;
+    background-color: #fff;
     // list
     &--list {
       .layout(flex, row, space-around, flex-start, nowrap);
@@ -146,6 +158,7 @@
   &__blog {
     .layout(flex, column);
     padding: 8rem 0;
+    background-color: #fff;
     &--title {
       text-align: center;
     }
@@ -166,7 +179,7 @@
           object-fit: cover;
         }
       }
-      &-title{
+      &-title {
         cursor: pointer;
       }
       // 文字

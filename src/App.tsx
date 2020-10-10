@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-09 18:27:26
+ * @LastEditTime: 2020-10-10 15:01:38
  * @LastEditors: Miya
  * @Description: 入口页面
  * @FilePath: \LandingPage\src\App.tsx
@@ -34,7 +34,7 @@ export default class App extends Vue {
     window.addEventListener('scroll', () => {
       const top = document.documentElement.scrollTop;
       // console.log(top);
-      if (top < screenHeight - 164) {
+      if (top < screenHeight - 384) {
         this.transparentNav = true;
         return;
       }
