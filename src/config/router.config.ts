@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 18:17:43
- * @LastEditTime: 2020-10-09 17:57:50
+ * @LastEditTime: 2020-10-10 17:10:24
  * @LastEditors: Miya
  * @Description: 导航栏配置
  * @FilePath: \LandingPage\src\config\router.config.ts
@@ -17,12 +17,12 @@ interface Route {
 export const Router: Route[] = [
   {
     icon: '',
-    text: '首页',
+    text: 'Home',
     link: '/'
   },
   {
     icon: '',
-    text: '作品',
+    text: 'Work',
     link: '/work',
     // child: [
     //   {
@@ -44,12 +44,12 @@ export const Router: Route[] = [
   },
   {
     icon: '',
-    text: '关于',
+    text: 'About',
     link: '/about'
   },
   {
     icon: '',
-    text: '联系',
+    text: 'Contact',
     link: '/content'
   },
   {
