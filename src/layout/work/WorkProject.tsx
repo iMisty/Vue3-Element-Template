@@ -1,17 +1,6 @@
 import WorkWrapItem from '@/components/WorkWrapItem';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-
-interface WorkItem {
-  id: number;
-  avatar: object | string;
-  title: string;
-  tag: string[];
-  intro: string;
-  preview: string;
-  source: string;
-  lastupdate: string | number;
-  version: string;
-}
+import { WorkItem } from '@/model/WorkItem';
 
 @Component({
   components: {

@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-10-10 11:45:00
- * @LastEditTime: 2020-10-10 18:11:11
+ * @LastEditTime: 2020-10-11 04:48:38
  * @LastEditors: Miya
  * @Description: Work Page Config
- * @FilePath: \LandingPage\src\config\work.config.ts
+ * @FilePath: /Kagura-LandingPage/src/config/work.config.ts
  * @Version: 1.0
  */
 export const work = {
@@ -21,7 +21,8 @@ export const work = {
       preview: 'https://github.com/imisty',
       source: 'https://github.com/imisty',
       lastupdate: '2020-09-31',
-      version: '1.0'
+      version: '1.0',
+      status: 'maintain'
     },
     {
       id: 2,
@@ -33,7 +34,8 @@ export const work = {
       preview: 'https://github.com/imisty',
       source: 'https://github.com/imisty',
       lastupdate: '2020-09-31',
-      version: '1.0'
+      version: '1.0',
+      status: 'maintain'
     },
     {
       id: 3,
@@ -45,7 +47,8 @@ export const work = {
       preview: 'https://github.com/imisty',
       source: 'https://github.com/imisty',
       lastupdate: '2020-09-31',
-      version: '1.0'
+      version: '1.0',
+      status: 'maintain'
     },
     {
       id: 4,
@@ -57,7 +60,8 @@ export const work = {
       preview: 'https://github.com/imisty',
       source: 'https://github.com/imisty',
       lastupdate: '2020-09-31',
-      version: '1.0'
+      version: '1.0',
+      status: 'maintain'
     }
   ]
 };
