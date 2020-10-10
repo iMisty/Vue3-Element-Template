@@ -75,4 +75,54 @@
       }
     }
   }
+  // 内页
+  &__wrap {
+    &--container {
+      position: relative;
+      margin-top: -12rem;
+      padding: 2rem;
+      min-height: 80rem;
+      background-color: #f4f5f7;
+      border-radius: @border-radius;
+      box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.07);
+    }
+    &--header {
+      display: grid;
+      grid-template-columns: 3fr 2fr 3fr;
+      text-align: center;
+
+      &--status {
+        .layout(flex, row);
+        text-align: center;
+        & > .status {
+          margin: 0 0.5rem;
+          p {
+            margin-bottom: .5rem;
+            color: @paragraph-text;
+            font-weight: 700;
+          }
+          small {
+            color: @description-text;
+            font-size: 0.875rem;
+          }
+        }
+      }
+
+      &--avatar {
+        position: relative;
+        margin: 0 auto;
+        margin-top: -6rem;
+        width: 11rem;
+        height: 11rem;
+        overflow: hidden;
+        border-radius: 64%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
 }
