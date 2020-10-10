@@ -8,11 +8,11 @@ Stay your determination
 
 ## Working
 
-home: WIP
+home: v1.0 finished
 
-Work: Not started yet
+Work: v0.8 finished
 
-inner: Not start yet
+inner: WIP
 
 Blog: Not started yet
 
