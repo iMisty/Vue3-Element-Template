@@ -20,4 +20,4 @@ inner: Not started yet
 
 Contact: Not started yet
 
-About: Not started yet
+About: WIP
