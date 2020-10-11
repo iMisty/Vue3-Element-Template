@@ -12,11 +12,11 @@ home: v1.0 finished
 
 Work: v0.8 finished
 
-inner: WIP
+inner: v0.8 finished
 
 Blog: Not started yet
 
-inner: Not start yet
+inner: Not started yet
 
 Contact: Not started yet
 
