@@ -6,10 +6,10 @@ import { Component, Vue } from 'vue-property-decorator';
     'wrap-header': WrapHeader
   }
 })
-export default class Content extends Vue {
+export default class Contact extends Vue {
   private render() {
     return (
-      <div class="content">
+      <div class="contact">
         <wrap-header></wrap-header>
       </div>
     );

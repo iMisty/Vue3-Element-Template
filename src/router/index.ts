@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-10 17:40:07
+ * @LastEditTime: 2020-10-11 17:15:38
  * @LastEditors: Miya
  * @Description: Router
- * @FilePath: \LandingPage\src\router\index.ts
+ * @FilePath: /Kagura-LandingPage/src/router/index.ts
  * @Version:
  */
 import Vue from 'vue';
@@ -35,9 +35,9 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/WorkWrap.tsx')
   },
   {
-    path: '/content',
-    name: 'Content',
-    component: () => import('@/views/Content.tsx')
+    path: '/contact',
+    name: 'Contact',
+    component: () => import('@/views/Contact')
   },
   {
     path: '/loading',
