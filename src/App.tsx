@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-11 16:19:25
+ * @LastEditTime: 2020-10-11 19:29:47
  * @LastEditors: Miya
  * @Description: 入口页面
  * @FilePath: /Kagura-LandingPage/src/App.tsx
@@ -100,7 +100,7 @@ export default class App extends Vue {
                     <router-link
                       class="app__navigation--item"
                       to={item.link}
-                      tag="section"
+                      tag="a"
                     >
                       {item.text}
                     </router-link>

@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 18:17:43
- * @LastEditTime: 2020-10-10 17:10:24
+ * @LastEditTime: 2020-10-11 19:13:07
  * @LastEditors: Miya
  * @Description: 导航栏配置
- * @FilePath: \LandingPage\src\config\router.config.ts
+ * @FilePath: /Kagura-LandingPage/src/config/router.config.ts
  * @Version: 1.0
  */
 interface Route {
@@ -50,7 +50,7 @@ export const Router: Route[] = [
   {
     icon: '',
     text: 'Contact',
-    link: '/content'
+    link: '/contact'
   },
   {
     icon: '',
