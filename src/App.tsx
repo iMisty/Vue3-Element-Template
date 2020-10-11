@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-10 15:01:38
+ * @LastEditTime: 2020-10-11 16:19:25
  * @LastEditors: Miya
  * @Description: 入口页面
- * @FilePath: \LandingPage\src\App.tsx
+ * @FilePath: /Kagura-LandingPage/src/App.tsx
  * @Version: 1.0
  */
 import { Component, Vue } from 'vue-property-decorator';
@@ -34,7 +34,7 @@ export default class App extends Vue {
     window.addEventListener('scroll', () => {
       const top = document.documentElement.scrollTop;
       // console.log(top);
-      if (top < screenHeight - 384) {
+      if (top < screenHeight - 512) {
         this.transparentNav = true;
         return;
       }

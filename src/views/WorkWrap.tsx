@@ -20,7 +20,7 @@ export default class WorkWrap extends Vue {
     return (this.workdata = data);
   }
 
-  private mounted() {
+  private created() {
     this.getWorkData();
     console.log(this.workdata);
   }
@@ -34,26 +34,59 @@ export default class WorkWrap extends Vue {
             <header class="work__wrap--header">
               <div class="work__wrap--header--status">
                 <div class="status">
-                  <p>11</p>
-                  <small>Last Update</small>
+                  <p>{this.workdata.version}</p>
+                  <small>Version</small>
                 </div>
                 <div class="status">
                   <p>11</p>
                   <small>Last Update</small>
                 </div>
                 <div class="status">
-                  <p>2020-09-20</p>
+                  <p>{this.workdata.lastupdate}</p>
                   <small>Last Update</small>
                 </div>
               </div>
               <div class="work__wrap--header--avatar">
-                <img src={require('@/assets/bg.jpg')} alt="" />
+                {this.workdata.avatar ? (
+                  <img src={this.workdata.avatar} alt={this.workdata.title} />
+                ) : (
+                  <img
+                    src={require('@/assets/bg.jpg')}
+                    alt={this.workdata.title}
+                  />
+                )}
               </div>
               <div class="work__wrap--header--button">
-                <button>Live Demo</button>
-                <button>Source</button>
+                {this.workdata.preview ? (
+                  <button class="button small-button live-button">
+                    Live Demo
+                  </button>
+                ) : (
+                  ''
+                )}
+                {this.workdata.source ? (
+                  <button class="button small-button source-button">
+                    Source
+                  </button>
+                ) : (
+                  ''
+                )}
               </div>
             </header>
+            <article class="work__wrap--contain">
+              <header class="work__wrap--contain--title">
+                <h3>Test Project 2</h3>
+                <ul class="tags">
+                  <li>CSS</li>
+                  <li>NodeJS</li>
+                  <li>JavaScript</li>
+                </ul>
+              </header>
+              <article
+                class="work__wrap--contain--text"
+                domPropsInnerHTML={this.workdata.content}
+              ></article>
+            </article>
           </section>
         </div>
       </div>
