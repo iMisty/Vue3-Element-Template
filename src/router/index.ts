@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-11 17:15:38
+ * @LastEditTime: 2020-10-12 16:46:42
  * @LastEditors: Miya
  * @Description: Router
- * @FilePath: /Kagura-LandingPage/src/router/index.ts
+ * @FilePath: \LandingPage\src\router\index.ts
  * @Version:
  */
 import Vue from 'vue';
@@ -33,6 +33,11 @@ const routes: Array<RouteConfig> = [
     path: '/workwrap',
     name: 'WorkWrap',
     component: () => import('@/views/WorkWrap.tsx')
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: () => import('@/views/Blog.tsx')
   },
   {
     path: '/contact',

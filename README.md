@@ -14,10 +14,10 @@ Work: v0.8 finished
 
 inner: v0.8 finished
 
-Blog: Not started yet
+Blog: v0.8 finished
 
-inner: Not started yet
+inner: WIP
 
 Contact: Not started yet
 
-About: WIP
+About: v0.8 finished

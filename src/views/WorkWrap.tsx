@@ -75,12 +75,16 @@ export default class WorkWrap extends Vue {
             </header>
             <article class="work__wrap--contain">
               <header class="work__wrap--contain--title">
-                <h3>Test Project 2</h3>
-                <ul class="tags">
-                  <li>CSS</li>
-                  <li>NodeJS</li>
-                  <li>JavaScript</li>
-                </ul>
+                <h3>{this.workdata.title}</h3>
+                {this.workdata.tag ? (
+                  <ul class="tags">
+                    {this.workdata.tag.map(item => {
+                      return <li>{item}</li>;
+                    })}
+                  </ul>
+                ) : (
+                  ''
+                )}
               </header>
               <article
                 class="work__wrap--contain--text"
