@@ -14,7 +14,6 @@ interface WorkItem {
 
 @Component({})
 export default class WorkWrapItem extends Vue {
-  
   @Prop()
   private data!: WorkItem;
 
@@ -32,6 +31,7 @@ export default class WorkWrapItem extends Vue {
   private render() {
     return (
       <article class="work__project--item">
+        {/* 图片部分 */}
         <section class="left">
           {/* 根据配置决定图片 */}
           {this.data.avatar ? (
@@ -40,6 +40,7 @@ export default class WorkWrapItem extends Vue {
             <img src={require('@/assets/bg.jpg')} />
           )}
         </section>
+        {/* 文字部分 */}
         <section class="right">
           <h3 class="item--title">{this.data.title}</h3>
           <p class="item--last-update">最后更新时间：{this.data.lastupdate}</p>

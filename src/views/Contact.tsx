@@ -1,5 +1,5 @@
-import WrapHeader from '@/components/WrapHeader';
 import { Component, Vue } from 'vue-property-decorator';
+import WrapHeader from '@/components/WrapHeader';
 
 @Component({
   components: {
