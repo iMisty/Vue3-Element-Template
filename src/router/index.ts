@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-12 16:46:42
+ * @LastEditTime: 2020-10-12 18:05:15
  * @LastEditors: Miya
  * @Description: Router
  * @FilePath: \LandingPage\src\router\index.ts
@@ -38,6 +38,11 @@ const routes: Array<RouteConfig> = [
     path: '/blog',
     name: 'Blog',
     component: () => import('@/views/Blog.tsx')
+  },
+  {
+    path: '/blogwrap',
+    name: 'BlogWrap',
+    component: () => import('@/views/BlogWrap.tsx')
   },
   {
     path: '/contact',

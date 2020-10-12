@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-10-12 17:00:33
- * @LastEditTime: 2020-10-12 17:05:02
+ * @LastEditTime: 2020-10-12 18:11:59
  * @LastEditors: Miya
  * @Description: Blog Model
  * @FilePath: \LandingPage\src\model\BlogItem.ts
@@ -14,4 +14,5 @@ export interface BlogItem {
   tag?: string[];
   title: string;
   intro: string;
+  text: string;
 }

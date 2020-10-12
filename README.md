@@ -21,3 +21,7 @@ inner: WIP
 Contact: Not started yet
 
 About: v0.8 finished
+
+Login: Not started yet
+
+Admin: Not started yet
