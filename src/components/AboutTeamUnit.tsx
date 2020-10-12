@@ -1,5 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-interface Team {
+interface TeamUnit {
   name: string;
   avatar: object | string;
   position: string;
@@ -8,7 +8,7 @@ interface Team {
 @Component({})
 export default class AboutTeamUnit extends Vue {
   @Prop()
-  private data!: Team;
+  private data!: TeamUnit;
 
   private render() {
     return (

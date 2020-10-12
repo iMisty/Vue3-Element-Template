@@ -13,14 +13,16 @@ export default class AboutIntroduct extends Vue {
 
   private render() {
     return (
-      <div class="about__introduct">
-        <section class="left">
-          <h2>{this.data.title}</h2>
-          <p>{this.data.text}</p>
-        </section>
-        <section class="right">
-          <img src={this.data.image} />
-        </section>
+      <div class="about__introduct wrap">
+        <div class="container">
+          <section class="left">
+            <h2>{this.data.title}</h2>
+            <p>{this.data.text}</p>
+          </section>
+          <section class="right">
+            <img src={this.data.image} />
+          </section>
+        </div>
       </div>
     );
   }

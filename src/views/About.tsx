@@ -20,11 +20,9 @@ export default class About extends Vue {
     return (
       <div class="about">
         <wrap-header></wrap-header>
-        <div class="container">
-          <about-introduct data={this.aboutData.introduct}></about-introduct>
-          <about-concept data={this.aboutData.concept}></about-concept>
-          <about-team data={this.aboutData.team}></about-team>
-        </div>
+        <about-introduct data={this.aboutData.introduct}></about-introduct>
+        <about-concept data={this.aboutData.concept}></about-concept>
+        <about-team data={this.aboutData.team}></about-team>
       </div>
     );
   }
