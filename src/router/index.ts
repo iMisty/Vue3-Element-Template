@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-12 18:05:15
+ * @LastEditTime: 2020-10-13 11:56:38
  * @LastEditors: Miya
  * @Description: Router
  * @FilePath: \LandingPage\src\router\index.ts
@@ -64,6 +64,7 @@ const routes: Array<RouteConfig> = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior: () => ({ x: 0, y: 0 }),
   routes
 });
 
