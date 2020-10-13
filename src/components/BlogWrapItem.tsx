@@ -56,7 +56,7 @@ export default class BlogProjectItem extends Vue {
           {/* 按钮 */}
           <section class="item--button">
             <button
-              class="button primary-button"
+              class="mermaid__button primary-button"
               onClick={() => this.openArticle(this.data.id)}
             >
               Read More

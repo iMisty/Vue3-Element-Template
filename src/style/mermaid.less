@@ -1,0 +1,29 @@
+.mermaid {
+  &__tag {
+  }
+  &__button {
+    position: relative;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    padding: 0.625rem 1.25rem;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    line-height: 1.5;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: #fff;
+    text-transform: uppercase;
+    transition: all 0.15s ease;
+    will-change: transform;
+    box-shadow: @box-shadow;
+    border-radius: @border-radius;
+    &:hover {
+      transform: translateY(-2px);
+      transition-duration: @transition-duration;
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
+}

@@ -53,7 +53,7 @@ export default class WorkWrapItem extends Vue {
           <section class="item--button-list">
             {this.data.preview ? (
               <button
-                class="button live-button"
+                class="mermaid__button live-button"
                 onClick={() => this.jumpToWrap(this.data.id)}
               >
                 Live Demo
@@ -63,7 +63,7 @@ export default class WorkWrapItem extends Vue {
             )}
             {this.data.source ? (
               <button
-                class="button source-button"
+                class="mermaid__button source-button"
                 onClick={() => this.openLink(this.data.source)}
               >
                 Source
