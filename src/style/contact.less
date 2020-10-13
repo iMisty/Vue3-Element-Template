@@ -1,0 +1,135 @@
+.contact {
+  &__list {
+    text-align: center;
+    &--header {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+  }
+  &__information {
+    &--list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 2rem 0;
+      @media screen and (max-width: 750px) {
+        & {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+    &--item {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 64%;
+        background-color: rgba(24, 204, 240, 0.24);
+      }
+      &:nth-last-child(1)::after {
+        background-color: transparent;
+      }
+      @media screen and (max-width: 750px) {
+        padding: 1rem;
+        &:nth-of-type(even)::after {
+          background-color: transparent;
+        }
+      }
+      &--avatar {
+        padding: 1rem;
+        color: @primary;
+        i {
+          padding: 1rem;
+          width: 4rem;
+          height: 4rem;
+          background-color: fade(@primary, 32%);
+          border-radius: 64%;
+          box-shadow: @box-shadow;
+        }
+      }
+      &--title {
+        // font-family: inherit;
+        h4 {
+          font-family: inherit;
+        }
+      }
+    }
+  }
+
+  &__form {
+    background-color: #fff;
+    & > .container {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      .layout(flex, column, center, center);
+    }
+    &--wrap {
+      padding: 2rem;
+      background-color: #f4f5f7;
+      border-radius: @border-radius;
+      box-shadow: @box-shadow;
+      @media screen and (max-width: 750px) {
+        width: 100%;
+      }
+    }
+    &--label {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      label {
+        text-align: left;
+        p {
+          margin-bottom: 0;
+          font-size: 0.875rem;
+          line-height: 2.4;
+        }
+        input,
+        textarea {
+          width: 100%;
+          border: none;
+          outline: none;
+          margin-left: 1rem;
+          padding: 0.625rem 0.75rem 0.625rem 0;
+        }
+        & > .form-data {
+          .layout(flex, row, center, center, nowrap);
+          padding: 0.25rem 0.5rem;
+          background-color: #fff;
+          box-shadow: @box-shadow;
+          border-radius: @border-radius;
+        }
+      }
+      label[for='email-address'] {
+        grid-column: span 2;
+      }
+      label[for='message'] {
+        grid-column: span 2;
+        & > .form-data textarea {
+          font-family: inherit;
+          margin: 0;
+          height: 8rem;
+        }
+      }
+      @media screen and (max-width: 750px) {
+        label[for='first-name'],
+        label[for='last-name'] {
+          grid-column: span 2;
+        }
+      }
+    }
+
+    &--submit {
+      margin-top: 2rem;
+      text-align: right;
+      & > .submit-button {
+        background-color: @primary;
+        cursor: pointer;
+      }
+    }
+  }
+}
