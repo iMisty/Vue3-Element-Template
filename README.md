@@ -8,19 +8,19 @@ Stay your determination
 
 ## Working
 
-home: v1.0 finished
+home: v0.9 finished
 
-Work: v0.8 finished
+Work: v0.9 finished
 
-inner: v0.8 finished
+inner: v0.9 finished
 
-Blog: v0.8 finished
+Blog: v0.9 finished
 
-inner: WIP
+inner: v0.9 finished
 
-Contact: Not started yet
+Contact: WIP
 
-About: v0.8 finished
+About: v0.9 finished
 
 Login: Not started yet
 
