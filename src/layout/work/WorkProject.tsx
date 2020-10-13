@@ -1,5 +1,5 @@
-import WorkWrapItem from '@/components/WorkWrapItem';
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import WorkWrapItem from '@/components/WorkWrapItem';
 import { WorkItem } from '@/model/WorkItem';
 
 @Component({

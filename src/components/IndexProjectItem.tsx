@@ -13,9 +13,13 @@ export default class IndexProjectItem extends Vue {
   @Prop()
   private data!: ProjectItem;
 
-  private openProject(link: string) {
-    console.log(link);
-    // window.open(link);
+  // 跳转内页
+  private jumpToWrap(id: string | number) {
+    console.log(id);
+    return this.$router.push({
+      path: '/workwrap',
+      query: { id: id.toString() }
+    });
   }
 
   private render() {
@@ -23,7 +27,7 @@ export default class IndexProjectItem extends Vue {
       <article
         class="index__project--item"
         data-id={this.data.id}
-        onClick={() => this.openProject(this.data.link)}
+        onClick={() => this.jumpToWrap(this.data.id)}
       >
         <img src={this.data.avatar} />
         <h5>{this.data.title}</h5>

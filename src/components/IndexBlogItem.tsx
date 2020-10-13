@@ -11,9 +11,21 @@ export default class IndexBlogItem extends Vue {
   @Prop()
   private data!: Blog;
 
+  // 跳转内页
+  private jumpToWrap(id: string | number) {
+    console.log(id);
+    return this.$router.push({
+      path: '/blogwrap',
+      query: { id: id.toString() }
+    });
+  }
+
   private render() {
     return (
-      <article class="index__blog--item" data-blog-id={this.data.id}>
+      <article
+        class="index__blog--item"
+        onClick={() => this.jumpToWrap(this.data.id)}
+      >
         <section class="index__blog--item-avatar">
           <img src={this.data.avatar} alt={this.data.title} />
         </section>

@@ -1,14 +1,14 @@
 /*
  * @Author: Miya
  * @Date: 2020-10-10 11:45:00
- * @LastEditTime: 2020-10-11 17:14:54
+ * @LastEditTime: 2020-10-13 11:47:32
  * @LastEditors: Miya
  * @Description: Work Page Config
- * @FilePath: /Kagura-LandingPage/src/config/work.config.ts
+ * @FilePath: \LandingPage\src\config\work.config.ts
  * @Version: 1.0
  */
 export const work = {
-  title: 'Work',
+  title: 'Project',
   background: '',
   project: [
     {

@@ -21,7 +21,11 @@ export default class HomeBlog extends Vue {
         <h1 class="index__blog--title title">{this.data.title}</h1>
         <div class="container">
           {this.data.list.map(item => {
-            return <blog-item data={item}></blog-item>;
+            return (
+              <blog-item
+                data={item}
+              ></blog-item>
+            );
           })}
         </div>
       </div>

@@ -1,22 +1,31 @@
 import { Component, Vue } from 'vue-property-decorator';
+// 组件引入
 import fullBackground from '@/layout/index/full-background';
 import concept from '@/layout/index/concept';
-import work from '@/layout/index/work';
-import blog from '@/layout/index/blog';
+import workComponent from '@/layout/index/work';
+import blogComponent from '@/layout/index/blog';
 import project from '@/layout/index/project';
+// 配置文件引入
+// TODO: 改为使用RestAPI
 import { Index } from '@/config/index.config';
+import { blog } from '@/config/blog.config';
+import { work } from '@/config/work.config';
 
 @Component({
   components: {
     'full-background': fullBackground,
     'index-concept': concept,
-    'index-work': work,
+    'index-work': workComponent,
     'index-project': project,
-    'index-blog': blog
+    'index-blog': blogComponent
   }
 })
 export default class Home extends Vue {
+
   private indexData = Index;
+  private blogData = blog;
+  private workData = work;
+
   private render() {
     return (
       <div class="index">
@@ -27,9 +36,9 @@ export default class Home extends Vue {
         {/* Works */}
         <index-work data={this.indexData.work}></index-work>
         {/* Project */}
-        <index-project data={this.indexData.project}></index-project>
+        <index-project data={this.workData}></index-project>
         {/* blog */}
-        <index-blog data={this.indexData.blog}></index-blog>
+        <index-blog data={this.blogData}></index-blog>
       </div>
     );
   }
