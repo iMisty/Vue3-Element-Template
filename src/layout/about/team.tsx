@@ -1,6 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import teamUnit from '@/components/AboutTeamUnit';
-import 'font-awesome/css/font-awesome.min.css';
 
 interface Team {
   name: string;
