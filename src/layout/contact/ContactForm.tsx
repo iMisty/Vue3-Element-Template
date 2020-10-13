@@ -15,6 +15,13 @@ export default class ContactForm extends Vue {
   @Prop()
   private data!: ContactTitle;
 
+  private submitFeedback() {
+    const msg = `
+    此功能暂未开放
+    This function is under construction`;
+    alert(msg);
+  }
+
   private render() {
     return (
       <div class="contact__form wrap">
@@ -28,11 +35,7 @@ export default class ContactForm extends Vue {
                 <p>First name</p>
                 <div class="form-data">
                   <i class="fa fa-user-circle"></i>
-                  <input
-                    type="text"
-                    id="first-name"
-                    placeholder="First Name"
-                  />
+                  <input type="text" id="first-name" placeholder="First Name" />
                 </div>
               </label>
               <label for="last-name">
@@ -56,12 +59,19 @@ export default class ContactForm extends Vue {
               <label for="message">
                 <p>Your message</p>
                 <div class="form-data">
-                  <textarea type="text" id="message" placeholder="Message Here" />
+                  <textarea
+                    type="text"
+                    id="message"
+                    placeholder="Message Here"
+                  />
                 </div>
               </label>
             </section>
             <section class="contact__form--submit">
-              <button class="mermaid__button submit-button">
+              <button
+                class="mermaid__button submit-button"
+                onClick={() => this.submitFeedback()}
+              >
                 Send Message
               </button>
             </section>

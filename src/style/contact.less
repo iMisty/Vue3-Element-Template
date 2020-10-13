@@ -90,15 +90,17 @@
         }
         input,
         textarea {
+          margin-left: 1rem;
+          padding: 0.625rem 0.75rem 0.625rem 0;
           width: 100%;
           border: none;
           outline: none;
-          margin-left: 1rem;
-          padding: 0.625rem 0.75rem 0.625rem 0;
+          color: darken(@description-text, 15%);
         }
         & > .form-data {
           .layout(flex, row, center, center, nowrap);
           padding: 0.25rem 0.5rem;
+          color: darken(@description-text, 15%);
           background-color: #fff;
           box-shadow: @box-shadow;
           border-radius: @border-radius;
