@@ -28,22 +28,22 @@ Stay your determination
 
 ### middle-office
 
-- [] index
+- [ ] index
 
-- [] home config
+- [ ] home config
 
-- [] project
+- [ ] project
 
-- [] work
+- [ ] work
 
-- [] setting
+- [ ] setting
 
 ### back-end
 
-- [] Authorization
+- [ ] Authorization
 
-- [] Home config
+- [ ] Home config
 
-- [] Work config
+- [ ] Work config
 
-- [] Blog config
+- [ ] Blog config
