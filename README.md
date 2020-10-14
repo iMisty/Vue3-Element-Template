@@ -8,20 +8,42 @@ Stay your determination
 
 ## Working
 
-home: v0.9 finished
+### front-end
 
-Work: v0.9 finished
+- [x] home: v0.9
 
-inner: v0.9 finished
+- [x] Work: v0.9
 
-Blog: v0.9 finished
+- [x] inner: v0.9
 
-inner: v0.9 finished
+- [x] Blog: v0.9
 
-Contact: WIP
+- [x] inner: v0.9
 
-About: v0.9 finished
+- [x] Contact: v0.9
 
-Login: Not started yet
+- [x] About: v0.9
 
-Admin: Not started yet
+- [x] Login: v0.9
+
+### middle-office
+
+- [] index
+
+- [] home config
+
+- [] project
+
+- [] work
+
+- [] setting
+
+### back-end
+
+- [] Authorization
+
+- [] Home config
+
+- [] Work config
+
+- [] Blog config
