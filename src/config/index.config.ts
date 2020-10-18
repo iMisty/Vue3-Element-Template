@@ -1,12 +1,14 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 16:49:55
- * @LastEditTime: 2020-10-13 11:23:16
+ * @LastEditTime: 2020-10-18 16:58:49
  * @LastEditors: Miya
  * @Description: 首页使用配置
- * @FilePath: \LandingPage\src\config\index.config.ts
+ * @FilePath: /Kagura-LandingPage/src/config/index.config.ts
  * @Version: 1.0
  */
+
+ // TODO: 所有text转换为 content
 export const Index = {
   navbar: {
     logo: require('@/assets/logo.png')
