@@ -44,6 +44,6 @@ Stay your determination
 
 - [ ] Home config
 
-- [ ] Work config
+- [x] Work config: v1.0
 
-- [ ] Blog config
+- [x] Blog config: v1.0
