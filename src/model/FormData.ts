@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-10-14 16:05:03
- * @LastEditTime: 2020-10-14 16:05:29
+ * @LastEditTime: 2020-10-22 12:06:44
  * @LastEditors: Miya
  * @Description: Form Data Model
  * @FilePath: \LandingPage\src\model\FormData.ts
@@ -10,5 +10,5 @@
 export interface FormData {
   username: string;
   password: string;
-  remember: boolean;
+  remember?: boolean;
 }

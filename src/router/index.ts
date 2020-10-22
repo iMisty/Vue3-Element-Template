@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-13 11:56:38
+ * @LastEditTime: 2020-10-22 15:01:48
  * @LastEditors: Miya
  * @Description: Router
  * @FilePath: \LandingPage\src\router\index.ts
@@ -58,6 +58,11 @@ const routes: Array<RouteConfig> = [
     path: '/admin',
     name: 'Admin',
     component: () => import('@/views/Admin.tsx')
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: () => import('@/views/Test.tsx')
   }
 ];
 

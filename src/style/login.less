@@ -67,6 +67,9 @@
     &--third-party {
       padding: 2rem 4rem;
       background-color: #fff;
+      &.registry{
+        background-color: #f4f5f7;
+      }
 
       &--list {
         .layout(flex, row, center, center, nowrap);
@@ -143,6 +146,20 @@
     &--submit {
       & > .submit-button {
         background-color: @primary;
+      }
+    }
+
+    &--setting {
+      position: relative;
+      .layout(flex, row, space-between, flex-start, nowrap);
+      margin-top: 1rem;
+      z-index: 4;
+      color: lighten(@paragraph-text, 10%);
+      font-size: @fontsize-p * 0.875;
+      &--content {
+        font-size: inherit;
+        color: inherit;
+        cursor: pointer;
       }
     }
   }
