@@ -1,17 +1,14 @@
-import { POST } from '@/config/api.config';
 import { Component, Vue } from 'vue-property-decorator';
+import marked from 'marked';
 
 @Component({})
 export default class Test extends Vue {
   private a = '';
+  private b = '';
 
   private async aa() {
-    console.log('aaaa');
-    const b = await POST('/user/footer', {
-      img: 1111,
-    });
-    console.log(b);
-    this.a = b.code;
+    const aa = this.a;
+    return (this.b = marked(aa));
   }
 
   private render() {
@@ -20,8 +17,10 @@ export default class Test extends Vue {
         class="test"
         style="width:100vw;height:100vh;magrin-top: 4rem;display:flex;flex-direction:column;justify-content:center;align-items:center;"
       >
+        <textarea v-model={this.a} cols="30" rows="10"></textarea>
         <button onClick={() => this.aa()}>123333</button>
-        <p>{this.a}</p>
+        <p>{this.b}</p>
+        <div domPropsInnerHTML={this.b}></div>
       </div>
     );
   }
