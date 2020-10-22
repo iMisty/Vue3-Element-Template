@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 17:16:08
- * @LastEditTime: 2020-10-22 17:21:02
+ * @LastEditTime: 2020-10-22 21:40:41
  * @LastEditors: Miya
  * @Description: API域名
- * @FilePath: \LandingPage\src\config\api.config.ts
+ * @FilePath: /Kagura-LandingPage/src/config/api.config.ts
  * @Version: 1.0
  */
 import axios from 'axios';
@@ -13,6 +13,7 @@ axios.defaults.baseURL = '/api';
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded';
+axios.defaults.timeout = 5000
 
 // 请求拦截器
 axios.interceptors.request.use(
@@ -31,6 +32,7 @@ axios.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
       return config;
     }
+    return config;
   },
   err => {
     return Promise.reject(err);

@@ -14,14 +14,13 @@ export default class Login extends Vue {
 
   private async submitForm(type: number, data?: FormData) {
     if (type === 1) {
-      const result = await POST('/login', data);
-      console.log(result);
+      const result = await POST('login', data);
       if (result.code === 1) {
+        localStorage.setItem('blog-token', result.token);
         return this.$router.push({ path: '/admin' });
       }
     }
-    const result = await POST('/registry', data);
-    console.log(result);
+    const result = await POST('registry', data);
     return result;
   }
 

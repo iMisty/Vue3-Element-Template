@@ -12,6 +12,7 @@ interface TeamUnit extends Team {
   name: string;
   avatar: object | string;
   position: string;
+  // eslint-disable-next-line
   contact: any[];
 }
 
