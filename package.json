@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@vue/composition-api": "^1.0.0-beta.18",
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "koa-combine-routers": "^4.0.2",
