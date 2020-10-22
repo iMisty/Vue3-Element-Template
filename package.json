@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/composition-api": "^1.0.0-beta.18",
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "koa-combine-routers": "^4.0.2",
@@ -26,6 +27,7 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-typescript": "^5.0.2",
+    "babel-preset-vca-jsx": "^0.3.6",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.0.4",
@@ -33,7 +35,7 @@
     "typescript": "~3.9.3",
     "vue-property-decorator": "^8.5.1",
     "vue-template-compiler": "^2.6.11",
-    "vue-tsx-support": "^2.3.3"
+    "vue-tsx-support": "^3.0.1"
   },
   "eslintConfig": {
     "root": true,

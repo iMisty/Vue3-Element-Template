@@ -40,9 +40,9 @@ Stay your determination
 
 ### back-end
 
-- [ ] Authorization
+- [x] Authorization: v1.0
 
-- [ ] Home config
+- [x] Home config: v1.0
 
 - [x] Work config: v1.0
 

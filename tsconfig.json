@@ -4,6 +4,7 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
+    "jsxFactory": "VueTsxSupport",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -28,6 +29,7 @@
     ]
   },
   "include": [
+    "node_modules/vue-tsx-support/enable-check.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
