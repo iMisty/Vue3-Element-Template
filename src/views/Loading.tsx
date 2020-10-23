@@ -164,7 +164,7 @@ export default class Login extends Vue {
           )}
           {this.type === 1 ? (
             <section class="login__form--setting">
-              <p class="login__form--setting--content">Forgotten Password?</p>
+              <p class="login__form--setting--content" onClick={() => this.$router.push({path: '/admin'})}>Forgotten Password?</p>
               <p
                 class="login__form--setting--content"
                 onClick={() => this.changeLoginType(0)}

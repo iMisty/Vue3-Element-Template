@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-11 19:29:47
+ * @LastEditTime: 2020-10-23 12:22:56
  * @LastEditors: Miya
  * @Description: 入口页面
- * @FilePath: /Kagura-LandingPage/src/App.tsx
+ * @FilePath: \LandingPage\src\App.tsx
  * @Version: 1.0
  */
 import { Component, Vue } from 'vue-property-decorator';
@@ -66,6 +66,11 @@ export default class App extends Vue {
     return this.loading ? 'loading' : 'loaded';
   }
 
+  // 计算是否显示导航栏
+  private get getDisplayNavBar() {
+    return this.$store.state.displayNavBar ? '' : 'nav-hidden';
+  }
+
   private beforeMount() {
     // this.loading = true;
   }
@@ -84,7 +89,9 @@ export default class App extends Vue {
     return (
       <div id="app">
         {/* <div class={`app__mask ${this.getLoading}`}></div> */}
-        <nav class={`app__navigation ${this.getTransparentNav}`}>
+        <nav
+          class={`app__navigation ${this.getTransparentNav} ${this.getDisplayNavBar}`}
+        >
           <div class="container">
             <div class="app__navigation--logo">
               <img src={this.navLogo}></img>
