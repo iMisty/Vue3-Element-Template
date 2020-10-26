@@ -22,7 +22,6 @@
       }
       .type {
         .layout(flex, row, center, center);
-        color: #fff;
         transition-duration: @transition-duration;
       }
     }
@@ -45,6 +44,18 @@
         transition-duration: @transition-duration;
         &:hover {
           background-color: #f6f9fc;
+        }
+        &.dashboard{
+          color: @primary;
+        }
+        &.blog{
+          color: @warning;
+        }
+        &.work{
+          color: @info;
+        }
+        &.setting{
+          color: @default;
         }
       }
       .router-link-exact-active {
