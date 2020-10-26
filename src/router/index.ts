@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-22 15:01:48
+ * @LastEditTime: 2020-10-26 11:00:29
  * @LastEditors: Miya
  * @Description: Router
  * @FilePath: \LandingPage\src\router\index.ts
@@ -47,7 +47,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/contact',
     name: 'Contact',
-    component: () => import('@/views/Contact')
+    component: () => import('@/views/Contact.tsx')
   },
   {
     path: '/loading',
@@ -57,7 +57,26 @@ const routes: Array<RouteConfig> = [
   {
     path: '/admin',
     name: 'Admin',
-    component: () => import('@/views/Admin.tsx')
+    component: () => import('@/views/Admin.tsx'),
+    redirect: '/',
+    children: [
+      {
+        path: '',
+        component: () => import('@/layout/admin/dash.tsx')
+      },
+      {
+        path: 'blog',
+        component: () => import('@/layout/admin/blog.tsx')
+      },
+      {
+        path: 'work',
+        component: () => import('@/layout/admin/work.tsx')
+      },
+      {
+        path: 'setting',
+        component: () => import('@/layout/admin/setting.tsx')
+      }
+    ]
   },
   {
     path: '/test',
@@ -67,7 +86,7 @@ const routes: Array<RouteConfig> = [
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   scrollBehavior: () => ({ x: 0, y: 0 }),
   routes
