@@ -1,10 +1,14 @@
 .admin {
   min-height: 100vh;
+  transition-duration: @transition-duration;
 
   &__left {
     .position(fixed, 0, 0, 16rem, 100vh);
     padding: 0.5rem;
-    box-shadow: @box-shadow;
+    z-index: 12;
+    background-color: #fff;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+    transition-duration: @transition-duration;
 
     // Logo区
     &--logo {
@@ -12,8 +16,14 @@
       grid-template-columns: auto 2rem;
       align-items: center;
       padding: 1rem 0.5rem;
+      height: 5rem;
+      .logo > img {
+        max-height: 3rem;
+      }
       .type {
         .layout(flex, row, center, center);
+        color: #fff;
+        transition-duration: @transition-duration;
       }
     }
 
@@ -24,26 +34,26 @@
     // 导航栏
     &--list {
       // 一级导航栏
-      &--master {
+      &--nav {
         padding: 0.75rem 0.5rem;
         border-radius: @border-radius;
-        .title-nav {
-          display: grid;
-          grid-template-columns: 1rem auto 1rem;
-          gap: 0.5rem;
-          align-items: center;
+        display: grid;
+        grid-template-columns: 1rem auto 1rem;
+        gap: 0.5rem;
+        align-items: center;
+        cursor: pointer;
+        transition-duration: @transition-duration;
+        &:hover {
+          background-color: #f6f9fc;
         }
+      }
+      .router-link-exact-active {
+        background-color: darken(#f9f9fc, 2%);
       }
       // 一级导航栏标题文字
       &--title {
         margin-bottom: 0;
-      }
-
-      // 二级导航栏
-      &--item {
-        display: none;
-        margin-left: 1.6rem;
-        padding: 0.5rem 0;
+        overflow: hidden;
       }
     }
   }
@@ -51,5 +61,100 @@
   &__wrap {
     margin-left: 16rem;
     height: 100vh;
+    transition-duration: @transition-duration;
+    &--top {
+      position: relative;
+      .layout(flex, row, flex-end, center, nowrap);
+      padding: 0 1.5rem;
+      height: 4rem;
+      // Color: Can you Feel the love tonight? Sorry,I have n't feel this;
+      background: linear-gradient(90deg, #7f00ff, #e100ff) no-repeat;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 1px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.24);
+      }
+
+      // 顶部栏内容
+      &--item {
+        .layout(flex, row, flex-start, center, nowrap);
+        margin: 0 1rem;
+        .avatar {
+          &-username {
+            margin: 0 0.25rem;
+            color: #fff;
+            font-weight: 500;
+          }
+          &-img {
+            width: 2rem;
+            height: 2rem;
+            object-fit: cover;
+            border-radius: 64%;
+          }
+        }
+      }
+    }
+
+    // 内容标题栏
+    &--title {
+      padding: 1rem 1rem 12rem 1rem;
+      background: linear-gradient(90deg, #7f00ff, #e100ff) no-repeat;
+      & > h5 {
+        font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 700;
+        color: #fff;
+      }
+    }
   }
+
+  &.float {
+    transition-duration: @transition-duration;
+    .admin__left {
+      width: 3rem;
+      transition-duration: @transition-duration;
+
+      &:hover {
+        width: 16rem;
+      }
+      &--logo,
+      &--nav {
+        padding: 0;
+        transition-duration: @transition-duration;
+      }
+      .type {
+        transform: rotate(90deg);
+      }
+    }
+    .admin__wrap {
+      margin-left: 3rem;
+    }
+  }
+
+  // Dash模块
+  &__dash {
+    &--result {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      padding: 0 1rem;
+      @media screen and (max-width: 960px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media screen and (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+}
+
+.content {
+  position: relative;
+  display: grid;
+  top: -10rem;
+  gap: 1rem;
 }
