@@ -21,10 +21,13 @@ import { work } from '@/config/work.config';
   }
 })
 export default class Home extends Vue {
-
   private indexData = Index;
   private blogData = blog;
   private workData = work;
+
+  private mounted() {
+    this.$store.commit('changeDisplayNavBar', true);
+  }
 
   private render() {
     return (

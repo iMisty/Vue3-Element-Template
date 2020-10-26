@@ -1,5 +1,6 @@
 .mermaid {
   &__tag {
+    content: '';
   }
   &__button {
     position: relative;
@@ -25,5 +26,62 @@
     &:active {
       box-shadow: none;
     }
+  }
+  &__card {
+    box-shadow: @box-shadow;
+    border-radius: @border-radius;
+    overflow: hidden;
+
+    &--puzzle {
+      display: grid;
+      grid-template-rows: 1.5rem auto 1.5rem;
+      grid-template-columns: auto 3rem;
+      grid-template-areas:
+        'a b'
+        'c d'
+        'e f';
+      padding: 1rem;
+      background-color: #fff;
+      // 标题
+      & > .admin-title {
+        font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        grid-area: a;
+        color: @description-text;
+        font-size: @fontsize-p * 0.875;
+        font-weight: 700;
+        margin-bottom: 0;
+        line-height: 1.5rem;
+      }
+      // 数字
+      & > .sum {
+        font-weight: 600;
+        font-size: 1.2em;
+      }
+      // 图标
+      & > .icon {
+        grid-row-start: b;
+        grid-row-end: d;
+        .layout(flex, row, center, center);
+        width: 3rem;
+        height: 3rem;
+        color: #fff;
+        border-radius: 64%;
+      }
+    }
+  }
+}
+
+.bg-gradient {
+  &-red {
+    background: @bg-gradient-red;
+  }
+  &-orange {
+    background: @bg-gradient-orange;
+  }
+  &-green {
+    background: @bg-gradient-green;
+  }
+  &-primary {
+    background: @bg-gradient-primary;
   }
 }
