@@ -28,9 +28,18 @@
     }
   }
   &__card {
-    box-shadow: @box-shadow;
+    background-color: #fff;
+    box-shadow: @card-shadow;
     border-radius: @border-radius;
     overflow: hidden;
+
+    &--title {
+      font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 1rem;
+      font-weight: 700;
+      color: @header-text;
+    }
 
     &--puzzle {
       display: grid;
@@ -66,6 +75,85 @@
         height: 3rem;
         color: #fff;
         border-radius: 64%;
+      }
+    }
+  }
+  &__table {
+    & > .table {
+      padding: 1rem 0;
+      width: 100%;
+      background-color: #fff;
+    }
+    .table {
+      // 表格标题
+      &--row {
+        display: grid;
+        grid-template-columns: 40% 30% 30%;
+        align-items: center;
+      }
+      // 表格顶部
+      &--head {
+        border-top: 1px solid lighten(@description-text, 20%);
+        border-bottom: 1px solid lighten(@description-text, 20%);
+        background-color: lighten(#e100ff, 44%);
+        &--row {
+          text-align: center;
+        }
+      }
+      &--title {
+        font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        padding: 0.5rem 0;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.54px;
+        color: @description-text;
+      }
+      &--body {
+        & > .table--row {
+          padding: 0 1rem;
+          border-bottom: 1px solid lighten(@description-text, 20%);
+          &:nth-last-child(1) {
+            border-bottom: none;
+          }
+        }
+      }
+      &--item {
+        color: @paragraph-text;
+        padding: 1rem;
+        &.table-title {
+          .layout(flex, row, flex-start, center);
+        }
+        &.time {
+          text-align: center;
+        }
+        &.setting {
+          .layout(flex, row, center, center, nowrap);
+          text-align: center;
+        }
+        &--setting {
+          margin: 0 0.5rem;
+          cursor: default;
+          transition-duration: @transition-duration;
+          &:hover {
+            color: lighten(@paragraph-text, 30%);
+            transition-duration: @transition-duration;
+          }
+        }
+        &--img {
+          width: 3rem;
+          height: 3rem;
+          object-fit: cover;
+          border-radius: 64%;
+        }
+        &--title {
+          margin-left: 1rem;
+          cursor: default;
+          transition-duration: @transition-duration;
+          &:hover {
+            color: lighten(@paragraph-text, 30%);
+            transition-duration: @transition-duration;
+          }
+        }
       }
     }
   }
