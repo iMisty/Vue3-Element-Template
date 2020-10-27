@@ -19,6 +19,157 @@
     will-change: transform;
     box-shadow: @box-shadow;
     border-radius: @border-radius;
+    // Color
+    &--primary {
+      color: #fff;
+      background-color: #3d55df;
+      border-color: #324cdd;
+    }
+    &--info {
+      color: #fff;
+      background-color: #11cdef;
+      border-color: #11cdef;
+    }
+    &--success {
+      color: #fff;
+      background-color: #2dce89;
+      border-color: #2dce89;
+    }
+    &--danger {
+      color: #fff;
+      background-color: #ec0c38;
+      border-color: #ec0c38;
+    }
+    &--warning {
+      color: #fff;
+      background-color: #fb6340;
+      border-color: #fb6340;
+    }
+    &--default {
+      color: #fff;
+      background-color: #172b4d;
+      border-color: #172b4d;
+    }
+    &--secondary {
+      color: #212529;
+      background-color: #f4f5f7;
+      border-color: #f4f5f7;
+
+      // Width
+      &-small {
+        padding: 0.25rem 0.5rem;
+        min-width: auto;
+        font-size: 0.875rem;
+      }
+      &-regular {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+      }
+      &-large {
+        padding: 0.875rem 1rem;
+      }
+      &-block {
+        width: 100%;
+      }
+
+      // Style
+      // Default style => have background
+      &-round {
+        &-primary {
+          color: #fff;
+          background-color: #3d55df;
+          border-color: #324cdd;
+        }
+        &-info {
+          color: #fff;
+          background-color: #11cdef;
+          border-color: #11cdef;
+        }
+        &-success {
+          color: #fff;
+          background-color: #2dce89;
+          border-color: #2dce89;
+        }
+        &-danger {
+          color: #fff;
+          background-color: #ec0c38;
+          border-color: #ec0c38;
+        }
+        &-warning {
+          color: #fff;
+          background-color: #fb6340;
+          border-color: #fb6340;
+        }
+        &-default {
+          color: #fff;
+          background-color: #172b4d;
+          border-color: #172b4d;
+        }
+        &-secondary {
+          color: #212529;
+          background-color: #f4f5f7;
+          border-color: #f4f5f7;
+        }
+      }
+
+      // Outline style => only border
+      &-outline {
+        &-primary {
+          color: #3d55df;
+          border-color: #324cdd;
+        }
+        &-info {
+          color: #11cdef;
+          border-color: #11cdef;
+        }
+        &-success {
+          color: #2dce89;
+          border-color: #2dce89;
+        }
+        &-danger {
+          color: #ec0c38;
+          border-color: #ec0c38;
+        }
+        &-warning {
+          color: #fb6340;
+          border-color: #fb6340;
+        }
+        &-default {
+          color: #172b4d;
+          border-color: #172b4d;
+        }
+        &-secondary {
+          color: #f4f5f7;
+          border-color: #f4f5f7;
+        }
+      }
+
+      // Link style => only text
+      &-link {
+        &-primary {
+          color: #3d55df;
+          border-color: #324cdd;
+        }
+        &-info {
+          color: #11cdef;
+        }
+        &-success {
+          color: #2dce89;
+        }
+        &-danger {
+          color: #ec0c38;
+        }
+        &-warning {
+          color: #fb6340;
+        }
+        &-default {
+          color: #172b4d;
+        }
+        &-secondary {
+          color: #f4f5f7;
+        }
+      }
+    }
     &:hover {
       transform: translateY(-2px);
       transition-duration: @transition-duration;
