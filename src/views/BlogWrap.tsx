@@ -13,6 +13,7 @@ export default class BlogWrap extends Vue {
 
   private getBlogData() {
     const id = this.$route.query.id as string;
+    console.log(id)
     const data = blog.list.find(item => item.id === parseInt(id));
     if (!data) {
       return false;

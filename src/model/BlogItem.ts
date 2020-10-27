@@ -1,13 +1,14 @@
 /*
  * @Author: Miya
  * @Date: 2020-10-12 17:00:33
- * @LastEditTime: 2020-10-12 18:11:59
+ * @LastEditTime: 2020-10-27 10:44:04
  * @LastEditors: Miya
  * @Description: Blog Model
  * @FilePath: \LandingPage\src\model\BlogItem.ts
  * @Version: 1.0
  */
 export interface BlogItem {
+  _id?: string;
   id: number | string;
   avatar?: object | string;
   time: string;

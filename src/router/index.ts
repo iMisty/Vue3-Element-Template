@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-26 11:00:29
+ * @LastEditTime: 2020-10-27 15:47:05
  * @LastEditors: Miya
  * @Description: Router
  * @FilePath: \LandingPage\src\router\index.ts
@@ -66,7 +66,11 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: 'blog',
-        component: () => import('@/layout/admin/blog.tsx')
+        component: () => import('@/layout/admin/blog.tsx'),
+      },
+      {
+        path: 'blogedit',
+        component: () => import('@/layout/admin/blogedit.tsx')
       },
       {
         path: 'work',
