@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-27 15:47:05
+ * @LastEditTime: 2020-10-28 22:51:17
  * @LastEditors: Miya
  * @Description: Router
- * @FilePath: \LandingPage\src\router\index.ts
+ * @FilePath: /Kagura-LandingPage/src/router/index.ts
  * @Version:
  */
 import Vue from 'vue';
@@ -75,6 +75,10 @@ const routes: Array<RouteConfig> = [
       {
         path: 'work',
         component: () => import('@/layout/admin/work.tsx')
+      },
+      {
+        path: 'workedit',
+        component: () => import('@/layout/admin/workedit.tsx')
       },
       {
         path: 'setting',

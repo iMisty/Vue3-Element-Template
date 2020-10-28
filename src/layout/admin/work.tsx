@@ -14,11 +14,10 @@ import { work } from '@/config/work.config';
 export default class AdminWork extends Vue {
   private title = [
     { key: 'title' },
-    { key: 'lastupdate', mobile: 'mobile-type' },
+    { key: 'last', mobile: 'mobile-type' },
     { key: 'version', mobile: 'mobile-type' },
     { key: 'status' },
-    { key: 'link', mobile: 'mobile-type' },
-    { key: 'setting' }
+    { key: '', mobile: 'mobile-type' },
   ];
 
   private data = work.project;

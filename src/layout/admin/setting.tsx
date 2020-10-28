@@ -7,9 +7,8 @@ import AdminWrapTitle from '@/components/AdminWrapTitle';
   }
 })
 export default class AdminSetting extends Vue {
-
-  private mounted(){
-    console.log('Setting Loaded')
+  private mounted() {
+    console.log('Setting Loaded');
   }
 
   private render() {
