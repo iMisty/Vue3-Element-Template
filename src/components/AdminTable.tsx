@@ -2,7 +2,7 @@ import { BlogItem } from '@/model/BlogItem';
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
 
 @Component({})
-export default class MermaidTable extends Vue {
+export default class AdminTable extends Vue {
   private key!: string[] | number[];
 
   // 表格模式，适配白天夜间模式
@@ -32,7 +32,7 @@ export default class MermaidTable extends Vue {
 
   private render() {
     return (
-      <div class="mermaid__table">
+      <div class="admin__table">
         <table class={`table ${this.tableType}`} rules="none">
           <thead class="table--head">
             <tr class="table--row table--head--row">
