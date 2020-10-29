@@ -17,10 +17,14 @@ export default class AdminWork extends Vue {
     { key: 'last', mobile: 'mobile-type' },
     { key: 'version', mobile: 'mobile-type' },
     { key: 'status' },
-    { key: '', mobile: 'mobile-type' },
+    { key: '', mobile: 'mobile-type' }
   ];
 
   private data = work.project;
+
+  private clickEdit(id: string | number | undefined) {
+    console.log(id);
+  }
 
   private render() {
     return (
@@ -32,6 +36,7 @@ export default class AdminWork extends Vue {
               <admin-work-table
                 title={this.title}
                 data={this.data}
+                onEdit={(id: string) => this.clickEdit(id)}
               ></admin-work-table>
             </m-card>
           </div>
