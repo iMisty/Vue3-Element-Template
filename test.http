@@ -1,0 +1,147 @@
+### 新建一篇文章
+POST https://v2.dressweb.cn/blog
+Content-Type: application/x-www-form-urlencoded
+
+
+id=1&avatar=&tag=1&tag=2&title=test4&content=faoifjfdlfdfjaldhfuakfheufheuiofhkajhfksdfhakfhadkfhndkfhasdf
+
+### 根据 ID 查找文章
+GET https://v2.dressweb.cn/info/blog/id
+Content-Type: application/x-www-form-urlencoded
+
+id=4
+
+### 修改文章内容
+PUT https://v2.dressweb.cn/blog
+Content-Type: application/x-www-form-urlencoded
+
+id=4&tag=1&avatar=&title=test3&text=11
+
+### 删除一篇文章
+DELETE https://v2.dressweb.cn/blog
+Content-Type: application/x-www-form-urlencoded
+
+id=2
+
+
+### 查找所有文章
+GET https://v2.dressweb.cn/info/blog
+Content-Type: application/x-www-form-urlencoded
+
+### 查找固定条数文章
+GET https://v2.dressweb.cn/blog
+Content-Type: application/x-www-form-urlencoded
+
+limit=4
+
+#################################
+
+### 新建一个项目
+
+POST https://v2.dressweb.cn/work
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQzMDI5MDIsImV4cCI6MTYwNDM4OTMwMn0.jM9WizO3ihE-1mSZSGVtSGMqAldag-Su6T8BTlGgciQ
+
+id=4&avatar=&title=test5&tag=1&tag=2&content=yhsiuhfiaufhisduafhaidsfhuiadsfhidsa&preview=github&source=github&lastupdate=153334444333&version=1.0&status=1
+
+### 查找所有项目
+GET https://v2.dressweb.cn/work
+Content-Type: application/x-www-form-urlencoded
+
+### 查找指定条数项目
+GET https://v2.dressweb.cn/work
+Content-Type: application/x-www-form-urlencoded
+
+limit=2
+
+### 修改项目内容
+PUT https://v2.dressweb.cn/work
+Content-Type: application/x-www-form-urlencoded
+
+id=4&avatar=&title=test4&tag=4&content=1&status=1
+
+
+### 新建关于页内容
+POST https://v2.dressweb.cn/user/about
+Content-Type: application/x-www-form-urlencoded
+
+background=11&concept=1111111&image=11111&title=33333&content=281479
+
+### 获取关于页内容
+GET https://v2.dressweb.cn/info/about
+Content-Type: application/x-www-form-urlencoded
+
+### 修改关于页内容
+PUT https://v2.dressweb.cn/user/about
+Content-Type: application/x-www-form-urlencoded
+
+id=5f8d56e71d8f9f1004b76cf2&background=111111&concept=21111111&image=2211111&title=233333&content=281479
+
+### 新建团队人员
+
+POST https://v2.dressweb.cn/user/team
+Content-Type: application/x-www-form-urlencoded
+
+icon=123&title=234&content=345
+
+### 查阅团队人员
+
+GET https://v2.dressweb.cn/info/team
+Content-Type: application/x-www-form-urlencoded
+
+### 修改团队人员
+
+PUT https://v2.dressweb.cn/user/team
+Content-Type: application/x-www-form-urlencoded
+
+id=5f8dc045176d4b0c0cdf679f&icon=1235&title=2394&content=3456
+
+### 删除团队人员
+
+DELETE https://v2.dressweb.cn/user/team
+Content-Type: application/x-www-form-urlencoded
+
+id=5f8dc045176d4b0c0cdf679f
+
+### 新建页脚信息
+
+POST https://v2.dressweb.cn/user/footer
+Content-Type: application/x-www-form-urlencoded
+
+img=1111
+&pri=123
+&sec=234
+&copyrightyear=2019
+&author=miya
+&website=393290
+
+### 获取页脚信息
+
+GET https://v2.dressweb.cn/info/footer
+Content-Type: application/x-www-form-urlencoded
+
+### 新建页脚联系方式
+
+POST https://v2.dressweb.cn/user/footer/contact
+Content-Type: application/x-www-form-urlencoded
+
+
+id=5f8e617bda7c8122eceb04f9&name=1&icon=2&link=3
+
+### 修改页脚联系方式
+PUT https://v2.dressweb.cn/user/footer/contact
+Content-Type: application/x-www-form-urlencoded
+
+### 新建管理员账户
+POST https://v2.dressweb.cn/registry
+Content-Type: application/x-www-form-urlencoded
+
+username=admin
+&password=123456
+
+### 登录
+POST https://v2.dressweb.cn/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin
+&password=123456

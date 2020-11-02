@@ -1,7 +1,8 @@
-import { blog } from '@/config/blog.config';
 import { BlogItem } from '@/model/BlogItem';
 import { Component, Vue } from 'vue-property-decorator';
 import WrapHeader from '@/components/WrapHeader';
+import { GET, INFO } from '@/config/api.config';
+import axios from 'axios';
 
 @Component({
   components: {
@@ -11,19 +12,27 @@ import WrapHeader from '@/components/WrapHeader';
 export default class BlogWrap extends Vue {
   private blogdata!: BlogItem;
 
-  private getBlogData() {
-    const id = this.$route.query.id as string;
-    console.log(id)
-    const data = blog.list.find(item => item.id === parseInt(id));
-    if (!data) {
-      return false;
-    }
-    return (this.blogdata = data);
+  private async getBlogData() {
+    const id = this.$route.query.id;
+    console.log(id);
+    // const res = await GET(`/info/blog/id`, { _id: id });
+    const res = await axios({
+      method: 'get',
+      url: '/info/blog/id',
+      data: {
+        id: 4
+      }
+    }).then(res => {
+      console.log(res);
+    });
+    // if (!res.msg) {
+    //   return false;
+    // }
+    // return (this.blogdata = res.msg);
   }
 
   private created() {
     this.getBlogData();
-    console.log(this.blogdata);
   }
 
   private render() {
@@ -65,7 +74,7 @@ export default class BlogWrap extends Vue {
               </header>
               <article
                 class="blog__wrap--contain--text"
-                domPropsInnerHTML={this.blogdata.text}
+                domPropsInnerHTML={this.blogdata.content}
               ></article>
             </article>
           </section>

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "noImplicitAny": false,
     "strict": true,
     "jsx": "preserve",
     "jsxFactory": "VueTsxSupport",

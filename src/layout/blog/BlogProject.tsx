@@ -1,4 +1,4 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { BlogItem } from '@/model/BlogItem';
 import BlogWrapItem from '@/components/BlogWrapItem';
 
@@ -10,6 +10,11 @@ import BlogWrapItem from '@/components/BlogWrapItem';
 export default class BlogProject extends Vue {
   @Prop()
   private data!: BlogItem[];
+
+  @Watch('data', { immediate: true })
+  getBlogData(newValue: BlogItem[]) {
+    this.data = newValue;
+  }
 
   private render() {
     return (

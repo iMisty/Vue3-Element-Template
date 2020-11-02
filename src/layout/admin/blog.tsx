@@ -2,8 +2,8 @@ import { Component, Vue } from 'vue-property-decorator';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import AdminTable from '@/components/AdminTable';
 import MermaidCard from '@/components/MermaidCard';
-import { blog } from '@/config/blog.config';
-
+import { BlogItem } from '@/model/BlogItem';
+import { GET, INFO } from '@/config/api.config';
 @Component({
   components: {
     'admin-title': AdminWrapTitle,
@@ -12,9 +12,16 @@ import { blog } from '@/config/blog.config';
   }
 })
 export default class AdminBlog extends Vue {
-  private tableData = blog.list;
+  private tableData!: BlogItem;
 
   private tableTitle: string[] = ['title', 'created at'];
+
+  private async getBlogData() {
+    const res = await GET(`${INFO}/blog`);
+    console.log(res);
+    this.tableData = res.data;
+    console.log(res.data);
+  }
 
   private clickEdit(id: string | number) {
     console.log(id);
@@ -29,7 +36,8 @@ export default class AdminBlog extends Vue {
     console.log(id);
   }
 
-  private mounted() {
+  private created() {
+    this.getBlogData();
     console.log(this.tableData);
   }
 

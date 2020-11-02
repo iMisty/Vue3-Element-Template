@@ -3,7 +3,10 @@ interface TeamUnit {
   name: string;
   avatar: object | string;
   position: string;
-  contact: any[];
+  contact: TeamUnitContact[];
+}
+interface TeamUnitContact {
+  icon: string;
 }
 @Component({})
 export default class AboutTeamUnit extends Vue {

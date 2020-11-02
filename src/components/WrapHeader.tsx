@@ -1,10 +1,9 @@
-import { HeaderData } from '@/model/HeaderData';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({})
 export default class WrapHeader extends Vue {
-  @Prop()
-  private title?: string;
+  // @Prop()
+  // private title?: string;
   
   @Prop()
   private background?: string | object;

@@ -7,8 +7,8 @@ export default class BlogProjectItem extends Vue {
   private data!: BlogItem;
 
   // 打开内页
-  private openArticle(id: number | string) {
-    const ids = id.toString();
+  private openArticle(id:  string) {
+    const ids = id;
     return this.$router.push({
       path: '/blogwrap',
       query: {
@@ -21,7 +21,7 @@ export default class BlogProjectItem extends Vue {
     return (
       <div class="blog__project--item">
         {/* 图片部分 */}
-        <section class="left" onClick={() => this.openArticle(this.data.id)}>
+        <section class="left" onClick={() => this.openArticle(this.data._id)}>
           {this.data.avatar ? (
             <img src={this.data.avatar} />
           ) : (
@@ -33,7 +33,7 @@ export default class BlogProjectItem extends Vue {
           {/* 标题 */}
           <h3
             class="item--title"
-            onClick={() => this.openArticle(this.data.id)}
+            onClick={() => this.openArticle(this.data._id)}
           >
             {this.data.title}
           </h3>
@@ -50,14 +50,14 @@ export default class BlogProjectItem extends Vue {
             ''
           )}
           {/* 简要文字 */}
-          <p class="item--intro" onClick={() => this.openArticle(this.data.id)}>
+          <p class="item--intro" onClick={() => this.openArticle(this.data._id)}>
             {this.data.intro}
           </p>
           {/* 按钮 */}
           <section class="item--button">
             <button
               class="mermaid__button primary-button"
-              onClick={() => this.openArticle(this.data.id)}
+              onClick={() => this.openArticle(this.data._id)}
             >
               Read More
             </button>

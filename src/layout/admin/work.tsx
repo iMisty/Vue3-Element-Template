@@ -24,6 +24,11 @@ export default class AdminWork extends Vue {
 
   private clickEdit(id: string | number | undefined) {
     console.log(id);
+    const ids = id?.toString();
+    return this.$router.push({
+      path: 'workedit',
+      query: { id:ids }
+    });
   }
 
   private render() {

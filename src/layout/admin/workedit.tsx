@@ -1,28 +1,47 @@
 import { Component, Vue } from 'vue-property-decorator';
+// eslint-disable-next-line
+// @ts-ignore
+import h2m from 'h2m';
+import marked from 'marked';
 import MermaidCard from '@/components/MermaidCard';
 import MermaidButton from '@/components/MermaidButton';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import { WorkItem } from '@/model/WorkItem';
 import { work } from '@/config/work.config';
 
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+
 @Component({
   components: {
     'm-card': MermaidCard,
     'm-button': MermaidButton,
-    'admin-title': AdminWrapTitle
+    'admin-title': AdminWrapTitle,
+    editor: mavonEditor.mavonEditor
   }
 })
 export default class AdminWorkEdit extends Vue {
-  private data: WorkItem = work.project[0];
+  private data!: WorkItem;
 
   private getWorkData() {
-    const id = this.$route.query.id as string;
+    const id = this.$route.query.id;
     console.log(id);
+    this.data = work.project[Number(id) - 1];
+    this.data.content = h2m(this.data.content);
+  }
+
+  private submitContent() {
+    const data: WorkItem = this.data;
+    data.content = marked(data.content);
+    console.log(data);
   }
 
   private created() {
     this.getWorkData();
   }
+
+  // private mounted() {
+  // }
 
   private render() {
     return (
@@ -42,12 +61,13 @@ export default class AdminWorkEdit extends Vue {
                     />
                   </label>
                   <label class="label--content">
-                    <textarea
+                    <editor
                       class="label--text label--content"
                       name="content"
                       v-model={this.data.content}
                       placeholder="正文"
-                    ></textarea>
+                    ></editor>
+                    <textarea></textarea>
                   </label>
                   <label class="label--intro">
                     <textarea
@@ -60,7 +80,11 @@ export default class AdminWorkEdit extends Vue {
                 </section>
                 <section class="admin__workedit--label--setting">
                   <section class="label--submit">
-                    <m-button color="primary" class="label--submit--button">
+                    <m-button
+                      color="primary"
+                      class="label--submit--button"
+                      onClickevent={() => this.submitContent()}
+                    >
                       提交
                     </m-button>
                     <m-button color="danger" class="label--submit--button">
@@ -83,7 +107,7 @@ export default class AdminWorkEdit extends Vue {
                       placeholder="Github地址"
                     />
                   </label>
-                  <section class="label--setting">
+                  {/* <section class="label--setting">
                     <p>时间</p>
                     <div class="label--setting--time">
                       <input
@@ -104,26 +128,8 @@ export default class AdminWorkEdit extends Vue {
                         maxlength="2"
                       />
                       <span>日</span>
-                      <input
-                        class="label--setting--timer"
-                        type="text"
-                        maxlength="2"
-                      />
-                      <span>时</span>
-                      <input
-                        class="label--setting--timer"
-                        type="text"
-                        maxlength="2"
-                      />
-                      <span>分</span>
-                      <input
-                        class="label--setting--timer"
-                        type="text"
-                        maxlength="2"
-                      />
-                      <span>秒</span>
                     </div>
-                  </section>
+                  </section> */}
                   <label class="label--avatar">
                     <input
                       class="label--text"

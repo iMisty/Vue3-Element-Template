@@ -1,22 +1,18 @@
+import { BlogItem } from '@/model/BlogItem';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-interface Blog {
-  id: number;
-  avatar: string | object;
-  tag: string[];
-  title: string;
-  intro: string;
-}
+
 @Component({})
 export default class IndexBlogItem extends Vue {
   @Prop()
-  private data!: Blog;
+  private data!: BlogItem;
 
   // 跳转内页
-  private jumpToWrap(id: string | number) {
-    console.log(id);
+  private jumpToWrap(id: string) {
+    console.log(this.data);
+    console.log('~~~~~~~~~~~~~~~~~~~~~~'+id);
     return this.$router.push({
       path: '/blogwrap',
-      query: { id: id.toString() }
+      query: { id }
     });
   }
 
@@ -24,7 +20,7 @@ export default class IndexBlogItem extends Vue {
     return (
       <article
         class="index__blog--item"
-        onClick={() => this.jumpToWrap(this.data.id)}
+        onClick={() => this.jumpToWrap(this.data._id)}
       >
         <section class="index__blog--item-avatar">
           <img src={this.data.avatar} alt={this.data.title} />
@@ -32,7 +28,7 @@ export default class IndexBlogItem extends Vue {
         <section class="index__blog--item-wrap">
           <h4 class="index__blog--item-title">{this.data.title}</h4>
           <ul>
-            {this.data.tag.map(child => {
+            {this.data.tag?.map(child => {
               return <li class="index__blog--item-tag">{child}</li>;
             })}
           </ul>

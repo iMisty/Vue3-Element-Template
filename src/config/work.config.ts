@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-10-10 11:45:00
- * @LastEditTime: 2020-10-13 11:47:32
+ * @LastEditTime: 2020-11-02 14:59:05
  * @LastEditors: Miya
  * @Description: Work Page Config
  * @FilePath: \LandingPage\src\config\work.config.ts
@@ -18,8 +18,16 @@ export const work = {
       tag: ['CSS', 'JavaScript', 'NodeJS'],
       intro:
         '"Finding temporary housing for your dog should be as easy as renting an Airbnb. That’s the idea behind Rover, which raised $65 million to expand its pet sitting and dog-walking businesses..Finding temporary housing for your dog should be as easy as renting an Airbnb."',
-      content:
-        '<p>"Finding temporary housing for your dog should be as easy as renting an Airbnb. That’s the idea behind Rover, which raised $65 million to expand its pet sitting and dog-walking businesses..Finding temporary housing for your dog should be as easy as renting an Airbnb.""Finding temporary housing for your dog should be as easy as renting an Airbnb. That’s the idea behind Rover, which raised $65 million to expand its pet sitting and dog-walking businesses..Finding temporary housing for your dog should be as easy as renting an Airbnb.""Finding temporary housing for your dog should be as easy as renting an Airbnb. That’s the idea behind Rover, which raised $65 million to expand its pet sitting and dog-walking businesses..Finding temporary housing for your dog should be as easy as renting an Airbnb.""Finding temporary housing for your dog should be as easy as renting an Airbnb. That’s the idea behind Rover, which raised $65 million to expand its pet sitting and dog-walking businesses..Finding temporary housing for your dog should be as easy as renting an Airbnb."</p>',
+      content: `<h1 id="test">test</h1>
+        <h2 id="test2">test2</h2>
+        <h3 id="test3">test3</h3>
+        <ul>
+        <li>list1</li>
+        <li>list2</li>
+        <li>list3</li>
+        </ul>
+        <pre><code>function code(){console.log(&#39;log&#39;)}</code></pre>
+        `,
       preview: 'https://github.com/imisty',
       source: 'https://github.com/imisty',
       lastupdate: '2020-09-31',
