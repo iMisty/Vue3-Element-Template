@@ -28,18 +28,23 @@ export default class Home extends Vue {
 
   private async getDataFunction(url: string, slice: number, title?: string) {
     const res = await POST(url);
-    console.log(`${title} Data: ${res.msg}`);
+    console.log(`${title} Data: ${res}`);
     return res.msg.slice(0, slice);
   }
 
   private async getData() {
-    this.blogData = await this.getDataFunction(`${INFO}/blog`, 4, 'blog');
+    const a = await this.getDataFunction(`${INFO}/blog`, 4, 'blog');
     this.workData = await this.getDataFunction(`${INFO}/work`, 4, 'work');
+
+    this.$store.commit('fetchBlogData', a);
+    this.blogData = this.$store.state.blogData;
   }
 
-  private created() {
-    this.getData();
-    this.$store.commit('changeDisplayNavBar', true);
+  private async created() {
+    this.$nextTick(async () => {
+      await this.getData();
+      this.$store.commit('changeDisplayNavBar', true);
+    });
   }
 
   private render() {
@@ -52,7 +57,7 @@ export default class Home extends Vue {
         {/* Works */}
         <index-work data={this.indexData.work}></index-work>
         {/* Project */}
-        {/* <index-project data={this.workData}></index-project> */}
+        {/* <index-project></index-project> */}
         {/* blog */}
         <index-blog data={this.blogData}></index-blog>
       </div>
