@@ -7,7 +7,7 @@ export default class BlogProjectItem extends Vue {
   private data!: BlogItem;
 
   // 打开内页
-  private openArticle(id:  string) {
+  private openArticle(id: string) {
     const ids = id;
     return this.$router.push({
       path: '/blogwrap',
@@ -50,7 +50,10 @@ export default class BlogProjectItem extends Vue {
             ''
           )}
           {/* 简要文字 */}
-          <p class="item--intro" onClick={() => this.openArticle(this.data._id)}>
+          <p
+            class="item--intro"
+            onClick={() => this.openArticle(this.data._id)}
+          >
             {this.data.intro}
           </p>
           {/* 按钮 */}

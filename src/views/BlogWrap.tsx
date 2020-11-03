@@ -1,8 +1,7 @@
 import { BlogItem } from '@/model/BlogItem';
 import { Component, Vue } from 'vue-property-decorator';
 import WrapHeader from '@/components/WrapHeader';
-import { GET, INFO } from '@/config/api.config';
-import axios from 'axios';
+import { INFO, POST } from '@/config/api.config';
 
 @Component({
   components: {
@@ -10,25 +9,15 @@ import axios from 'axios';
   }
 })
 export default class BlogWrap extends Vue {
-  private blogdata!: BlogItem;
+  private blogdata: BlogItem = { id: 1, _id: '1', title: '1', time: '1' };
 
+  // 获取数据
   private async getBlogData() {
     const id = this.$route.query.id;
     console.log(id);
-    // const res = await GET(`/info/blog/id`, { _id: id });
-    const res = await axios({
-      method: 'get',
-      url: '/info/blog/id',
-      data: {
-        id: 4
-      }
-    }).then(res => {
-      console.log(res);
-    });
-    // if (!res.msg) {
-    //   return false;
-    // }
-    // return (this.blogdata = res.msg);
+    const res = await POST(`${INFO}/blog/id`, { id: id });
+    console.log(res);
+    return (this.blogdata = res.msg[0]);
   }
 
   private created() {

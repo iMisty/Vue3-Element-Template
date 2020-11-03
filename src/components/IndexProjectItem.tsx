@@ -1,4 +1,4 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 interface ProjectItem {
   id: number;
@@ -11,7 +11,13 @@ interface ProjectItem {
 @Component({})
 export default class IndexProjectItem extends Vue {
   @Prop()
-  private data!: ProjectItem;
+  private data: ProjectItem = {
+    id: 1,
+    avatar: '1',
+    link: 'a',
+    tag: ['1', '2'],
+    title: '1'
+  };
 
   // 跳转内页
   private jumpToWrap(id: string | number) {
@@ -20,6 +26,12 @@ export default class IndexProjectItem extends Vue {
       path: '/workwrap',
       query: { id: id.toString() }
     });
+  }
+
+  @Watch('data')
+  getData(newVal: ProjectItem) {
+    console.log(newVal);
+    return (this.data = newVal);
   }
 
   private render() {

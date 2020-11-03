@@ -1,5 +1,5 @@
 import { BlogItem } from '@/model/BlogItem';
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component({})
 export default class IndexBlogItem extends Vue {
@@ -9,11 +9,17 @@ export default class IndexBlogItem extends Vue {
   // 跳转内页
   private jumpToWrap(id: string) {
     console.log(this.data);
-    console.log('~~~~~~~~~~~~~~~~~~~~~~'+id);
+    console.log('~~~~~~~~~~~~~~~~~~~~~~' + id);
     return this.$router.push({
       path: '/blogwrap',
       query: { id }
     });
+  }
+
+  @Watch('data')
+  getData(newVal: BlogItem) {
+    console.log(newVal);
+    return (this.data = newVal);
   }
 
   private render() {

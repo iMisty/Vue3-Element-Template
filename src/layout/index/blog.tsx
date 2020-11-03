@@ -1,10 +1,6 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import IndexBlogItem from '@/components/IndexBlogItem';
-
-interface BlogList {
-  title: string;
-  list: object[];
-}
+import { BlogItem } from '@/model/BlogItem';
 
 @Component({
   components: {
@@ -13,19 +9,21 @@ interface BlogList {
 })
 export default class HomeBlog extends Vue {
   @Prop()
-  private data!: BlogList;
+  private data!: BlogItem[];
+
+  @Watch('data')
+  getData(newVal: BlogItem[]) {
+    console.log(newVal);
+    return (this.data = newVal);
+  }
 
   private render() {
     return (
       <div class="index__blog">
-        <h1 class="index__blog--title title">{this.data.title}</h1>
+        <h1 class="index__blog--title title">Blog</h1>
         <div class="container">
-          {this.data.list.map(item => {
-            return (
-              <blog-item
-                data={item}
-              ></blog-item>
-            );
+          {this.data.map(item => {
+            return <blog-item data={item}></blog-item>;
           })}
         </div>
       </div>

@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 17:16:08
- * @LastEditTime: 2020-11-02 16:17:11
+ * @LastEditTime: 2020-11-03 16:02:41
  * @LastEditors: Miya
  * @Description: API域名
  * @FilePath: \LandingPage\src\config\api.config.ts
@@ -9,7 +9,7 @@
  */
 import axios from 'axios';
 const AUTH_TOKEN = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQzMDIyNzgsImV4cCI6MTYwNDM4ODY3OH0.V7O72qs-9L0puZ4KLvoT2uilRpr3bMieRtcuMUFVGOI`;
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = 'https://v2.dressweb.cn';
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded';
@@ -40,10 +40,10 @@ axios.interceptors.request.use(
   (config: any) => {
     const token = localStorage.getItem('blog-token');
     console.log(`Token: ${token}`);
-    console.log(config)
+    console.log(config);
     console.log(`Method: ${config.method}`);
     if (
-      config.method === 'get' ||
+      config.url === '/info/*' ||
       config.url === '/registry' ||
       config.url === '/login'
     ) {
@@ -74,7 +74,8 @@ export const GET = async (url: string, data?: object) => {
   const result = await axios({
     method: 'get',
     url,
-    data
+    params: data,
+    // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   })
     .then(res => {
       return res.data;
@@ -85,7 +86,7 @@ export const GET = async (url: string, data?: object) => {
   return result;
 };
 
-export const POST = async (url: string, data: object | undefined) => {
+export const POST = async (url: string, data?: object) => {
   const result = await axios({
     method: 'post',
     url,
@@ -100,7 +101,7 @@ export const POST = async (url: string, data: object | undefined) => {
   return result;
 };
 
-export const PUT = async (url: string, data: object | undefined) => {
+export const PUT = async (url: string, data?: object) => {
   const result = await axios({
     method: 'put',
     url,
@@ -115,7 +116,7 @@ export const PUT = async (url: string, data: object | undefined) => {
   return result;
 };
 
-export const DELETE = async (url: string, data: object | undefined) => {
+export const DELETE = async (url: string, data?: object) => {
   const result = await axios({
     method: 'delete',
     url,

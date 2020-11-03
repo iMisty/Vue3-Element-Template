@@ -8,8 +8,8 @@ import project from '@/layout/index/project';
 // 配置文件引入
 // TODO: 改为使用RestAPI
 import { Index } from '@/config/index.config';
-import { blog } from '@/config/blog.config';
-import { work } from '@/config/work.config';
+import { INFO, POST } from '@/config/api.config';
+import { BlogItem } from '@/model/BlogItem';
 
 @Component({
   components: {
@@ -22,10 +22,20 @@ import { work } from '@/config/work.config';
 })
 export default class Home extends Vue {
   private indexData = Index;
-  private blogData = blog;
-  private workData = work;
+  private blogData: BlogItem[] | Promise<BlogItem[]> = [];
+  private workData = [];
+
+  private async getDataFunction(url: string, slice: number) {
+    const res = await POST(url);
+    return res.msg.slice(0, slice);
+  }
+
+  private async getData() {
+    this.blogData = await this.getDataFunction(`${INFO}/blog`, 4);
+  }
 
   private mounted() {
+    this.getData();
     this.$store.commit('changeDisplayNavBar', true);
   }
 

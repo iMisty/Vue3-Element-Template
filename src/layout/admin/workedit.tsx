@@ -7,10 +7,10 @@ import MermaidCard from '@/components/MermaidCard';
 import MermaidButton from '@/components/MermaidButton';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import { WorkItem } from '@/model/WorkItem';
-import { work } from '@/config/work.config';
 
 import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
+import { INFO, POST } from '@/config/api.config';
 
 @Component({
   components: {
@@ -23,16 +23,17 @@ import 'mavon-editor/dist/css/index.css';
 export default class AdminWorkEdit extends Vue {
   private data!: WorkItem;
 
-  private getWorkData() {
+  private async getWorkData() {
     const id = this.$route.query.id;
     console.log(id);
-    this.data = work.project[Number(id) - 1];
+    const res = await POST(`${INFO}/work/id`, { id });
+    this.data = res.msg[0];
     this.data.content = h2m(this.data.content);
   }
 
   private submitContent() {
     const data: WorkItem = this.data;
-    data.content = marked(data.content);
+    data.content = marked(data.content as string);
     console.log(data);
   }
 

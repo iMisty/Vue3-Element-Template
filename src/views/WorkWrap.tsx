@@ -1,7 +1,7 @@
-import { work } from '@/config/work.config';
 import { WorkItem } from '@/model/WorkItem';
 import { Component, Vue } from 'vue-property-decorator';
 import WrapHeader from '@/components/WrapHeader';
+import { INFO, POST } from '@/config/api.config';
 
 @Component({
   components: {
@@ -11,13 +11,11 @@ import WrapHeader from '@/components/WrapHeader';
 export default class WorkWrap extends Vue {
   private workdata!: WorkItem;
 
-  private getWorkData() {
-    const id = this.$route.query.id as string;
-    const data = work.project.find(item => item.id === parseInt(id));
-    if (!data) {
-      return false;
-    }
-    return (this.workdata = data);
+  private async getWorkData() {
+    const id = this.$route.query.id;
+    const data = await POST(`${INFO}/work/id`, { id });
+
+    return (this.workdata = data.msg[0]);
   }
 
   private created() {
