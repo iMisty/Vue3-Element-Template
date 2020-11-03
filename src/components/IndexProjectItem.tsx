@@ -17,7 +17,7 @@ export default class IndexProjectItem extends Vue {
 
   @Watch('data')
   getData(newVal: WorkItem) {
-    console.log(newVal);
+    console.log(`Project Item: ${newVal}`);
     return (this.data = newVal);
   }
 

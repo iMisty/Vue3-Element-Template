@@ -18,8 +18,7 @@ export default class IndexBlogItem extends Vue {
 
   @Watch('data')
   getData(newVal: BlogItem) {
-    console.log(newVal);
-    return (this.data = newVal);
+    this.data = newVal;
   }
 
   private render() {
