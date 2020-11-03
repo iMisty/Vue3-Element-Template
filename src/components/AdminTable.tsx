@@ -1,5 +1,5 @@
 import { BlogItem } from '@/model/BlogItem';
-import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
+import { Component, Emit, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component({})
 export default class AdminTable extends Vue {
@@ -23,6 +23,12 @@ export default class AdminTable extends Vue {
   @Emit('delete')
   private clickDelete(id: number | string | undefined) {
     return id;
+  }
+
+  @Watch('data')
+  getData(newVal: BlogItem[]) {
+    console.log(newVal);
+    return this.data = newVal;
   }
 
   // 计算type

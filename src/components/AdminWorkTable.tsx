@@ -1,5 +1,5 @@
 import { WorkItem } from '@/model/WorkItem';
-import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
+import { Component, Prop, Vue, Emit, Watch } from 'vue-property-decorator';
 
 interface WorkTitle {
   key: string;
@@ -30,8 +30,14 @@ export default class AdminWorkTable extends Vue {
 
   @Emit('link')
   private clickOpenSource(link: string) {
-    console.log(link)
+    console.log(link);
     return link;
+  }
+
+  @Watch('data')
+  getData(newVal: WorkItem[]) {
+    console.log(newVal);
+    return (this.data = newVal);
   }
 
   // 计算type
@@ -77,7 +83,9 @@ export default class AdminWorkTable extends Vue {
                   </td>
                   <td class="table--item table-title center">
                     <span class={`status-dot ${item.status}`}></span>
-                    <span class={`status-text ${item.status}`}>{item.status}</span>
+                    <span class={`status-text ${item.status}`}>
+                      {item.status}
+                    </span>
                   </td>
                   <td class="table--item setting center mobile-type">
                     <div

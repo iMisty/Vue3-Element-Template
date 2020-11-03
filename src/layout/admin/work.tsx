@@ -2,7 +2,8 @@ import { Component, Vue } from 'vue-property-decorator';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import AdminWorkTable from '@/components/AdminWorkTable';
 import MermaidCard from '@/components/MermaidCard';
-import { work } from '@/config/work.config';
+import { INFO, POST } from '@/config/api.config';
+import { WorkItem } from '@/model/WorkItem';
 
 @Component({
   components: {
@@ -20,15 +21,25 @@ export default class AdminWork extends Vue {
     { key: '', mobile: 'mobile-type' }
   ];
 
-  private data = work.project;
+  private data: WorkItem[] = [];
 
   private clickEdit(id: string | number | undefined) {
     console.log(id);
     const ids = id?.toString();
     return this.$router.push({
       path: 'workedit',
-      query: { id:ids }
+      query: { id: ids }
     });
+  }
+
+  private async getWorkData() {
+    const res = await POST(`${INFO}/work`);
+    console.log(res);
+    this.data = res.msg;
+  }
+
+  private created() {
+    this.getWorkData();
   }
 
   private render() {

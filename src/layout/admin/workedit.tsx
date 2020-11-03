@@ -2,13 +2,12 @@ import { Component, Vue } from 'vue-property-decorator';
 // eslint-disable-next-line
 // @ts-ignore
 import h2m from 'h2m';
+import mavonEditor from 'mavon-editor';
 import marked from 'marked';
 import MermaidCard from '@/components/MermaidCard';
 import MermaidButton from '@/components/MermaidButton';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import { WorkItem } from '@/model/WorkItem';
-
-import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
 import { INFO, POST } from '@/config/api.config';
 
@@ -21,12 +20,13 @@ import { INFO, POST } from '@/config/api.config';
   }
 })
 export default class AdminWorkEdit extends Vue {
-  private data!: WorkItem;
+  private data: WorkItem = {_id: '1',source: '1'};
 
   private async getWorkData() {
     const id = this.$route.query.id;
     console.log(id);
     const res = await POST(`${INFO}/work/id`, { id });
+    console.log(res)
     this.data = res.msg[0];
     this.data.content = h2m(this.data.content);
   }
