@@ -9,10 +9,11 @@ import { WorkItem } from '@/model/WorkItem';
 })
 export default class IndexProject extends Vue {
   @Prop()
-  private data!: WorkItem[];
+  private data: WorkItem[] = [];
 
   @Watch('data')
   getData(newVal: WorkItem[]) {
+    console.log(`Work Data: ${newVal}`);
     this.data = newVal;
   }
 

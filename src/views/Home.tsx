@@ -10,6 +10,7 @@ import project from '@/layout/index/project';
 import { Index } from '@/config/index.config';
 import { INFO, POST } from '@/config/api.config';
 import { BlogItem } from '@/model/BlogItem';
+import { WorkItem } from '@/model/WorkItem';
 
 @Component({
   components: {
@@ -23,18 +24,20 @@ import { BlogItem } from '@/model/BlogItem';
 export default class Home extends Vue {
   private indexData = Index;
   private blogData: BlogItem[] | Promise<BlogItem[]> = [];
-  private workData = [];
+  private workData!: WorkItem;
 
-  private async getDataFunction(url: string, slice: number) {
+  private async getDataFunction(url: string, slice: number, title?: string) {
     const res = await POST(url);
+    console.log(`${title} Data: ${res.msg}`);
     return res.msg.slice(0, slice);
   }
 
   private async getData() {
-    this.blogData = await this.getDataFunction(`${INFO}/blog`, 4);
+    this.blogData = await this.getDataFunction(`${INFO}/blog`, 4, 'blog');
+    this.workData = await this.getDataFunction(`${INFO}/work`, 4, 'work');
   }
 
-  private mounted() {
+  private created() {
     this.getData();
     this.$store.commit('changeDisplayNavBar', true);
   }
@@ -49,7 +52,7 @@ export default class Home extends Vue {
         {/* Works */}
         <index-work data={this.indexData.work}></index-work>
         {/* Project */}
-        <index-project data={this.workData}></index-project>
+        {/* <index-project data={this.workData}></index-project> */}
         {/* blog */}
         <index-blog data={this.blogData}></index-blog>
       </div>
