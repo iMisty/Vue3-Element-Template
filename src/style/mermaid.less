@@ -229,6 +229,26 @@
       }
     }
   }
+  &__input {
+    &--title {
+      margin-bottom: 0.5rem;
+      color: @header-text;
+      font-weight: 700;
+      letter-spacing: 0.54px;
+    }
+    &--form {
+      padding: 0.6rem 0.5rem;
+      font-size: @fontsize-p;
+      color: @paragraph-text;
+      background-color: #fff;
+      border: 1px solid @description-text;
+      border-radius: @border-radius;
+      letter-spacing: 0.54px;
+      &::placeholder{
+        color: @description-text;
+      }
+    }
+  }
 }
 
 .bg-gradient {

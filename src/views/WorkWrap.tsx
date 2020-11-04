@@ -9,30 +9,31 @@ import { INFO, POST } from '@/config/api.config';
   }
 })
 export default class WorkWrap extends Vue {
-  private workdata!: WorkItem;
+  private data: WorkItem = { _id: '1', source: '1' };
 
   private async getWorkData() {
     const id = this.$route.query.id;
-    const data = await POST(`${INFO}/work/id`, { id });
-
-    return (this.workdata = data.msg[0]);
+    console.log(id);
+    const res = await POST(`${INFO}/work/id`, { id });
+    console.log(res);
+    return (this.data = res.msg[0]);
   }
 
   private created() {
     this.getWorkData();
-    console.log(this.workdata);
+    console.log(this.data);
   }
 
   private render() {
     return (
       <div class="work__wrap">
-        <wrap-header></wrap-header>
+        <wrap-header background={this.data.avatar}></wrap-header>
         <div class="container">
           <section class="work__wrap--container">
             <header class="work__wrap--header">
               <div class="work__wrap--header--status">
                 <div class="status">
-                  <p>{this.workdata.version}</p>
+                  <p>{this.data.version}</p>
                   <small>Version</small>
                 </div>
                 <div class="status">
@@ -40,29 +41,29 @@ export default class WorkWrap extends Vue {
                   <small>Last Update</small>
                 </div>
                 <div class="status">
-                  <p>{this.workdata.lastupdate}</p>
+                  <p>{this.data.lastupdate}</p>
                   <small>Last Update</small>
                 </div>
               </div>
               <div class="work__wrap--header--avatar">
-                {this.workdata.avatar ? (
-                  <img src={this.workdata.avatar} alt={this.workdata.title} />
+                {this.data.avatar ? (
+                  <img src={this.data.avatar} alt={this.data.title} />
                 ) : (
                   <img
                     src={require('@/assets/bg.jpg')}
-                    alt={this.workdata.title}
+                    alt={this.data.title}
                   />
                 )}
               </div>
               <div class="work__wrap--header--button">
-                {this.workdata.preview ? (
+                {this.data.preview ? (
                   <button class="button small-button live-button">
                     Live Demo
                   </button>
                 ) : (
                   ''
                 )}
-                {this.workdata.source ? (
+                {this.data.source ? (
                   <button class="button small-button source-button">
                     Source
                   </button>
@@ -73,10 +74,10 @@ export default class WorkWrap extends Vue {
             </header>
             <article class="work__wrap--contain">
               <header class="work__wrap--contain--title">
-                <h3>{this.workdata.title}</h3>
-                {this.workdata.tag ? (
+                <h3>{this.data.title}</h3>
+                {this.data.tag ? (
                   <ul class="tags">
-                    {this.workdata.tag.map(item => {
+                    {this.data.tag.map(item => {
                       return <li>{item}</li>;
                     })}
                   </ul>
@@ -86,7 +87,7 @@ export default class WorkWrap extends Vue {
               </header>
               <article
                 class="work__wrap--contain--text"
-                domPropsInnerHTML={this.workdata.content}
+                domPropsInnerHTML={this.data.content}
               ></article>
             </article>
           </section>

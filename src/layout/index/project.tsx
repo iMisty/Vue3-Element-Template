@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import IndexProjectItem from '@/components/IndexProjectItem';
 import { WorkItem } from '@/model/WorkItem';
 import { INFO, POST } from '@/config/api.config';
@@ -11,7 +11,7 @@ import { INFO, POST } from '@/config/api.config';
 export default class IndexProject extends Vue {
   // @Prop()
   // private data!: WorkItem[];
-  private data!: WorkItem[];
+  private data: WorkItem[] = [];
   // 跳转内页
   private jumpToWrap(id: string) {
     console.log(id);
@@ -30,7 +30,7 @@ export default class IndexProject extends Vue {
   private async created() {
     const res = await POST(`${INFO}/work`);
     console.log(res);
-    this.data = res.msg;
+    this.data = res.msg.slice(0,4);
   }
 
   private render() {
@@ -41,14 +41,15 @@ export default class IndexProject extends Vue {
           <section class="index__project--items">
             {this.data.map(item => {
               return (
-                <article
-                  class="index__project--item"
-                  data-id={item.id}
-                  onClick={() => this.jumpToWrap(item._id)}
-                >
-                  <img src={item.avatar} />
-                  <h5>{item.title}</h5>
-                </article>
+                // <article
+                //   class="index__project--item"
+                //   data-id={item.id}
+                //   onClick={() => this.jumpToWrap(item._id)}
+                // >
+                //   <img src={item.avatar} />
+                //   <h5>{item.title}</h5>
+                // </article>
+                <project-item data={item}></project-item>
               );
             })}
           </section>

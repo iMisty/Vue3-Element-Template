@@ -1,16 +1,5 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-interface WorkItem {
-  id: number;
-  avatar: object | string;
-  title: string;
-  tag: string[];
-  intro: string;
-  preview: string;
-  source: string;
-  lastupdate: string | number;
-  version: string;
-}
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { WorkItem } from '@/model/WorkItem';
 
 @Component({})
 export default class WorkWrapItem extends Vue {
@@ -23,9 +12,13 @@ export default class WorkWrapItem extends Vue {
   }
 
   // 跳转内部链接
-  private jumpToWrap(id: number) {
-    const ids = id.toString();
-    return this.$router.push({ path: `/workwrap`, query: { id: ids } });
+  private jumpToWrap(id: string) {
+    return this.$router.push({ path: `/workwrap`, query: { id } });
+  }
+
+  @Watch('data')
+  getWorkData(newVal: WorkItem) {
+    this.data = newVal;
   }
 
   private render() {
@@ -45,7 +38,7 @@ export default class WorkWrapItem extends Vue {
           <h3 class="item--title">{this.data.title}</h3>
           <p class="item--last-update">最后更新时间：{this.data.lastupdate}</p>
           <ul class="item--tag">
-            {this.data.tag.map(item => {
+            {this.data.tag?.map(item => {
               return <li>{item}</li>;
             })}
           </ul>
@@ -54,7 +47,7 @@ export default class WorkWrapItem extends Vue {
             {this.data.preview ? (
               <button
                 class="mermaid__button live-button"
-                onClick={() => this.jumpToWrap(this.data.id)}
+                onClick={() => this.jumpToWrap(this.data._id)}
               >
                 Live Demo
               </button>

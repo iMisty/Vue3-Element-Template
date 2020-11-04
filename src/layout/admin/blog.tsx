@@ -1,4 +1,4 @@
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import AdminTable from '@/components/AdminTable';
 import MermaidCard from '@/components/MermaidCard';

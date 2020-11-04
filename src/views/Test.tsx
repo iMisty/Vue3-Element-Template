@@ -1,10 +1,16 @@
 import { Component, Vue } from 'vue-property-decorator';
-import {GET} from '@/config/api.config';
-@Component({})
+import MermaidInput from '@/components/MermaidInput';
+@Component({
+  components: {
+    'm-input': MermaidInput
+  }
+})
 export default class Test extends Vue {
-  private async mounted() {
-    const data = await GET('/info/blog');
-    console.log(data);
+  private a = '';
+
+  private aa(e) {
+    console.log(e.target.value);
+    this.a = e.target.value;
   }
 
   private render() {
@@ -12,7 +18,10 @@ export default class Test extends Vue {
       <div
         class="test"
         style="width:100vw;height:100vh;magrin-top: 4rem;display:flex;flex-direction:column;justify-content:center;align-items:center;"
-      ></div>
+      >
+        <m-input v-model={this.a} onInput={e => this.aa(e)}></m-input>
+        <p>{this.a}</p>
+      </div>
     );
   }
 }

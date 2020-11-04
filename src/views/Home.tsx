@@ -57,7 +57,7 @@ export default class Home extends Vue {
         {/* Works */}
         <index-work data={this.indexData.work}></index-work>
         {/* Project */}
-        {/* <index-project></index-project> */}
+        <index-project></index-project>
         {/* blog */}
         <index-blog data={this.blogData}></index-blog>
       </div>
