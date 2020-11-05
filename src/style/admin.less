@@ -283,6 +283,43 @@
     }
   }
 
+  &__setting {
+    &--wrap {
+      padding: 0 1rem;
+      & > .content {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media screen and (max-width: 750px) {
+        & > .content {
+          grid-template-columns: auto;
+        }
+      }
+    }
+    &--form {
+      padding: 1rem;
+      & > .team-setting {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        grid-template-columns: repeat(3, auto);
+        gap: 1rem;
+        & > .contact {
+          grid-column-start: span 3;
+        }
+      }
+      & > .contact-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        & > .link {
+          grid-column-start: span 2;
+        }
+      }
+    }
+    &--submit {
+      padding: 1rem;
+    }
+  }
+
   &__table {
     & > .table {
       padding: 1rem 0;

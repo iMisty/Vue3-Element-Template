@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({})
 export default class Admin extends Vue {
   // 控制是否浮动左边栏
-  private floatLeftBar = false;
+  private floatLeftBar = true;
 
   // 调整是否浮动菜单栏
   private changeLeftBarStatus() {
