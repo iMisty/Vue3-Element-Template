@@ -1,8 +1,9 @@
 import { Component, Vue } from 'vue-property-decorator';
-import MermaidInput from '@/components/MermaidInput';
+import MermaidModel from '@/components/MermaidModel';
 @Component({
   components: {
-    'm-input': MermaidInput
+    'm-model': MermaidModel,
+    
   }
 })
 export default class Test extends Vue {
@@ -19,8 +20,7 @@ export default class Test extends Vue {
         class="test"
         style="width:100vw;height:100vh;magrin-top: 4rem;display:flex;flex-direction:column;justify-content:center;align-items:center;"
       >
-        <m-input v-model={this.a} onInput={e => this.aa(e)}></m-input>
-        <p>{this.a}</p>
+        <m-model></m-model>
       </div>
     );
   }

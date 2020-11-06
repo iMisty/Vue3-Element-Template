@@ -70,6 +70,7 @@ id=4&avatar=&title=test4&tag=4&content=1&status=1
 ### 新建关于页内容
 POST https://v2.dressweb.cn/user/about
 Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQ1NjA4ODgsImV4cCI6MTYwNDY0NzI4OH0.EsQ77dImmHP_N04v4WHZYw9QGTi0Tjqa4UFj95LI9cM
 
 background=11&concept=1111111&image=11111&title=33333&content=281479
 
@@ -87,8 +88,9 @@ id=5f8d56e71d8f9f1004b76cf2&background=111111&concept=21111111&image=2211111&tit
 
 POST https://v2.dressweb.cn/user/team
 Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQ1NjA4ODgsImV4cCI6MTYwNDY0NzI4OH0.EsQ77dImmHP_N04v4WHZYw9QGTi0Tjqa4UFj95LI9cM
 
-icon=123&title=234&content=345
+icon=123&title=234&contact=345
 
 ### 查阅团队人员
 
@@ -130,9 +132,9 @@ Content-Type: application/x-www-form-urlencoded
 
 POST https://v2.dressweb.cn/user/footer/contact
 Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQ1NjA4ODgsImV4cCI6MTYwNDY0NzI4OH0.EsQ77dImmHP_N04v4WHZYw9QGTi0Tjqa4UFj95LI9cM
 
-
-id=5f8e617bda7c8122eceb04f9&name=1&icon=2&link=3
+id=5f91479a8e03dc54ce46fc84&name=1&icon=2&link=3
 
 ### 修改页脚联系方式
 PUT https://v2.dressweb.cn/user/footer/contact
