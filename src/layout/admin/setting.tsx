@@ -30,7 +30,7 @@ export default class AdminSetting extends Vue {
   }
 
   @Watch('aboutData')
-  getData(newVal: any) {
+  getData(newVal: AboutItem) {
     this.aboutData = newVal;
   }
 
@@ -71,7 +71,7 @@ export default class AdminSetting extends Vue {
                   <textarea
                     class="mermaid__input--form"
                     rows="10"
-                    v-model={this.aboutData.introduct!.content}
+                    v-model={this.aboutData.introduct.content}
                   ></textarea>
                 </section>
               </section>
