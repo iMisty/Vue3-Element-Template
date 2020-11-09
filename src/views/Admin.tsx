@@ -40,7 +40,7 @@ export default class Admin extends Vue {
           <article class={`admin__left--nav`}>
             <ul class="admin__left--list">
               <router-link to="/admin" tag="li" class="admin__left--list--nav dashboard">
-                <i class="fa fa-home"></i>
+                <i class="fa fa-fw fa-home"></i>
                 <p class="admin__left--list--title">Dashboard</p>
               </router-link>
               <router-link
@@ -48,7 +48,7 @@ export default class Admin extends Vue {
                 tag="li"
                 class="admin__left--list--nav blog"
               >
-                <i class="fa fa-edit"></i>
+                <i class="fa fa-fw fa-edit"></i>
                 <p class="admin__left--list--title">Blog</p>
               </router-link>
               <router-link
@@ -56,7 +56,7 @@ export default class Admin extends Vue {
                 tag="li"
                 class="admin__left--list--nav work"
               >
-                <i class="fa fa-list-alt"></i>
+                <i class="fa fa-fw fa-list-alt"></i>
                 <p class="admin__left--list--title">Work</p>
               </router-link>
               <router-link
@@ -64,7 +64,7 @@ export default class Admin extends Vue {
                 tag="li"
                 class="admin__left--list--nav setting"
               >
-                <i class="fa fa-gear"></i>
+                <i class="fa fa-fw fa-gear"></i>
                 <p class="admin__left--list--title">Setting</p>
               </router-link>
             </ul>

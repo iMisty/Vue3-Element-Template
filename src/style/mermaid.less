@@ -54,7 +54,9 @@
       color: #212529;
       background-color: #f4f5f7;
       border-color: #f4f5f7;
+    }
 
+    &--size {
       // Width
       &-small {
         padding: 0.25rem 0.5rem;
@@ -71,7 +73,10 @@
       &-block {
         width: 100%;
       }
+    }
 
+    // Type
+    &--type {
       // Style
       // Default style => have background
       &-round {
@@ -146,30 +151,42 @@
 
       // Link style => only text
       &-link {
+        .mixin {
+          border: none;
+          background-color: transparent;
+          box-shadow: none;
+        }
         &-primary {
+          .mixin;
           color: #3d55df;
-          border-color: #324cdd;
         }
         &-info {
+          .mixin;
           color: #11cdef;
         }
         &-success {
+          .mixin;
           color: #2dce89;
         }
         &-danger {
+          .mixin;
           color: #ec0c38;
         }
         &-warning {
+          .mixin;
           color: #fb6340;
         }
         &-default {
+          .mixin;
           color: #172b4d;
         }
         &-secondary {
+          .mixin;
           color: #f4f5f7;
         }
       }
     }
+
     &:hover {
       transform: translateY(-2px);
       transition-duration: @transition-duration;
@@ -254,15 +271,37 @@
   }
 
   &__model {
+    .position(fixed, 0, 0, 100%, 100%);
+    .layout(flex, row, center, center);
     &--wrap {
+      position: relative;
       display: grid;
       grid-template-rows: 4rem auto auto;
       gap: 0.5rem;
+      margin: 0 1rem;
       padding: 2rem;
-      max-width: 480px;
+      max-width: 30rem;
+      z-index: 6;
       background-color: #fff;
       border-radius: @border-radius;
       box-shadow: @card-shadow;
+      &--title {
+        display: grid;
+        grid-template-columns: auto 1rem;
+        & > .model--title {
+          font-size: 1.1em;
+          font-weight: 700;
+          letter-spacing: 0.54px;
+        }
+      }
+      &--button {
+        .layout(flex, row, space-between, center, nowrap);
+      }
+    }
+    &--mask {
+      .position(fixed, 0, 0, 100%, 100%);
+      background-color: rgba(0, 0, 0, 0.12);
+      z-index: 4;
     }
   }
 }
@@ -280,4 +319,12 @@
   &-primary {
     background: @bg-gradient-primary;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
