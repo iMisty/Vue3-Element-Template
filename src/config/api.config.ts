@@ -1,15 +1,17 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 17:16:08
- * @LastEditTime: 2020-11-03 16:02:41
+ * @LastEditTime: 2020-11-24 18:10:50
  * @LastEditors: Miya
  * @Description: API域名
- * @FilePath: \LandingPage\src\config\api.config.ts
+ * @FilePath: \Single-Search-APIc:\Users\Platinum Prism\Documents\GitHub\LandingPage\src\config\api.config.ts
  * @Version: 1.0
  */
 import axios from 'axios';
-const AUTH_TOKEN = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQzMDIyNzgsImV4cCI6MTYwNDM4ODY3OH0.V7O72qs-9L0puZ4KLvoT2uilRpr3bMieRtcuMUFVGOI`;
-axios.defaults.baseURL = 'https://v2.dressweb.cn';
+// const AUTH_TOKEN = localStorage.getItem('blog-token');
+const AUTH_TOKEN = localStorage.getItem('blog-token');
+// axios.defaults.baseURL = 'https://v2.dressweb.cn';
+axios.defaults.baseURL = 'http://localhost:12345';
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded';
@@ -29,6 +31,8 @@ export const TEAM = '/user/team';
 export const FOOTER = '/user/footer';
 // 页脚联系方式
 export const FOOTER_CONTENT = '/user/footer/contact';
+// 验证token
+export const TOKEN = '/user/status';
 // 注册账户
 export const REGISTRY = '/registry';
 // 登录
@@ -74,7 +78,7 @@ export const GET = async (url: string, data?: object) => {
   const result = await axios({
     method: 'get',
     url,
-    params: data,
+    params: data
     // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   })
     .then(res => {

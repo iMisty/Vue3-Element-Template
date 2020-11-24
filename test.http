@@ -148,8 +148,13 @@ username=admin
 &password=123456
 
 ### 登录
-POST https://v2.dressweb.cn/login
+POST http://localhost:12345/login
 Content-Type: application/x-www-form-urlencoded
 
 username=admin
 &password=123456
+
+### Token验证
+POST http://localhost:12345/user/status
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQ1NjA4ODgsImV4cCI6MTYwNDY0NzI4OH0.EsQ77dImmHP_N04v4WHZYw9QGTi0Tjqa4UFj95LI9cM

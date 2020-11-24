@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-10-28 22:51:17
+ * @LastEditTime: 2020-11-24 17:05:57
  * @LastEditors: Miya
  * @Description: Router
- * @FilePath: /Kagura-LandingPage/src/router/index.ts
+ * @FilePath: \Single-Search-APIc:\Users\Platinum Prism\Documents\GitHub\LandingPage\src\router\index.ts
  * @Version:
  */
 import Vue from 'vue';
@@ -50,8 +50,8 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Contact.tsx')
   },
   {
-    path: '/loading',
-    name: 'Loading',
+    path: '/login',
+    name: 'login',
     component: () => import('@/views/Loading.tsx')
   },
   {

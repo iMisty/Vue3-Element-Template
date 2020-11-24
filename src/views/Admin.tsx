@@ -1,3 +1,4 @@
+import { POST, TOKEN } from '@/config/api.config';
 import { Component, Vue } from 'vue-property-decorator';
 @Component({})
 export default class Admin extends Vue {
@@ -14,11 +15,17 @@ export default class Admin extends Vue {
     return this.$router.push({ path: '/' });
   }
 
+  private async validateToken() {
+    const token = await POST(TOKEN);
+    console.log(token);
+  }
+
   get leftBarStatus() {
     return this.floatLeftBar ? 'float' : '';
   }
 
   private created() {
+    this.validateToken();
     this.$store.commit('changeDisplayNavBar', false);
   }
 
@@ -28,10 +35,7 @@ export default class Admin extends Vue {
         <section class="admin__left">
           <article class="admin__left--logo">
             <section class="logo" onClick={() => this.backToHome()}>
-              <img
-                src={require('@/assets/logo.png')}
-                alt="Logo"
-              />
+              <img src={require('@/assets/logo.png')} alt="Logo" />
             </section>
             <section class="type" onClick={() => this.changeLeftBarStatus()}>
               <i class="fa fa fa-ellipsis-h"></i>
@@ -39,7 +43,11 @@ export default class Admin extends Vue {
           </article>
           <article class={`admin__left--nav`}>
             <ul class="admin__left--list">
-              <router-link to="/admin" tag="li" class="admin__left--list--nav dashboard">
+              <router-link
+                to="/admin"
+                tag="li"
+                class="admin__left--list--nav dashboard"
+              >
                 <i class="fa fa-fw fa-home"></i>
                 <p class="admin__left--list--title">Dashboard</p>
               </router-link>

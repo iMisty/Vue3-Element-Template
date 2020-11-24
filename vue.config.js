@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-10-22 14:46:13
- * @LastEditTime: 2020-10-22 15:23:38
+ * @LastEditTime: 2020-11-24 17:56:59
  * @LastEditors: Miya
  * @Description: Vue Config
- * @FilePath: \LandingPage\vue.config.js
+ * @FilePath: \Single-Search-APIc:\Users\Platinum Prism\Documents\GitHub\LandingPage\vue.config.js
  * @Version: 1.0
  */
 module.exports = {
@@ -33,7 +33,8 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'https://v2.dressweb.cn/',
+        // target: 'https://v2.dressweb.cn/',
+        target: 'http://localhost:12345',
         secure: false,
         changeOrigin: true,
         pathRewrite: {
