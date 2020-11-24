@@ -23,13 +23,11 @@ export default class IndexProject extends Vue {
 
   @Watch('data')
   getData(newVal: WorkItem[]) {
-    console.log(`Work Data: ${newVal}`);
     this.data = newVal;
   }
 
   private async created() {
     const res = await POST(`${INFO}/work`);
-    console.log(res);
     this.data = res.msg.slice(0,4);
   }
 

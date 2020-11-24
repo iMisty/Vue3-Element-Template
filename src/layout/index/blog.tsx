@@ -13,7 +13,6 @@ export default class HomeBlog extends Vue {
 
   @Watch('data')
   getData(newVal: BlogItem[]) {
-    console.log(newVal.toString());
     this.data = newVal;
   }
 

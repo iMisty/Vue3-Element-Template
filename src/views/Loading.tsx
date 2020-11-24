@@ -15,10 +15,12 @@ export default class Login extends Vue {
   private async submitForm(type: number, data?: FormData) {
     if (type === 1) {
       const result = await POST('login', data);
+      console.log(result)
       if (result.code === 1) {
         localStorage.setItem('blog-token', result.token);
         return this.$router.push({ path: '/admin' });
       }
+      return result;
     }
     const result = await POST('registry', data);
     return result;
@@ -164,7 +166,12 @@ export default class Login extends Vue {
           )}
           {this.type === 1 ? (
             <section class="login__form--setting">
-              <p class="login__form--setting--content" onClick={() => this.$router.push({path: '/admin'})}>Forgotten Password?</p>
+              <p
+                class="login__form--setting--content"
+                onClick={() => this.$router.push({ path: '/admin' })}
+              >
+                Forgotten Password?
+              </p>
               <p
                 class="login__form--setting--content"
                 onClick={() => this.changeLoginType(0)}

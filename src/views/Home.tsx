@@ -28,7 +28,6 @@ export default class Home extends Vue {
 
   private async getDataFunction(url: string, slice: number, title?: string) {
     const res = await POST(url);
-    console.log(`${title} Data: ${res}`);
     return res.msg.slice(0, slice);
   }
 
