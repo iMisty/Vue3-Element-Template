@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-11-24 17:05:57
+ * @LastEditTime: 2020-11-25 15:03:13
  * @LastEditors: Miya
  * @Description: Router
  * @FilePath: \Single-Search-APIc:\Users\Platinum Prism\Documents\GitHub\LandingPage\src\router\index.ts
@@ -9,6 +9,7 @@
  */
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
+import axios from 'axios';
 import Home from '../views/Home';
 
 Vue.use(VueRouter);
@@ -66,7 +67,7 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: 'blog',
-        component: () => import('@/layout/admin/blog.tsx'),
+        component: () => import('@/layout/admin/blog.tsx')
       },
       {
         path: 'blogedit',
@@ -98,6 +99,16 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   scrollBehavior: () => ({ x: 0, y: 0 }),
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('blog-token');
+  if (to.path === '/admin' || to.path === '/admin/*') {
+    const a = (axios.defaults.headers.common['Authorization'] =
+      'Bearer ' + token);
+    console.log('aaaaa');
+  }
+  next();
 });
 
 export default router;
