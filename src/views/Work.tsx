@@ -1,7 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import WrapHeader from '@/components/WrapHeader';
 import WorkProject from '@/layout/work/WorkProject';
-import { INFO, POST } from '@/config/api.config';
+import { GET, INFO } from '@/config/api.config';
 @Component({
   components: {
     'wrap-header': WrapHeader,
@@ -12,7 +12,7 @@ export default class Work extends Vue {
   private workData: WorkProject[] = [];
 
   private async getWorkData() {
-    const res = await POST(`${INFO}/work`);
+    const res = await GET(`${INFO}/work`);
     console.log(res);
     return (this.workData = res.msg);
   }

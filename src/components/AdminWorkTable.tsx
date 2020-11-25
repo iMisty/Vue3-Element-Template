@@ -70,7 +70,7 @@ export default class AdminWorkTable extends Vue {
                     />
                     <span
                       class="table--item--title"
-                      onClick={() => this.clickEdit(item.id)}
+                      onClick={() => this.clickEdit(item._id)}
                     >
                       {item.title}
                     </span>
@@ -104,13 +104,13 @@ export default class AdminWorkTable extends Vue {
                   <td class="table--item setting center">
                     <div
                       class="table--item--setting"
-                      onClick={() => this.clickEdit(item.id)}
+                      onClick={() => this.clickEdit(item._id)}
                     >
                       <i class="fa fa-edit"></i>
                     </div>
                     <div
                       class="table--item--setting"
-                      onClick={() => this.clickDelete(item.id)}
+                      onClick={() => this.clickDelete(item._id)}
                     >
                       <i class="fa fa-trash-o"></i>
                     </div>

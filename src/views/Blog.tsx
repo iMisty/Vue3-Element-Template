@@ -1,7 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import WrapHeader from '@/components/WrapHeader';
 import BlogProject from '@/layout/blog/BlogProject';
-import { INFO, POST } from '@/config/api.config';
+import { GET, INFO } from '@/config/api.config';
 import { BlogItem } from '@/model/BlogItem';
 
 @Component({
@@ -14,7 +14,7 @@ export default class Blog extends Vue {
   private blogData: BlogItem[] = [];
 
   private async getBlogData() {
-    const res = await POST(`${INFO}/blog`);
+    const res = await GET(`${INFO}/blog`);
     console.log(res);
     return (this.blogData = res.msg);
   }

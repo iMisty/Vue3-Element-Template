@@ -3,6 +3,7 @@ import MermaidCard from '@/components/MermaidCard';
 import MermaidButton from '@/components/MermaidButton';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import { BlogItem } from '@/model/BlogItem';
+import { GET, INFO } from '@/config/api.config';
 
 @Component({
   components: {
@@ -12,14 +13,17 @@ import { BlogItem } from '@/model/BlogItem';
   }
 })
 export default class AdminBlogEdit extends Vue {
-  private data!: BlogItem;
+  private data: BlogItem = { _id: '1', title: '12', id: 1, time: '12' };
 
-  private getBlogID() {
+  private async getBlogID() {
     const id = this.$route.query.id as string;
     console.log(id);
+    const res = await GET(`${INFO}/blog`, { id });
+    console.log(res);
+    this.data = res.msg[0];
   }
 
-  private mounted() {
+  private created() {
     this.getBlogID();
   }
 
@@ -33,13 +37,19 @@ export default class AdminBlogEdit extends Vue {
               <div class="admin__blogedit--label">
                 <section class="admin__blogedit--label--content">
                   <label class="label--title">
-                    <input class="label--text" type="text" placeholder="标题" />
+                    <input
+                      class="label--text"
+                      type="text"
+                      placeholder="标题"
+                      v-model={this.data.title}
+                    />
                   </label>
                   <label class="label--content">
                     <textarea
                       class="label--text label--content"
                       name="content"
                       placeholder="正文"
+                      v-model={this.data.content}
                     ></textarea>
                   </label>
                   <label class="label--intro">
@@ -47,13 +57,18 @@ export default class AdminBlogEdit extends Vue {
                       class="label--text label--intro"
                       name="intro"
                       placeholder="简介"
+                      v-model={this.data.intro}
                     ></textarea>
                   </label>
                 </section>
                 <section class="admin__blogedit--label--setting">
                   <section class="label--submit">
-                    <m-button color="primary" class="label--submit--button">提交</m-button>
-                    <m-button color="danger" class="label--submit--button">删除</m-button>
+                    <m-button color="primary" class="label--submit--button">
+                      提交
+                    </m-button>
+                    <m-button color="danger" class="label--submit--button">
+                      删除
+                    </m-button>
                   </section>
                   <section class="label--setting">
                     <p>时间</p>
@@ -102,19 +117,19 @@ export default class AdminBlogEdit extends Vue {
                       type="text"
                       placeholder="预览图"
                     />
-                    {/* {this.data.avatar ? (
-                    <div class="avatar-preview">
-                      <img src={this.data.avatar} />
-                    </div>
-                  ) : (
-                    ''
-                  )} */}
+                    {this.data.avatar ? (
+                      <div class="avatar-preview">
+                        <img src={this.data.avatar} />
+                      </div>
+                    ) : (
+                      ''
+                    )}
                   </label>
                   <section class="label--tag">
                     <input type="text" placeholder="标签（按下回车添加）" />
-                    {/* {this.data.tag?.map(item => {
-                    return <span>{item}</span>;
-                  })} */}
+                    {this.data.tag?.map(item => {
+                      return <span>{item}</span>;
+                    })}
                   </section>
                 </section>
               </div>

@@ -4,7 +4,7 @@ import MermaidButton from '@/components/MermaidButton';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import { FooterItem } from '@/model/FooterItem';
 import { AboutItem } from '@/model/AboutItem';
-import { INFO, POST } from '@/config/api.config';
+import { GET, INFO } from '@/config/api.config';
 import { TeamItem } from '@/model/TeamItem';
 
 @Component({
@@ -20,9 +20,9 @@ export default class AdminSetting extends Vue {
   private teamData: TeamItem[] = [];
 
   private async mounted() {
-    const aboutRes = await POST(`${INFO}/about`);
-    const footerRes = await POST(`${INFO}/footer`);
-    const teamRes = await POST(`${INFO}/team`);
+    const aboutRes = await GET(`${INFO}/about`);
+    const footerRes = await GET(`${INFO}/footer`);
+    const teamRes = await GET(`${INFO}/team`);
     this.aboutData = aboutRes.result[0];
     this.footerData = footerRes.result[0];
     console.log(teamRes);

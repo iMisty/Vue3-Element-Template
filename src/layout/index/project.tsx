@@ -1,7 +1,7 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import IndexProjectItem from '@/components/IndexProjectItem';
 import { WorkItem } from '@/model/WorkItem';
-import { INFO, POST } from '@/config/api.config';
+import { GET, INFO } from '@/config/api.config';
 
 @Component({
   components: {
@@ -27,7 +27,7 @@ export default class IndexProject extends Vue {
   }
 
   private async created() {
-    const res = await POST(`${INFO}/work`);
+    const res = await GET(`${INFO}/work`);
     this.data = res.msg.slice(0,4);
   }
 

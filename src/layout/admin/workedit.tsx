@@ -9,7 +9,7 @@ import MermaidButton from '@/components/MermaidButton';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import { WorkItem } from '@/model/WorkItem';
 import 'mavon-editor/dist/css/index.css';
-import { INFO, POST } from '@/config/api.config';
+import { GET, INFO } from '@/config/api.config';
 
 @Component({
   components: {
@@ -25,7 +25,7 @@ export default class AdminWorkEdit extends Vue {
   private async getWorkData() {
     const id = this.$route.query.id;
     console.log(id);
-    const res = await POST(`${INFO}/work/id`, { id });
+    const res = await GET(`${INFO}/work`, { id });
     console.log(res)
     this.data = res.msg[0];
     this.data.content = h2m(this.data.content);

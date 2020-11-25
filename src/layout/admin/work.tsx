@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import AdminWorkTable from '@/components/AdminWorkTable';
 import MermaidCard from '@/components/MermaidCard';
-import { INFO, POST } from '@/config/api.config';
+import { GET, INFO } from '@/config/api.config';
 import { WorkItem } from '@/model/WorkItem';
 
 @Component({
@@ -23,7 +23,7 @@ export default class AdminWork extends Vue {
 
   private data: WorkItem[] = [];
 
-  private clickEdit(id: string | number | undefined) {
+  private clickEdit(id: string) {
     console.log(id);
     const ids = id?.toString();
     return this.$router.push({
@@ -33,7 +33,7 @@ export default class AdminWork extends Vue {
   }
 
   private async getWorkData() {
-    const res = await POST(`${INFO}/work`);
+    const res = await GET(`${INFO}/work`);
     console.log(res);
     this.data = res.msg;
   }

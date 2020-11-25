@@ -8,7 +8,7 @@ import project from '@/layout/index/project';
 // 配置文件引入
 // TODO: 改为使用RestAPI
 import { Index } from '@/config/index.config';
-import { INFO, POST } from '@/config/api.config';
+import { GET, INFO } from '@/config/api.config';
 import { BlogItem } from '@/model/BlogItem';
 import { WorkItem } from '@/model/WorkItem';
 
@@ -27,7 +27,7 @@ export default class Home extends Vue {
   private workData!: WorkItem;
 
   private async getDataFunction(url: string, slice: number, title?: string) {
-    const res = await POST(url);
+    const res = await GET(url);
     return res.msg.slice(0, slice);
   }
 

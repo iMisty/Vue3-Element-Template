@@ -1,7 +1,7 @@
 import { BlogItem } from '@/model/BlogItem';
 import { Component, Vue } from 'vue-property-decorator';
 import WrapHeader from '@/components/WrapHeader';
-import { INFO, POST } from '@/config/api.config';
+import { INFO, GET } from '@/config/api.config';
 
 @Component({
   components: {
@@ -15,7 +15,7 @@ export default class BlogWrap extends Vue {
   private async getBlogData() {
     const id = this.$route.query.id;
     console.log(id);
-    const res = await POST(`${INFO}/blog/id`, { id: id });
+    const res = await GET(`${INFO}/blog`, { id: id });
     console.log(res);
     return (this.blogdata = res.msg[0]);
   }

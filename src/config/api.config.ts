@@ -1,14 +1,13 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 17:16:08
- * @LastEditTime: 2020-11-24 18:10:50
+ * @LastEditTime: 2020-11-25 12:23:32
  * @LastEditors: Miya
  * @Description: API域名
  * @FilePath: \Single-Search-APIc:\Users\Platinum Prism\Documents\GitHub\LandingPage\src\config\api.config.ts
  * @Version: 1.0
  */
 import axios from 'axios';
-// const AUTH_TOKEN = localStorage.getItem('blog-token');
 const AUTH_TOKEN = localStorage.getItem('blog-token');
 // axios.defaults.baseURL = 'https://v2.dressweb.cn';
 axios.defaults.baseURL = 'http://localhost:12345';
@@ -42,19 +41,20 @@ export const LOGIN = '/login';
 axios.interceptors.request.use(
   // eslint-disable-next-line
   (config: any) => {
-    const token = localStorage.getItem('blog-token');
+    const token = `${localStorage.getItem('blog-token')}`;
     console.log(`Token: ${token}`);
     console.log(config);
     console.log(`Method: ${config.method}`);
     if (
-      config.url === '/info/*' ||
-      config.url === '/registry' ||
-      config.url === '/login'
+      // config.url === '/info/*' ||
+      // config.url === '/registry' ||
+      // config.url === '/login' ||
+      config.method === 'get' || config.url === '/user/status'
     ) {
       return config;
     }
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.common['Authorization'] = `Bearer ${token}`;
       return config;
     }
     return config;

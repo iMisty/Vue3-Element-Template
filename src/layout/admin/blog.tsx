@@ -3,7 +3,7 @@ import AdminWrapTitle from '@/components/AdminWrapTitle';
 import AdminTable from '@/components/AdminTable';
 import MermaidCard from '@/components/MermaidCard';
 import { BlogItem } from '@/model/BlogItem';
-import { POST, INFO } from '@/config/api.config';
+import { INFO, GET } from '@/config/api.config';
 @Component({
   components: {
     'admin-title': AdminWrapTitle,
@@ -17,7 +17,7 @@ export default class AdminBlog extends Vue {
   private tableTitle: string[] = ['title', 'created at'];
 
   private async getBlogData() {
-    const res = await POST(`${INFO}/blog`);
+    const res = await GET(`${INFO}/blog`);
     console.log(res);
     // this.$nextTick(() => {
     this.tableData = res.msg;

@@ -16,12 +16,12 @@ export default class AdminTable extends Vue {
   private title!: string[];
 
   @Emit('edit')
-  private clickEdit(id: number | string | undefined) {
+  private clickEdit(id: string) {
     return id;
   }
 
   @Emit('delete')
-  private clickDelete(id: number | string | undefined) {
+  private clickDelete(id: string) {
     return id;
   }
 
@@ -59,7 +59,7 @@ export default class AdminTable extends Vue {
                     />
                     <span
                       class="table--item--title"
-                      onClick={() => this.clickEdit(item.id)}
+                      onClick={() => this.clickEdit(item._id)}
                     >
                       {item.title}
                     </span>
@@ -68,13 +68,13 @@ export default class AdminTable extends Vue {
                   <td class="table--item setting">
                     <div
                       class="table--item--setting"
-                      onClick={() => this.clickEdit(item.id)}
+                      onClick={() => this.clickEdit(item._id)}
                     >
                       <i class="fa fa-edit"></i>
                     </div>
                     <div
                       class="table--item--setting"
-                      onClick={() => this.clickDelete(item.id)}
+                      onClick={() => this.clickDelete(item._id)}
                     >
                       <i class="fa fa-trash-o"></i>
                     </div>
