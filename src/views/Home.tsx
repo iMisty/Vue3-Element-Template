@@ -26,16 +26,16 @@ export default class Home extends Vue {
   private blogData: BlogItem[] | Promise<BlogItem[]> = [];
   private workData!: WorkItem;
 
-  private async getDataFunction(url: string, slice: number, title?: string) {
+  private async getDataFunction(url: string, slice: number, title: string) {
     const res = await GET(url);
     return res.msg.slice(0, slice);
   }
 
   private async getData() {
-    const a = await this.getDataFunction(`${INFO}/blog`, 4, 'blog');
+    const data = await this.getDataFunction(`${INFO}/blog`, 4, 'blog');
     this.workData = await this.getDataFunction(`${INFO}/work`, 4, 'work');
 
-    this.$store.commit('fetchBlogData', a);
+    this.$store.commit('fetchBlogData', data);
     this.blogData = this.$store.state.blogData;
   }
 
