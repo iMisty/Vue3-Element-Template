@@ -29,6 +29,10 @@ export default class AdminSetting extends Vue {
     console.log('Setting Loaded');
   }
 
+  private submitData(){
+    console.log('a')
+  }
+
   @Watch('aboutData')
   getData(newVal: AboutItem) {
     this.aboutData = newVal;
@@ -170,7 +174,7 @@ export default class AdminSetting extends Vue {
                 </section>
               </section>
               <section class="admin__setting--submit">
-                <m-button>保存</m-button>
+                <m-button onClickevent={() => this.submitData()}>保存</m-button>
               </section>
             </m-card>
           </section>
