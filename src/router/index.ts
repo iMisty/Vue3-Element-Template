@@ -1,11 +1,11 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2020-11-25 15:03:13
+ * @LastEditTime: 2020-11-30 10:40:45
  * @LastEditors: Miya
  * @Description: Router
  * @FilePath: \Single-Search-APIc:\Users\Platinum Prism\Documents\GitHub\LandingPage\src\router\index.ts
- * @Version:
+ * @Version: 1.0
  */
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
@@ -104,9 +104,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('blog-token');
   if (to.path === '/admin' || to.path === '/admin/*') {
-    const a = (axios.defaults.headers.common['Authorization'] =
-      'Bearer ' + token);
-    console.log('aaaaa');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
   }
   next();
 });
