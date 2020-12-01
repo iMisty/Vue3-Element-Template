@@ -157,4 +157,4 @@ username=admin
 ### Token验证
 POST http://localhost:12345/user/status
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQ1NjA4ODgsImV4cCI6MTYwNDY0NzI4OH0.EsQ77dImmHP_N04v4WHZYw9QGTi0Tjqa4UFj95LI9cM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDYyNzcyOTMsImV4cCI6MTYwNjM2MzY5M30.5iw8iyHiqR7IrWo9RtkqAfloCMGABWmNKVtlvsb8NdQ
