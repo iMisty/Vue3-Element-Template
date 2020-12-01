@@ -15,9 +15,9 @@ export default class Login extends Vue {
   private async submitForm(type: number, data?: FormData) {
     if (type === 1) {
       const result = await POST('login', data);
-      console.log(result)
+      console.log(result);
       if (result.code === 1) {
-        localStorage.setItem('blog-token', result.token);
+        localStorage.setItem('blog-token', `Bearer ${result.token}`);
         return this.$router.push({ path: '/admin' });
       }
       return result;
