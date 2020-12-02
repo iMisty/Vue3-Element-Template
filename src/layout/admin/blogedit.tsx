@@ -14,17 +14,50 @@ import { GET, INFO } from '@/config/api.config';
 })
 export default class AdminBlogEdit extends Vue {
   private data: BlogItem = { _id: '1', title: '12', id: 1, time: '12' };
-
+  private time = {
+    time: '',
+    date: ''
+  };
   private async getBlogID() {
     const id = this.$route.query.id as string;
     console.log(id);
     const res = await GET(`${INFO}/blog`, { id });
     console.log(res);
     this.data = res.msg[0];
+    console.log(this.data.time);
+  }
+
+  private getTime() {
+    const value = this.data.time;
+  }
+
+  // 提交修改
+  private submitData() {
+    console.log('a');
+    console.log(this.spliceDate);
+  }
+
+  private openModel() {
+    this.$model({
+      title: '确认删除',
+      msg: '是否确认删除',
+      btn: { confirm: '确定', cancel: '取消' }
+    })
+      .then((res: string) => {
+        console.log('res', res);
+      })
+      .catch((err: string) => {
+        console.log('err', err);
+      });
   }
 
   private created() {
     this.getBlogID();
+  }
+
+  get spliceDate() {
+    const date = this.time;
+    return `${date.date},${date.time}`;
   }
 
   private render() {
@@ -63,52 +96,26 @@ export default class AdminBlogEdit extends Vue {
                 </section>
                 <section class="admin__blogedit--label--setting">
                   <section class="label--submit">
-                    <m-button color="primary" class="label--submit--button">
+                    <m-button
+                      color="primary"
+                      class="label--submit--button"
+                      onClickevent={() => this.submitData()}
+                    >
                       提交
                     </m-button>
-                    <m-button color="danger" class="label--submit--button">
+                    <m-button
+                      color="danger"
+                      class="label--submit--button"
+                      onClickevent={() => this.openModel()}
+                    >
                       删除
                     </m-button>
                   </section>
                   <section class="label--setting">
                     <p>时间</p>
                     <div class="label--setting--time">
-                      <input
-                        class="label--setting--timer year"
-                        type="text"
-                        maxlength="4"
-                      />
-                      <span>年</span>
-                      <input
-                        class="label--setting--timer"
-                        type="text"
-                        maxlength="2"
-                      />
-                      <span>月</span>
-                      <input
-                        class="label--setting--timer"
-                        type="text"
-                        maxlength="2"
-                      />
-                      <span>日</span>
-                      <input
-                        class="label--setting--timer"
-                        type="text"
-                        maxlength="2"
-                      />
-                      <span>时</span>
-                      <input
-                        class="label--setting--timer"
-                        type="text"
-                        maxlength="2"
-                      />
-                      <span>分</span>
-                      <input
-                        class="label--setting--timer"
-                        type="text"
-                        maxlength="2"
-                      />
-                      <span>秒</span>
+                      <input type="date" name="date" v-model={this.time.date} />
+                      <input type="time" name="time" v-model={this.time.time} />
                     </div>
                   </section>
                   <label class="label--avatar">
@@ -116,6 +123,7 @@ export default class AdminBlogEdit extends Vue {
                       class="label--text"
                       type="text"
                       placeholder="预览图"
+                      v-model={this.data.avatar}
                     />
                     {this.data.avatar ? (
                       <div class="avatar-preview">
