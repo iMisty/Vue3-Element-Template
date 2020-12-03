@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 17:16:08
- * @LastEditTime: 2020-11-25 12:23:32
+ * @LastEditTime: 2020-12-03 10:55:31
  * @LastEditors: Miya
  * @Description: API域名
  * @FilePath: \Single-Search-APIc:\Users\Platinum Prism\Documents\GitHub\LandingPage\src\config\api.config.ts
@@ -41,7 +41,7 @@ export const LOGIN = '/login';
 axios.interceptors.request.use(
   // eslint-disable-next-line
   (config: any) => {
-    const token = `${localStorage.getItem('blog-token')}`;
+    const token = `Bearer ${localStorage.getItem('blog-token')}`;
     console.log(`Token: ${token}`);
     console.log(config);
     console.log(`Method: ${config.method}`);
@@ -54,7 +54,7 @@ axios.interceptors.request.use(
       return config;
     }
     if (token) {
-      config.headers.common['Authorization'] = `Bearer ${token}`;
+      config.headers.common['Authorization'] = `${token}`;
       return config;
     }
     return config;
