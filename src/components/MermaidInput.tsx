@@ -19,8 +19,6 @@ enum Grid {
 
 @Component({})
 export default class MermaidInput extends Vue {
-
-
   private a = '';
 
   @Prop({ default: '示例标题' })
@@ -45,7 +43,7 @@ export default class MermaidInput extends Vue {
   private maxlength?: number;
 
   @Emit('ChangeEvent')
-  private changeEvent(e) {
+  private changeEvent(e: { target: { value: string } }) {
     console.log(e.target.value);
     console.log('Change');
     // this.value = e.target.value;
@@ -63,7 +61,7 @@ export default class MermaidInput extends Vue {
             value={this.a}
             v-model={this.a}
             maxlength={this.maxlength}
-            onInput={e => this.changeEvent(e)}
+            onInput={(e: { target: { value: string } }) => this.changeEvent(e)}
           />
         </label>
       </div>
