@@ -295,6 +295,16 @@
         }
       }
     }
+    &--team{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      &>.team--item{
+        .layout(flex,row,flex-start,center,nowrap);
+        &>.team--item--img{
+          width: 6rem;
+        }
+      }
+    }
     &--form {
       padding: 1rem;
       & > .team-setting {
