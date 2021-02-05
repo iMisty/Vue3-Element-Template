@@ -18,6 +18,7 @@ export default class AdminSetting extends Vue {
   private aboutData: AboutItem = { introduct: {} };
   private footerData: FooterItem = {};
   private teamData: TeamItem[] = [];
+  private teamEdit: TeamItem = {};
 
   private async mounted() {
     const aboutRes = await GET(`${INFO}/about`);
@@ -25,12 +26,18 @@ export default class AdminSetting extends Vue {
     const teamRes = await GET(`${INFO}/team`);
     this.aboutData = aboutRes.result[0];
     this.footerData = footerRes.result[0];
-    console.log(teamRes);
+    this.teamData = teamRes.msg;
+    console.log(aboutRes);
     console.log('Setting Loaded');
   }
 
-  private submitData(){
-    console.log('a')
+  private submitData(api: string) {
+    console.log(api);
+  }
+
+  private handleClickChoose(index: number) {
+    console.log(index);
+    this.teamEdit = this.teamData[index];
   }
 
   @Watch('aboutData')
@@ -90,27 +97,51 @@ export default class AdminSetting extends Vue {
                     class="mermaid__input--form"
                     type="text"
                     placeholder="Name"
+                    v-model={this.teamEdit.title}
                   />
                   <input
                     class="mermaid__input--form"
                     type="text"
                     placeholder="Icon"
+                    v-model={this.teamEdit.icon}
                   />
-                  <input
+                  {/* <input
                     class="mermaid__input--form"
                     type="text"
                     placeholder="Link"
-                  />
+                    v-model={this.teamEdit.icon}
+                  /> */}
                   <textarea
                     class="mermaid__input--form contact"
                     rows="10"
                     placeholder="Contact"
+                    v-model={this.teamEdit.content}
                   ></textarea>
                 </section>
               </section>
               <section class="admin__setting--submit">
                 <m-button>保存</m-button>
                 <m-button>增加</m-button>
+              </section>
+              <section class="admin__setting--team">
+                {this.teamData.map((item, index) => {
+                  return (
+                    <div
+                      class="team--item"
+                      onClick={() => this.handleClickChoose(index)}
+                    >
+                      <img
+                        class="team--item--img"
+                        src={require('@/assets/47161.png')}
+                        alt=""
+                      />
+                      <section class="team--info">
+                        <h5>{item.title}</h5>
+                        <p>{item.content}</p>
+                      </section>
+                    </div>
+                  );
+                })}
               </section>
             </m-card>
             <m-card title="Footer">
@@ -174,7 +205,10 @@ export default class AdminSetting extends Vue {
                 </section>
               </section>
               <section class="admin__setting--submit">
-                <m-button onClickevent={() => this.submitData()}>保存</m-button>
+                {/* TODO: 设置API */}
+                <m-button onClickevent={() => this.submitData('a')}>
+                  保存
+                </m-button>
               </section>
             </m-card>
           </section>
