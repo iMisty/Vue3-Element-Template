@@ -14,7 +14,7 @@
     "font-awesome": "^4.7.0",
     "h2m": "^0.7.0",
     "koa-combine-routers": "^4.0.2",
-    "marked": "^1.2.2",
+    "marked": "^2.0.0",
     "mavon-editor": "^2.9.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
