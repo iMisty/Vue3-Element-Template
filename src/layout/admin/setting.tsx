@@ -15,8 +15,10 @@ import { TeamItem } from '@/model/TeamItem';
   }
 })
 export default class AdminSetting extends Vue {
+  // About introduct data on Grid 1
   private aboutData: AboutItem = { introduct: {} };
   private footerData: FooterItem = {};
+  // Team Data on Grid 2
   private teamData: TeamItem[] = [];
   private teamEdit: TeamItem = {};
 
@@ -105,12 +107,6 @@ export default class AdminSetting extends Vue {
                     placeholder="Icon"
                     v-model={this.teamEdit.icon}
                   />
-                  {/* <input
-                    class="mermaid__input--form"
-                    type="text"
-                    placeholder="Link"
-                    v-model={this.teamEdit.icon}
-                  /> */}
                   <textarea
                     class="mermaid__input--form contact"
                     rows="10"
