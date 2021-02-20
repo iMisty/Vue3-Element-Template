@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-11-09 15:14:05
- * @LastEditTime: 2020-11-09 16:40:29
+ * @LastEditTime: 2021-02-20 10:56:03
  * @LastEditors: Miya
  * @Description: Mermaid-UI Model
  * @FilePath: \LandingPage\src\extends\model.ts
@@ -9,6 +9,7 @@
  */
 import Vue from 'vue';
 import Model from '@/components/MermaidModel';
+import { VueClass } from 'vue-class-component/lib/declarations';
 // import MermaidModel from '@/components/MermaidModel';
 
 const confirmConstructor: any = Vue.extend(Model);

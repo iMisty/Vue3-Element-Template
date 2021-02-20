@@ -1,3 +1,12 @@
+/*
+ * @Author: Miya
+ * @Date: 2020-09-22 10:13:28
+ * @LastEditTime: 2021-02-20 10:58:18
+ * @LastEditors: Miya
+ * @Description: 
+ * @FilePath: \LandingPage\src\views\Home.tsx
+ * @Version: 
+ */
 import { Component, Vue } from 'vue-property-decorator';
 // 组件引入
 import fullBackground from '@/layout/index/full-background';
@@ -26,7 +35,8 @@ export default class Home extends Vue {
   private blogData: BlogItem[] | Promise<BlogItem[]> = [];
   private workData!: WorkItem;
 
-  private async getDataFunction(url: string, slice: number, title: string) {
+  private async getDataFunction(url: string, slice: number, title?: string) {
+    console.log(title);
     const res = await GET(url);
     return res.msg.slice(0, slice);
   }

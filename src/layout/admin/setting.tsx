@@ -22,14 +22,21 @@ export default class AdminSetting extends Vue {
   private teamData: TeamItem[] = [];
   private teamEdit: TeamItem = {};
 
+  // Select Team
+  private selectedMember: number | undefined = undefined;
+
   private async mounted() {
     const aboutRes = await GET(`${INFO}/about`);
     const footerRes = await GET(`${INFO}/footer`);
     const teamRes = await GET(`${INFO}/team`);
+    console.log('-----------' + JSON.stringify(footerRes));
     this.aboutData = aboutRes.result[0];
+    // TODO: footerData 数据结构调整
     this.footerData = footerRes.result[0];
     this.teamData = teamRes.msg;
-    console.log(aboutRes);
+    console.log(
+      '+++++++++++++++++' + JSON.parse(JSON.stringify(this.footerData))
+    );
     console.log('Setting Loaded');
   }
 
@@ -37,9 +44,17 @@ export default class AdminSetting extends Vue {
     console.log(api);
   }
 
+  /**
+   * @description 点击选择修改团队成员
+   * @param index 点击团队成员位于数组的位置
+   */
   private handleClickChoose(index: number) {
-    console.log(index);
+    if (index === this.selectedMember) {
+      return false;
+    }
     this.teamEdit = this.teamData[index];
+    this.selectedMember = index;
+    return true;
   }
 
   @Watch('aboutData')
@@ -47,6 +62,7 @@ export default class AdminSetting extends Vue {
     this.aboutData = newVal;
   }
 
+  // TODO: 表格精简
   private render() {
     return (
       <div class="admin__setting">
@@ -123,7 +139,9 @@ export default class AdminSetting extends Vue {
                 {this.teamData.map((item, index) => {
                   return (
                     <div
-                      class="team--item"
+                      class={`team--item ${
+                        this.selectedMember === index ? 'selected' : ''
+                      }`}
                       onClick={() => this.handleClickChoose(index)}
                     >
                       <img
@@ -144,19 +162,11 @@ export default class AdminSetting extends Vue {
               <section class="admin__setting--form">
                 <section class="mermaid__input single-grid">
                   <p class="mermaid__input--title">logo</p>
-                  <input class="mermaid__input--form" type="text" />
-                </section>
-                <section class="mermaid__input single-grid">
-                  <p class="mermaid__input--title">start year</p>
-                  <input class="mermaid__input--form" type="text" />
-                </section>
-                <section class="mermaid__input single-grid">
-                  <p class="mermaid__input--title">author</p>
-                  <input class="mermaid__input--form" type="text" />
-                </section>
-                <section class="mermaid__input single-grid">
-                  <p class="mermaid__input--title">website</p>
-                  <input class="mermaid__input--form" type="text" />
+                  <input
+                    class="mermaid__input--form"
+                    type="text"
+                    v-model={this.footerData.logo}
+                  />
                 </section>
               </section>
               <section class="admin__setting--submit">

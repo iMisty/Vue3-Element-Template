@@ -29,6 +29,7 @@ export default class AdminBlogEdit extends Vue {
 
   private getTime() {
     const value = this.data.time;
+    return value;
   }
 
   // 提交修改

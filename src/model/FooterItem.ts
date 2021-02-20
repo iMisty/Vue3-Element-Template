@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-11-05 16:43:49
- * @LastEditTime: 2020-11-05 17:08:00
+ * @LastEditTime: 2021-02-20 15:57:00
  * @LastEditors: Miya
  * @Description: Footer Interface
  * @FilePath: \LandingPage\src\model\FooterItem.ts

@@ -287,7 +287,9 @@
     &--wrap {
       padding: 0 1rem;
       & > .content {
-        grid-template-columns: 1fr 1fr;
+        // grid-template-columns: 1fr 1fr;
+        margin: 0 auto;
+        max-width: 64rem;
       }
       @media screen and (max-width: 750px) {
         & > .content {
@@ -298,10 +300,18 @@
     &--team{
       display: grid;
       grid-template-columns: repeat(4,1fr);
+      padding: 1rem;
       &>.team--item{
         .layout(flex,row,flex-start,center,nowrap);
+        padding: .5rem;
+        transition-duration: @transition-duration;
         &>.team--item--img{
           width: 6rem;
+        }
+        &.selected{
+          box-shadow: 0 0 .75rem .25rem rgba(0,0,0,.08);
+          transform: translateY(-.5rem);
+          transition-duration: @transition-duration;
         }
       }
     }
