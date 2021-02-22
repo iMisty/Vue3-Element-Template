@@ -4,9 +4,9 @@ import MermaidButton from '@/components/MermaidButton';
 import AdminWrapTitle from '@/components/AdminWrapTitle';
 import { FooterItem } from '@/model/FooterItem';
 import { AboutItem } from '@/model/AboutItem';
-import { GET, INFO } from '@/config/api.config';
 import { TeamItem } from '@/model/TeamItem';
-
+import { GET, INFO } from '@/config/api.config';
+import { AJAX } from '@/util/ajax';
 @Component({
   components: {
     'admin-title': AdminWrapTitle,
@@ -40,8 +40,14 @@ export default class AdminSetting extends Vue {
     console.log('Setting Loaded');
   }
 
-  private submitData(api: string) {
+  /**
+   * @description 提交数据到
+   * @param api API接口名称，省略二级目录前
+   */
+  private async submitData(api: string, method: string) {
     console.log(api);
+    // TODO: 增加接口
+    return AJAX.init(method, api);
   }
 
   /**
@@ -212,7 +218,7 @@ export default class AdminSetting extends Vue {
               </section>
               <section class="admin__setting--submit">
                 {/* TODO: 设置API */}
-                <m-button onClickevent={() => this.submitData('a')}>
+                <m-button onClickevent={() => this.submitData('a', 'put')}>
                   保存
                 </m-button>
               </section>
