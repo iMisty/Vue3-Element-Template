@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 17:16:08
- * @LastEditTime: 2020-12-03 10:55:31
+ * @LastEditTime: 2021-02-23 11:59:55
  * @LastEditors: Miya
  * @Description: API域名
- * @FilePath: \Single-Search-APIc:\Users\Platinum Prism\Documents\GitHub\LandingPage\src\config\api.config.ts
+ * @FilePath: \LandingPage\src\config\api.config.ts
  * @Version: 1.0
  */
 import axios from 'axios';
@@ -49,7 +49,8 @@ axios.interceptors.request.use(
       // config.url === '/info/*' ||
       // config.url === '/registry' ||
       // config.url === '/login' ||
-      config.method === 'get' || config.url === '/user/status'
+      config.method === 'get' ||
+      config.url === '/user/status'
     ) {
       return config;
     }
@@ -134,3 +135,119 @@ export const DELETE = async (url: string, data?: object) => {
     });
   return result;
 };
+
+export class AJAX {
+  private static async getMethod(url: string, data?: object) {
+    const result = await axios({
+      method: 'get',
+      url,
+      params: data
+      // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    })
+      .then(res => {
+        return res.data;
+      })
+      .catch(rej => {
+        return rej;
+      });
+    return result;
+  }
+
+  private static async postMethod(url: string, data?: object) {
+    const result = await axios({
+      method: 'post',
+      url,
+      data
+    })
+      .then(res => {
+        return res.data;
+      })
+      .catch(rej => {
+        return rej;
+      });
+    return result;
+  }
+
+  private static async putMethod(url: string, data?: object) {
+    const result = await axios({
+      method: 'put',
+      url,
+      data
+    })
+      .then(res => {
+        return res.data;
+      })
+      .catch(rej => {
+        return rej;
+      });
+    return result;
+  }
+
+  private static async deleteMethod(url: string, data?: object) {
+    const result = await axios({
+      method: 'delete',
+      url,
+      data
+    })
+      .then(res => {
+        return res.data;
+      })
+      .catch(rej => {
+        return rej;
+      });
+    return result;
+  }
+
+  public static async init(
+    method: string,
+    url: string,
+    data?: object | Array<string>
+  ) {
+    const methods = ['get', 'post', 'put', 'delete'];
+    if (!methods.includes(method)) {
+      return 'Unsupport Method';
+    }
+
+    // 输入指定字符
+    switch (method) {
+      case 'get':
+        return await this.getMethod(url, data);
+      case 'post':
+        return await this.postMethod(url, data);
+      case 'put':
+        return await this.putMethod(url, data);
+      case 'delete':
+        return await this.deleteMethod(url, data);
+    }
+  }
+}
+
+/**
+ * @description AJAX方法工具函数
+ * @param method AJAX方法
+ * @param url API地址
+ * @param data 传输数据
+ */
+// export const AJAXa = async (
+//   method: string,
+//   url: string,
+//   data?: object | Array<String>
+// ) => {
+//   // 输入其他字符时
+//   const methods = ['get', 'post', 'put', 'delete'];
+//   if (!methods.includes(method)) {
+//     return 'Unsupport Method';
+//   }
+
+//   // 输入指定字符
+//   switch (method) {
+//     case 'get':
+//       return await GET(url, data);
+//     case 'post':
+//       return await POST(url, data);
+//     case 'put':
+//       return await PUT(url, data);
+//     case 'delete':
+//       return await DELETE(url, data);
+//   }
+// };
