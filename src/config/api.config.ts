@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 17:16:08
- * @LastEditTime: 2021-02-23 11:59:55
+ * @LastEditTime: 2021-02-23 16:51:41
  * @LastEditors: Miya
  * @Description: API域名
  * @FilePath: \LandingPage\src\config\api.config.ts
@@ -136,91 +136,12 @@ export const DELETE = async (url: string, data?: object) => {
   return result;
 };
 
-export class AJAX {
-  private static async getMethod(url: string, data?: object) {
-    const result = await axios({
-      method: 'get',
-      url,
-      params: data
-      // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    })
-      .then(res => {
-        return res.data;
-      })
-      .catch(rej => {
-        return rej;
-      });
-    return result;
-  }
+/**
+ * 
+ *  AJAX工具方法
+ * 
+ */
 
-  private static async postMethod(url: string, data?: object) {
-    const result = await axios({
-      method: 'post',
-      url,
-      data
-    })
-      .then(res => {
-        return res.data;
-      })
-      .catch(rej => {
-        return rej;
-      });
-    return result;
-  }
-
-  private static async putMethod(url: string, data?: object) {
-    const result = await axios({
-      method: 'put',
-      url,
-      data
-    })
-      .then(res => {
-        return res.data;
-      })
-      .catch(rej => {
-        return rej;
-      });
-    return result;
-  }
-
-  private static async deleteMethod(url: string, data?: object) {
-    const result = await axios({
-      method: 'delete',
-      url,
-      data
-    })
-      .then(res => {
-        return res.data;
-      })
-      .catch(rej => {
-        return rej;
-      });
-    return result;
-  }
-
-  public static async init(
-    method: string,
-    url: string,
-    data?: object | Array<string>
-  ) {
-    const methods = ['get', 'post', 'put', 'delete'];
-    if (!methods.includes(method)) {
-      return 'Unsupport Method';
-    }
-
-    // 输入指定字符
-    switch (method) {
-      case 'get':
-        return await this.getMethod(url, data);
-      case 'post':
-        return await this.postMethod(url, data);
-      case 'put':
-        return await this.putMethod(url, data);
-      case 'delete':
-        return await this.deleteMethod(url, data);
-    }
-  }
-}
 
 /**
  * @description AJAX方法工具函数
