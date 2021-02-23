@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2021-02-23 16:38:07
- * @LastEditTime: 2021-02-23 16:47:05
+ * @LastEditTime: 2021-02-23 17:08:52
  * @LastEditors: Miya
  * @Description: AJAX工具方法
  * @FilePath: \LandingPage\src\util\ajax.ts
@@ -17,7 +17,6 @@ export class AJAX {
       method: 'get',
       url,
       params: data
-      // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     })
       .then(res => {
         return res.data;
@@ -76,6 +75,12 @@ export class AJAX {
     return result;
   }
 
+  /**
+   * @description 实例化一个ajax方法
+   * @param method AJAX传输方法
+   * @param url API地址
+   * @param data 传输数据
+   */
   public static async init(
     method: string,
     url: string,
