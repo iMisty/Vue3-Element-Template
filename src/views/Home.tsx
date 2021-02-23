@@ -1,11 +1,11 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-22 10:13:28
- * @LastEditTime: 2021-02-20 10:58:18
+ * @LastEditTime: 2021-02-23 17:58:57
  * @LastEditors: Miya
- * @Description: 
+ * @Description: 首页
  * @FilePath: \LandingPage\src\views\Home.tsx
- * @Version: 
+ * @Version: 1.1
  */
 import { Component, Vue } from 'vue-property-decorator';
 // 组件引入
@@ -37,14 +37,13 @@ export default class Home extends Vue {
 
   private async getDataFunction(url: string, slice: number, title?: string) {
     console.log(title);
-    const res = await GET(url);
+    const res = await GET(url); 
     return res.msg.slice(0, slice);
   }
 
   private async getData() {
     const data = await this.getDataFunction(`${INFO}/blog`, 4, 'blog');
     this.workData = await this.getDataFunction(`${INFO}/work`, 4, 'work');
-
     this.$store.commit('fetchBlogData', data);
     this.blogData = this.$store.state.blogData;
   }
