@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2020-09-21 16:57:09
- * @LastEditTime: 2021-02-20 15:50:29
+ * @LastEditTime: 2021-02-23 11:16:49
  * @LastEditors: Miya
  * @Description: 入口页面
  * @FilePath: \LandingPage\src\App.tsx
@@ -27,7 +27,7 @@ export default class App extends Vue {
   private loading = false;
   // 移动端导航栏
   private navBarStatus = false;
-
+  // 页脚部分数据
   private footerData = Footer;
 
   private scrollNavBar(screenHeight: number) {
