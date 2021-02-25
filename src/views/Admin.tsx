@@ -15,6 +15,7 @@ export default class Admin extends Vue {
     return this.$router.push({ path: '/' });
   }
 
+  // 检测token
   private async validateToken() {
     const token = await POST(TOKEN);
     console.log(token);
