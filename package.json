@@ -1,0 +1,51 @@
+{
+  "name": "vue-element-mermaid-template",
+  "version": "0.1.0",
+  "description": "A Vue Admin Template with Vue3 & Vite & Pinia & ElementPlus",
+  "author": {
+    "name": "Miya",
+    "email": "kannadukishizuma@gmail.com"
+  },
+  "scripts": {
+    "dev": "vite",
+    "serve": "vite preview",
+    "build:dev": "vue-tsc --noEmit && vite build --mode development",
+    "build:prod": "vue-tsc --noEmit && vite build --mode production"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "element-plus": "^2.1.0",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.0.11",
+    "qs": "^6.10.3",
+    "vite-plugin-svg-icons": "^1.1.0 ",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.22",
+    "@types/nprogress": "^0.2.0",
+    "@types/qs": "^6.9.7",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "less": "^4.1.2",
+    "typescript": "^4.6.2",
+    "vite": "^2.8.6",
+    "vite-plugin-compression": "^0.5.1",
+    "vue-tsc": "^0.32.1"
+  },
+  "maintainers": [
+    {
+      "name": "Miya",
+      "email": "kannadukishizuma@gmail.com"
+    }
+  ],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "engines": {
+    "node": ">=12.0",
+    "npm": ">= 6.9.0"
+  },
+  "license": "MIT"
+}

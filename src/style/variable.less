@@ -1,0 +1,84 @@
+// TODO: Update New Version
+
+// Font Size
+@fontSize-h1: 40px;
+@fontSize-h2: 32px;
+@fontSize-h3: 28px;
+@fontSize-h4: 24px;
+@fontSize-h5: 20px;
+@fontSize-h6: 16px;
+@fontSize-p: 16px;
+
+@card-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+
+// Linear Gradient Background
+@bg-gradient-red: linear-gradient(87deg, #f5365c, #f56036);
+@bg-gradient-orange: linear-gradient(87deg, #fb6340, #fbb140);
+@bg-gradient-green: linear-gradient(87deg, #2dce89, #2dcecc);
+@bg-gradient-primary: linear-gradient(87deg, #5e72e4, #825ee4);
+
+// Position Function
+.position(@position,@top,@left: auto,@width: auto,@height: auto) {
+  position: @position;
+  top: @top;
+  left: @left;
+  width: @width;
+  height: @height;
+}
+
+// TODO End
+
+/*
+ *  Base of Background
+ */
+@primary: #5e72e4;
+@info: #11cdef;
+@success: #2dce89;
+@warning: #fb6340;
+@danger: #f5365c;
+@default: #172b4d;
+@secondary: #f4f5f7;
+
+/*
+ *  Base of Text
+ */
+@var-nav-text: rgba(255, 255, 255, 0.95);
+@var-header-text: #32325d;
+@var-paragraph-text: #525f7f;
+@var-description-text: #adb5bd;
+
+/*
+ *  Base of Background
+ */
+@var-base-background: #f4f5f7;
+
+/*
+ *  Global CSS3 Setting
+ */
+@var-border-radius: 0.25rem;
+@var-transition-duration: 0.4s;
+
+/*
+ *  Global Custom Box Shadow Variable
+ */
+@var-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+@var-nav-shadow:0 1px 4px rgba(0,21,41,0.08);
+
+/************************************************************
+ *                                                          *
+ *                                                          *
+ *                        Custom Function                   *
+ *                                                          *
+ *                                                          *
+ ************************************************************/
+
+/*
+ *  Global Flex Box Variable
+ */
+.flex( @arrange, @horizon: flex-start, @vertical: stretch, @allowWrap: wrap) {
+  display: flex;
+  flex-direction: @arrange;
+  justify-content: @horizon;
+  align-items: @vertical;
+  flex-wrap: @allowWrap;
+}
