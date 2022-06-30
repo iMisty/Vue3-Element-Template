@@ -3,8 +3,8 @@
  * @Version: 2.0
  * @Author: Mirage
  * @Date: 2022-06-30 17:32:29
- * @LastEditors: Mirage
- * @LastEditTime: 2022-06-30 17:43:29
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-06-30 22:57:49
  */
 import { FunctionalComponent, computed } from 'vue';
 import '@/style/layout/404.less';
@@ -13,28 +13,29 @@ const computedMessage = computed(() => {
   return 'The webmaster said that you can not enter this page...';
 });
 
-const imageMain = import('@/assets/404_images/404.png');
-const imageCloud = import('@/assets/404_images/404_cloud.png');
-
 const Page404: FunctionalComponent = () => {
   return (
     <div class="wscn-http404-container">
       <div class="wscn-http404">
         <div class="pic-404">
-          <img class="pic-404__parent" v-on-src={imageMain} alt="404" />
+          <img
+            class="pic-404__parent"
+            src="/src/assets/404_images/404.png"
+            alt="404"
+          />
           <img
             class="pic-404__child left"
-            src="./assets/404_images/404_cloud.png"
+            src="/src/assets/404_images/404_cloud.png"
             alt="404"
           />
           <img
             class="pic-404__child mid"
-            src="./assets/404_images/404_cloud.png"
+            src="/src/assets/404_images/404_cloud.png"
             alt="404"
           />
           <img
             class="pic-404__child right"
-            src="./assets/404_images/404_cloud.png"
+            src="/src/assets/404_images/404_cloud.png"
             alt="404"
           />
         </div>

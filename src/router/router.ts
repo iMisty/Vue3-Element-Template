@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Mirage
- * @LastEditTime: 2022-06-30 17:35:40
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-06-30 23:06:15
  */
 import { createRouter, createWebHistory, Router, useRouter } from 'vue-router';
 import nprogress from 'nprogress';
@@ -75,7 +75,7 @@ const constantRouter = [
   {
     path: '/:pathMatch(.*)',
     name: '404',
-    component: Page404,
+    component: () => import('@/404'),
   },
 ];
 
