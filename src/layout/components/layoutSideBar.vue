@@ -1,13 +1,16 @@
 <!--
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
- * @LastEditTime: 2022-06-09 18:01:49
+ * @LastEditTime: 2022-06-30 15:01:05
  * @LastEditors: Mirage
  * @Description: Sidebar with Layout
  * @FilePath: \vue3-element-template\src\layout\components\layoutSideBar.vue
 -->
 <template>
   <el-row class="layout__sidebar" :class="getCollapseStatus ? '' : 'collapse'">
+    <sidebar-logo>
+      <span>2222222222</span>
+    </sidebar-logo>
     <el-scrollbar>
       <el-menu
         background-color="#304156"
@@ -54,6 +57,7 @@
 <script lang="ts">
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import SidebarLogo from '@/components/SideBarLogo/index-logo';
 import { useAPPStore } from '@/store/appStore';
 import { Location, Document, Menu as IconMenu } from '@element-plus/icons-vue';
 import { initDynamicRouter } from '@/router/router';
@@ -63,6 +67,7 @@ export default defineComponent({
     Location,
     Document,
     IconMenu,
+    SidebarLogo,
   },
   setup() {
     const route = useRoute();

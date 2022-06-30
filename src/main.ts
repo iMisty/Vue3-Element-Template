@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
- * @LastEditors: Miya
- * @LastEditTime: 2021-12-11 21:04:05
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-06-30 17:26:35
  */
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
@@ -14,7 +14,7 @@ import './style/normalize.less';
 import './style/transition.less';
 import 'element-plus/dist/index.css';
 import './style/elementChange.less';
-import App from './App.vue';
+import App from './App';
 
 const app = createApp(App);
 

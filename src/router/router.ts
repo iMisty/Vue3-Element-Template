@@ -3,14 +3,14 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Miya
- * @LastEditTime: 2022-04-15 21:06:09
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-06-30 17:35:40
  */
 import { createRouter, createWebHistory, Router, useRouter } from 'vue-router';
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
-import LayoutAdmin from '@/layout/admin.vue';
-import Page404 from '@/404.vue';
+import LayoutAdmin from '@/layout/Admin';
+import Page404 from '@/404';
 import Login from '@/views/Login.vue';
 import { useAPPStore } from '@/store/appStore';
 
