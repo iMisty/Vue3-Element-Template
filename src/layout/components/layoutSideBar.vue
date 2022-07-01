@@ -1,7 +1,7 @@
 <!--
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
- * @LastEditTime: 2022-06-30 15:01:05
+ * @LastEditTime: 2022-07-01 17:14:09
  * @LastEditors: Mirage
  * @Description: Sidebar with Layout
  * @FilePath: \vue3-element-template\src\layout\components\layoutSideBar.vue
@@ -57,7 +57,7 @@
 <script lang="ts">
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import SidebarLogo from '@/components/SideBarLogo/index-logo';
+import SidebarLogo from '@/components/SideBarLogo/indexLogo';
 import { useAPPStore } from '@/store/appStore';
 import { Location, Document, Menu as IconMenu } from '@element-plus/icons-vue';
 import { initDynamicRouter } from '@/router/router';

@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Miya
- * @LastEditTime: 2022-06-30 23:06:15
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-01 17:51:08
  */
 import { createRouter, createWebHistory, Router, useRouter } from 'vue-router';
 import nprogress from 'nprogress';
@@ -18,12 +18,12 @@ const constantRouter = [
   {
     path: '/',
     name: 'Home',
-    redirect: 'dashboard',
+    redirect: '/',
     component: LayoutAdmin,
     meta: { title: 'HomePage' },
     children: [
       {
-        path: 'dashboard',
+        path: '',
         name: 'test1',
         component: () => import('@/views/example/dashboard.vue'),
         meta: { title: 'DashBoard', icon: 'IconMenu' },
