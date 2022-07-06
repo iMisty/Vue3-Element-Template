@@ -4,14 +4,14 @@
  * @Author: Miya
  * @Date: 2021-11-27 14:10:40
  * @LastEditors: Mirage
- * @LastEditTime: 2022-06-30 17:16:54
+ * @LastEditTime: 2022-07-06 16:43:10
  */
 import { defineComponent, computed, watch, onMounted, ref } from 'vue';
 import { useAPPStore } from '@/store/appStore';
 import LayoutSideBar from './components/layoutSideBar.vue';
 import LayoutNavBar from './components/layoutNavBar.vue';
 import LayoutMain from './components/layoutMain.vue';
-import '@/style/layout/admin.less';
+import Style from '@/style/layout/admin.module.less';
 
 const getCollapseStatus = computed(() => {
   const store = useAPPStore();
@@ -42,9 +42,11 @@ const LayoutAdmin = defineComponent({
 
   render() {
     return (
-      <section class="layout__admin">
+      <section class={Style['layout__admin']}>
         <layout-sidebar></layout-sidebar>
-        <div class={['layout', isCollapse.value ? '' : 'isCollapse']}>
+        <div
+          class={[Style['layout'], isCollapse.value ? '' : Style['isCollapse']]}
+        >
           <layout-navbar></layout-navbar>
           <layout-main></layout-main>
         </div>

@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
  * @LastEditors: Mirage
- * @LastEditTime: 2022-06-30 14:21:50
+ * @LastEditTime: 2022-07-06 16:37:24
  */
 import { defineConfig } from 'vite';
 import path from 'path';
@@ -55,6 +55,10 @@ export default defineConfig({
     },
   },
   css: {
+    modules: {
+      generateScopedName: 'miya__[name]__[hash:base64:4]',
+      hashPrefix: 'prefix',
+    },
     preprocessorOptions: {
       /**
        *
@@ -63,6 +67,7 @@ export default defineConfig({
        */
       less: {
         additionalData: '@import "@/style/variable.less";',
+        javascriptEnabled: true,
       },
     },
   },
