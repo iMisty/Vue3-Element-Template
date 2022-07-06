@@ -1,7 +1,7 @@
 <!--
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
- * @LastEditTime: 2022-07-01 17:14:09
+ * @LastEditTime: 2022-07-06 15:28:17
  * @LastEditors: Mirage
  * @Description: Sidebar with Layout
  * @FilePath: \vue3-element-template\src\layout\components\layoutSideBar.vue
@@ -9,7 +9,7 @@
 <template>
   <el-row class="layout__sidebar" :class="getCollapseStatus ? '' : 'collapse'">
     <sidebar-logo>
-      <span>2222222222</span>
+      <span>Admin template</span>
     </sidebar-logo>
     <el-scrollbar>
       <el-menu
@@ -57,9 +57,9 @@
 <script lang="ts">
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import SidebarLogo from '@/components/SideBarLogo/indexLogo';
 import { useAPPStore } from '@/store/appStore';
 import { Location, Document, Menu as IconMenu } from '@element-plus/icons-vue';
+import SidebarLogo from '@/components/SideBarLogo/indexLogo';
 import { initDynamicRouter } from '@/router/router';
 
 export default defineComponent({
@@ -108,6 +108,7 @@ export default defineComponent({
      * @param {string} payload - Menu Item's Index
      */
     const handleSelect = (payload: string) => {
+      console.log(payload);
       router.push({
         name: payload,
       });

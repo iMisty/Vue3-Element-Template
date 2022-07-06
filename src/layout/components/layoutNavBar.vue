@@ -1,7 +1,7 @@
 <!--
  * @Author: Miya
  * @Date: 2021-11-27 15:38:09
- * @LastEditTime: 2022-06-09 18:13:58
+ * @LastEditTime: 2022-07-06 16:47:55
  * @LastEditors: Mirage
  * @Description: NavBar with Layout
  * @FilePath: \vue3-element-template\src\layout\components\layoutNavBar.vue
@@ -37,7 +37,7 @@
 <script lang="ts">
 import { defineComponent, reactive, onMounted } from 'vue';
 import { CaretBottom } from '@element-plus/icons-vue';
-import NavBarHamburger from '@/components/NavBarHamburger/index.vue';
+import NavBarHamburger from '@/components/NavBarHamburger/index';
 import NavBarBreadCrumb from '@/components/NavBarBreadCrumb/index.vue';
 import { useRouter } from 'vue-router';
 
