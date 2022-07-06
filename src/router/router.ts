@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-01 17:51:08
+ * @LastEditTime: 2022-07-06 17:44:17
  */
 import { createRouter, createWebHistory, Router, useRouter } from 'vue-router';
 import nprogress from 'nprogress';
@@ -18,12 +18,12 @@ const constantRouter = [
   {
     path: '/',
     name: 'Home',
-    redirect: '/',
     component: LayoutAdmin,
+    redirect: '/dashboard',
     meta: { title: 'HomePage' },
     children: [
       {
-        path: '',
+        path: 'dashboard',
         name: 'test1',
         component: () => import('@/views/example/dashboard.vue'),
         meta: { title: 'DashBoard', icon: 'IconMenu' },
@@ -56,7 +56,7 @@ const constantRouter = [
           {
             path: '5',
             name: 'test5',
-            component: () => import('@/views/example/child.vue'),
+            component: () => import('@/views/example/child1'),
             meta: { title: 'DashBoard Children1', icon: 'Document' },
           },
         ],
