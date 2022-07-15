@@ -1,14 +1,15 @@
 /*
  * @Description: Login Page
- * @Version: 2.0
+ * @Version: 2.1
  * @Author: Miya
  * @Date: 2021-12-18 20:30:02
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-08 10:07:14
+ * @LastEditTime: 2022-07-15 16:02:49
  */
 import { useAPPStore } from '@/store/appStore';
 import { defineComponent, reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { User, Lock } from '@element-plus/icons-vue';
 import Style from '@/style/page/login.module.less';
 
 const dataLoginForm = reactive({
@@ -31,11 +32,12 @@ const Login = defineComponent({
     const handleClickLogin = () => {
       status.isLoading = true;
       try {
-        useAPPStore().setLoginData(dataLoginForm);
-        router.push({ path: '/' });
+        setTimeout(() => {
+          useAPPStore().setLoginData(dataLoginForm);
+          router.push({ path: '/' });
+        }, 1000);
       } catch (error) {
         // todo: throw error
-      } finally {
         status.isLoading = false;
       }
     };
@@ -57,6 +59,7 @@ const Login = defineComponent({
             {/* Login Form Title Start */}
             <div class={Style['login__form--title']}>
               <h3 class={Style['title']}>Login Form</h3>
+              <p class={Style['sub']}>Please enter your details</p>
             </div>
             {/*  Login Form Title End  */}
 
@@ -66,7 +69,9 @@ const Login = defineComponent({
                 v-model={dataLoginForm.username}
                 placeholder="Username"
                 type="text"
+                size="large"
                 auto-complete="on"
+                prefix-icon={User}
               ></el-input>
             </el-form-item>
             <el-form-item prop="password">
@@ -74,14 +79,17 @@ const Login = defineComponent({
                 v-model={dataLoginForm.password}
                 placeholder="Password"
                 type="password"
+                size="large"
                 auto-complete="on"
+                prefix-icon={Lock}
                 onKeyupEnter={() => this.handleClickLogin()}
               ></el-input>
             </el-form-item>
 
             <el-button
               type="primary"
-              plain={true}
+              size="large"
+              style="width: 100%"
               onClick={() => this.handleClickLogin()}
               loading={status.isLoading}
             >
