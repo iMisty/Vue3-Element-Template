@@ -1,16 +1,32 @@
 .login {
+  .flex(row,center,center);
   width: 100vw;
   height: 100vh;
-  background-color: #2d3a4b;
+  // background-color: #2d3a4b;
+  background-image: url('../../assets/icons/svg/loginbg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
   &__container {
+    width: 20rem;
     max-width: 30rem;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 6rem;
-    padding: 3rem;
+    padding: 4rem;
     background-color: @var-base-background;
     border-radius: @var-border-radius;
     box-shadow: @var-box-shadow;
+  }
+  &__form {
+    &--title {
+      margin-bottom: 1.5rem;
+      & > .title {
+        margin: 0;
+        margin-bottom: 0.25rem;
+      }
+      & > .sub {
+        margin: 0;
+        color: @var-paragraph-text;
+        font-size: @fontSize-paragraph;
+      }
+    }
   }
 }

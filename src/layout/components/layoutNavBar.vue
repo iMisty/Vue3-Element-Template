@@ -1,7 +1,7 @@
 <!--
  * @Author: Miya
  * @Date: 2021-11-27 15:38:09
- * @LastEditTime: 2022-07-06 16:47:55
+ * @LastEditTime: 2022-07-15 16:36:13
  * @LastEditors: Mirage
  * @Description: NavBar with Layout
  * @FilePath: \vue3-element-template\src\layout\components\layoutNavBar.vue
@@ -70,9 +70,7 @@ export default LayoutNavBar;
 <style lang="less" scoped>
 .layout__navbar {
   .flex(row,space-between,center);
-  padding: 0.5rem 0.75rem;
-  height: 3rem;
-  box-shadow: @var-nav-shadow;
+  margin-bottom: 0.875rem;
   &--left {
     .flex(row,flex-start,center);
   }

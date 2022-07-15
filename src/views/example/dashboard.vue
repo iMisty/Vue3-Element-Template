@@ -1,13 +1,13 @@
 <!--
  * @Author: Miya
  * @Date: 2021-12-07 23:32:39
- * @LastEditTime: 2022-01-15 00:26:00
- * @LastEditors: Miya
+ * @LastEditTime: 2022-07-15 16:09:22
+ * @LastEditors: Mirage
  * @Description: Test Page1
  * @FilePath: \vue3-element-template\src\views\example\dashboard.vue
 -->
 <template>
-  <el-row class="test1" :gutter="16">
+  <el-row class="test1" :gutter="32">
     <el-space wrap>
       <el-col>
         <el-card>
