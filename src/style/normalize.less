@@ -365,12 +365,39 @@ template {
 }
 
 #app {
-  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+html,
+body,
+div,
+section,
+article,
+main,
+aside {
+  &::-webkit-scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 8px;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition-duration: 0.3s;
+  }
+  &::-webkit-scrollbar-thumb {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    border-radius: 64rem;
+    transition-duration: 0.3s;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    position: absolute;
+    opacity: 1;
+    transition-duration: 0.3s;
+  }
 }
 ul {
   padding: 0;

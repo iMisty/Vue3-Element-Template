@@ -1,7 +1,7 @@
 <!--
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
- * @LastEditTime: 2022-07-06 15:28:17
+ * @LastEditTime: 2022-07-20 17:17:02
  * @LastEditors: Mirage
  * @Description: Sidebar with Layout
  * @FilePath: \vue3-element-template\src\layout\components\layoutSideBar.vue
@@ -13,9 +13,6 @@
     </sidebar-logo>
     <el-scrollbar>
       <el-menu
-        background-color="#304156"
-        text-color="#bfcbd9"
-        class="el-menu-vertical-demo"
         :collapse="!getCollapseStatus"
         :collapse-transition="false"
         :default-active="getActiveRoute"
@@ -135,13 +132,12 @@ export default defineComponent({
   left: 0;
   width: 14rem;
   height: 100%;
-  background-color: #304156;
+  box-shadow: @var-sidebar-shadow;
   transition-duration: 0.3s;
   &--title {
     padding: 1rem 0;
     text-align: center;
     font-size: 1.2rem;
-    background-color: #2b2f3a;
     letter-spacing: 0.54px;
     color: #fff;
     cursor: default;
