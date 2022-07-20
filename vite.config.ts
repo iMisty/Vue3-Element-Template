@@ -1,17 +1,17 @@
 /*
  * @Description: Vite Config
- * @Version: 2.0
+ * @Version: 2.1
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 16:37:24
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-07-21 00:20:17
  */
 import { defineConfig } from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue';
 import vueJSX from '@vitejs/plugin-vue-jsx';
 import Gzip from 'vite-plugin-compression';
-import viteSvgIcons from 'vite-plugin-svg-icons';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,7 +24,7 @@ export default defineConfig({
       algorithm: 'gzip',
       ext: '.gz',
     }),
-    viteSvgIcons({
+    createSvgIconsPlugin({
       iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
       symbolId: 'icon-[dir]-[name]',
     }),
