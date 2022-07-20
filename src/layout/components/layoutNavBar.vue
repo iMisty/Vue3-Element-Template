@@ -1,10 +1,10 @@
 <!--
  * @Author: Miya
  * @Date: 2021-11-27 15:38:09
- * @LastEditTime: 2022-07-15 16:36:13
- * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-21 00:05:02
+ * @LastEditors: Miya
  * @Description: NavBar with Layout
- * @FilePath: \vue3-element-template\src\layout\components\layoutNavBar.vue
+ * @FilePath: \Vue3-Element-Template\src\layout\components\layoutNavBar.vue
 -->
 <template>
   <div class="layout__navbar">
@@ -12,43 +12,52 @@
       <NavBarHamburger></NavBarHamburger>
       <NavBarBreadCrumb></NavBarBreadCrumb>
     </div>
-    <!-- TODO: Component -->
     <div class="layout__navbar--right">
-      <el-dropdown>
-        <div class="avatar-wrapper">
-          {{ data.username }}
-          <el-icon><caret-bottom /></el-icon>
-        </div>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <router-link to="/setPassword/index">
-              <el-dropdown-item>修改密码</el-dropdown-item>
-            </router-link>
-            <el-dropdown-item divided @click="handleClickLogout">
-              <span style="display: block">退出登录</span>
-            </el-dropdown-item>
-          </el-dropdown-menu>
+      <NavBarAvatar @click="setUserDrawer"></NavBarAvatar>
+      <!-- TODO: Component -->
+      <el-drawer v-model="isDrawerActive" title="I am the title" :size="360">
+        <template #header>
+          <h4>set title by slot</h4>
         </template>
-      </el-dropdown>
+        <template #default>
+          <div>
+            <el-radio label="Option 1" size="large">Option 1</el-radio>
+            <el-radio label="Option 2" size="large">Option 2</el-radio>
+          </div>
+        </template>
+        <template #footer>
+          <div>
+            1
+          </div>
+        </template>
+      </el-drawer>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted } from 'vue';
+import { defineComponent, reactive, onMounted, ref } from 'vue';
 import { CaretBottom } from '@element-plus/icons-vue';
 import NavBarHamburger from '@/components/NavBarHamburger/index';
 import NavBarBreadCrumb from '@/components/NavBarBreadCrumb/index.vue';
+import NavBarAvatar from '@/components/NavBarAvatar/indexAvatar';
 import { useRouter } from 'vue-router';
 
 const data = reactive({
   username: new String(),
 });
 
+const isDrawerActive = ref(false);
+
+const setUserDrawer = () => {
+  isDrawerActive.value = true;
+};
+
 const LayoutNavBar = defineComponent({
   components: {
     NavBarHamburger,
     NavBarBreadCrumb,
+    NavBarAvatar,
     CaretBottom,
   },
   setup() {
@@ -61,7 +70,7 @@ const LayoutNavBar = defineComponent({
       const getUsername = 'admin';
       data.username = getUsername || '';
     });
-    return { data, handleClickLogout };
+    return { data, handleClickLogout, setUserDrawer, isDrawerActive };
   },
 });
 
@@ -75,7 +84,7 @@ export default LayoutNavBar;
     .flex(row,flex-start,center);
   }
   &--right {
-    min-width: 5rem;
+    // min-width: 5rem;
     text-align: center;
     cursor: pointer;
   }
