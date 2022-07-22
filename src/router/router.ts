@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-08 09:53:08
+ * @LastEditTime: 2022-07-22 17:59:29
  */
 import { createRouter, createWebHistory, Router, useRouter } from 'vue-router';
 import nprogress from 'nprogress';
@@ -26,14 +26,23 @@ const constantRouter = [
         path: 'dashboard',
         name: 'test1',
         component: () => import('@/views/example/dashboard.vue'),
-        meta: { title: 'DashBoard', icon: 'IconMenu' },
+        meta: { title: 'DashBoard', icon: 'IconMenu', isFirstRoute: true },
       },
       {
-        path: 'table',
-        name: 'ExampleTable',
-        component: () => import('@/views/example/table.vue'),
-        meta: { title: 'Example Table', icon: 'Document' },
+        path: 'example',
+        name: 'Example',
+        component: () => import('@/views/example/components/indexComponents'),
+        meta: { title: 'Example', icon: 'IconMenu', isFirstRoute: true },
+        children: [
+          {
+            path: 'table',
+            name: 'ExampleTable',
+            component: () => import('@/views/example/table.vue'),
+            meta: { title: 'Example Table', icon: 'Document' },
+          },
+        ],
       },
+
       {
         path: 'tree',
         name: 'Tree',

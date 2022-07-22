@@ -1,8 +1,8 @@
 /*
  * @Author: Miya
  * @Date: 2021-11-27 02:34:42
- * @LastEditTime: 2022-04-15 21:05:53
- * @LastEditors: Miya
+ * @LastEditTime: 2022-07-22 18:03:10
+ * @LastEditors: Mirage
  * @Description: Test Pinia Store
  * @FilePath: \vue3-element-template\src\store\appStore.ts
  */
@@ -17,6 +17,7 @@ interface RouterData {
     title: String;
     icon: String;
     hidden?: Boolean;
+    isFirstRoute?: Boolean;
   };
 }
 
@@ -91,7 +92,12 @@ export const useAPPStore = defineStore({
      * @returns {String} token
      */
     setLoginData(loginData: LoginData): string {
+      const userInfo = {
+        username: loginData.username,
+        token: 'mock1',
+      };
       localStorage.setItem('token', 'mock1');
+      localStorage.setItem('UserInfo', JSON.stringify(userInfo));
       return (this.token = 'mock1');
     },
   },

@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-04 17:17:17
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-21 22:14:47
+ * @LastEditTime: 2022-07-22 10:21:12
  */
 import { FunctionalComponent } from 'vue';
 import GlobalCard from '@/components/GlobalCard/indexGlobalCard';

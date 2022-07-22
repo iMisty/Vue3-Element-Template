@@ -1,8 +1,8 @@
 <!--
  * @Author: Miya
  * @Date: 2021-11-27 15:38:09
- * @LastEditTime: 2022-07-21 00:05:02
- * @LastEditors: Miya
+ * @LastEditTime: 2022-07-22 17:07:48
+ * @LastEditors: Mirage
  * @Description: NavBar with Layout
  * @FilePath: \Vue3-Element-Template\src\layout\components\layoutNavBar.vue
 -->
@@ -17,7 +17,7 @@
       <!-- TODO: Component -->
       <el-drawer v-model="isDrawerActive" title="I am the title" :size="360">
         <template #header>
-          <h4>set title by slot</h4>
+          <h4>{{ $t('GlobalDrawer.welcome') }}</h4>
         </template>
         <template #default>
           <div>
@@ -26,9 +26,7 @@
           </div>
         </template>
         <template #footer>
-          <div>
-            1
-          </div>
+          <div>1</div>
         </template>
       </el-drawer>
     </div>
@@ -42,6 +40,7 @@ import NavBarHamburger from '@/components/NavBarHamburger/index';
 import NavBarBreadCrumb from '@/components/NavBarBreadCrumb/index.vue';
 import NavBarAvatar from '@/components/NavBarAvatar/indexAvatar';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 const data = reactive({
   username: new String(),
@@ -62,6 +61,7 @@ const LayoutNavBar = defineComponent({
   },
   setup() {
     const Router = useRouter();
+    // const { t } = useI18n();
 
     const handleClickLogout = () => {
       Router.replace({ path: '/login' });
