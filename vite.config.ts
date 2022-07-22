@@ -3,13 +3,14 @@
  * @Version: 2.1
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
- * @LastEditors: Miya
- * @LastEditTime: 2022-07-21 00:20:17
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-22 17:14:45
  */
 import { defineConfig } from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue';
 import vueJSX from '@vitejs/plugin-vue-jsx';
+import vueI18n from '@intlify/vite-plugin-vue-i18n';
 import Gzip from 'vite-plugin-compression';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
@@ -29,6 +30,13 @@ export default defineConfig({
       symbolId: 'icon-[dir]-[name]',
     }),
     vueJSX(),
+    /**
+     * https://github.com/intlify/vue-i18n-next/issues/789
+     * https://blog.csdn.net/yjl13598765406/article/details/125498134
+     */
+    vueI18n({
+      include: path.resolve(__dirname, './path/to/src/locales/**'),
+    }),
   ],
   base: './',
   resolve: {
@@ -84,5 +92,8 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
+  },
+  alias: {
+    'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
   },
 });
