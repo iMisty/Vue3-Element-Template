@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-25 15:56:02
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-07-25 22:06:35
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -25,13 +25,13 @@ const constantRouter: Array<RouterData> = [
         path: 'dashboard',
         name: 'test1',
         component: () => import('@/views/example/dashboard.vue'),
-        meta: { title: 'DashBoard', icon: 'IconMenu', isFirstRoute: true },
+        meta: { title: 'DashBoard', icon: 'Headset', isFirstRoute: true },
       },
       {
         path: 'example',
         name: 'Example',
         component: () => import('@/views/example/components/indexComponents'),
-        meta: { title: 'Example', icon: 'IconMenu', isFirstRoute: true },
+        meta: { title: 'Example', icon: 'Headset', isFirstRoute: true },
         children: [
           {
             path: 'table',
@@ -46,13 +46,13 @@ const constantRouter: Array<RouterData> = [
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/example/tree.vue'),
-        meta: { title: 'Tree', icon: 'IconMenu' },
+        meta: { title: 'Tree', icon: 'Headset' },
       },
       {
         path: '3',
         name: 'test3',
         component: () => import('@/views/example/tree.vue'),
-        meta: { title: 'DashBoard3 Hidden', icon: 'IconMenu', hidden: true },
+        meta: { title: 'DashBoard3 Hidden', icon: 'Headset', hidden: true },
       },
       {
         path: '4',

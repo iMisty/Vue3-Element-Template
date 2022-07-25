@@ -3,11 +3,12 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-07-05 17:07:38
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-25 15:27:57
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-07-25 22:06:50
  */
-import { defineComponent, Slots } from 'vue';
-import router from '@/router/router';
+import { defineComponent, resolveComponent } from 'vue';
+import type { Slots } from 'vue';
+import { Location, Document, Menu as IconMenu,Headset } from '@element-plus/icons-vue';
 import SingleRoute from './itemSingleRoute';
 
 interface SidebarRoute {
@@ -21,6 +22,11 @@ interface SidebarRoute {
 
 
 const itemMultiRoute = defineComponent({
+  components:{
+    Location,
+    Document,
+    IconMenu,Headset
+  },
   props: {
     name: {
       type: String,
@@ -35,15 +41,16 @@ const itemMultiRoute = defineComponent({
       type: Object,
     },
     children: {
-      type: Array<SidebarRoute>,
+      type: Array<SidebarRoute>
     },
   },
   render() {
+    const getPropsIcon = () => resolveComponent(this.$props.icon ? this.$props.icon : '')
     const slotSubMenuTitle: Slots = {
       title: () => [
         <span>
           <el-icon>
-            {/* <component is={this.$props.icon}></component> */}
+            {getPropsIcon()}
           </el-icon>
           {this.$props.title}
         </span>,

@@ -3,8 +3,8 @@
  * @Version: 2.0
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-25 18:03:52
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-07-25 21:38:24
  */
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
@@ -110,7 +110,7 @@ const layoutSidebar = defineComponent({
       <el-row
         class={[
           Style['layout__sidebar'],
-          this.getCollapseStatus ? '' : 'collapse',
+          this.getCollapseStatus ? '' : Style['collapse'],
         ]}
       >
         <sidebar-logo>
