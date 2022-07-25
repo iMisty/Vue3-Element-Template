@@ -4,7 +4,7 @@
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 15:07:37
+ * @LastEditTime: 2022-07-25 18:03:52
  */
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
@@ -12,9 +12,10 @@ import { useAPPStore } from '@/store/appStore';
 import { Location, Document, Menu as IconMenu } from '@element-plus/icons-vue';
 import { initDynamicRouter } from '@/router/router';
 import SidebarLogo from '@/components/SideBarLogo/indexLogo';
+import GroupRoute from '@/components/SideBarItem/itemRouteGroup';
 import SingleRoute from '@/components/SideBarItem/itemSingleRoute';
 import MultiRoute from '@/components/SideBarItem/itemMultiRoute';
-import '@/style/layout/sidebar/sidebar.less';
+import Style from '@/style/layout/sidebar/sidebar.module.less';
 
 interface SidebarRoute {
   name: string;
@@ -31,6 +32,7 @@ const layoutSidebar = defineComponent({
     Document,
     IconMenu,
     SidebarLogo,
+    GroupRoute,
   },
   setup() {
     const route = useRoute();
@@ -91,29 +93,40 @@ const layoutSidebar = defineComponent({
   },
 
   render() {
+    const templateMultiRoute = (item: any) => {
+      return (
+        <MultiRoute
+          children={item.children}
+          name={item.name}
+          title={item.meta.title}
+          icon={item.meta.icon}
+          meta={item.meta}
+        >
+          <span>1222</span>
+        </MultiRoute>
+      );
+    };
     return (
       <el-row
-        class={['layout__sidebar', this.getCollapseStatus ? '' : 'collapse']}
+        class={[
+          Style['layout__sidebar'],
+          this.getCollapseStatus ? '' : 'collapse',
+        ]}
       >
         <sidebar-logo>
           <span>Admin template</span>
         </sidebar-logo>
         <el-scrollbar>
           <el-menu
-            background-color="#304156"
-            text-color="#bfcbd9"
-            class="el-menu-vertical-demo"
             collapse={!this.getCollapseStatus}
             collapse-transition={false}
             default-active={this.getActiveRoute}
             onSelect={() => this.handleSelect}
           >
-            {this.initSideMenu.map((item: SidebarRoute) => {
-              return (
-                <ul key={item.name}>
-                  {!item.meta.hidden &&
-                  item.children &&
-                  item.children.length > 0 ? (
+            {this.initSideMenu.map((item: any) => {
+              return item.meta.isFirstRoute ? (
+                <group-route title={item.meta.title}>
+                  {item.children ? (
                     <MultiRoute
                       children={item.children}
                       name={item.name}
@@ -130,7 +143,13 @@ const layoutSidebar = defineComponent({
                       title={item.meta.title}
                     ></SingleRoute>
                   )}
-                </ul>
+                </group-route>
+              ) : (
+                <SingleRoute
+                  name={item.name}
+                  icon={item.meta.icon}
+                  title={item.meta.title}
+                ></SingleRoute>
               );
             })}
           </el-menu>

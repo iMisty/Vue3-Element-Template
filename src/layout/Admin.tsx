@@ -1,16 +1,16 @@
 /*
  * @Description: Admin Template Layout
- * @Version: 2.0
+ * @Version: 2.1
  * @Author: Miya
  * @Date: 2021-11-27 14:10:40
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 16:43:10
+ * @LastEditTime: 2022-07-25 16:42:37
  */
 import { defineComponent, computed, watch, onMounted, ref } from 'vue';
 import { useAPPStore } from '@/store/appStore';
-import LayoutSideBar from './components/layoutSideBar.vue';
+import LayoutSideBar from './components/layoutSideBar';
 import LayoutNavBar from './components/layoutNavBar.vue';
-import LayoutMain from './components/layoutMain.vue';
+import LayoutMain from './components/layoutMain';
 import Style from '@/style/layout/admin.module.less';
 
 const getCollapseStatus = computed(() => {

@@ -4,10 +4,11 @@
  * @Author: Miya
  * @Date: 2021-11-28 00:56:25
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 15:42:17
+ * @LastEditTime: 2022-07-25 16:41:46
  */
 
-import { defineComponent, computed, Transition, Slots } from 'vue';
+import { defineComponent, computed, Transition } from 'vue';
+import type { Slots } from 'vue';
 import { useRoute } from 'vue-router';
 import '@/style/layout/main.module.less';
 
@@ -24,9 +25,15 @@ const LayoutMain = defineComponent({
   render() {
     return (
       <div class="layout__main">
-        <transition name="fade-transform" mode="out-in">
-          <router-view></router-view>
-        </transition>
+        <router-view
+          v-slots={{
+            default: (scope: Slots) => (
+              <transition name="fade-transform" mode="out-in">
+                {scope.Component}
+              </transition>
+            ),
+          }}
+        ></router-view>
       </div>
     );
   },

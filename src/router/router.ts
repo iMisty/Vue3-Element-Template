@@ -4,21 +4,20 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-22 17:59:29
+ * @LastEditTime: 2022-07-25 15:56:02
  */
-import { createRouter, createWebHistory, Router, useRouter } from 'vue-router';
+import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
-import LayoutAdmin from '@/layout/Admin';
-import Page404 from '@/404';
 import Login from '@/views/Login';
 import { useAPPStore } from '@/store/appStore';
+import RouterData from '@/interface/Router';
 
-const constantRouter = [
+const constantRouter: Array<RouterData> = [
   {
     path: '/',
     name: 'Home',
-    component: LayoutAdmin,
+    component: () => import('@/layout/Admin'),
     redirect: '/dashboard',
     meta: { title: 'HomePage' },
     children: [
@@ -94,7 +93,7 @@ export function initDynamicRouter() {
 
 const Router = createRouter({
   history: createWebHistory(),
-  routes: initDynamicRouter(),
+  routes: initDynamicRouter() as any,
 });
 
 Router.beforeEach((to, from, next) => {

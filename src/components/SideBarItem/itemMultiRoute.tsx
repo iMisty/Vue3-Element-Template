@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-05 17:07:38
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 15:21:13
+ * @LastEditTime: 2022-07-25 15:27:57
  */
 import { defineComponent, Slots } from 'vue';
 import router from '@/router/router';
@@ -19,12 +19,6 @@ interface SidebarRoute {
   select?: () => void
 }
 
-const handleSelect = (payload: string) => {
-  console.log(payload);
-  router.push({
-    name: payload,
-  });
-};
 
 const itemMultiRoute = defineComponent({
   props: {
@@ -39,11 +33,9 @@ const itemMultiRoute = defineComponent({
     },
     meta: {
       type: Object,
-      default: () => {},
     },
     children: {
       type: Array<SidebarRoute>,
-      default: () => [],
     },
   },
   render() {

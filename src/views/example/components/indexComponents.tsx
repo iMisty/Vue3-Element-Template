@@ -4,12 +4,15 @@
  * @Author: Mirage
  * @Date: 2022-07-22 15:00:37
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-22 15:02:32
+ * @LastEditTime: 2022-07-25 15:58:19
  */
-import { FunctionalComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-const ComponentIndex: FunctionalComponent = () => {
-  return <router-view></router-view>;
-};
+const ComponentIndex = defineComponent({
+  name: 'ComponentIndex',
+  render() {
+    return <router-view></router-view>;
+  },
+});
 
 export default ComponentIndex;

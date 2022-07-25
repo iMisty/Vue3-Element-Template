@@ -1,18 +1,27 @@
 .layout__sidebar {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
   width: 14rem;
   height: 100%;
-  background-color: #304156;
   transition-duration: 0.3s;
+  &--group {
+    word-break: break-all;
+    &-title {
+      padding: 1rem 2rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: @var-primary-color;
+      letter-spacing: 0.54px;
+      font-weight: 700;
+    }
+  }
   &--title {
     padding: 1rem 0;
     text-align: center;
     font-size: 1.2rem;
     background-color: #2b2f3a;
     letter-spacing: 0.54px;
-    color: #fff;
     cursor: default;
   }
 }

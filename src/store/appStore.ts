@@ -1,25 +1,13 @@
 /*
  * @Author: Miya
  * @Date: 2021-11-27 02:34:42
- * @LastEditTime: 2022-07-22 18:03:10
+ * @LastEditTime: 2022-07-25 10:11:32
  * @LastEditors: Mirage
  * @Description: Test Pinia Store
  * @FilePath: \vue3-element-template\src\store\appStore.ts
  */
 import { defineStore } from 'pinia';
-
-interface RouterData {
-  path: String;
-  name: String;
-  component: Object;
-  redirect?: String;
-  meta: {
-    title: String;
-    icon: String;
-    hidden?: Boolean;
-    isFirstRoute?: Boolean;
-  };
-}
+import RouterData from '@/interface/Router';
 
 interface LoginData {
   username: String;
