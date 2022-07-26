@@ -4,15 +4,15 @@
  * @Author: Mirage
  * @Date: 2022-07-05 17:07:38
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 15:23:10
+ * @LastEditTime: 2022-07-26 09:47:32
  */
 import { FunctionalComponent } from 'vue';
 import router from '@/router/router';
 
 interface SidebarRoute {
-  name: String;
-  icon: String;
-  title: String;
+  name: string;
+  icon?: string;
+  title?: string;
 }
 
 /**

@@ -3,8 +3,8 @@
  * @Version: 2.0
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
- * @LastEditors: Miya
- * @LastEditTime: 2022-07-25 21:38:24
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-26 09:48:00
  */
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
@@ -16,6 +16,7 @@ import GroupRoute from '@/components/SideBarItem/itemRouteGroup';
 import SingleRoute from '@/components/SideBarItem/itemSingleRoute';
 import MultiRoute from '@/components/SideBarItem/itemMultiRoute';
 import Style from '@/style/layout/sidebar/sidebar.module.less';
+import RouterData from '@/interface/Router';
 
 interface SidebarRoute {
   name: string;
@@ -123,8 +124,8 @@ const layoutSidebar = defineComponent({
             default-active={this.getActiveRoute}
             onSelect={() => this.handleSelect}
           >
-            {this.initSideMenu.map((item: any) => {
-              return item.meta.isFirstRoute ? (
+            {this.initSideMenu.map((item: RouterData) => {
+              return item.meta?.isFirstRoute ? (
                 <group-route title={item.meta.title}>
                   {item.children ? (
                     <MultiRoute
@@ -147,8 +148,8 @@ const layoutSidebar = defineComponent({
               ) : (
                 <SingleRoute
                   name={item.name}
-                  icon={item.meta.icon}
-                  title={item.meta.title}
+                  icon={item.meta?.icon}
+                  title={item.meta?.title}
                 ></SingleRoute>
               );
             })}

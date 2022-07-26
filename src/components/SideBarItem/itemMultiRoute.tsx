@@ -3,20 +3,16 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-07-05 17:07:38
- * @LastEditors: Miya
- * @LastEditTime: 2022-07-25 22:06:50
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-26 09:43:39
  */
 import { defineComponent, resolveComponent } from 'vue';
 import type { Slots } from 'vue';
 import { Location, Document, Menu as IconMenu,Headset } from '@element-plus/icons-vue';
 import SingleRoute from './itemSingleRoute';
+import RouterData from '@/interface/Router';
 
-interface SidebarRoute {
-  name: String;
-  icon: String;
-  title: String;
-  meta: SidebarRoute;
-  children: Array<SidebarRoute>;
+interface SidebarRoute extends RouterData {
   select?: () => void
 }
 
@@ -63,8 +59,8 @@ const itemMultiRoute = defineComponent({
             return (
               <SingleRoute
                 name={sub.name}
-                icon={sub.icon}
-                title={sub.meta.title}
+                icon={sub.meta?.icon}
+                title={sub.meta?.title}
               ></SingleRoute>
             );
           })}

@@ -3,8 +3,8 @@
  * @Version: 2.1
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
- * @LastEditors: Miya
- * @LastEditTime: 2022-07-25 21:14:50
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-26 11:52:43
  */
 import { defineConfig } from 'vite';
 import path from 'path';
@@ -82,7 +82,7 @@ export default defineConfig({
 
   server: {
     host: '0.0.0.0',
-    port: 12450,
+    port: 12458,
     open: true,
     https: false,
     proxy: {
