@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-07-05 17:07:38
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-27 14:17:54
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-07-27 23:09:41
  */
 import { defineComponent, h, resolveComponent } from 'vue';
 import router from '@/router/router';
@@ -13,6 +13,7 @@ import {
   Document,
   Menu as IconMenu,
   Headset,
+  House,
 } from '@element-plus/icons-vue';
 
 interface SidebarRoute {
@@ -38,6 +39,7 @@ const itemSingleRoute = defineComponent({
     Document,
     IconMenu,
     Headset,
+    House
   },
   props: {
     icon: {

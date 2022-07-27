@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-27 18:00:00
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-07-28 00:01:30
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -25,14 +25,14 @@ const constantRouter: Array<RouterData> = [
         path: 'dashboard',
         name: 'test1',
         component: () => import('@/views/example/dashboard.vue'),
-        meta: { title: 'DashBoard', icon: 'Headset', isCollapse: false },
+        meta: { title: 'DashBoard', icon: 'House', isCollapse: false },
       },
       {
         path: 'example',
         name: 'Example',
         component: () => import('@/views/example/components/indexComponents'),
         meta: {
-          title: 'Example',
+          title: 'Components',
           icon: 'Headset',
           isFirstRoute: true,
           isCollapse: false,
@@ -41,8 +41,14 @@ const constantRouter: Array<RouterData> = [
           {
             path: 'table',
             name: 'ExampleTable',
-            component: () => import('@/views/example/table.vue'),
-            meta: { title: 'Example Table', icon: 'Document' },
+            component: () => import('@/views/example/components/table'),
+            meta: { title: 'Table', icon: 'Document' },
+          },
+          {
+            path: 'button',
+            name: 'ExampleButton',
+            component: () => import('@/views/example/components/button'),
+            meta: { title: 'Button', icon: 'Document' },
           },
         ],
       },
@@ -60,12 +66,12 @@ const constantRouter: Array<RouterData> = [
         meta: { title: 'DashBoard3 Hidden', icon: 'Headset', isHidden: true },
       },
       {
-        path: '4',
+        path: 'block',
         name: 'test4',
-        redirect: '/4/5',
+        redirect: '/block/5',
         component: () => import('@/views/example/components/indexComponents'),
         meta: {
-          title: 'DashBoard4',
+          title: 'Block',
           icon: 'location',
           isFirstRoute: true,
         },
@@ -92,7 +98,7 @@ const constantRouter: Array<RouterData> = [
   {
     path: '/:pathMatch(.*)',
     name: '404',
-    component: () => import('@/404'),
+    component: () => import('@/views/404'),
   },
 ];
 

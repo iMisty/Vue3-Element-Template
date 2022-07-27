@@ -1,10 +1,10 @@
 /*
  * @Author: Miya
  * @Date: 2021-11-27 02:34:42
- * @LastEditTime: 2022-07-25 10:11:32
- * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-27 22:39:53
+ * @LastEditors: Miya
  * @Description: Test Pinia Store
- * @FilePath: \vue3-element-template\src\store\appStore.ts
+ * @FilePath: \Vue3-Element-Template\src\store\appStore.ts
  */
 import { defineStore } from 'pinia';
 import RouterData from '@/interface/Router';
@@ -75,7 +75,7 @@ export const useAPPStore = defineStore({
 
     /**
      * @description Set Token from API or Mock
-     * @param {LoginData} Token from API
+     * @param {loginData} loginData from API
      * @todo Your Login Method
      * @returns {String} token
      */
@@ -84,8 +84,7 @@ export const useAPPStore = defineStore({
         username: loginData.username,
         token: 'mock1',
       };
-      localStorage.setItem('token', 'mock1');
-      localStorage.setItem('UserInfo', JSON.stringify(userInfo));
+      sessionStorage.setItem('UserInfo', JSON.stringify(userInfo));
       return (this.token = 'mock1');
     },
   },

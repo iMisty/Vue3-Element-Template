@@ -3,13 +3,12 @@
  * @Version: 2.0
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-27 18:02:58
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-07-27 23:08:12
  */
 import { defineComponent, computed, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useAPPStore } from '@/store/appStore';
-import { Location, Document, Menu as IconMenu } from '@element-plus/icons-vue';
 import { initDynamicRouter } from '@/router/router';
 import SidebarLogo from '@/components/SideBarLogo/indexLogo';
 import GroupRoute from '@/components/SideBarItem/itemRouteGroup';
@@ -22,9 +21,6 @@ import RouterData from '@/interface/Router';
 
 const layoutSidebar = defineComponent({
   components: {
-    Location,
-    Document,
-    IconMenu,
     SidebarLogo,
     GroupRoute,
     CollapseRoute,
@@ -34,7 +30,6 @@ const layoutSidebar = defineComponent({
   },
   setup() {
     const route = useRoute();
-    const router = useRouter();
 
     /**
      * @description Init Dynamic Router
@@ -47,7 +42,6 @@ const layoutSidebar = defineComponent({
           return !item.meta?.isHidden;
         }
       );
-      console.log(filterRoute);
       return filterRoute;
     });
 
