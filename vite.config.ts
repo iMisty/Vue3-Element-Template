@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-26 11:52:43
+ * @LastEditTime: 2022-07-27 13:58:06
  */
 import { defineConfig } from 'vite';
 import path from 'path';
@@ -47,6 +47,7 @@ export default defineConfig({
       config: path.resolve(__dirname, 'config'),
       store: path.resolve(__dirname, 'store'),
       utils: path.resolve(__dirname, 'utils'),
+      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
     },
   },
   build: {
@@ -92,8 +93,5 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
-  },
-  alias: {
-    'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
   },
 });

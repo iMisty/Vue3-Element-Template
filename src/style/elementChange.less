@@ -1,3 +1,7 @@
+:root {
+  --el-color-primary: @var-primary-color;
+}
+
 .el-scrollbar {
   width: 100%;
 }
@@ -22,6 +26,10 @@
   font-weight: 700;
 }
 
+.el-sub-menu .el-icon {
+  color: var(--el-color-primary);
+}
+
 .el-sub-menu.is-opened,
 .el-menu-item:hover {
   background-color: var(--el-menu-hover-bg-color);
@@ -29,8 +37,4 @@
 
 .el-card {
   --el-card-border-radius: 12px;
-}
-
-:root {
-  --el-color-primary: @var-primary-color;
 }

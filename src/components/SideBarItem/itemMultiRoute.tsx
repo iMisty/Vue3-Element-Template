@@ -4,9 +4,9 @@
  * @Author: Mirage
  * @Date: 2022-07-05 17:07:38
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-26 09:43:39
+ * @LastEditTime: 2022-07-27 11:53:25
  */
-import { defineComponent, resolveComponent } from 'vue';
+import { defineComponent, resolveComponent,h } from 'vue';
 import type { Slots } from 'vue';
 import { Location, Document, Menu as IconMenu,Headset } from '@element-plus/icons-vue';
 import SingleRoute from './itemSingleRoute';
@@ -41,7 +41,7 @@ const itemMultiRoute = defineComponent({
     },
   },
   render() {
-    const getPropsIcon = () => resolveComponent(this.$props.icon ? this.$props.icon : '')
+    const getPropsIcon = () => h(resolveComponent(this.$props.icon ? this.$props.icon : ''))
     const slotSubMenuTitle: Slots = {
       title: () => [
         <span>
