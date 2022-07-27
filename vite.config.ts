@@ -3,8 +3,8 @@
  * @Version: 2.1
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-27 13:58:06
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-07-27 22:10:52
  */
 import { defineConfig } from 'vite';
 import path from 'path';
@@ -62,6 +62,7 @@ export default defineConfig({
         drop_debugger: true,
       },
     },
+    minify: 'terser',
   },
   css: {
     modules: {
