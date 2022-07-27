@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Miya
- * @LastEditTime: 2022-07-25 22:06:35
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-27 18:00:00
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -25,13 +25,18 @@ const constantRouter: Array<RouterData> = [
         path: 'dashboard',
         name: 'test1',
         component: () => import('@/views/example/dashboard.vue'),
-        meta: { title: 'DashBoard', icon: 'Headset', isFirstRoute: true },
+        meta: { title: 'DashBoard', icon: 'Headset', isCollapse: false },
       },
       {
         path: 'example',
         name: 'Example',
         component: () => import('@/views/example/components/indexComponents'),
-        meta: { title: 'Example', icon: 'Headset', isFirstRoute: true },
+        meta: {
+          title: 'Example',
+          icon: 'Headset',
+          isFirstRoute: true,
+          isCollapse: false,
+        },
         children: [
           {
             path: 'table',
@@ -46,25 +51,29 @@ const constantRouter: Array<RouterData> = [
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/example/tree.vue'),
-        meta: { title: 'Tree', icon: 'Headset' },
+        meta: { title: 'Tree', icon: 'Headset', isCollapse: false },
       },
       {
         path: '3',
         name: 'test3',
         component: () => import('@/views/example/tree.vue'),
-        meta: { title: 'DashBoard3 Hidden', icon: 'Headset', hidden: true },
+        meta: { title: 'DashBoard3 Hidden', icon: 'Headset', isHidden: true },
       },
       {
         path: '4',
         name: 'test4',
         redirect: '/4/5',
-        component: () => import('@/views/example/component.vue'),
-        meta: { title: 'DashBoard4', icon: 'location' },
+        component: () => import('@/views/example/components/indexComponents'),
+        meta: {
+          title: 'DashBoard4',
+          icon: 'location',
+          isFirstRoute: true,
+        },
         children: [
           {
             path: '5',
             name: 'test5',
-            component: () => import('@/views/example/child1'),
+            component: () => import('@/views/example/child.vue'),
             meta: { title: 'DashBoard Children1', icon: 'Document' },
           },
         ],

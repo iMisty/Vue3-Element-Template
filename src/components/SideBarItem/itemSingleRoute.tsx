@@ -4,10 +4,16 @@
  * @Author: Mirage
  * @Date: 2022-07-05 17:07:38
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-26 09:47:32
+ * @LastEditTime: 2022-07-27 14:17:54
  */
-import { FunctionalComponent } from 'vue';
+import { defineComponent, h, resolveComponent } from 'vue';
 import router from '@/router/router';
+import {
+  Location,
+  Document,
+  Menu as IconMenu,
+  Headset,
+} from '@element-plus/icons-vue';
 
 interface SidebarRoute {
   name: string;
@@ -26,20 +32,38 @@ const handleSelect = (payload: string) => {
   });
 };
 
-const itemSingleRoute: FunctionalComponent<SidebarRoute> = (
-  props: SidebarRoute,
-  context
-) => {
-  const { emit } = context;
-  return (
-    <el-menu-item
-      index={props.name}
-      onClick={() => handleSelect(props.name as string)}
-    >
-      <el-icon>{/* <component is={props.icon} /> */}</el-icon>
-      <span>{props.title}</span>
-    </el-menu-item>
-  );
-};
+const itemSingleRoute = defineComponent({
+  components: {
+    Location,
+    Document,
+    IconMenu,
+    Headset,
+  },
+  props: {
+    icon: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
+    title: {
+      type: String,
+    },
+  },
+  render() {
+    const getPropsIcon = () =>
+      h(resolveComponent(this.$props.icon ? this.$props.icon : ''));
+
+    return (
+      <el-menu-item
+        index={this.$props.name}
+        onClick={() => handleSelect(this.$props.name as string)}
+      >
+        <el-icon>{getPropsIcon}</el-icon>
+        <span>{this.$props.title}</span>
+      </el-menu-item>
+    );
+  },
+});
 
 export default itemSingleRoute;

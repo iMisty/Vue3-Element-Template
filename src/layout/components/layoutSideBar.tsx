@@ -4,7 +4,7 @@
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-26 09:48:00
+ * @LastEditTime: 2022-07-27 18:02:58
  */
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
@@ -15,17 +15,10 @@ import SidebarLogo from '@/components/SideBarLogo/indexLogo';
 import GroupRoute from '@/components/SideBarItem/itemRouteGroup';
 import SingleRoute from '@/components/SideBarItem/itemSingleRoute';
 import MultiRoute from '@/components/SideBarItem/itemMultiRoute';
+import SingleList from '@/components/SideBarItem/itemRoutesSingle';
+import CollapseRoute from '@/components/SideBarItem/itemRoutesCollapse';
 import Style from '@/style/layout/sidebar/sidebar.module.less';
 import RouterData from '@/interface/Router';
-
-interface SidebarRoute {
-  name: string;
-  icon: string;
-  title: string;
-  hidden?: boolean;
-  meta: SidebarRoute;
-  children: Array<SidebarRoute>;
-}
 
 const layoutSidebar = defineComponent({
   components: {
@@ -34,6 +27,10 @@ const layoutSidebar = defineComponent({
     IconMenu,
     SidebarLogo,
     GroupRoute,
+    CollapseRoute,
+    SingleRoute,
+    MultiRoute,
+    SingleList,
   },
   setup() {
     const route = useRoute();
@@ -45,7 +42,13 @@ const layoutSidebar = defineComponent({
      * @returns {Object} Router layout Admin
      */
     const initSideMenu: any = computed(() => {
-      return initDynamicRouter()[0].children;
+      const filterRoute = initDynamicRouter()[0].children?.filter(
+        (item: RouterData) => {
+          return !item.meta?.isHidden;
+        }
+      );
+      console.log(filterRoute);
+      return filterRoute;
     });
 
     /**
@@ -94,17 +97,27 @@ const layoutSidebar = defineComponent({
   },
 
   render() {
-    const templateMultiRoute = (item: any) => {
+    const templateMultiRouteList = (item: RouterData) => {
+      if (item.meta?.isCollapse) {
+        return (
+          <multi-route
+            children={item.children}
+            name={item.name}
+            title={item.meta?.title}
+            icon={item.meta?.icon}
+            meta={item.meta}
+          ></multi-route>
+        );
+      }
+      return <single-list routes={item.children}></single-list>;
+    };
+    const templateSingleRouteList = (item: RouterData) => {
       return (
-        <MultiRoute
-          children={item.children}
+        <single-route
           name={item.name}
-          title={item.meta.title}
-          icon={item.meta.icon}
-          meta={item.meta}
-        >
-          <span>1222</span>
-        </MultiRoute>
+          icon={item.meta?.icon}
+          title={item.meta?.title}
+        ></single-route>
       );
     };
     return (
@@ -125,32 +138,15 @@ const layoutSidebar = defineComponent({
             onSelect={() => this.handleSelect}
           >
             {this.initSideMenu.map((item: RouterData) => {
-              return item.meta?.isFirstRoute ? (
-                <group-route title={item.meta.title}>
-                  {item.children ? (
-                    <MultiRoute
-                      children={item.children}
-                      name={item.name}
-                      title={item.meta.title}
-                      icon={item.meta.icon}
-                      meta={item.meta}
-                    >
-                      <span>1222</span>
-                    </MultiRoute>
-                  ) : (
-                    <SingleRoute
-                      name={item.name}
-                      icon={item.meta.icon}
-                      title={item.meta.title}
-                    ></SingleRoute>
-                  )}
-                </group-route>
-              ) : (
-                <SingleRoute
-                  name={item.name}
-                  icon={item.meta?.icon}
+              return (
+                <group-route
                   title={item.meta?.title}
-                ></SingleRoute>
+                  isHiddenTitle={!item.meta?.isFirstRoute}
+                >
+                  {item.children
+                    ? templateMultiRouteList(item)
+                    : templateSingleRouteList(item)}
+                </group-route>
               );
             })}
           </el-menu>
@@ -161,3 +157,6 @@ const layoutSidebar = defineComponent({
 });
 
 export default layoutSidebar;
+// {
+//   item.meta.isCollapse ? templateMultiRoute(item) : templateSingleRoute(item)
+// }

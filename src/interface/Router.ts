@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-25 10:10:49
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-26 09:47:57
+ * @LastEditTime: 2022-07-27 15:50:08
  */
 interface RouterData {
   path: string;
@@ -24,6 +24,7 @@ interface RouterDataMeta {
   hidden?: Boolean;
   isHidden?: Boolean;
   isFirstRoute?: Boolean;
+  isCollapse?: Boolean;
 }
 
 export default RouterData;
