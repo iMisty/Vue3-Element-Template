@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Miya
- * @LastEditTime: 2022-07-28 00:01:30
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-07-28 16:21:56
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -12,6 +12,7 @@ import 'nprogress/nprogress.css';
 import Login from '@/views/Login';
 import { useAPPStore } from '@/store/appStore';
 import RouterData from '@/interface/Router';
+import { House } from '@element-plus/icons-vue';
 
 const constantRouter: Array<RouterData> = [
   {

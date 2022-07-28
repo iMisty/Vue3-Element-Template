@@ -1,10 +1,12 @@
+import { Component } from 'vue';
+
 /*
  * @Description: Router interface
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-07-25 10:10:49
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-27 15:50:08
+ * @LastEditTime: 2022-07-28 16:30:40
  */
 interface RouterData {
   path: string;
