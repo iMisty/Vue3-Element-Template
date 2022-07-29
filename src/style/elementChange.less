@@ -13,42 +13,13 @@
   --el-button-active-bg-color: #363885;
 }
 
+@import './element/menu.less';
+@import './element/card.less';
+@import './element/tree.less';
 .el-scrollbar {
   width: 100%;
 }
 .el-scrollbar__view,
 .el-menu {
   height: 100%;
-}
-.el-menu {
-  border-right: none;
-}
-.el-menu-item [class^='el-icon'] {
-  color: @var-primary-color;
-}
-
-.el-menu-item * {
-  letter-spacing: 0.32px;
-}
-.el-menu-item.is-active {
-  font-weight: 700;
-}
-
-.el-sub-menu .el-icon {
-  color: var(--el-color-primary);
-}
-
-.el-sub-menu.is-opened,
-.el-menu-item:hover {
-  background-color: var(--el-menu-hover-bg-color);
-}
-
-/*
- * Card Component
- */
-.el-card {
-  --el-card-border-radius: 12px;
-}
-.el-card__header {
-  font-weight: 700;
 }
