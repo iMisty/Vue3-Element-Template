@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-28 16:21:56
+ * @LastEditTime: 2022-07-29 17:19:37
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -51,15 +51,15 @@ const constantRouter: Array<RouterData> = [
             component: () => import('@/views/example/components/button'),
             meta: { title: 'Button', icon: 'Document' },
           },
+          {
+            path: 'tree',
+            name: 'Tree',
+            component: () => import('@/views/example/components/tree'),
+            meta: { title: 'Tree', icon: 'Headset' },
+          },
         ],
       },
 
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/example/tree.vue'),
-        meta: { title: 'Tree', icon: 'Headset', isCollapse: false },
-      },
       {
         path: '3',
         name: 'test3',

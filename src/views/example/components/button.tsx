@@ -1,13 +1,22 @@
 /*
  * @Author: Miya
  * @Date: 2022-07-27 23:23:02
- * @LastEditTime: 2022-07-28 18:10:18
+ * @LastEditTime: 2022-07-29 18:08:57
  * @LastEditors: Mirage
  * @Description: Example Buttons
  * @FilePath: \Vue3-Element-Template\src\views\example\components\button.tsx
  */
 import { defineComponent } from 'vue';
-import { Edit, Search, Upload } from '@element-plus/icons-vue';
+import {
+  Edit,
+  Share,
+  Delete,
+  Search,
+  Upload,
+  ArrowLeft,
+  ArrowRight,
+  Eleme,
+} from '@element-plus/icons-vue';
 
 const buttonCardDefault = () => {
   return (
@@ -74,6 +83,60 @@ const buttonCardRound = () => {
   );
 };
 
+const buttonCardGroup = () => {
+  return (
+    <>
+      <el-button-group>
+        <el-button type="primary" icon={ArrowLeft}>
+          Previous Page
+        </el-button>
+        <el-button type="primary">
+          Next Page
+          <el-icon class="el-icon--right">
+            <ArrowRight />
+          </el-icon>
+        </el-button>
+      </el-button-group>
+      <span style="padding:0 .5rem"></span>
+      <el-button-group>
+        <el-button type="primary" icon={Edit}></el-button>
+        <el-button type="primary" icon={Share}></el-button>
+        <el-button type="primary" icon={Delete}></el-button>
+      </el-button-group>
+    </>
+  );
+};
+
+const buttonCardLoading = () => {
+  return (
+    <>
+      <el-button type="primary" loading>
+        Loading
+      </el-button>
+      <el-button type="primary" loading-icon={Eleme} loading>
+        Loading
+      </el-button>
+    </>
+  );
+};
+
+const buttonCardSize = () => {
+  return (
+    <>
+      <el-button size="large">Large</el-button>
+      <el-button>Default</el-button>
+      <el-button size="small">Small</el-button>
+      <el-button size="large" icon={Search}>
+        Search
+      </el-button>
+      <el-button icon={Search}>Search</el-button>
+      <el-button size="small" icon={Search}>
+        Search
+      </el-button>
+    </>
+  );
+};
+
 const ExampleButton = defineComponent({
   render() {
     return (
@@ -89,6 +152,15 @@ const ExampleButton = defineComponent({
         </el-col>
         <el-col span={12}>
           <el-card header="Round">{buttonCardRound}</el-card>
+        </el-col>
+        <el-col span={12}>
+          <el-card header="Group">{buttonCardGroup}</el-card>
+        </el-col>
+        <el-col span={12}>
+          <el-card header="Loading">{buttonCardLoading}</el-card>
+        </el-col>
+        <el-col span={24}>
+          <el-card header="Size">{buttonCardSize}</el-card>
         </el-col>
       </el-row>
     );
