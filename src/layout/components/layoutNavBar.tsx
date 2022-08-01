@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-26 09:54:41
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-28 09:32:20
+ * @LastEditTime: 2022-08-01 16:46:56
  */
 
 import { defineComponent, reactive, onMounted, ref } from 'vue';
@@ -13,6 +13,7 @@ import { CaretBottom } from '@element-plus/icons-vue';
 import NavBarHamburger from '@/components/NavBarHamburger/index';
 import NavBarBreadCrumb from '@/components/NavBarBreadCrumb/index.vue';
 import NavBarAvatar from '@/components/NavBarAvatar/indexAvatar';
+import Style from '@/style/layout/navbar/navbar.module.less';
 
 const data = reactive({
   username: new String(),
@@ -46,28 +47,22 @@ const LayoutNavBar = defineComponent({
 
   render() {
     return (
-      <div class="layout__navbar">
-        <div class="layout__navbar--left">
+      <div class={Style['layout__navbar']}>
+        <div class={Style['layout__navbar--left']}>
           <NavBarHamburger></NavBarHamburger>
           <NavBarBreadCrumb></NavBarBreadCrumb>
         </div>
-        <div class="layout__navbar--right">
-          <NavBarAvatar onClick={() => setUserDrawer}></NavBarAvatar>
-          <el-drawer v-model="isDrawerActive" title="I am the title" size={360}>
-            {/* <template #header>
-          <h4>{{ $t('GlobalDrawer.welcome') }}</h4>
-        </template>
-        <template #default>
-          <div>
-            <el-radio label="Option 1" size="large">Option 1</el-radio>
-            <el-radio label="Option 2" size="large">Option 2</el-radio>
-          </div>
-        </template>
-        <template #footer>
-          <div>1</div>
-        </template> */}
-          </el-drawer>
+        <div
+          class={Style['layout__navbar--right']}
+          onClick={() => setUserDrawer}
+        >
+          <NavBarAvatar></NavBarAvatar>
         </div>
+        <el-drawer
+          v-model={isDrawerActive.value}
+          title="I am the title"
+          size={360}
+        ></el-drawer>
       </div>
     );
   },
