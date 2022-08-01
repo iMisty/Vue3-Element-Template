@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-01 10:26:36
+ * @LastEditTime: 2022-08-01 18:01:46
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -27,63 +27,6 @@ const constantRouter: Array<RouterData> = [
         name: 'test1',
         component: () => import('@/views/example/dashboard.vue'),
         meta: { title: 'DashBoard', icon: 'House', isCollapse: false },
-      },
-      {
-        path: 'example',
-        name: 'Example',
-        component: () => import('@/views/example/components/indexComponents'),
-        meta: {
-          title: 'Components',
-          icon: 'Headset',
-          isFirstRoute: true,
-          isCollapse: false,
-        },
-        children: [
-          {
-            path: 'table',
-            name: 'ExampleTable',
-            component: () => import('@/views/example/components/table'),
-            meta: { title: 'Table', icon: 'Document' },
-          },
-          {
-            path: 'button',
-            name: 'ExampleButton',
-            component: () => import('@/views/example/components/button'),
-            meta: { title: 'Button', icon: 'Document' },
-          },
-          {
-            path: 'tree',
-            name: 'Tree',
-            component: () => import('@/views/example/components/tree'),
-            meta: { title: 'Tree', icon: 'Headset' },
-          },
-        ],
-      },
-
-      {
-        path: '3',
-        name: 'test3',
-        component: () => import('@/views/example/tree.vue'),
-        meta: { title: 'DashBoard3 Hidden', icon: 'Headset', isHidden: true },
-      },
-      {
-        path: 'block',
-        name: 'test4',
-        redirect: '/block/table',
-        component: () => import('@/views/example/components/indexComponents'),
-        meta: {
-          title: 'Block',
-          icon: 'location',
-          isFirstRoute: true,
-        },
-        children: [
-          {
-            path: 'table',
-            name: 'ContainerTable',
-            component: () => import('@/views/example/block/containerTable'),
-            meta: { title: 'Container Table', icon: 'Document' },
-          },
-        ],
       },
     ],
   },

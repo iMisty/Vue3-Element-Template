@@ -1,68 +1,17 @@
 <!--
  * @Author: Miya
  * @Date: 2021-12-07 23:32:39
- * @LastEditTime: 2022-07-15 16:09:22
+ * @LastEditTime: 2022-08-01 18:04:41
  * @LastEditors: Mirage
  * @Description: Test Page1
  * @FilePath: \vue3-element-template\src\views\example\dashboard.vue
 -->
 <template>
-  <el-row class="test1" :gutter="32">
+  <el-row :gutter="32">
     <el-space wrap>
       <el-col>
         <el-card>
           <el-progress type="circle" :percentage="24"></el-progress>
-        </el-card>
-      </el-col>
-      <el-col>
-        <el-card>
-          <el-progress type="circle" :percentage="48"></el-progress>
-        </el-card>
-      </el-col>
-      <el-col>
-        <el-card>
-          <el-progress
-            type="circle"
-            :percentage="16"
-            status="success"
-          ></el-progress>
-        </el-card>
-      </el-col>
-      <el-col>
-        <el-card>
-          <el-progress
-            type="circle"
-            :percentage="8"
-            status="exception"
-          ></el-progress>
-        </el-card>
-      </el-col>
-      <el-col>
-        <el-card>
-          <el-progress type="circle" :percentage="24"></el-progress>
-        </el-card>
-      </el-col>
-      <el-col>
-        <el-card>
-          <el-progress type="circle" :percentage="48"></el-progress>
-        </el-card>
-      </el-col>
-      <el-col>
-        <el-card>
-          <el-progress
-            type="circle"
-            :percentage="16"
-            status="success"
-          ></el-progress>
-        </el-card>
-      </el-col>
-      <el-col>
-        <el-card>
-          <el-progress
-            type="circle"
-            :percentage="8"
-            status="exception"
-          ></el-progress>
         </el-card>
       </el-col>
     </el-space>
@@ -71,10 +20,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-const Test1 = defineComponent({
+const Dashboard = defineComponent({
   setup() {},
 });
-export default Test1;
+export default Dashboard;
 </script>
 
 <style lang="less" scoped></style>
