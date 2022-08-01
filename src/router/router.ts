@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-29 17:19:37
+ * @LastEditTime: 2022-08-01 10:26:36
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -69,7 +69,7 @@ const constantRouter: Array<RouterData> = [
       {
         path: 'block',
         name: 'test4',
-        redirect: '/block/5',
+        redirect: '/block/table',
         component: () => import('@/views/example/components/indexComponents'),
         meta: {
           title: 'Block',
@@ -78,10 +78,10 @@ const constantRouter: Array<RouterData> = [
         },
         children: [
           {
-            path: '5',
-            name: 'test5',
-            component: () => import('@/views/example/child.vue'),
-            meta: { title: 'DashBoard Children1', icon: 'Document' },
+            path: 'table',
+            name: 'ContainerTable',
+            component: () => import('@/views/example/block/containerTable'),
+            meta: { title: 'Container Table', icon: 'Document' },
           },
         ],
       },
