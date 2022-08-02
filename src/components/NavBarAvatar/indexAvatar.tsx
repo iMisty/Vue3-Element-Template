@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2022-07-20 22:50:47
- * @LastEditTime: 2022-07-28 09:26:17
+ * @LastEditTime: 2022-08-02 15:53:47
  * @LastEditors: Mirage
  * @Description: Avatar on Navbar
  * @FilePath: \Vue3-Element-Template\src\components\NavBarDrawer\indexAvatar.tsx
@@ -19,7 +19,9 @@ const NavbarAvatar: FunctionalComponent = (props, context) => {
   return (
     <div
       class={Style['layout__navbar--right-avatar']}
-      onClick={() => emit('avatar')}
+      onClick={() => {
+        return emit('avatar', true);
+      }}
     >
       <el-image circle src={image} style={style} fit="fill"></el-image>
     </div>

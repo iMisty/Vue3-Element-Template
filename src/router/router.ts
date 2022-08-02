@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-01 10:26:36
+ * @LastEditTime: 2022-08-02 16:26:41
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -25,7 +25,7 @@ const constantRouter: Array<RouterData> = [
       {
         path: 'dashboard',
         name: 'test1',
-        component: () => import('@/views/example/dashboard.vue'),
+        component: () => import('@/views/example/dashboard'),
         meta: { title: 'DashBoard', icon: 'House', isCollapse: false },
       },
       {

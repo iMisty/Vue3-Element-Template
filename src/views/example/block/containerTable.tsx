@@ -4,13 +4,13 @@
  * @Author: Mirage
  * @Date: 2022-08-01 09:29:21
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-01 16:22:43
+ * @LastEditTime: 2022-08-02 16:43:37
  */
 
 import { defineComponent, reactive, ref } from 'vue';
 import { Search, Plus } from '@element-plus/icons-vue';
-import GlobalCard from '@/components/GlobalCard/indexGlobalCard';
-import GlobalPagination from '@/components/GlobalPagination/indexPagination';
+import CustomCard from '@/components/CustomCard/indexCustomCard';
+import CustomPagination from '@/components/CustomPagination/indexPagination';
 import { MockTableData } from '@/mock/table';
 
 const dataHeader = reactive({
@@ -36,8 +36,8 @@ const handleCurrentChange = (val: number) => {
 const ContainerTable = defineComponent({
   name: 'ContainerTable',
   components: {
-    GlobalPagination,
-    GlobalCard,
+    CustomPagination,
+    CustomCard,
   },
   render() {
     const renderHeader = () => {
@@ -77,25 +77,25 @@ const ContainerTable = defineComponent({
     };
     const renderFooter = () => {
       return (
-        <global-pagination
+        <custom-pagination
           total={400}
           v-model:current={currentPage4.value}
           v-model:pageSize={pageSize4.value}
           onCurrent={(page: number) => handleCurrentChange(page)}
           onSize={(size: number) => handleSizeChange(size)}
-        ></global-pagination>
+        ></custom-pagination>
       );
     };
     return (
       <el-container>
         <el-header height="auto">
-          <global-card>{renderHeader}</global-card>
+          <custom-card>{renderHeader}</custom-card>
         </el-header>
         <el-main>
-          <global-card>{renderMain}</global-card>
+          <custom-card>{renderMain}</custom-card>
         </el-main>
         <el-footer height="auto">
-          <global-card>{renderFooter}</global-card>
+          <custom-card>{renderFooter}</custom-card>
         </el-footer>
       </el-container>
     );

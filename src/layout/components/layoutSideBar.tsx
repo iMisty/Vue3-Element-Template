@@ -3,8 +3,8 @@
  * @Version: 2.0
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
- * @LastEditors: Miya
- * @LastEditTime: 2022-07-27 23:08:12
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-08-02 14:54:04
  */
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
@@ -151,6 +151,3 @@ const layoutSidebar = defineComponent({
 });
 
 export default layoutSidebar;
-// {
-//   item.meta.isCollapse ? templateMultiRoute(item) : templateSingleRoute(item)
-// }

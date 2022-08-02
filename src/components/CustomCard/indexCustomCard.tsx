@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-21 19:56:11
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-01 16:08:31
+ * @LastEditTime: 2022-08-02 16:14:34
  */
 
 import { FunctionalComponent } from 'vue';
@@ -13,7 +13,7 @@ type CardProps = {
   shadow: 'always' | 'hover' | 'never';
 };
 
-const GlobalCard: FunctionalComponent<CardProps> = (
+const CustomCard: FunctionalComponent<CardProps> = (
   props: CardProps,
   context
 ) => {
@@ -31,4 +31,4 @@ const GlobalCard: FunctionalComponent<CardProps> = (
   );
 };
 
-export default GlobalCard;
+export default CustomCard;

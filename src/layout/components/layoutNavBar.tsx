@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-26 09:54:41
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-01 16:46:56
+ * @LastEditTime: 2022-08-02 16:02:03
  */
 
 import { defineComponent, reactive, onMounted, ref } from 'vue';
@@ -19,10 +19,10 @@ const data = reactive({
   username: new String(),
 });
 
-const isDrawerActive = ref(false);
+const dataStatus = reactive({ isDrawerActive: false });
 
 const setUserDrawer = () => {
-  isDrawerActive.value = true;
+  dataStatus.isDrawerActive = true;
 };
 
 const LayoutNavBar = defineComponent({
@@ -42,7 +42,7 @@ const LayoutNavBar = defineComponent({
       const getUsername = 'admin';
       data.username = getUsername || '';
     });
-    return { data, handleClickLogout, setUserDrawer, isDrawerActive };
+    return { data, handleClickLogout, setUserDrawer, dataStatus };
   },
 
   render() {
@@ -56,10 +56,10 @@ const LayoutNavBar = defineComponent({
           class={Style['layout__navbar--right']}
           onClick={() => setUserDrawer}
         >
-          <NavBarAvatar></NavBarAvatar>
+          <NavBarAvatar onAvatar={() => setUserDrawer()}></NavBarAvatar>
         </div>
         <el-drawer
-          v-model={isDrawerActive.value}
+          v-model={dataStatus.isDrawerActive}
           title="I am the title"
           size={360}
         ></el-drawer>
