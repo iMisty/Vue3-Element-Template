@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-26 09:54:41
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-02 16:02:03
+ * @LastEditTime: 2022-08-02 17:11:06
  */
 
 import { defineComponent, reactive, onMounted, ref } from 'vue';
@@ -17,7 +17,14 @@ import Style from '@/style/layout/navbar/navbar.module.less';
 
 const data = reactive({
   username: new String(),
+  selectedLanguage: 'zh',
 });
+
+const listLanguage = reactive([
+  { label: '中文', value: 'zh' },
+  { label: 'English', value: 'en' },
+  { label: '日本语', value: 'jp' },
+]);
 
 const dataStatus = reactive({ isDrawerActive: false });
 
@@ -42,10 +49,25 @@ const LayoutNavBar = defineComponent({
       const getUsername = 'admin';
       data.username = getUsername || '';
     });
-    return { data, handleClickLogout, setUserDrawer, dataStatus };
+    return { data, handleClickLogout, setUserDrawer, dataStatus, listLanguage };
   },
 
   render() {
+    const drawerFooter = () => {
+      return (
+        <el-select v-model={data.selectedLanguage} placeholder="Select">
+          {listLanguage.map((item: { label: string; value: string }) => {
+            return (
+              <el-option
+                key={item.value}
+                label={item.label}
+                value={item.value}
+              ></el-option>
+            );
+          })}
+        </el-select>
+      );
+    };
     return (
       <div class={Style['layout__navbar']}>
         <div class={Style['layout__navbar--left']}>
@@ -62,6 +84,7 @@ const LayoutNavBar = defineComponent({
           v-model={dataStatus.isDrawerActive}
           title="I am the title"
           size={360}
+          v-slots={{ footer: drawerFooter }}
         ></el-drawer>
       </div>
     );
