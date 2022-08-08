@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-22 15:30:55
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-22 17:29:47
+ * @LastEditTime: 2022-08-08 16:21:17
  */
 
 import { createI18n } from 'vue-i18n';
@@ -29,7 +29,7 @@ const MultiLanguageConfig = {
   jp: { ...Japanese, ...ja },
 };
 
-function getLanguage() {
+const getLanguage = (): string => {
   const chooseLanguage = localStorage.getItem('language');
   if (chooseLanguage) return chooseLanguage;
 
@@ -42,8 +42,11 @@ function getLanguage() {
     }
   }
   return 'en';
-}
+};
 
+/**
+ * i18n Object Example
+ */
 const i18n = createI18n({
   locale: getLanguage(),
   fallbackLocale: 'en',
@@ -52,4 +55,9 @@ const i18n = createI18n({
   silentTranslationWarn: true,
 });
 
+const $t = (value: string): string => {
+  return i18n.global.t(value);
+};
+
+export { getLanguage, $t };
 export default i18n;

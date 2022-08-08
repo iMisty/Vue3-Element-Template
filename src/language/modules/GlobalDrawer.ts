@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-22 15:44:23
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-22 16:47:39
+ * @LastEditTime: 2022-08-08 09:37:36
  */
 const GlobalDrawer = {
   zh: { welcome: '欢迎' },
