@@ -23,7 +23,21 @@ English | 简体中文 | 日本語
 
 ## Build Production Mode
 
-// TODO
+### Build System
+
+> yarn build:prod
+
+or
+
+> npm run build:prod
+
+### Build Documents
+
+> yarn docs:build
+
+or
+
+> npm run docs:build
 
 ## Documentation
 
@@ -37,9 +51,33 @@ English | 简体中文 | 日本語
 
 // TODO
 
-## Use Library
+## Use Library and Framework
 
-// TODO
+### Base
+
+[Vue 3](https://vuejs.org/): Base Framework
+
+[vue-router](https://router.vuejs.org/): Router
+
+[Pinia](https://pinia.vuejs.org/): Substitute Vuex
+
+[Vue-i18n](https://kazupon.github.io/vue-i18n/): Multi Language Support
+
+[axios](https://github.com/axios/axios): AJAX Base
+
+[Typescript](https://www.typescriptlang.org/): Based for Code
+
+[Element-plus](https://element-plus.org/en-US/): UI Framework Base
+
+[less](https://lesscss.org/): CSS Style
+
+### Extends
+
+[nprogress](https://ricostacruz.com/nprogress/): Progress Bar
+
+[vite-plugin-svg-icons](https://github.com/vbenjs/vite-plugin-svg-icons): Used to generate svg sprite map
+
+[@miramiya/request](https://github.com/iMisty/Kagura-axios-request): Axios Encapsulation
 
 ## Preparation
 
@@ -51,6 +89,10 @@ Understanding and learning these knowledge in advance will greatly help you on u
 ```bash
 ├── public
 │   │── favicon.ico
+├── docs
+│   ├── .vitepress
+│   ├── assets
+│   ├── components
 ├── src
 │   ├── api
 │   ├── assets
@@ -77,6 +119,8 @@ Understanding and learning these knowledge in advance will greatly help you on u
 │── index.html
 │── package.json
 │── README.md
+│── README-ZH.md
+│── README-JP.md
 │── shims-vue.d.ts
 │── tsconfig.json
 │── vite.config.ts
