@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-02 16:26:41
+ * @LastEditTime: 2022-08-08 17:09:41
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -61,14 +61,14 @@ const constantRouter: Array<RouterData> = [
       },
 
       {
-        path: '3',
-        name: 'test3',
+        path: 'hidden',
+        name: 'Hidden',
         component: () => import('@/views/example/tree.vue'),
         meta: { title: 'DashBoard3 Hidden', icon: 'Headset', isHidden: true },
       },
       {
         path: 'block',
-        name: 'test4',
+        name: 'block',
         redirect: '/block/table',
         component: () => import('@/views/example/components/indexComponents'),
         meta: {
@@ -113,7 +113,7 @@ const Router = createRouter({
 });
 
 Router.beforeEach((to, from, next) => {
-  const tokenInStorage: string | null = localStorage.getItem('token');
+  const tokenInStorage: string | null = sessionStorage.getItem('token');
   const tokenInStore: string | undefined = useAPPStore().getToken;
   if (to.path === '/login') {
     next();

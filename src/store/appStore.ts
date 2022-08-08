@@ -1,12 +1,13 @@
 /*
  * @Author: Miya
  * @Date: 2021-11-27 02:34:42
- * @LastEditTime: 2022-07-27 22:39:53
- * @LastEditors: Miya
+ * @LastEditTime: 2022-08-08 17:08:20
+ * @LastEditors: Mirage
  * @Description: Test Pinia Store
  * @FilePath: \Vue3-Element-Template\src\store\appStore.ts
  */
 import { defineStore } from 'pinia';
+import Router from '@/router/router';
 import RouterData from '@/interface/Router';
 
 interface LoginData {
@@ -85,7 +86,14 @@ export const useAPPStore = defineStore({
         token: 'mock1',
       };
       sessionStorage.setItem('UserInfo', JSON.stringify(userInfo));
+      sessionStorage.setItem('token', 'mock1');
       return (this.token = 'mock1');
+    },
+
+    setLogout(): void {
+      sessionStorage.removeItem('UserInfo');
+      sessionStorage.removeItem('token');
+      Router.push({ path: '/login' });
     },
   },
 });
