@@ -1,0 +1,32 @@
+.drawer__card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  cursor: default;
+  transition-duration: @var-transition-duration;
+
+  &:hover {
+    background-color: @var-surface-hover;
+    transition-duration: @var-transition-duration;
+  }
+
+  &--icon {
+    width: 1.5rem;
+    color: @var-primary-color;
+  }
+
+  &--container {
+    font-size: 0.875rem;
+    line-height: 1.2;
+    & > .title {
+      color: @var-header-text;
+      line-height: inherit;
+      margin-bottom: 0.25rem;
+    }
+    & > .text {
+      color: @var-description-text;
+      line-height: inherit;
+    }
+  }
+}
