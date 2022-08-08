@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Mirage
- * @LastEditTime: 2022-08-08 17:09:41
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-08-08 22:20:38
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -31,6 +31,7 @@ const constantRouter: Array<RouterData> = [
       {
         path: 'example',
         name: 'Example',
+        redirect: '/example/table',
         component: () => import('@/views/example/components/indexComponents'),
         meta: {
           title: 'Components',
@@ -63,7 +64,7 @@ const constantRouter: Array<RouterData> = [
       {
         path: 'hidden',
         name: 'Hidden',
-        component: () => import('@/views/example/tree.vue'),
+        component: () => import('@/views/example/components/tree'),
         meta: { title: 'DashBoard3 Hidden', icon: 'Headset', isHidden: true },
       },
       {

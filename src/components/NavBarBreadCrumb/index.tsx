@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-07-04 17:56:49
- * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 16:41:27
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-08-08 22:18:20
  */
 import {
   defineComponent,
@@ -38,6 +38,7 @@ const NavBarBreadCrumb = defineComponent({
       getRouterData();
     });
     watch([useRoute()], (newVal) => {
+      console.log(newVal);
       routerData.router = newVal[0].matched;
     });
     return {
