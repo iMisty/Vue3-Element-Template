@@ -4,7 +4,7 @@
  * @Author: Miya
  * @Date: 2021-12-18 20:30:02
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-15 16:02:49
+ * @LastEditTime: 2022-08-08 17:07:01
  */
 import { useAPPStore } from '@/store/appStore';
 import { defineComponent, reactive } from 'vue';
@@ -35,6 +35,7 @@ const Login = defineComponent({
         setTimeout(() => {
           useAPPStore().setLoginData(dataLoginForm);
           router.push({ path: '/' });
+          status.isLoading = false;
         }, 1000);
       } catch (error) {
         // todo: throw error
