@@ -8,12 +8,28 @@
   background-size: cover;
   overflow: hidden;
   &__container {
-    width: 20rem;
-    max-width: 30rem;
-    padding: 4rem;
+    .flex(row,space-between,center);
+    gap: 2rem;
+    width: 80vw;
+    height: 64vh;
+    padding: 2rem;
     background-color: @var-base-background;
     border-radius: @var-border-radius;
     box-shadow: @var-box-shadow;
+    @media screen and (max-width: 600px) {
+      & {
+        .flex(column,center,stretch);
+      }
+    }
+    &--left {
+      & > img {
+        max-width: 100%;
+      }
+      flex: 1;
+    }
+    &--right {
+      flex: 1;
+    }
   }
   &__form {
     &--title {
