@@ -77,7 +77,9 @@ or
 
 [vite-plugin-svg-icons](https://github.com/vbenjs/vite-plugin-svg-icons): Used to generate svg sprite map
 
-[@miramiya/request](https://github.com/iMisty/Kagura-axios-request): Axios Encapsulation
+[idb-keyval](https://github.com/jakearchibald/idb-keyval): A Simple Promise-Based key-val Store Implemented with IndexedDB
+
+[@miramiya/request](https://github.com/iMisty/Kagura-axios-request): Axios Encapsulation Library
 
 ## Preparation
 
