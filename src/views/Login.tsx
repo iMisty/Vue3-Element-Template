@@ -4,7 +4,7 @@
  * @Author: Miya
  * @Date: 2021-12-18 20:30:02
  * @LastEditors: Miya
- * @LastEditTime: 2022-08-08 23:13:06
+ * @LastEditTime: 2022-08-09 21:50:39
  */
 import { useAPPStore } from '@/store/appStore';
 import { defineComponent, reactive } from 'vue';
@@ -24,6 +24,7 @@ const status = reactive({
 
 const Login = defineComponent({
   setup() {
+    status.isLoading = false;
     const router = useRouter();
 
     /**
@@ -36,7 +37,6 @@ const Login = defineComponent({
         setTimeout(() => {
           useAPPStore().setLoginData(dataLoginForm);
           router.push({ path: '/' });
-          status.isLoading = false;
         }, 1000);
       } catch (error) {
         // todo: throw error
