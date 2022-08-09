@@ -20,6 +20,7 @@
     "@miramiya/request": "^1.1.6",
     "axios": "^0.27.2",
     "element-plus": "^2.2.9",
+    "idb-keyval": "^6.2.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.16",
     "qs": "^6.11.0",
