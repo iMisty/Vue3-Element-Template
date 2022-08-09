@@ -4,14 +4,16 @@
  * @Author: Mirage
  * @Date: 2022-08-01 09:29:21
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-02 16:43:37
+ * @LastEditTime: 2022-08-09 18:08:41
  */
 
 import { defineComponent, reactive, ref } from 'vue';
 import { Search, Plus } from '@element-plus/icons-vue';
+import type { Ref } from 'vue';
 import CustomCard from '@/components/CustomCard/indexCustomCard';
 import CustomPagination from '@/components/CustomPagination/indexPagination';
 import { MockTableData } from '@/mock/table';
+import Style from '@/style/example/containerTable.module.less';
 
 const dataHeader = reactive({
   valueInput: '',
@@ -21,14 +23,16 @@ const dataTable = reactive({
   listData: MockTableData,
 });
 
-const currentPage4 = ref(4);
-const pageSize4 = ref(10);
+const strikeHeader: Ref<Boolean> = ref(false);
+const strikeFooter: Ref<Boolean> = ref(false);
+const currentPage4: Ref<Number> = ref(4);
+const pageSize4: Ref<Number> = ref(10);
 
-const handleSizeChange = (val: number) => {
+const handleSizeChange = (val: number): void => {
   console.log(`${val} items per page`);
   currentPage4.value = val;
 };
-const handleCurrentChange = (val: number) => {
+const handleCurrentChange = (val: number): void => {
   console.log(`current page: ${val}`);
   currentPage4.value = val;
 };
@@ -42,7 +46,7 @@ const ContainerTable = defineComponent({
   render() {
     const renderHeader = () => {
       return (
-        <el-row gutter={16}>
+        <el-row gutter={16} align="middle">
           <el-col span={3}>
             <el-button type="primary" icon={Plus}>
               Add
@@ -61,6 +65,14 @@ const ContainerTable = defineComponent({
               placeholder="Search Key"
               prefix-icon={Search}
             ></el-input>
+          </el-col>
+          <el-col span={4}>
+            <span>Header Strike: </span>
+            <el-switch v-model={strikeHeader.value}></el-switch>
+          </el-col>
+          <el-col span={4}>
+            <span>Footer Strike: </span>
+            <el-switch v-model={strikeFooter.value}></el-switch>
           </el-col>
         </el-row>
       );
@@ -88,13 +100,19 @@ const ContainerTable = defineComponent({
     };
     return (
       <el-container>
-        <el-header height="auto">
+        <el-header
+          height="auto"
+          class={strikeHeader.value ? Style['strike__header'] : ''}
+        >
           <custom-card>{renderHeader}</custom-card>
         </el-header>
         <el-main>
           <custom-card>{renderMain}</custom-card>
         </el-main>
-        <el-footer height="auto">
+        <el-footer
+          height="auto"
+          class={strikeFooter.value ? Style['strike__footer'] : ''}
+        >
           <custom-card>{renderFooter}</custom-card>
         </el-footer>
       </el-container>
