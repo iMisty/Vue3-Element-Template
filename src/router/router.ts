@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Miya
- * @LastEditTime: 2022-08-08 22:20:38
+ * @LastEditTime: 2022-08-10 23:36:55
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
@@ -12,7 +12,6 @@ import 'nprogress/nprogress.css';
 import Login from '@/views/Login';
 import { useAPPStore } from '@/store/appStore';
 import RouterData from '@/interface/Router';
-import { House } from '@element-plus/icons-vue';
 
 const constantRouter: Array<RouterData> = [
   {
@@ -32,7 +31,7 @@ const constantRouter: Array<RouterData> = [
         path: 'example',
         name: 'Example',
         redirect: '/example/table',
-        component: () => import('@/views/example/components/indexComponents'),
+        component: () => import('@/views/RouterViews'),
         meta: {
           title: 'Components',
           icon: 'Headset',
@@ -60,7 +59,6 @@ const constantRouter: Array<RouterData> = [
           },
         ],
       },
-
       {
         path: 'hidden',
         name: 'Hidden',
@@ -71,7 +69,7 @@ const constantRouter: Array<RouterData> = [
         path: 'block',
         name: 'block',
         redirect: '/block/table',
-        component: () => import('@/views/example/components/indexComponents'),
+        component: () => import('@/views/RouterViews'),
         meta: {
           title: 'Block',
           icon: 'location',
@@ -83,6 +81,25 @@ const constantRouter: Array<RouterData> = [
             name: 'ContainerTable',
             component: () => import('@/views/example/block/containerTable'),
             meta: { title: 'Container Table', icon: 'Document' },
+          },
+        ],
+      },
+      {
+        path: 'system',
+        name: 'System',
+        redirect: '/system/options',
+        component: () => import('@/views/RouterViews'),
+        meta: {
+          title: 'System',
+          icon: 'location',
+          isFirstRoute: true,
+        },
+        children: [
+          {
+            path: 'options',
+            name: 'Options',
+            component: () => import('@/views/system/Options'),
+            meta: { title: 'Options', icon: 'Document' },
           },
         ],
       },
