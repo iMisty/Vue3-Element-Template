@@ -1,8 +1,8 @@
 /*
  * @Author: Miya
  * @Date: 2022-08-09 23:23:04
- * @LastEditTime: 2022-08-10 11:00:50
- * @LastEditors: Mirage
+ * @LastEditTime: 2022-08-10 23:32:05
+ * @LastEditors: Miya
  * @Description: IndexedDB methods
  * @FilePath: \Vue3-Element-Template\src\utils\IndexedDB.ts
  */
@@ -20,11 +20,18 @@ import {
 } from 'idb-keyval';
 import type { UseStore } from 'idb-keyval';
 
+/**
+ * Interface for indexedDB base
+ * @interface
+ */
 type indexedDBType = {
   database: string;
   store: string;
 };
 
+/**
+ * Class for indexedDB Methods
+ */
 class IndexedDB {
   private nameDatabase: string = 'Miramiya-DB';
   private nameStore: string = 'application';
@@ -78,6 +85,7 @@ class IndexedDB {
   }
 
   /**
+   * @public
    * Set Now Selected IndexedDB Database and Store
    * @param Option {indexedDBType} Set Base Database
    */
@@ -86,7 +94,14 @@ class IndexedDB {
     this.nameStore = store;
   }
 
-  private async setItemForDB(key: string, value: any) {
+  /**
+   * @private
+   * Set new Object on Active Database Store
+   * @param key {string} Add object key
+   * @param value {any} Add object value
+   * @returns {Promise<boolean>} Success Status
+   */
+  private async setItemForDB(key: string, value: any): Promise<boolean> {
     try {
       await set(key, value, this.getStore());
       return true;
@@ -96,7 +111,14 @@ class IndexedDB {
     }
   }
 
-  private async updateItemForDB(key: string, newValue: any) {
+  /**
+   * @private
+   * Update Object on Active Database Store
+   * @param key {string} Add object key
+   * @param newValue {any} Add object value
+   * @returns {Promise<boolean>} Success Status
+   */
+  private async updateItemForDB(key: string, newValue: any): Promise<boolean> {
     try {
       await update(key, () => newValue, this.getStore());
       return true;
@@ -106,11 +128,23 @@ class IndexedDB {
     }
   }
 
-  public async getItem(key: string): Promise<String> {
+  /**
+   * Get item in Active Database Store
+   * @param key Object key in Active Database Store
+   * @returns {Promise<String | undefined>} String or undefined
+   */
+  public async getItem(key: string): Promise<String | undefined> {
     const getItemMethod = await get(key, this.getStore());
     return getItemMethod;
   }
 
+  /**
+   * @public
+   * Set or Update item in Active Database Store
+   * @description If this key is Exist,then will be Update value.Else will be Set New Item
+   * @param key Object key in Active Database Store
+   * @returns {Promise<String | undefined>} String or undefined
+   */
   public async setItem(key: string, value: any): Promise<boolean> {
     const getValue = await this.getItem(key);
     if (!getValue) {
