@@ -1,8 +1,8 @@
 /*
  * @Author: Miya
  * @Date: 2022-08-09 23:23:04
- * @LastEditTime: 2022-08-10 00:49:19
- * @LastEditors: Miya
+ * @LastEditTime: 2022-08-10 11:00:50
+ * @LastEditors: Mirage
  * @Description: IndexedDB methods
  * @FilePath: \Vue3-Element-Template\src\utils\IndexedDB.ts
  */
@@ -29,11 +29,17 @@ class IndexedDB {
   private nameDatabase: string = 'Miramiya-DB';
   private nameStore: string = 'application';
 
-  private getStore() {
+  /**
+   * @private
+   * Get Active indexedDB Database and Store
+   * @returns {UseStore} Get indexedDB Database and Store
+   */
+  private getStore(): UseStore {
     return createStore(this.nameDatabase, this.nameStore);
   }
 
   /**
+   * @public
    * Set New Database and Store
    * @param database {string} Database Name
    * @param store {string} Store in Database
@@ -52,12 +58,18 @@ class IndexedDB {
     return setNewStore;
   }
 
-  public async getAllItems() {
+  /**
+   * @public
+   * Get All Items with Active Database and Store
+   * @returns {Promise<string[][]>} All Items in active indexedDB database
+   */
+  public async getAllItems(): Promise<string[][]> {
     const entriesItem = await entries();
     return entriesItem;
   }
 
   /**
+   * @public
    * Get Now Selected IndexedDB Database and Store
    * @return {indexedDBType} Now Selecting indexedDB Database Name and Store Name
    */

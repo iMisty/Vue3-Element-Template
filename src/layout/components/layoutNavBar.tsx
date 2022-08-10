@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-26 09:54:41
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-08 15:14:30
+ * @LastEditTime: 2022-08-10 15:10:28
  */
 
 import { defineComponent, reactive, onMounted, markRaw } from 'vue';
@@ -138,6 +138,7 @@ const LayoutNavBar = defineComponent({
           class={Style['layout__navbar--right']}
           onClick={() => setUserDrawer}
         >
+          {/* @ts-ignore */}
           <NavBarAvatar onAvatar={() => setUserDrawer()}></NavBarAvatar>
         </div>
         <el-drawer
