@@ -3,13 +3,15 @@
  * @Version: 2.0
  * @Author: Mirage
  * @Date: 2022-07-22 15:00:37
- * @LastEditors: Miya
- * @LastEditTime: 2022-08-11 00:10:10
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-08-15 16:39:57
  */
-import { FunctionalComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-const RouterView: FunctionalComponent = () => {
-  return <router-view></router-view>;
-};
+const RouterView = defineComponent({
+  render() {
+    return <router-view></router-view>;
+  },
+});
 
 export default RouterView;
