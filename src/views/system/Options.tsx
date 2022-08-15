@@ -1,24 +1,20 @@
 /*
  * @Author: Miya
  * @Date: 2022-08-10 23:34:48
- * @LastEditTime: 2022-08-15 18:08:00
- * @LastEditors: Mirage
+ * @LastEditTime: 2022-08-15 22:48:55
+ * @LastEditors: Miya
  * @Description: System Options Page
  * @FilePath: \Vue3-Element-Template\src\views\system\Options.tsx
  */
 
 import { defineComponent, reactive, ref } from 'vue';
-import CustomInput from '@/components/CustomInput/indexInput';
 import { $t } from '@/language';
 
 const SystemOptions = defineComponent({
-  components: {
-    CustomInput,
-  },
   setup() {},
   render() {
     const renderOptionsSystem = () => {
-      return <custom-input></custom-input>;
+      return 1;
     };
 
     return (
