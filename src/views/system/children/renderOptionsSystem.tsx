@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-08-16 16:45:27
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-16 18:11:59
+ * @LastEditTime: 2022-08-17 14:45:33
  */
 import { reactive, defineComponent } from 'vue';
 import optionsTheme from '@/config/OptionsTheme';
@@ -27,6 +27,38 @@ const renderOptionsSystem = defineComponent({
         <el-form-item label={this.$t('SystemSettings.options.themeSidebar')}>
           <el-select v-model={dataSystemOptions.themeSidebar}>
             {optionsTheme[getOptionsIndex('themeSidebar')].options!.map(
+              (item: ThemeOption) => {
+                return (
+                  <el-option
+                    key={item.value}
+                    label={item.label}
+                    value={item.value}
+                    disabled={item.isDisabled}
+                  ></el-option>
+                );
+              }
+            )}
+          </el-select>
+        </el-form-item>
+        <el-form-item label={this.$t('SystemSettings.options.themeLanguage')}>
+          <el-select v-model={dataSystemOptions.themeLanguage}>
+            {optionsTheme[getOptionsIndex('themeLanguage')].options!.map(
+              (item: ThemeOption) => {
+                return (
+                  <el-option
+                    key={item.value}
+                    label={item.label}
+                    value={item.value}
+                    disabled={item.isDisabled}
+                  ></el-option>
+                );
+              }
+            )}
+          </el-select>
+        </el-form-item>
+        <el-form-item label={this.$t('SystemSettings.options.themeColor')}>
+          <el-select v-model={dataSystemOptions.themeColor}>
+            {optionsTheme[getOptionsIndex('themeColor')].options!.map(
               (item: ThemeOption) => {
                 return (
                   <el-option
