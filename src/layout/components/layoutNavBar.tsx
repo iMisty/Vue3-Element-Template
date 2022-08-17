@@ -4,19 +4,19 @@
  * @Author: Mirage
  * @Date: 2022-07-26 09:54:41
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-10 15:10:28
+ * @LastEditTime: 2022-08-17 15:22:50
  */
 
 import { defineComponent, reactive, onMounted, markRaw } from 'vue';
 import { useRouter } from 'vue-router';
 import { getLanguage } from '@/language';
 import { CaretBottom } from '@element-plus/icons-vue';
-import NavBarHamburger from '@/components/NavBarHamburger/index';
-import NavBarBreadCrumb from '@/components/NavBarBreadCrumb/index.vue';
-import NavBarAvatar from '@/components/NavBarAvatar/indexAvatar';
+import NavBarHamburger from '../children/NavBarHamburger/index';
+import NavBarBreadCrumb from '../children/NavBarBreadCrumb/index.vue';
+import NavBarAvatar from '@/layout/children/NavBarAvatar/indexAvatar';
 import DrawerCard from '@/components/DrawerCard/indexDrawerCard';
 import DrawerCardItem from '@/config/DrawerCardItem';
-import Style from '@/style/layout/navbar/navbar.module.less';
+import Style from '../style/navbar.module.less';
 
 type listLanguage = {
   value: string;

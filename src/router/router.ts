@@ -3,15 +3,15 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
- * @LastEditors: Miya
- * @LastEditTime: 2022-08-10 23:36:55
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-08-17 15:10:49
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
-import Login from '@/views/Login';
+import Login from '@/views/Login/Login';
 import { useAPPStore } from '@/store/appStore';
-import RouterData from '@/interface/Router';
+import type RouterData from '@/interface/Router';
 
 const constantRouter: Array<RouterData> = [
   {
@@ -23,7 +23,7 @@ const constantRouter: Array<RouterData> = [
     children: [
       {
         path: 'dashboard',
-        name: 'test1',
+        name: 'Dashboard',
         component: () => import('@/views/example/dashboard'),
         meta: { title: 'DashBoard', icon: 'House', isCollapse: false },
       },
@@ -117,7 +117,7 @@ const constantRouter: Array<RouterData> = [
   {
     path: '/:pathMatch(.*)',
     name: '404',
-    component: () => import('@/views/404'),
+    component: () => import('@/views/404/404'),
   },
 ];
 

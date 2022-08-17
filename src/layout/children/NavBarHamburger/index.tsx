@@ -4,11 +4,11 @@
  * @Author: Mirage
  * @Date: 2021-11-28 03:07:28
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 16:32:07
+ * @LastEditTime: 2022-08-17 16:59:55
  */
 import { defineComponent, computed, ComputedRef } from 'vue';
 import { useAPPStore } from '@/store/appStore';
-import Style from '@/style/layout/navbar/hamburger.module.less';
+import Style from './style/hamburger.module.less';
 
 const handleClickToggleNavbarStatus = () => {
   const store = useAPPStore();

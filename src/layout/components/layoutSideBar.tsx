@@ -4,19 +4,19 @@
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-02 14:54:04
+ * @LastEditTime: 2022-08-17 15:21:33
  */
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAPPStore } from '@/store/appStore';
 import { initDynamicRouter } from '@/router/router';
-import SidebarLogo from '@/components/SideBarLogo/indexLogo';
-import GroupRoute from '@/components/SideBarItem/itemRouteGroup';
-import SingleRoute from '@/components/SideBarItem/itemSingleRoute';
-import MultiRoute from '@/components/SideBarItem/itemMultiRoute';
-import SingleList from '@/components/SideBarItem/itemRoutesSingle';
-import CollapseRoute from '@/components/SideBarItem/itemRoutesCollapse';
-import Style from '@/style/layout/sidebar/sidebar.module.less';
+import SidebarLogo from '@/layout/children/SideBarLogo/indexLogo';
+import GroupRoute from '@/layout/children/SideBarItem/itemRouteGroup';
+import SingleRoute from '@/layout/children/SideBarItem/itemSingleRoute';
+import MultiRoute from '@/layout/children/SideBarItem/itemMultiRoute';
+import SingleList from '@/layout/children/SideBarItem/itemRoutesSingle';
+import CollapseRoute from '@/layout/children/SideBarItem/itemRoutesCollapse';
+import Style from '../style/sidebar.module.less';
 import RouterData from '@/interface/Router';
 
 const layoutSidebar = defineComponent({

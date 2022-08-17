@@ -4,14 +4,14 @@
  * @Author: Miya
  * @Date: 2021-11-27 14:10:40
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-01 16:44:24
+ * @LastEditTime: 2022-08-17 15:27:12
  */
 import { defineComponent, computed, watch, onMounted, ref } from 'vue';
 import { useAPPStore } from '@/store/appStore';
 import LayoutSideBar from './components/layoutSideBar';
 import LayoutNavBar from './components/layoutNavBar';
 import LayoutMain from './components/layoutMain';
-import Style from '@/style/layout/admin.module.less';
+import Style from '@/layout/style/admin.module.less';
 
 const getCollapseStatus = computed(() => {
   const store = useAPPStore();

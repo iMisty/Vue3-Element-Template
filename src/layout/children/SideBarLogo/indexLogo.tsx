@@ -4,10 +4,10 @@
  * @Author: Mirage
  * @Date: 2022-06-30 14:23:29
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-25 15:37:37
+ * @LastEditTime: 2022-08-17 17:00:08
  */
 import { FunctionalComponent } from 'vue';
-import Style from '@/style/layout/sidebar/logo.module.less';
+import Style from './style/logo.module.less';
 
 type Emit = {
   click: () => void;

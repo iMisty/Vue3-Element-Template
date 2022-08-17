@@ -4,12 +4,11 @@
  * @Author: Mirage
  * @Date: 2022-07-27 15:02:02
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-27 17:31:57
+ * @LastEditTime: 2022-08-17 15:24:59
  */
 import { defineComponent } from 'vue';
 import MultiRoute from './itemMultiRoute';
 import SingleList from './itemRoutesSingle';
-import RouterData from '@/interface/Router';
 
 const itemRouteCollapse = defineComponent({
   components: {

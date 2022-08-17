@@ -4,10 +4,10 @@
  * @Author: Mirage
  * @Date: 2022-08-08 10:38:36
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-08 13:59:04
+ * @LastEditTime: 2022-08-17 16:54:06
  */
 import { Component, FunctionalComponent, h } from 'vue';
-import Style from '@/style/components/drawer-card.module.less';
+import Style from './style/drawer-card.module.less';
 
 type DrawerCard = {
   icon: Component;

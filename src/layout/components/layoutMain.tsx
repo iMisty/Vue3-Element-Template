@@ -4,13 +4,13 @@
  * @Author: Miya
  * @Date: 2021-11-28 00:56:25
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-25 16:41:46
+ * @LastEditTime: 2022-08-17 15:28:21
  */
 
 import { defineComponent, computed, Transition } from 'vue';
 import type { Slots } from 'vue';
 import { useRoute } from 'vue-router';
-import '@/style/layout/main.module.less';
+import '@/layout/style/main.module.less';
 
 const LayoutMain = defineComponent({
   components: {

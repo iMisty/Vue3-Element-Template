@@ -4,18 +4,42 @@
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-08 16:25:04
+ * @LastEditTime: 2022-08-17 15:51:28
+ */
+
+/**
+ * Import Node Modules
  */
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import Router from './router/router';
 import ElementPlus from 'element-plus';
+
+/**
+ * Import Config File
+ */
+import Router from './router/router';
 import i18n from './language/index';
-import './style/layout/app.module.less';
-import './style/normalize.less';
-import './style/transition.less';
+
+/**
+ * Import Node Modules Style
+ */
 import 'element-plus/dist/index.css';
+
+/**
+ * Import Custom Style
+ */
+// Global APP Style
+import './style/app.module.less';
+// Normalize.css
+import './style/normalize.less';
+// Animation and Transition CSS
+import './style/transition.less';
+// Change Element Plus CSS
 import './style/elementChange.less';
+
+/**
+ * Import Root Component
+ */
 import App from './App';
 
 const app = createApp(App);

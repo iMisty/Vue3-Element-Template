@@ -4,10 +4,10 @@
  * @Author: Mirage
  * @Date: 2022-06-30 17:32:29
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 17:23:59
+ * @LastEditTime: 2022-08-17 15:08:13
  */
 import { FunctionalComponent, computed } from 'vue';
-import Style from '@/style/layout/404.module.less';
+import Style from './style/404.module.less';
 
 const computedMessage = computed(() => {
   return 'The webmaster said that you can not enter this page...';

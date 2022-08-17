@@ -4,10 +4,10 @@
  * @Author: Mirage
  * @Date: 2022-07-25 11:19:43
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-27 17:34:44
+ * @LastEditTime: 2022-08-17 15:24:08
  */
 import { defineComponent } from 'vue';
-import Style from '@/style/layout/sidebar/sidebar.module.less';
+import Style from '@/layout/style/sidebar.module.less';
 
 const itemRouteGroup = defineComponent({
   name: 'itemRouteGroup',

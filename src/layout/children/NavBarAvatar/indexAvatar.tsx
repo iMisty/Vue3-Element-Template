@@ -1,13 +1,13 @@
 /*
  * @Author: Miya
  * @Date: 2022-07-20 22:50:47
- * @LastEditTime: 2022-08-02 15:53:47
+ * @LastEditTime: 2022-08-17 16:59:30
  * @LastEditors: Mirage
  * @Description: Avatar on Navbar
  * @FilePath: \Vue3-Element-Template\src\components\NavBarDrawer\indexAvatar.tsx
  */
 import { FunctionalComponent } from 'vue';
-import Style from '@/style/layout/navbar/avatar.module.less';
+import Style from './style/avatar.module.less';
 import image from '@/assets/avatar.jpg';
 
 const style = {

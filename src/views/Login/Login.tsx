@@ -3,14 +3,14 @@
  * @Version: 3.0
  * @Author: Miya
  * @Date: 2021-12-18 20:30:02
- * @LastEditors: Miya
- * @LastEditTime: 2022-08-09 21:50:39
+ * @LastEditors: Mirage
+ * @LastEditTime: 2022-08-17 15:06:24
  */
 import { useAPPStore } from '@/store/appStore';
 import { defineComponent, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { User, Lock } from '@element-plus/icons-vue';
-import Style from '@/style/page/login.module.less';
+import Style from './style/login.module.less';
 import loginBG from '@/assets/login.svg';
 
 const dataLoginForm = reactive({

@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-08-01 09:29:21
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-09 18:08:41
+ * @LastEditTime: 2022-08-17 16:58:01
  */
 
 import { defineComponent, reactive, ref } from 'vue';
@@ -13,7 +13,7 @@ import type { Ref } from 'vue';
 import CustomCard from '@/components/CustomCard/indexCustomCard';
 import CustomPagination from '@/components/CustomPagination/indexPagination';
 import { MockTableData } from '@/mock/table';
-import Style from '@/style/example/containerTable.module.less';
+import Style from './style/containerTable.module.less';
 
 const dataHeader = reactive({
   valueInput: '',
