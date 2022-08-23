@@ -3,16 +3,20 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-08-09 14:49:41
- * @LastEditors: Mirage
- * @LastEditTime: 2022-08-09 17:22:29
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-08-23 23:05:13
  */
 import responseAlert from './ResponseAlert';
+
+type httpRequestMessage = {
+  [key: string]: string;
+};
 
 /**
  * HTTP错误码返回文字
  * @description 用于存储HTTP错误码或超时等方式返回文字
  */
-const arrayResponseMessageForStatus = {
+const arrayResponseMessageForStatus: httpRequestMessage = {
   400: '请求错误,请检查数据是否合法',
   401: '登录信息已失效,请重新登录',
   403: '您没有该功能的权限',
@@ -25,10 +29,10 @@ const arrayResponseMessageForStatus = {
  * @function HTTP错误码返回方法
  * @description 该方法不返回HTTP 409
  * @param {Number} code 接口返回错误码
- * @returns {Function} 错误码弹出窗
+ * @returns {void} 错误码弹出窗
  */
-const ErrorMessageResponseReject = (code: number) => {
-  return responseAlert(arrayResponseMessageForStatus[code]);
+const ErrorMessageResponseReject = (code: number): void => {
+  return responseAlert(arrayResponseMessageForStatus[code.toString()]);
 };
 
 /**
@@ -36,25 +40,25 @@ const ErrorMessageResponseReject = (code: number) => {
  * @param {Number} code 接口返回错误码
  * @returns {Function} 错误码弹出窗
  */
-const ErrorMessageResponseCustom = (code) => {
-  return responseAlert(arrayResponseMessageForCustom[code]);
-};
+// const ErrorMessageResponseCustom = (code) => {
+//   return responseAlert(arrayResponseMessageForCustom[code]);
+// };
 
 /**
  * @function HTTP错误码409返回方法
  * @param {Number} code 接口返回错误码
  * @returns {Function} 错误码弹出窗
  */
-const ErrorMessageResponseConflict = (error) => {
-  return responseAlert(error.msg);
-};
+// const ErrorMessageResponseConflict = (error) => {
+//   return responseAlert(error.msg);
+// };
 
 /**
  * @exports ErrorResponseMessage 数据交互错误码返回请求
  * @param {Object<AxiosResponse>} error AXIOS抛出错误对象
- * @returns {Function} 错误码返回方法函数
+ * @returns {void} 错误码返回方法函数
  */
-const ErrorResponseMessage = (error) => {
+const ErrorResponseMessage = (error: any): void => {
   console.log('[数据交互错误码] ', error);
   // axios返回超时
   if (
@@ -67,12 +71,12 @@ const ErrorResponseMessage = (error) => {
   if (error.status !== 200 && error.status !== 409) {
     return ErrorMessageResponseReject(error.status);
   }
-  // HTTP 409返回
-  if (error.status === 409) {
-    return ErrorMessageResponseConflict(error.data);
-  }
-  // HTTP 200但内部返回自定义错误码
-  return ErrorMessageResponseCustom(error.data.status);
+  // // HTTP 409返回
+  // if (error.status === 409) {
+  //   return ErrorMessageResponseConflict(error.data);
+  // }
+  // // HTTP 200但内部返回自定义错误码
+  // return ErrorMessageResponseCustom(error.data.status);
 };
 
 export { ErrorResponseMessage };
