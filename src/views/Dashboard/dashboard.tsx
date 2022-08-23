@@ -3,14 +3,18 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-08-02 16:20:11
- * @LastEditors: Mirage
- * @LastEditTime: 2022-08-23 16:12:03
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-08-23 22:45:34
  */
 import { defineComponent, onMounted, ref } from 'vue';
+import SimpleStatistics from '@/components/SimpleStatistics/statistics';
 import ECharts from '@/utils/ECharts';
 
 const Dashboard = defineComponent({
   name: 'Dashboard',
+  components: {
+    SimpleStatistics,
+  },
   setup() {
     const charts = ref<HTMLElement>();
     let objectEChart: ECharts | null = null;
@@ -52,11 +56,7 @@ const Dashboard = defineComponent({
   },
   render() {
     const renderCircle = () => {
-      return (
-        <el-card>
-          <el-progress type="circle" percentage={24}></el-progress>
-        </el-card>
-      );
+      return <el-progress type="circle" percentage={24} width={90}></el-progress>;
     };
     const renderCharts = () => {
       return (
@@ -71,8 +71,20 @@ const Dashboard = defineComponent({
     };
     return (
       <el-row gutter={32}>
-        <el-col span={6}>{renderCircle}</el-col>
-        <el-button onClick={() => this.setNewData()}>111</el-button>
+        <el-col span={6}>
+          <simple-statistics></simple-statistics>
+        </el-col>
+        <el-col span={6}>
+          <simple-statistics title="Page" sum={7}></simple-statistics>
+        </el-col>
+        <el-col span={6}>
+          <simple-statistics
+            v-slots={{ chart: renderCircle }}
+          ></simple-statistics>
+        </el-col>
+        <el-col span={6}>
+          <simple-statistics isSimple={true} title="Simple"></simple-statistics>
+        </el-col>
         <el-col span={24}>{renderCharts}</el-col>
       </el-row>
     );
