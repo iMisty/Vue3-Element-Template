@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-07-26 09:54:41
- * @LastEditors: Mirage
- * @LastEditTime: 2022-08-17 15:22:50
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-08-23 22:53:22
  */
 
 import { defineComponent, reactive, onMounted, markRaw } from 'vue';
@@ -16,6 +16,7 @@ import NavBarBreadCrumb from '../children/NavBarBreadCrumb/index.vue';
 import NavBarAvatar from '@/layout/children/NavBarAvatar/indexAvatar';
 import DrawerCard from '@/components/DrawerCard/indexDrawerCard';
 import DrawerCardItem from '@/config/DrawerCardItem';
+import LanguageList from '@/config/LanguageList';
 import Style from '../style/navbar.module.less';
 
 type listLanguage = {
@@ -28,20 +29,7 @@ const data = reactive({
   selectedLanguage: 'zh',
 });
 
-const listLanguage = reactive([
-  {
-    label: '中文',
-    value: 'zh',
-  },
-  {
-    label: 'English',
-    value: 'en',
-  },
-  {
-    label: '日本語',
-    value: 'jp',
-  },
-]);
+const listLanguage = reactive(LanguageList);
 
 const listDrawer = markRaw(DrawerCardItem);
 
@@ -78,7 +66,7 @@ const LayoutNavBar = defineComponent({
     const getLanguageInDrawer = (): string => {
       const getLanguageInStorage = localStorage.getItem('language');
       if (!getLanguageInStorage) {
-        return 'en';
+        return 'zh';
       }
       return getLanguageInStorage;
     };
