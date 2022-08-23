@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-08-19 11:33:16
- * @LastEditors: Mirage
- * @LastEditTime: 2022-08-23 16:10:30
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-08-23 23:16:32
  */
 import * as echarts from 'echarts/core';
 import {
@@ -52,6 +52,11 @@ type EChartsOption = echarts.ComposeOption<
 >;
 
 type ToolTipTrigger = 'axis' | 'item' | 'none';
+
+/**
+ * Add Series Data Mode
+ */
+type AddSeriesMode = 'add' | 'replace';
 
 class ECharts {
   /**
@@ -292,7 +297,13 @@ class ECharts {
     return this.chartOptions.series;
   }
 
-  public setSeriesData<T>(seriesData: T) {
+  public setSeriesData<T extends this>(
+    seriesData: T,
+    mode: AddSeriesMode = 'add'
+  ) {
+    if (!mode || mode === 'add') {
+      (this.chartOptions.series! as unknown as any[]).push(seriesData);
+    }
     return (this.chartOptions.series = seriesData);
   }
 
@@ -330,18 +341,15 @@ class ECharts {
 
     // @ts-ignore
     let arrayNewData: Array<T> = series[getSeriesNameIndex].data;
-    console.log(arrayNewData);
-    console.log(newData);
+
     arrayNewData = arrayNewData.concat(newData);
-    console.log(arrayNewData);
+
     if (isLimit && arrayNewData.length > this.getDataLimit()) {
-      console.log('Need Slice');
       const sliceArray = arrayNewData.slice(-this.getDataLimit());
-      console.log('Slice Array', sliceArray);
+
       arrayNewData = sliceArray;
     }
-    console.log(this.getDataLimit());
-    console.log(arrayNewData);
+
     // @ts-ignore
     this.chartOptions.series[getSeriesNameIndex].data = arrayNewData;
 
