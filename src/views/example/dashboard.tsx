@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-08-02 16:20:11
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-22 17:46:51
+ * @LastEditTime: 2022-08-23 16:12:03
  */
 import { defineComponent, onMounted, ref } from 'vue';
 import ECharts from '@/utils/ECharts';
@@ -18,7 +18,7 @@ const Dashboard = defineComponent({
 
     onMounted(() => {
       const charts = document.getElementById('charts');
-      objectEChart = new ECharts(charts!);
+      objectEChart = new ECharts(charts!, 7);
       objectEChart.setTemplateData();
       objectEChart.render();
       window.addEventListener('resize', function () {
@@ -28,13 +28,9 @@ const Dashboard = defineComponent({
 
     const setNewData = () => {
       clearInterval(Number(timer));
-      const random = Math.random();
-      const newData = {
-        name: 'Sample Data',
-        type: 'line',
-        stack: 'Total',
-        smooth: true,
-        data: [
+      timer = setInterval(() => {
+        const random = Math.random();
+        const newData = [
           random,
           random * Math.random() * 10,
           random * Math.random() * 10,
@@ -42,11 +38,12 @@ const Dashboard = defineComponent({
           random * Math.random() * 10,
           random * Math.random() * 10,
           random * Math.random() * 10,
-        ],
-      };
-      timer = setInterval(() => {
-        console.log('x');
-        objectEChart?.setSeriesData(newData);
+          random * Math.random() * 10,
+          random * Math.random() * 10,
+          random * Math.random() * 10,
+          random * Math.random() * 10,
+        ];
+        objectEChart?.updateSeriesData('Sample Data', newData);
         objectEChart?.render();
       }, 1000);
     };

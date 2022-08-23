@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-08-19 11:33:16
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-22 17:37:54
+ * @LastEditTime: 2022-08-23 16:10:30
  */
 import * as echarts from 'echarts/core';
 import {
@@ -56,12 +56,19 @@ type ToolTipTrigger = 'axis' | 'item' | 'none';
 class ECharts {
   /**
    * @constructor
-   * Render Charts DOM HTML Element
+   * 渲染图表所在的DOM对象
    */
   private renderDOM: HTMLElement;
 
   /**
-   * ECharts Option
+   * @constructor
+   * 单图表最大保留数据数
+   */
+  private dataLimit: number = 7;
+
+  /**
+   * 图表配置项
+   * @see https://echarts.apache.org/zh/option.html#title
    */
   private chartOptions: EChartsOption = {
     title: {
@@ -99,34 +106,40 @@ class ECharts {
     ],
   };
 
+  /**
+   * 存储初始化该图表存在的实例
+   */
   private initChart: echarts.ECharts | undefined;
 
+  /**
+   * 用于存储重新渲染图表的延时定时器
+   */
   private resizeTimer: NodeJS.Timeout | null = null;
 
-  constructor(dom: HTMLElement) {
+  constructor(dom: HTMLElement, limit: number = 7) {
     this.renderDOM = dom;
+    this.dataLimit = limit;
   }
 
   /**
-   * Initial Chart and Set Render DOM
+   * 初始化图表配置方法
    */
   private initialChart() {
     this.initChart = echarts.init(this.renderDOM);
   }
 
   /**
-   *  @TODO Set SubClass
+   * 获取图表左上角标题内容
+   * @TODO Set SubClass
    */
-
   public getTitle() {
     return this.chartOptions.title;
   }
 
   /**
-   * Set This Chart's Title
-   * @description If Title Param is String,Then only Set Base Title Options.
-   * Else Title is Object,Set Title Component Option
-   * @param title {TitleComponentOption | string} Title Options in this Chart
+   * 设置图表左上角标题内容
+   * @description 设置图表标题内容根据ECharts的TitleComponentOption内容设置
+   * @param title {TitleComponentOption | string} 若title参数为string格式,则仅设置标题,若传递一个对象,则遵循ECharts组件配置
    * @see https://echarts.apache.org/zh/option.html#title
    */
   public setTitle(title: TitleComponentOption | string) {
@@ -263,6 +276,14 @@ class ECharts {
     return (this.chartOptions.yAxis = axisOption);
   }
 
+  public getDataLimit() {
+    return this.dataLimit;
+  }
+
+  public setDataLimit(limit: number) {
+    return (this.dataLimit = limit);
+  }
+
   /**
    * Get This Charts Series Data
    * @returns Series Data
@@ -275,6 +296,61 @@ class ECharts {
     return (this.chartOptions.series = seriesData);
   }
 
+  /**
+   * 更新对应name所在区域的数据
+   * @description 更新所在数据,
+   * @param name {string} 需要更新数据所在的name
+   * @param newData {Array<T>} 需要更新的新数据
+   * @param isLimit {boolean} 是否删除多出的数据
+   */
+  public updateSeriesData<T>(
+    name: string,
+    newData: Array<T>,
+    isLimit: boolean = true
+  ) {
+    if (!name || !newData) {
+      throw new Error('Update Name or Data is Required');
+    }
+    const { series } = this.chartOptions;
+    // TODO: Fix any and ignore
+    // @ts-ignore
+    if (!series || series.length === 0) {
+      throw new Error('Series Data is Empty');
+    }
+
+    // @ts-ignore
+    const getSeriesNameIndex = series!.findIndex((item: { name: string }) => {
+      return item.name === name;
+    });
+    console.log('Get Series Name: ', getSeriesNameIndex);
+
+    if (getSeriesNameIndex === -1) {
+      throw new Error('This Name in Series Array is Not Found');
+    }
+
+    // @ts-ignore
+    let arrayNewData: Array<T> = series[getSeriesNameIndex].data;
+    console.log(arrayNewData);
+    console.log(newData);
+    arrayNewData = arrayNewData.concat(newData);
+    console.log(arrayNewData);
+    if (isLimit && arrayNewData.length > this.getDataLimit()) {
+      console.log('Need Slice');
+      const sliceArray = arrayNewData.slice(-this.getDataLimit());
+      console.log('Slice Array', sliceArray);
+      arrayNewData = sliceArray;
+    }
+    console.log(this.getDataLimit());
+    console.log(arrayNewData);
+    // @ts-ignore
+    this.chartOptions.series[getSeriesNameIndex].data = arrayNewData;
+
+    this.render();
+  }
+
+  /**
+   * 初始化模板数据
+   */
   public setTemplateData() {
     this.chartOptions = {
       title: {
@@ -314,7 +390,7 @@ class ECharts {
   }
 
   /**
-   * Render Chart
+   * 渲染图表方法
    */
   public render() {
     if (!this.initChart) {
@@ -324,8 +400,9 @@ class ECharts {
   }
 
   /**
-   * Resize Charts
-   * @param timeout {number}
+   * 修改容器大小时重新渲染图表
+   * @param timeout {number} 延时时间,单位为ms
+   * @default timeout = 1000
    */
   public resize(timeout: number = 1000) {
     clearInterval(Number(this.resizeTimer));
