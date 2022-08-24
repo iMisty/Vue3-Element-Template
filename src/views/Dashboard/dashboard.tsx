@@ -4,11 +4,11 @@
  * @Author: Mirage
  * @Date: 2022-08-02 16:20:11
  * @LastEditors: Miya
- * @LastEditTime: 2022-08-23 22:45:34
+ * @LastEditTime: 2022-08-24 22:38:28
  */
 import { defineComponent, onMounted, ref } from 'vue';
 import SimpleStatistics from '@/components/SimpleStatistics/statistics';
-import ECharts from '@/utils/ECharts';
+import Charts from '@/utils/Charts';
 
 const Dashboard = defineComponent({
   name: 'Dashboard',
@@ -17,12 +17,12 @@ const Dashboard = defineComponent({
   },
   setup() {
     const charts = ref<HTMLElement>();
-    let objectEChart: ECharts | null = null;
+    let objectEChart: Charts | null = null;
     let timer: NodeJS.Timer | null | number | undefined = null;
 
     onMounted(() => {
       const charts = document.getElementById('charts');
-      objectEChart = new ECharts(charts!, 7);
+      objectEChart = new Charts(charts!, 7);
       objectEChart.setTemplateData();
       objectEChart.render();
       window.addEventListener('resize', function () {
@@ -56,7 +56,9 @@ const Dashboard = defineComponent({
   },
   render() {
     const renderCircle = () => {
-      return <el-progress type="circle" percentage={24} width={90}></el-progress>;
+      return (
+        <el-progress type="circle" percentage={24} width={90}></el-progress>
+      );
     };
     const renderCharts = () => {
       return (

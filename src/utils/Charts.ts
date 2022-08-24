@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-08-19 11:33:16
  * @LastEditors: Miya
- * @LastEditTime: 2022-08-23 23:16:32
+ * @LastEditTime: 2022-08-24 22:38:11
  */
 import * as echarts from 'echarts/core';
 import {
@@ -58,7 +58,7 @@ type ToolTipTrigger = 'axis' | 'item' | 'none';
  */
 type AddSeriesMode = 'add' | 'replace';
 
-class ECharts {
+class Charts {
   /**
    * @constructor
    * 渲染图表所在的DOM对象
@@ -420,4 +420,4 @@ class ECharts {
   }
 }
 
-export default ECharts;
+export default Charts;
