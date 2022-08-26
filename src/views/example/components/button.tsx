@@ -1,7 +1,7 @@
 /*
  * @Author: Miya
  * @Date: 2022-07-27 23:23:02
- * @LastEditTime: 2022-07-29 18:08:57
+ * @LastEditTime: 2022-08-26 16:10:33
  * @LastEditors: Mirage
  * @Description: Example Buttons
  * @FilePath: \Vue3-Element-Template\src\views\example\components\button.tsx
@@ -25,7 +25,7 @@ const buttonCardDefault = () => {
       <el-button type="primary" disabled={true}>
         Disabled
       </el-button>
-      <el-button type="text">Link</el-button>
+      <el-button text={true}>Link</el-button>
     </>
   );
 };
