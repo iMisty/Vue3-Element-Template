@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-07-06 10:42:07
  * @LastEditors: Mirage
- * @LastEditTime: 2022-07-06 10:44:45
+ * @LastEditTime: 2022-08-30 17:55:44
  */
 module.exports = {
   env: {
@@ -12,12 +12,17 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['airbnb'],
+  extends: ['airbnb-base'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
-  rules: {},
+  rules: {
+    'linebreak-style': [0, 'error', 'windows'],
+    semi: [2, 'always'],
+    'no-new': [0],
+    'no-debugger': [0],
+  },
 };
