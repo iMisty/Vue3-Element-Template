@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-08-19 11:33:16
  * @LastEditors: Miya
- * @LastEditTime: 2022-08-24 22:38:11
+ * @LastEditTime: 2022-09-05 22:33:17
  */
 import * as echarts from 'echarts/core';
 import {
@@ -28,6 +28,7 @@ import type {
   XAXisComponentOption,
   YAXisComponentOption,
 } from 'echarts';
+import { YAXisOption } from 'echarts/types/dist/shared';
 
 echarts.use([
   TitleComponent,
@@ -53,17 +54,12 @@ type EChartsOption = echarts.ComposeOption<
 
 type ToolTipTrigger = 'axis' | 'item' | 'none';
 
-/**
- * Add Series Data Mode
- */
-type AddSeriesMode = 'add' | 'replace';
-
 class Charts {
   /**
    * @constructor
    * 渲染图表所在的DOM对象
    */
-  private renderDOM: HTMLElement;
+  public renderDOM: HTMLElement;
 
   /**
    * @constructor
@@ -72,10 +68,17 @@ class Charts {
   private dataLimit: number = 7;
 
   /**
+   * @constructor
+   */
+  public width: number | undefined = undefined;
+
+  public height: number | undefined = undefined;
+
+  /**
    * 图表配置项
    * @see https://echarts.apache.org/zh/option.html#title
    */
-  private chartOptions: EChartsOption = {
+  public chartOptions: EChartsOption = {
     title: {
       // text: 'Sample Charts',
     },
@@ -89,7 +92,7 @@ class Charts {
       left: '4%',
       right: '4%',
       bottom: '4%',
-      // containLabel: true,
+      containLabel: true,
     },
     toolbox: {},
     xAxis: {
@@ -100,15 +103,7 @@ class Charts {
     yAxis: {
       type: 'value',
     },
-    series: [
-      {
-        // name: 'Sample Data',
-        type: 'line',
-        // stack: 'Total',
-        smooth: true,
-        data: [120, 132, 101, 134, 90, 230, 210],
-      },
-    ],
+    series: [],
   };
 
   /**
@@ -121,16 +116,26 @@ class Charts {
    */
   private resizeTimer: NodeJS.Timeout | null = null;
 
-  constructor(dom: HTMLElement, limit: number = 7) {
+  constructor(
+    dom: HTMLElement,
+    width?: number,
+    height?: number,
+    limit: number = 7
+  ) {
     this.renderDOM = dom;
     this.dataLimit = limit;
+    this.width = width;
+    this.height = height;
   }
 
   /**
    * 初始化图表配置方法
    */
   private initialChart() {
-    this.initChart = echarts.init(this.renderDOM);
+    this.initChart = echarts.init(this.renderDOM, undefined, {
+      width: this.width,
+      height: this.height,
+    });
   }
 
   /**
@@ -157,7 +162,7 @@ class Charts {
   }
 
   /**
-   * Get This Charts Tooltip Option
+   * 获取当前图表的工具栏
    * @returns Tooltip Options Data
    */
   public getTooltip() {
@@ -165,7 +170,7 @@ class Charts {
   }
 
   /**
-   * Set Tooltip Component Option
+   * 设置当前图表的工具栏
    * @description If tooltip Param is String,Then only Set Base Tooltip Options.
    * Else Tooltip is Object,Set Tooltip Component Option
    * @param tooltip {TooltipComponentOption | ToolTipTrigger} Tooltip Option
@@ -266,9 +271,14 @@ class Charts {
     return this.chartOptions.xAxis;
   }
 
-  public setXAxis(axisOption: XAXisComponentOption) {
-    return (this.chartOptions.xAxis = axisOption);
+  public setXAxis(axisOption: Array<String | Number>) {
+    if (!this.chartOptions) {
+      throw new Error('图表尚未初始化');
+    }
+    // @ts-ignore
+    return (this.chartOptions.xAxis!.data = axisOption);
   }
+
   /**
    * Get This Charts yAxis Option
    * @returns yAxis Options Data
@@ -277,8 +287,12 @@ class Charts {
     return this.chartOptions.yAxis;
   }
 
-  public setYAxis(axisOption: YAXisComponentOption) {
-    return (this.chartOptions.yAxis = axisOption);
+  public setYAxis(axisOption: YAXisOption) {
+    if (!this.chartOptions) {
+      throw new Error('图表尚未初始化');
+    }
+    // @ts-ignore
+    return (this.chartOptions.yAxis! = axisOption);
   }
 
   public getDataLimit() {
@@ -297,14 +311,9 @@ class Charts {
     return this.chartOptions.series;
   }
 
-  public setSeriesData<T extends this>(
-    seriesData: T,
-    mode: AddSeriesMode = 'add'
-  ) {
-    if (!mode || mode === 'add') {
-      (this.chartOptions.series! as unknown as any[]).push(seriesData);
-    }
-    return (this.chartOptions.series = seriesData);
+  public setSeriesData<T>(seriesData: T) {
+    // @ts-ignore
+    return this.chartOptions.series!.push(seriesData);
   }
 
   /**
@@ -330,9 +339,9 @@ class Charts {
     }
 
     // @ts-ignore
-    const getSeriesNameIndex = series!.findIndex((item: { name: string }) => {
-      return item.name === name;
-    });
+    const getSeriesNameIndex = series!.findIndex(
+      (item: { name: string }) => item.name === name
+    );
     console.log('Get Series Name: ', getSeriesNameIndex);
 
     if (getSeriesNameIndex === -1) {
@@ -341,15 +350,18 @@ class Charts {
 
     // @ts-ignore
     let arrayNewData: Array<T> = series[getSeriesNameIndex].data;
-
+    console.log(arrayNewData);
+    console.log(newData);
     arrayNewData = arrayNewData.concat(newData);
-
+    console.log(arrayNewData);
     if (isLimit && arrayNewData.length > this.getDataLimit()) {
+      console.log('Need Slice');
       const sliceArray = arrayNewData.slice(-this.getDataLimit());
-
+      console.log('Slice Array', sliceArray);
       arrayNewData = sliceArray;
     }
-
+    console.log(this.getDataLimit());
+    console.log(arrayNewData);
     // @ts-ignore
     this.chartOptions.series[getSeriesNameIndex].data = arrayNewData;
 
@@ -357,7 +369,46 @@ class Charts {
   }
 
   /**
-   * 初始化模板数据
+   * 渲染图表方法
+   */
+  public render() {
+    if (!this.initChart) {
+      this.initialChart();
+    }
+    this.initChart!.setOption(this.chartOptions);
+  }
+
+  /**
+   * 修改容器大小时重新渲染图表
+   * @param timeout {number} 延时时间,单位为ms
+   * @default timeout = 1000
+   */
+  public resize(timeout: number = 1000) {
+    clearInterval(Number(this.resizeTimer));
+    this.resizeTimer = setTimeout(() => {
+      this.initChart!.resize();
+    }, timeout);
+  }
+}
+
+/**
+ * @class
+ * Extends Class if Want Set Template Data Chart Example
+ * @example
+ * const getDOM = document.getElementById('chart');
+ * const templateExample = new TemplateChart(getDOM);
+ */
+class TemplateChart extends Charts {
+  constructor(
+    dom: HTMLElement,
+    width?: number | undefined,
+    height?: number | undefined
+  ) {
+    super(dom, width, height);
+  }
+
+  /**
+   * Initial Template Data
    */
   public setTemplateData() {
     this.chartOptions = {
@@ -396,28 +447,8 @@ class Charts {
       ],
     };
   }
-
-  /**
-   * 渲染图表方法
-   */
-  public render() {
-    if (!this.initChart) {
-      this.initialChart();
-    }
-    this.initChart!.setOption(this.chartOptions);
-  }
-
-  /**
-   * 修改容器大小时重新渲染图表
-   * @param timeout {number} 延时时间,单位为ms
-   * @default timeout = 1000
-   */
-  public resize(timeout: number = 1000) {
-    clearInterval(Number(this.resizeTimer));
-    this.resizeTimer = setTimeout(() => {
-      this.initChart!.resize();
-    }, timeout);
-  }
 }
 
 export default Charts;
+
+export { Charts, TemplateChart };

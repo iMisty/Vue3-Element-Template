@@ -4,11 +4,11 @@
  * @Author: Mirage
  * @Date: 2022-08-02 16:20:11
  * @LastEditors: Miya
- * @LastEditTime: 2022-08-24 22:38:28
+ * @LastEditTime: 2022-09-05 22:23:07
  */
 import { defineComponent, onMounted, ref } from 'vue';
 import SimpleStatistics from '@/components/SimpleStatistics/statistics';
-import Charts from '@/utils/Charts';
+import { TemplateChart, Charts } from '@/utils/Charts';
 
 const Dashboard = defineComponent({
   name: 'Dashboard',
@@ -16,13 +16,12 @@ const Dashboard = defineComponent({
     SimpleStatistics,
   },
   setup() {
-    const charts = ref<HTMLElement>();
-    let objectEChart: Charts | null = null;
+    let objectEChart: null | TemplateChart = null;
     let timer: NodeJS.Timer | null | number | undefined = null;
 
     onMounted(() => {
       const charts = document.getElementById('charts');
-      objectEChart = new Charts(charts!, 7);
+      objectEChart = new TemplateChart(charts!);
       objectEChart.setTemplateData();
       objectEChart.render();
       window.addEventListener('resize', function () {
@@ -30,29 +29,6 @@ const Dashboard = defineComponent({
       });
     });
 
-    const setNewData = () => {
-      clearInterval(Number(timer));
-      timer = setInterval(() => {
-        const random = Math.random();
-        const newData = [
-          random,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-          random * Math.random() * 10,
-        ];
-        objectEChart?.updateSeriesData('Sample Data', newData);
-        objectEChart?.render();
-      }, 1000);
-    };
-
-    return { charts, setNewData };
   },
   render() {
     const renderCircle = () => {
