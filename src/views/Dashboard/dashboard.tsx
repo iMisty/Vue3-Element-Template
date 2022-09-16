@@ -1,42 +1,64 @@
 /*
  * @Description: Example Page Dashboard
- * @Version: 1.0
+ * @Version: 1.1
  * @Author: Mirage
  * @Date: 2022-08-02 16:20:11
  * @LastEditors: Miya
- * @LastEditTime: 2022-09-05 22:23:07
+ * @LastEditTime: 2022-09-16 23:57:06
  */
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, FunctionalComponent, h, onMounted, VNode } from 'vue';
 import SimpleStatistics from '@/components/SimpleStatistics/statistics';
-import { TemplateChart, Charts } from '@/utils/Charts';
+import type {
+  SimpleStatisticsProps,
+  StatisticsSlot,
+} from '@/components/SimpleStatistics/statistics';
+import { TemplateChart } from '@/utils/Charts';
 
 const Dashboard = defineComponent({
   name: 'Dashboard',
-  components: {
-    SimpleStatistics,
-  },
   setup() {
+    /**
+     * Chart Container
+     */
     let objectEChart: null | TemplateChart = null;
-    let timer: NodeJS.Timer | null | number | undefined = null;
+
+    /**
+     * Set a New Chart Canvas
+     * @param domID {string} Chart Render DOM ID
+     * @param objectChart {TemplateChart | null} Chart Container
+     */
+    const setChartData = (
+      domID: string,
+      objectChart: null | TemplateChart
+    ): void => {
+      const charts = document.getElementById(domID);
+      objectChart = new TemplateChart(charts!);
+      objectChart.setTemplateData();
+      objectChart.render();
+      window.addEventListener('resize', function () {
+        objectChart!.resize();
+      });
+    };
 
     onMounted(() => {
-      const charts = document.getElementById('charts');
-      objectEChart = new TemplateChart(charts!);
-      objectEChart.setTemplateData();
-      objectEChart.render();
-      window.addEventListener('resize', function () {
-        objectEChart!.resize();
-      });
+      setChartData('charts', objectEChart);
     });
 
-  },
-  render() {
-    const renderCircle = () => {
+    /**
+     * Render Circle Component From Element-Plus
+     * @returns {VNode | JSX.Element} Render Circle Component from Element-Plus
+     */
+    const renderCircle: FunctionalComponent = (): VNode => {
       return (
         <el-progress type="circle" percentage={24} width={90}></el-progress>
       );
     };
-    const renderCharts = () => {
+
+    /**
+     * Render Chart Card Container
+     * @returns {VNode | JSX.Element} Render Chart Container DOM
+     */
+    const renderCharts = (): VNode => {
       return (
         <el-card>
           <div
@@ -47,25 +69,42 @@ const Dashboard = defineComponent({
         </el-card>
       );
     };
-    return (
-      <el-row gutter={32}>
-        <el-col span={6}>
-          <simple-statistics></simple-statistics>
-        </el-col>
-        <el-col span={6}>
-          <simple-statistics title="Page" sum={7}></simple-statistics>
-        </el-col>
-        <el-col span={6}>
-          <simple-statistics
-            v-slots={{ chart: renderCircle }}
-          ></simple-statistics>
-        </el-col>
-        <el-col span={6}>
-          <simple-statistics isSimple={true} title="Simple"></simple-statistics>
-        </el-col>
-        <el-col span={24}>{renderCharts}</el-col>
-      </el-row>
-    );
+
+    /**
+     * Render Statistics from Custom Component
+     * @param props {SimpleStatisticsProps | null} Props from Statistics Component
+     * @param slots {StatisticsSlot} Slots from Statistics Component
+     * @returns {VNode} Render Statistics Component
+     */
+    const renderStatistics = (
+      props?: SimpleStatisticsProps | null,
+      slots?: StatisticsSlot
+    ): VNode => {
+      return h(SimpleStatistics, props, slots);
+    };
+
+    /**
+     * Render Dashboard Page Template
+     * @returns {VNode} Render Dashboard Template
+     */
+    const renderTemplate = (): VNode => {
+      return (
+        <el-row gutter={32}>
+          <el-col span={6}>{renderStatistics}</el-col>
+          <el-col span={6}>
+            {renderStatistics({ title: 'Page', sum: 7 })}
+          </el-col>
+          <el-col span={6}>
+            {renderStatistics(null, { chart: () => h(renderCircle) })}
+          </el-col>
+          <el-col span={6}>
+            {renderStatistics({ isSimple: true, title: 'Simple' })}
+          </el-col>
+          <el-col span={24}>{renderCharts}</el-col>
+        </el-row>
+      );
+    };
+    return renderTemplate;
   },
 });
 
