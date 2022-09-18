@@ -55,9 +55,7 @@ const i18n = createI18n({
   silentTranslationWarn: true,
 });
 
-const $t = (value: string): string => {
-  return i18n.global.t(value);
-};
+const $t = (value: string): string => i18n.global.t(value);
 
 export { getLanguage, $t };
 export default i18n;

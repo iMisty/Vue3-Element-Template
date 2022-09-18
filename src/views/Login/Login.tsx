@@ -6,12 +6,12 @@
  * @LastEditors: Mirage
  * @LastEditTime: 2022-08-17 15:06:24
  */
-import { useAPPStore } from '@/store/appStore';
 import { defineComponent, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { User, Lock } from '@element-plus/icons-vue';
-import Style from './style/login.module.less';
+import { useAPPStore } from '@/store/appStore';
 import loginBG from '@/assets/login.svg';
+import Style from './style/login.module.less';
 
 const dataLoginForm = reactive({
   username: 'admin',
@@ -49,8 +49,8 @@ const Login = defineComponent({
 
   render() {
     return (
-      <div class={Style['login']}>
-        <section class={Style['login__container']}>
+      <div class={Style.login}>
+        <section class={Style.login__container}>
           <section class={Style['login__container--left']}>
             <img src={loginBG} alt="Login Background" />
           </section>
@@ -64,8 +64,8 @@ const Login = defineComponent({
             >
               {/* Login Form Title Start */}
               <div class={Style['login__form--title']}>
-                <h3 class={Style['title']}>{this.$t('Login.loginForm')}</h3>
-                <p class={Style['sub']}>{this.$t('Login.loginDescription')}</p>
+                <h3 class={Style.title}>{this.$t('Login.loginForm')}</h3>
+                <p class={Style.sub}>{this.$t('Login.loginDescription')}</p>
               </div>
               {/*  Login Form Title End  */}
 

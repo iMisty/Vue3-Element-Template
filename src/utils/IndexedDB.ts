@@ -1,22 +1,14 @@
 /*
  * @Author: Miya
  * @Date: 2022-08-09 23:23:04
- * @LastEditTime: 2022-08-10 23:32:05
+ * @LastEditTime: 2022-09-17 02:12:17
  * @LastEditors: Miya
  * @Description: IndexedDB methods
  * @FilePath: \Vue3-Element-Template\src\utils\IndexedDB.ts
  */
 
 import {
-  createStore,
-  get,
-  getMany,
-  set,
-  setMany,
-  update,
-  del,
-  clear,
-  entries,
+  createStore, get, set, update, entries,
 } from 'idb-keyval';
 import type { UseStore } from 'idb-keyval';
 
@@ -34,6 +26,7 @@ type indexedDBType = {
  */
 class IndexedDB {
   private nameDatabase: string = 'Miramiya-DB';
+
   private nameStore: string = 'application';
 
   /**
@@ -58,7 +51,7 @@ class IndexedDB {
     }
     if (database === this.nameDatabase) {
       throw new Error(
-        `[IndexedDB] Can not Create Multiple Stores Within the Same Database. `
+        '[IndexedDB] Can not Create Multiple Stores Within the Same Database. ',
       );
     }
     const setNewStore = createStore(database, store);
@@ -70,7 +63,7 @@ class IndexedDB {
    * Get All Items with Active Database and Store
    * @returns {Promise<string[][]>} All Items in active indexedDB database
    */
-  public async getAllItems(): Promise<string[][]> {
+  public static async getAllItems(): Promise<string[][]> {
     const entriesItem = await entries();
     return entriesItem;
   }

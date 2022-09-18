@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-08-09 14:49:41
  * @LastEditors: Miya
- * @LastEditTime: 2022-08-23 23:05:13
+ * @LastEditTime: 2022-09-17 02:12:29
  */
 import responseAlert from './ResponseAlert';
 
@@ -31,9 +31,7 @@ const arrayResponseMessageForStatus: httpRequestMessage = {
  * @param {Number} code 接口返回错误码
  * @returns {void} 错误码弹出窗
  */
-const ErrorMessageResponseReject = (code: number): void => {
-  return responseAlert(arrayResponseMessageForStatus[code.toString()]);
-};
+const ErrorMessageResponseReject = (code: number): void => responseAlert(arrayResponseMessageForStatus[code.toString()]);
 
 /**
  * @function 自定义错误码返回方法
@@ -62,8 +60,8 @@ const ErrorResponseMessage = (error: any): void => {
   console.log('[数据交互错误码] ', error);
   // axios返回超时
   if (
-    error.code === 'ECONNABORTED' &&
-    error.message.indexOf('timeout') !== -1
+    error.code === 'ECONNABORTED'
+    && error.message.indexOf('timeout') !== -1
   ) {
     return responseAlert('获取超时');
   }

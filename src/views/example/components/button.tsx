@@ -18,8 +18,7 @@ import {
   Eleme,
 } from '@element-plus/icons-vue';
 
-const buttonCardDefault = () => {
-  return (
+const buttonCardDefault = () => (
     <>
       <el-button type="primary">Submit</el-button>
       <el-button type="primary" disabled={true}>
@@ -27,11 +26,9 @@ const buttonCardDefault = () => {
       </el-button>
       <el-button text={true}>Link</el-button>
     </>
-  );
-};
+);
 
-const buttonCardIcons = () => {
-  return (
+const buttonCardIcons = () => (
     <>
       <el-button type="primary" icon={Edit}></el-button>
       <el-button type="primary" icon={Search}>
@@ -44,11 +41,9 @@ const buttonCardIcons = () => {
         </el-icon>
       </el-button>
     </>
-  );
-};
+);
 
-const buttonCardSeverities = () => {
-  return (
+const buttonCardSeverities = () => (
     <>
       <el-button>Default</el-button>
       <el-button type="primary">Primary</el-button>
@@ -57,11 +52,9 @@ const buttonCardSeverities = () => {
       <el-button type="warning">Warning</el-button>
       <el-button type="danger">Danger</el-button>
     </>
-  );
-};
+);
 
-const buttonCardRound = () => {
-  return (
+const buttonCardRound = () => (
     <>
       <el-button round>Round</el-button>
       <el-button type="primary" round>
@@ -80,11 +73,9 @@ const buttonCardRound = () => {
         Danger
       </el-button>
     </>
-  );
-};
+);
 
-const buttonCardGroup = () => {
-  return (
+const buttonCardGroup = () => (
     <>
       <el-button-group>
         <el-button type="primary" icon={ArrowLeft}>
@@ -104,11 +95,9 @@ const buttonCardGroup = () => {
         <el-button type="primary" icon={Delete}></el-button>
       </el-button-group>
     </>
-  );
-};
+);
 
-const buttonCardLoading = () => {
-  return (
+const buttonCardLoading = () => (
     <>
       <el-button type="primary" loading>
         Loading
@@ -117,11 +106,9 @@ const buttonCardLoading = () => {
         Loading
       </el-button>
     </>
-  );
-};
+);
 
-const buttonCardSize = () => {
-  return (
+const buttonCardSize = () => (
     <>
       <el-button size="large">Large</el-button>
       <el-button>Default</el-button>
@@ -134,8 +121,7 @@ const buttonCardSize = () => {
         Search
       </el-button>
     </>
-  );
-};
+);
 
 const ExampleButton = defineComponent({
   render() {

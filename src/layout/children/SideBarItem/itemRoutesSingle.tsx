@@ -22,15 +22,13 @@ const itemRouteSingleList = defineComponent({
     return (
       <el-row>
         <el-col span={24}>
-          {this.$props.routes?.map((item: RouterData) => {
-            return (
+          {this.$props.routes?.map((item: RouterData) => (
               <single-route
                 name={item.name}
                 icon={item.meta?.icon}
                 title={item.meta?.title}
               ></single-route>
-            );
-          })}
+          ))}
         </el-col>
       </el-row>
     );

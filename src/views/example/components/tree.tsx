@@ -24,12 +24,8 @@ const ExampleTree = defineComponent({
     return { data, defaultProps };
   },
   render() {
-    const treeDefault = () => {
-      return <el-tree data={data.MockTreeData}></el-tree>;
-    };
-    const treeCheckbox = () => {
-      return <el-tree data={data.MockTreeData} show-checkbox={true}></el-tree>;
-    };
+    const treeDefault = () => <el-tree data={data.MockTreeData}></el-tree>;
+    const treeCheckbox = () => <el-tree data={data.MockTreeData} show-checkbox={true}></el-tree>;
     return (
       <el-row>
         <el-col span={24}>

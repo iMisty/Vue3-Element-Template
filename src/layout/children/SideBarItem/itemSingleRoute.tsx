@@ -7,7 +7,6 @@
  * @LastEditTime: 2022-07-27 23:09:41
  */
 import { defineComponent, h, resolveComponent } from 'vue';
-import router from '@/router/router';
 import {
   Location,
   Document,
@@ -15,6 +14,7 @@ import {
   Headset,
   House,
 } from '@element-plus/icons-vue';
+import router from '@/router/router';
 
 interface SidebarRoute {
   name: string;
@@ -39,7 +39,7 @@ const itemSingleRoute = defineComponent({
     Document,
     IconMenu,
     Headset,
-    House
+    House,
   },
   props: {
     icon: {
@@ -53,8 +53,7 @@ const itemSingleRoute = defineComponent({
     },
   },
   render() {
-    const getPropsIcon = () =>
-      h(resolveComponent(this.$props.icon ? this.$props.icon : ''));
+    const getPropsIcon = () => h(resolveComponent(this.$props.icon ? this.$props.icon : ''));
 
     return (
       <el-menu-item

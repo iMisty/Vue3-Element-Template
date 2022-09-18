@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-07-21 19:56:11
- * @LastEditors: Mirage
- * @LastEditTime: 2022-08-02 16:14:34
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-09-17 01:48:21
  */
 
 import { FunctionalComponent } from 'vue';
@@ -15,20 +15,22 @@ type CardProps = {
 
 const CustomCard: FunctionalComponent<CardProps> = (
   props: CardProps,
-  context
+  context,
 ) => {
-  const { slots, emit } = context;
+  const { slots } = context;
 
-  return (
-    <el-card shadow={(props.shadow = 'never')}>
-      {slots['header'] ? (
-        <section class="card__header">{slots['header']?.()}</section>
-      ) : null}
-      {slots['default'] ? (
-        <section class="card__container">{slots['default']?.()}</section>
-      ) : null}
-    </el-card>
+  const render = () => (
+      <el-card shadow={(props.shadow = 'never')}>
+        {slots.header ? (
+          <section class="card__header">{slots.header?.()}</section>
+        ) : null}
+        {slots.default ? (
+          <section class="card__container">{slots.default?.()}</section>
+        ) : null}
+      </el-card>
   );
+
+  return render;
 };
 
 export default CustomCard;

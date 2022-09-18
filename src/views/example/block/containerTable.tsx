@@ -44,8 +44,7 @@ const ContainerTable = defineComponent({
     CustomCard,
   },
   render() {
-    const renderHeader = () => {
-      return (
+    const renderHeader = () => (
         <el-row gutter={16} align="middle">
           <el-col span={3}>
             <el-button type="primary" icon={Plus}>
@@ -75,20 +74,16 @@ const ContainerTable = defineComponent({
             <el-switch v-model={strikeFooter.value}></el-switch>
           </el-col>
         </el-row>
-      );
-    };
-    const renderMain = () => {
-      return (
+    );
+    const renderMain = () => (
         <el-table data={dataTable.listData} stripe={true} show-summary={true}>
           <el-table-column prop="id" label="ID"></el-table-column>
           <el-table-column prop="title" label="Title"></el-table-column>
           <el-table-column prop="author" label="Author"></el-table-column>
           <el-table-column prop="pageViews" label="PageViews"></el-table-column>
         </el-table>
-      );
-    };
-    const renderFooter = () => {
-      return (
+    );
+    const renderFooter = () => (
         <custom-pagination
           total={400}
           v-model:current={currentPage4.value}
@@ -96,13 +91,12 @@ const ContainerTable = defineComponent({
           onCurrent={(page: number) => handleCurrentChange(page)}
           onSize={(size: number) => handleSizeChange(size)}
         ></custom-pagination>
-      );
-    };
+    );
     return (
       <el-container>
         <el-header
           height="auto"
-          class={strikeHeader.value ? Style['strike__header'] : ''}
+          class={strikeHeader.value ? Style.strike__header : ''}
         >
           <custom-card>{renderHeader}</custom-card>
         </el-header>
@@ -111,7 +105,7 @@ const ContainerTable = defineComponent({
         </el-main>
         <el-footer
           height="auto"
-          class={strikeFooter.value ? Style['strike__footer'] : ''}
+          class={strikeFooter.value ? Style.strike__footer : ''}
         >
           <custom-card>{renderFooter}</custom-card>
         </el-footer>

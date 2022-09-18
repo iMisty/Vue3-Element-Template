@@ -7,8 +7,8 @@
  * @FilePath: \Vue3-Element-Template\src\components\NavBarDrawer\indexAvatar.tsx
  */
 import { FunctionalComponent } from 'vue';
-import Style from './style/avatar.module.less';
 import image from '@/assets/avatar.jpg';
+import Style from './style/avatar.module.less';
 
 const style = {
   maxWidth: '100%',
@@ -19,9 +19,7 @@ const NavbarAvatar: FunctionalComponent = (props, context) => {
   return (
     <div
       class={Style['layout__navbar--right-avatar']}
-      onClick={() => {
-        return emit('avatar', true);
-      }}
+      onClick={() => emit('avatar', true)}
     >
       <el-image circle src={image} style={style} fit="fill"></el-image>
     </div>

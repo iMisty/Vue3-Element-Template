@@ -9,12 +9,9 @@
 import { FunctionalComponent, computed } from 'vue';
 import Style from './style/404.module.less';
 
-const computedMessage = computed(() => {
-  return 'The webmaster said that you can not enter this page...';
-});
+const computedMessage = computed(() => 'The webmaster said that you can not enter this page...');
 
-const Page404: FunctionalComponent = () => {
-  return (
+const Page404: FunctionalComponent = () => (
     <div class={Style['wscn-http404-container']}>
       <div class={Style['wscn-http404']}>
         <div class={Style['pic-404']}>
@@ -24,24 +21,24 @@ const Page404: FunctionalComponent = () => {
             alt="404"
           />
           <img
-            class={`${Style['pic-404__child']} ${Style['left']}`}
+            class={`${Style['pic-404__child']} ${Style.left}`}
             src="/src/assets/404_images/404_cloud.png"
             alt="404"
           />
           <img
-            class={`${Style['pic-404__child']} ${Style['mid']}`}
+            class={`${Style['pic-404__child']} ${Style.mid}`}
             src="/src/assets/404_images/404_cloud.png"
             alt="404"
           />
           <img
-            class={`${Style['pic-404__child']} ${Style['right']}`}
+            class={`${Style['pic-404__child']} ${Style.right}`}
             src="/src/assets/404_images/404_cloud.png"
             alt="404"
           />
         </div>
-        <div class={Style['bullshit']}>
-          <div class={Style['bullshit__oops']}>OOPS!</div>
-          <div class={Style['bullshit__info']}>
+        <div class={Style.bullshit}>
+          <div class={Style.bullshit__oops}>OOPS!</div>
+          <div class={Style.bullshit__info}>
             All rights reserved
             <a
               style="color: #20a0ff"
@@ -51,8 +48,8 @@ const Page404: FunctionalComponent = () => {
               wallstreetcn
             </a>
           </div>
-          <div class={Style['bullshit__headline']}>{{ computedMessage }}</div>
-          <div class={Style['bullshit__info']}>
+          <div class={Style.bullshit__headline}>{{ computedMessage }}</div>
+          <div class={Style.bullshit__info}>
             Please check that the URL you entered is correct, or click the
             button below to return to the homepage.
           </div>
@@ -62,7 +59,6 @@ const Page404: FunctionalComponent = () => {
         </div>
       </div>
     </div>
-  );
-};
+);
 
 export default Page404;

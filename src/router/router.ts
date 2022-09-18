@@ -4,13 +4,12 @@
  * @Author: Mirage
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Miya
- * @LastEditTime: 2022-08-23 22:48:23
+ * @LastEditTime: 2022-09-17 02:41:00
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
 import Login from '@/views/Login/Login';
-import { useAPPStore } from '@/store/appStore';
 import type RouterData from '@/interface/Router';
 
 const constantRouter: Array<RouterData> = [
@@ -132,25 +131,24 @@ const Router = createRouter({
 
 Router.beforeEach((to, from, next) => {
   const tokenInStorage: string | null = sessionStorage.getItem('token');
-  const tokenInStore: string | undefined = useAPPStore().getToken;
   if (to.path === '/login') {
     next();
     return true;
   }
-  if ((tokenInStore || tokenInStore) && to.path === '/login') {
+  if (tokenInStorage && to.path === '/login') {
     next();
   }
   // No token
-  if (!tokenInStorage && !tokenInStore) {
+  if (!tokenInStorage) {
     nprogress.done();
-    next(`/login`);
+    next('/login');
   } else {
     nprogress.inc();
     next();
   }
 });
 
-Router.afterEach((to, from) => {
+Router.afterEach(() => {
   nprogress.done();
 });
 

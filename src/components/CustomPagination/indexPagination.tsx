@@ -3,21 +3,21 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-08-01 11:40:40
- * @LastEditors: Mirage
- * @LastEditTime: 2022-08-01 15:31:52
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-09-17 01:46:31
  */
 import { defineComponent, computed } from 'vue';
 
-interface PaginationProps {
-  current: number;
-  pageSize: number;
-  pageSizes?: Array<Number>;
-  small?: boolean;
-  background?: boolean;
-  disabled?: boolean;
-  layout?: string;
-  total: number;
-}
+// interface PaginationProps {
+//   current: number;
+//   pageSize: number;
+//   pageSizes?: Array<Number>;
+//   small?: boolean;
+//   background?: boolean;
+//   disabled?: boolean;
+//   layout?: string;
+//   total: number;
+// }
 
 const dataPagination = {
   current: 1,
@@ -29,9 +29,7 @@ const indexPagination = defineComponent({
   props: {
     pageSizes: {
       type: Array,
-      default: () => {
-        return [10, 20, 30, 50];
-      },
+      default: () => [10, 20, 30, 50],
     },
     current: {
       type: Number,

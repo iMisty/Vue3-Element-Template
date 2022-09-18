@@ -3,13 +3,11 @@
  * @Version: 2.0
  * @Author: Miya
  * @Date: 2021-11-26 10:33:44
- * @LastEditors: Mirage
- * @LastEditTime: 2022-06-30 17:32:48
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-09-17 01:39:29
  */
 import { FunctionalComponent } from 'vue';
 
-const rootAPP: FunctionalComponent = () => {
-  return <router-view></router-view>;
-};
+const rootAPP: FunctionalComponent = () => (<router-view></router-view>);
 
 export default rootAPP;

@@ -14,8 +14,8 @@ import {
   TransitionGroup,
 } from 'vue';
 import { ArrowRight } from '@element-plus/icons-vue';
-import { useAPPStore } from '@/store/appStore';
 import { useRoute } from 'vue-router';
+import { useAPPStore } from '@/store/appStore';
 import Style from './style/breadcrumb.module.less';
 
 const routerData: any = reactive({
@@ -49,7 +49,7 @@ const NavBarBreadCrumb = defineComponent({
 
   render() {
     return (
-      <el-breadcrumb class={Style['nav__breadcrumb']}>
+      <el-breadcrumb class={Style.nav__breadcrumb}>
         <transition-group name="breadcrumb">
           {
             // TODO: Fix any

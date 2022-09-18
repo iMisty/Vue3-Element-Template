@@ -31,7 +31,7 @@ const NavbarHamburger = defineComponent({
         onClick={() => handleClickToggleNavbarStatus()}
       >
         <svg
-          class={[Style['hamburger'], this.isActive ? Style['is-active'] : '']}
+          class={[Style.hamburger, this.isActive ? Style['is-active'] : '']}
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >

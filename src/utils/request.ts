@@ -1,14 +1,13 @@
 /*
  * @Author: Miya
  * @Date: 2022-01-03 23:27:50
- * @LastEditTime: 2022-08-08 17:20:03
- * @LastEditors: Mirage
+ * @LastEditTime: 2022-09-17 02:17:38
+ * @LastEditors: Miya
  * @Description: AJAX Methods
- * @FilePath: \vue3-element-template\src\utils\request.ts
+ * @FilePath: \Vue3-Element-Template\src\utils\Request.ts
  */
 import Request from '@miramiya/request';
 import type { CustomRequestConfig } from '@miramiya/request';
-import Qs from 'qs';
 
 const request = new Request({
   baseURL: '',

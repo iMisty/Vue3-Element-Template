@@ -9,8 +9,6 @@
 import { FunctionalComponent } from 'vue';
 import '@/layout/style/normal.module.less';
 
-const LayoutNormal: FunctionalComponent<unknown> = () => {
-  return <router-view></router-view>;
-};
+const LayoutNormal: FunctionalComponent<unknown> = () => <router-view></router-view>;
 
 export default LayoutNormal;

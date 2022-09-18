@@ -7,7 +7,9 @@
  * @LastEditTime: 2022-08-08 16:49:48
  */
 const textApplication = {
-  zh: { login: '登录', logout: '登出', profile: '用户信息', setting: '设置' },
+  zh: {
+    login: '登录', logout: '登出', profile: '用户信息', setting: '设置',
+  },
   en: {
     login: 'Login',
     logout: 'Logout',

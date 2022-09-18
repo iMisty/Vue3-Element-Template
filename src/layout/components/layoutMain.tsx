@@ -17,9 +17,7 @@ const LayoutMain = defineComponent({
     Transition,
   },
   setup() {
-    const computedRoute = computed(() => {
-      return useRoute().path;
-    });
+    const computedRoute = computed(() => useRoute().path);
     return { computedRoute };
   },
   render() {

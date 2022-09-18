@@ -16,9 +16,7 @@ const dataSystemOptions = reactive({
   themeColor: 'light',
 });
 
-const getOptionsIndex = (model: string) => {
-  return optionsTheme.findIndex((item) => item.model === model);
-};
+const getOptionsIndex = (model: string) => optionsTheme.findIndex((item) => item.model === model);
 
 const renderOptionsSystem = defineComponent({
   render() {
@@ -27,48 +25,42 @@ const renderOptionsSystem = defineComponent({
         <el-form-item label={this.$t('SystemSettings.options.themeSidebar')}>
           <el-select v-model={dataSystemOptions.themeSidebar}>
             {optionsTheme[getOptionsIndex('themeSidebar')].options!.map(
-              (item: ThemeOption) => {
-                return (
+              (item: ThemeOption) => (
                   <el-option
                     key={item.value}
                     label={item.label}
                     value={item.value}
                     disabled={item.isDisabled}
                   ></el-option>
-                );
-              }
+              ),
             )}
           </el-select>
         </el-form-item>
         <el-form-item label={this.$t('SystemSettings.options.themeLanguage')}>
           <el-select v-model={dataSystemOptions.themeLanguage}>
             {optionsTheme[getOptionsIndex('themeLanguage')].options!.map(
-              (item: ThemeOption) => {
-                return (
+              (item: ThemeOption) => (
                   <el-option
                     key={item.value}
                     label={item.label}
                     value={item.value}
                     disabled={item.isDisabled}
                   ></el-option>
-                );
-              }
+              ),
             )}
           </el-select>
         </el-form-item>
         <el-form-item label={this.$t('SystemSettings.options.themeColor')}>
           <el-select v-model={dataSystemOptions.themeColor}>
             {optionsTheme[getOptionsIndex('themeColor')].options!.map(
-              (item: ThemeOption) => {
-                return (
+              (item: ThemeOption) => (
                   <el-option
                     key={item.value}
                     label={item.label}
                     value={item.value}
                     disabled={item.isDisabled}
                   ></el-option>
-                );
-              }
+              ),
             )}
           </el-select>
         </el-form-item>

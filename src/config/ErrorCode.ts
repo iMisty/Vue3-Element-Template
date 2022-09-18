@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Mirage
  * @Date: 2022-08-09 15:42:28
- * @LastEditors: Mirage
- * @LastEditTime: 2022-08-09 17:57:17
+ * @LastEditors: Miya
+ * @LastEditTime: 2022-09-17 02:39:09
  */
 import { $t } from '@/language';
 
@@ -21,6 +21,8 @@ const arrayResponseMessageForStatus = [
   { 502: $t('ErrorCode.base.502') },
 ];
 
-const arrayResponseMessageForString = [];
+const arrayResponseMessageForString: never[] = [];
 
-const arrayResponseMessageForCustom = [];
+const arrayResponseMessageForCustom: never[] = [];
+
+export { arrayResponseMessageForCustom, arrayResponseMessageForStatus, arrayResponseMessageForString };

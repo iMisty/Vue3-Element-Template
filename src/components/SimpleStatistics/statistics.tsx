@@ -26,11 +26,10 @@ export type StatisticsSlot = {
 
 const SimpleStatistics: FunctionalComponent<SimpleStatisticsProps> = (
   props: SimpleStatisticsProps,
-  context
+  context,
 ) => {
   const { slots } = context;
-  const defaultSlots = () => {
-    return (
+  const defaultSlots = () => (
       <section class={Style['statistics__simple--left']}>
         <h4 class={Style['statistics__simple--title']}>
           {props.title ? props.title : 'Component'}
@@ -39,25 +38,24 @@ const SimpleStatistics: FunctionalComponent<SimpleStatisticsProps> = (
           {props.sum ? props.sum : 42}
         </p>
       </section>
-    );
-  };
+  );
   return (
-    <el-card class={Style['statistics__simple']}>
+    <el-card class={Style.statistics__simple}>
       <el-row align="middle">
-        {slots['icon'] ? <el-col>{slots['icon']?.()}</el-col> : null}
-        {slots['default'] ? (
-          <el-col span={props.isSimple ? 24 : 12}>{slots['default']}</el-col>
+        {slots.icon ? <el-col>{slots.icon?.()}</el-col> : null}
+        {slots.default ? (
+          <el-col span={props.isSimple ? 24 : 12}>{slots.default}</el-col>
         ) : (
           <el-col span={props.isSimple ? 24 : 12}>{defaultSlots}</el-col>
         )}
-        {slots['chart'] ? (
+        {slots.chart ? (
           <el-col
             class={
               props.isRightCenter ? Style['statistics__simple--center'] : ''
             }
             span={props.isSimple ? 24 : 12}
           >
-            {slots['chart']?.()}
+            {slots.chart?.()}
           </el-col>
         ) : null}
       </el-row>

@@ -7,16 +7,18 @@
  * @LastEditTime: 2022-08-23 22:53:22
  */
 
-import { defineComponent, reactive, onMounted, markRaw } from 'vue';
+import {
+  defineComponent, reactive, onMounted, markRaw,
+} from 'vue';
 import { useRouter } from 'vue-router';
-import { getLanguage } from '@/language';
 import { CaretBottom } from '@element-plus/icons-vue';
-import NavBarHamburger from '../children/NavBarHamburger/index';
-import NavBarBreadCrumb from '../children/NavBarBreadCrumb/index.vue';
+import { getLanguage } from '@/language';
 import NavBarAvatar from '@/layout/children/NavBarAvatar/indexAvatar';
 import DrawerCard from '@/components/DrawerCard/indexDrawerCard';
 import DrawerCardItem from '@/config/DrawerCardItem';
 import LanguageList from '@/config/LanguageList';
+import NavBarBreadCrumb from '../children/NavBarBreadCrumb/index.vue';
+import NavBarHamburger from '../children/NavBarHamburger/index';
 import Style from '../style/navbar.module.less';
 
 type listLanguage = {
@@ -97,27 +99,23 @@ const LayoutNavBar = defineComponent({
   },
 
   render() {
-    const drawerFooter = () => {
-      return (
+    const drawerFooter = () => (
         <el-row justify="space-around" align="middle">
           <span>{this.$t('GlobalLanguage.labelSelector')}: </span>
           <el-select v-model={data.selectedLanguage} placeholder="Select">
-            {listLanguage.map((item: listLanguage) => {
-              return (
+            {listLanguage.map((item: listLanguage) => (
                 <el-option
                   key={item.value}
                   label={item.label}
                   value={item.value}
                   onClick={() => this.setLanguage(item.value)}
                 ></el-option>
-              );
-            })}
+            ))}
           </el-select>
         </el-row>
-      );
-    };
+    );
     return (
-      <div class={Style['layout__navbar']}>
+      <div class={Style.layout__navbar}>
         <div class={Style['layout__navbar--left']}>
           <NavBarHamburger></NavBarHamburger>
           <NavBarBreadCrumb></NavBarBreadCrumb>
@@ -135,18 +133,15 @@ const LayoutNavBar = defineComponent({
           size={360}
           v-slots={{ footer: drawerFooter }}
         >
-          {this.listDrawer.map((item) => {
-            return (
+          {this.listDrawer.map((item) => (
               <drawer-card
                 icon={item.icon}
                 title={item.title}
                 content={item.content}
-                onClick={() =>
-                  this.handleDrawerEvent(item.callback, item.isClose)
+                onClick={() => this.handleDrawerEvent(item.callback, item.isClose)
                 }
               ></drawer-card>
-            );
-          })}
+          ))}
         </el-drawer>
       </div>
     );

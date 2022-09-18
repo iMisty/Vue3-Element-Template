@@ -16,8 +16,8 @@ import SingleRoute from '@/layout/children/SideBarItem/itemSingleRoute';
 import MultiRoute from '@/layout/children/SideBarItem/itemMultiRoute';
 import SingleList from '@/layout/children/SideBarItem/itemRoutesSingle';
 import CollapseRoute from '@/layout/children/SideBarItem/itemRoutesCollapse';
-import Style from '../style/sidebar.module.less';
 import RouterData from '@/interface/Router';
+import Style from '../style/sidebar.module.less';
 
 const layoutSidebar = defineComponent({
   components: {
@@ -38,9 +38,7 @@ const layoutSidebar = defineComponent({
      */
     const initSideMenu: any = computed(() => {
       const filterRoute = initDynamicRouter()[0].children?.filter(
-        (item: RouterData) => {
-          return !item.meta?.isHidden;
-        }
+        (item: RouterData) => !item.meta?.isHidden,
       );
       return filterRoute;
     });
@@ -62,9 +60,7 @@ const layoutSidebar = defineComponent({
      * @returns {Boolean} Collapse Status
      * @external '@/store/store.ts'
      */
-    const getCollapseStatus = computed(() => {
-      return useAPPStore().isCollapse;
-    });
+    const getCollapseStatus = computed(() => useAPPStore().isCollapse);
 
     /**
      * @description Click Methods after Select Menu Item
@@ -105,20 +101,18 @@ const layoutSidebar = defineComponent({
       }
       return <single-list routes={item.children}></single-list>;
     };
-    const templateSingleRouteList = (item: RouterData) => {
-      return (
+    const templateSingleRouteList = (item: RouterData) => (
         <single-route
           name={item.name}
           icon={item.meta?.icon}
           title={item.meta?.title}
         ></single-route>
-      );
-    };
+    );
     return (
       <el-row
         class={[
-          Style['layout__sidebar'],
-          this.getCollapseStatus ? '' : Style['collapse'],
+          Style.layout__sidebar,
+          this.getCollapseStatus ? '' : Style.collapse,
         ]}
       >
         <sidebar-logo>
@@ -131,8 +125,7 @@ const layoutSidebar = defineComponent({
             default-active={this.getActiveRoute}
             onSelect={() => this.handleSelect}
           >
-            {this.initSideMenu.map((item: RouterData) => {
-              return (
+            {this.initSideMenu.map((item: RouterData) => (
                 <group-route
                   title={item.meta?.title}
                   isHiddenTitle={!item.meta?.isFirstRoute}
@@ -141,8 +134,7 @@ const layoutSidebar = defineComponent({
                     ? templateMultiRouteList(item)
                     : templateSingleRouteList(item)}
                 </group-route>
-              );
-            })}
+            ))}
           </el-menu>
         </el-scrollbar>
       </el-row>

@@ -4,7 +4,7 @@
  * @Author: Mirage
  * @Date: 2022-08-19 11:33:16
  * @LastEditors: Miya
- * @LastEditTime: 2022-09-05 22:33:17
+ * @LastEditTime: 2022-09-17 02:11:59
  */
 import * as echarts from 'echarts/core';
 import {
@@ -120,7 +120,7 @@ class Charts {
     dom: HTMLElement,
     width?: number,
     height?: number,
-    limit: number = 7
+    limit: number = 7,
   ) {
     this.renderDOM = dom;
     this.dataLimit = limit;
@@ -201,7 +201,7 @@ class Charts {
    * @see https://echarts.apache.org/zh/option.html#legend
    */
   public setLegend(
-    legend: LegendComponentOption | LegendComponentOption['data']
+    legend: LegendComponentOption | LegendComponentOption['data'],
   ) {
     if (!legend) {
       throw new Error('Legend is Required');
@@ -326,7 +326,7 @@ class Charts {
   public updateSeriesData<T>(
     name: string,
     newData: Array<T>,
-    isLimit: boolean = true
+    isLimit: boolean = true,
   ) {
     if (!name || !newData) {
       throw new Error('Update Name or Data is Required');
@@ -340,7 +340,7 @@ class Charts {
 
     // @ts-ignore
     const getSeriesNameIndex = series!.findIndex(
-      (item: { name: string }) => item.name === name
+      (item: { name: string }) => item.name === name,
     );
     console.log('Get Series Name: ', getSeriesNameIndex);
 
@@ -391,64 +391,4 @@ class Charts {
   }
 }
 
-/**
- * @class
- * Extends Class if Want Set Template Data Chart Example
- * @example
- * const getDOM = document.getElementById('chart');
- * const templateExample = new TemplateChart(getDOM);
- */
-class TemplateChart extends Charts {
-  constructor(
-    dom: HTMLElement,
-    width?: number | undefined,
-    height?: number | undefined
-  ) {
-    super(dom, width, height);
-  }
-
-  /**
-   * Initial Template Data
-   */
-  public setTemplateData() {
-    this.chartOptions = {
-      title: {
-        text: 'Sample Charts',
-      },
-      tooltip: {
-        trigger: 'axis',
-      },
-      legend: {
-        data: ['Sample Data'],
-      },
-      grid: {
-        left: '4%',
-        right: '4%',
-        bottom: '4%',
-        containLabel: true,
-      },
-      toolbox: {},
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      },
-      yAxis: {
-        type: 'value',
-      },
-      series: [
-        {
-          name: 'Sample Data',
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          data: [120, 132, 101, 134, 90, 230, 210],
-        },
-      ],
-    };
-  }
-}
-
 export default Charts;
-
-export { Charts, TemplateChart };

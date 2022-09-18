@@ -17,18 +17,16 @@ type DrawerCard = {
 
 const DrawerCard: FunctionalComponent<DrawerCard> = (props: DrawerCard) => {
   const { icon, title, content } = props;
-  const getIcon = () => {
-    return h(icon);
-  };
+  const getIcon = () => h(icon);
   return (
     <el-card shadow="never" body-style={{ padding: '0px' }}>
-      <section class={Style['drawer__card']}>
+      <section class={Style.drawer__card}>
         <article class={Style['drawer__card--icon']}>
           <el-icon>{getIcon()}</el-icon>
         </article>
         <article class={Style['drawer__card--container']}>
-          <header class={Style['title']}>{title}</header>
-          <div class={Style['text']}>{content}</div>
+          <header class={Style.title}>{title}</header>
+          <div class={Style.text}>{content}</div>
         </article>
       </section>
     </el-card>
