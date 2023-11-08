@@ -2,7 +2,7 @@
 
 <p align="center">
 <img src="https://img.shields.io/github/license/iMisty/Vue3-Element-Template" alt="License"/>
-<img src="https://img.shields.io/badge/vue-3.2-blue" alt="Vue"/>
+<img src="https://img.shields.io/badge/vue-3.3.8-blue" alt="Vue"/>
 </p>
 
 // TBD
@@ -91,10 +91,6 @@ Understanding and learning these knowledge in advance will greatly help you on u
 ```bash
 ├── public
 │   │── favicon.ico
-├── docs
-│   ├── .vitepress
-│   ├── assets
-│   ├── components
 ├── src
 │   ├── api
 │   ├── assets
