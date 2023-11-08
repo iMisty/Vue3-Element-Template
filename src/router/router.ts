@@ -1,14 +1,12 @@
 /*
  * @Description: Router Main
  * @Version: 1.0
- * @Author: Mirage
+ * @Author: Miya
  * @Date: 2021-11-26 17:11:35
  * @LastEditors: Miya
- * @LastEditTime: 2022-09-17 02:41:00
+ * @LastEditTime: 2023-11-08 15:05:44
  */
 import { createRouter, createWebHistory, Router } from 'vue-router';
-import nprogress from 'nprogress';
-import 'nprogress/nprogress.css';
 import Login from '@/views/Login/Login';
 import type RouterData from '@/interface/Router';
 
@@ -65,25 +63,6 @@ const constantRouter: Array<RouterData> = [
         meta: { title: 'DashBoard3 Hidden', icon: 'Headset', isHidden: true },
       },
       {
-        path: 'block',
-        name: 'block',
-        redirect: '/block/table',
-        component: () => import('@/views/RouterViews'),
-        meta: {
-          title: 'Block',
-          icon: 'location',
-          isFirstRoute: true,
-        },
-        children: [
-          {
-            path: 'table',
-            name: 'ContainerTable',
-            component: () => import('@/views/example/block/containerTable'),
-            meta: { title: 'Container Table', icon: 'Document' },
-          },
-        ],
-      },
-      {
         path: 'system',
         name: 'System',
         redirect: '/system/options',
@@ -127,29 +106,6 @@ export function initDynamicRouter() {
 const Router = createRouter({
   history: createWebHistory(),
   routes: initDynamicRouter() as any,
-});
-
-Router.beforeEach((to, from, next) => {
-  const tokenInStorage: string | null = sessionStorage.getItem('token');
-  if (to.path === '/login') {
-    next();
-    return true;
-  }
-  if (tokenInStorage && to.path === '/login') {
-    next();
-  }
-  // No token
-  if (!tokenInStorage) {
-    nprogress.done();
-    next('/login');
-  } else {
-    nprogress.inc();
-    next();
-  }
-});
-
-Router.afterEach(() => {
-  nprogress.done();
 });
 
 export default Router;

@@ -4,48 +4,18 @@
  * @Author: Mirage
  * @Date: 2022-08-02 16:20:11
  * @LastEditors: Miya
- * @LastEditTime: 2022-09-17 02:16:58
+ * @LastEditTime: 2023-11-08 15:00:20
  */
-import {
-  defineComponent, FunctionalComponent, h, onMounted, VNode,
-} from 'vue';
+import { defineComponent, FunctionalComponent, h, onMounted, VNode } from 'vue';
 import SimpleStatistics from '@/components/SimpleStatistics/statistics';
 import type {
   SimpleStatisticsProps,
   StatisticsSlot,
 } from '@/components/SimpleStatistics/statistics';
-import TemplateChart from '@/utils/TemplateChart';
 
 const Dashboard = defineComponent({
   name: 'Dashboard',
   setup() {
-    /**
-     * Chart Container
-     */
-    const objectEChart: null | TemplateChart = null;
-
-    /**
-     * Set a New Chart Canvas
-     * @param domID {string} Chart Render DOM ID
-     * @param objectChart {TemplateChart | null} Chart Container
-     */
-    const setChartData = (
-      domID: string,
-      objectChart: null | TemplateChart,
-    ): void => {
-      const charts = document.getElementById(domID);
-      objectChart = new TemplateChart(charts!);
-      objectChart.setTemplateData();
-      objectChart.render();
-      window.addEventListener('resize', () => {
-        objectChart!.resize();
-      });
-    };
-
-    onMounted(() => {
-      setChartData('charts', objectEChart);
-    });
-
     /**
      * Render Circle Component From Element-Plus
      * @returns {VNode | JSX.Element} Render Circle Component from Element-Plus
@@ -89,7 +59,6 @@ const Dashboard = defineComponent({
         <el-col span={6}>
           {renderStatistics({ isSimple: true, title: 'Simple' })}
         </el-col>
-        <el-col span={24}>{renderCharts}</el-col>
       </el-row>
     );
     return renderTemplate;
