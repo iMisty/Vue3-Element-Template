@@ -110,12 +110,14 @@ Understanding and learning these knowledge in advance will greatly help you on u
 │   ├── main.ts
 │   ├── permission.ts
 │   └── env.d.ts
+│── .babelrc
 │── .env.development
 │── .env.production
 │── .eslintrc.cjs
 │── .prettierrc.json
 │── index.html
 │── package.json
+│── postcss.config.js
 │── README.md
 │── README-ZH.md
 │── README-JP.md
