@@ -12,6 +12,7 @@ import { User, Lock } from '@element-plus/icons-vue';
 import { useAPPStore } from '@/store/appStore';
 import loginBG from '@/assets/login.svg';
 import Style from './style/login.module.less';
+import { $t } from '@/language';
 
 const dataLoginForm = reactive({
   username: 'admin',
@@ -44,11 +45,7 @@ const Login = defineComponent({
       }
     };
 
-    return { status, dataLoginForm, handleClickLogin };
-  },
-
-  render() {
-    return (
+    return () => (
       <div class={Style.login}>
         <section class={Style.login__container}>
           <section class={Style['login__container--left']}>
@@ -64,8 +61,8 @@ const Login = defineComponent({
             >
               {/* Login Form Title Start */}
               <div class={Style['login__form--title']}>
-                <h3 class={Style.title}>{this.$t('Login.loginForm')}</h3>
-                <p class={Style.sub}>{this.$t('Login.loginDescription')}</p>
+                <h3 class={Style.title}>{$t('Login.loginForm')}</h3>
+                <p class={Style.sub}>{$t('Login.loginDescription')}</p>
               </div>
               {/*  Login Form Title End  */}
 
@@ -73,7 +70,7 @@ const Login = defineComponent({
               <el-form-item prop="username">
                 <el-input
                   v-model={dataLoginForm.username}
-                  placeholder={this.$t('Login.username')}
+                  placeholder={$t('Login.username')}
                   type="text"
                   size="large"
                   auto-complete="on"
@@ -83,12 +80,12 @@ const Login = defineComponent({
               <el-form-item prop="password">
                 <el-input
                   v-model={dataLoginForm.password}
-                  placeholder={this.$t('Login.password')}
+                  placeholder={$t('Login.password')}
                   type="password"
                   size="large"
                   auto-complete="on"
                   prefix-icon={Lock}
-                  onKeyupEnter={() => this.handleClickLogin()}
+                  onKeyupEnter={() => handleClickLogin()}
                 ></el-input>
               </el-form-item>
 
@@ -96,10 +93,10 @@ const Login = defineComponent({
                 type="primary"
                 size="large"
                 style="width: 100%"
-                onClick={() => this.handleClickLogin()}
+                onClick={() => handleClickLogin()}
                 loading={status.isLoading}
               >
-                {this.$t('Login.login')}
+                {$t('Login.login')}
               </el-button>
               {/*  Login Form Container End  */}
             </el-form>
