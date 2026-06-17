@@ -4,7 +4,7 @@
  * @Author: Miya
  * @Date: 2021-11-27 15:45:49
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-17 15:21:33
+ * @LastEditTime: 2026-06-17 16:07:44
  */
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
@@ -101,7 +101,7 @@ export default defineComponent({
     );
 
     return () => (
-      <el-row
+      <section
         class={[
           Style.layout__sidebar,
           // Overlay drawer on mobile: sit above the backdrop with an opaque,
@@ -113,26 +113,28 @@ export default defineComponent({
         <sidebar-logo>
           <span>Admin template</span>
         </sidebar-logo>
-        <el-scrollbar>
-          <el-menu
-            collapse={!getCollapseStatus.value}
-            collapse-transition={false}
-            default-active={getActiveRoute.value}
-            onSelect={() => handleSelect}
-          >
-            {initSideMenu.value.map((item: RouterData) => (
-              <group-route
-                title={item.meta?.title}
-                isHiddenTitle={!item.meta?.isFirstRoute}
-              >
-                {item.children
-                  ? templateMultiRouteList(item)
-                  : templateSingleRouteList(item)}
-              </group-route>
-            ))}
-          </el-menu>
-        </el-scrollbar>
-      </el-row>
+        <section class="w-full">
+          <el-scrollbar>
+            <el-menu
+              collapse={!getCollapseStatus.value}
+              collapse-transition={false}
+              default-active={getActiveRoute.value}
+              onSelect={() => handleSelect}
+            >
+              {initSideMenu.value.map((item: RouterData) => (
+                <group-route
+                  title={item.meta?.title}
+                  isHiddenTitle={!item.meta?.isFirstRoute}
+                >
+                  {item.children
+                    ? templateMultiRouteList(item)
+                    : templateSingleRouteList(item)}
+                </group-route>
+              ))}
+            </el-menu>
+          </el-scrollbar>
+        </section>
+      </section>
     );
   },
 });

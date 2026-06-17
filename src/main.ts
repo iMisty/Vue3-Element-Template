@@ -40,8 +40,6 @@ import './style/app.module.less';
 import './style/normalize.less';
 // Animation and Transition CSS
 import './style/transition.less';
-// Change Element Plus CSS
-import './style/elementChange.less';
 
 /**
  * Import Root Component
