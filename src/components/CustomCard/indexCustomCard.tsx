@@ -7,30 +7,28 @@
  * @LastEditTime: 2024-08-22 12:11:51
  */
 
-import { FunctionalComponent } from 'vue';
+import { defineComponent } from 'vue';
+import type { PropType } from 'vue';
 
-type CardProps = {
-  shadow: 'always' | 'hover' | 'never';
-};
+type CardShadow = 'always' | 'hover' | 'never';
 
-const CustomCard: FunctionalComponent<CardProps> = (
-  props: CardProps,
-  context,
-) => {
-  const { slots } = context;
-
-  const render = () => (
-    <el-card shadow={(props.shadow = 'never')}>
-      {slots.header ? (
-        <section class="card__header">{slots.header?.()}</section>
-      ) : null}
-      {slots.default ? (
-        <section class="card__container">{slots.default?.()}</section>
-      ) : null}
-    </el-card>
-  );
-
-  return render;
-};
-
-export default CustomCard;
+export default defineComponent({
+  props: {
+    shadow: {
+      type: String as PropType<CardShadow>,
+      default: 'never',
+    },
+  },
+  setup(props, { slots }) {
+    return () => (
+      <el-card shadow={props.shadow}>
+        {slots.header ? (
+          <section class="card__header">{slots.header?.()}</section>
+        ) : null}
+        {slots.default ? (
+          <section class="card__container">{slots.default?.()}</section>
+        ) : null}
+      </el-card>
+    );
+  },
+});

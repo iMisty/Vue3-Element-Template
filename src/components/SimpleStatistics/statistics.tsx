@@ -7,8 +7,8 @@
  * @FilePath: \Vue3-Element-Template\src\components\SimpleStatistics\statistics.tsx
  */
 
-import { FunctionalComponent } from 'vue';
-import type { VNode } from 'vue';
+import { defineComponent } from 'vue';
+import type { PropType, VNode } from 'vue';
 import Style from './style/statistics.module.less';
 
 export type SimpleStatisticsProps = {
@@ -19,17 +19,20 @@ export type SimpleStatisticsProps = {
 };
 
 export type StatisticsSlot = {
-  default?: () => JSX.Element | VNode;
-  icon?: () => JSX.Element | VNode;
-  chart?: () => JSX.Element | VNode;
+  default?: () => VNode;
+  icon?: () => VNode;
+  chart?: () => VNode;
 };
 
-const SimpleStatistics: FunctionalComponent<SimpleStatisticsProps> = (
-  props: SimpleStatisticsProps,
-  context,
-) => {
-  const { slots } = context;
-  const defaultSlots = () => (
+export default defineComponent({
+  props: {
+    title: String,
+    sum: [String, Number] as PropType<string | number>,
+    isSimple: Boolean,
+    isRightCenter: Boolean,
+  },
+  setup(props, { slots }) {
+    const defaultSlots = () => (
       <section class={Style['statistics__simple--left']}>
         <h4 class={Style['statistics__simple--title']}>
           {props.title ? props.title : 'Component'}
@@ -38,29 +41,29 @@ const SimpleStatistics: FunctionalComponent<SimpleStatisticsProps> = (
           {props.sum ? props.sum : 42}
         </p>
       </section>
-  );
-  return (
-    <el-card class={Style.statistics__simple}>
-      <el-row align="middle">
-        {slots.icon ? <el-col>{slots.icon?.()}</el-col> : null}
-        {slots.default ? (
-          <el-col span={props.isSimple ? 24 : 12}>{slots.default}</el-col>
-        ) : (
-          <el-col span={props.isSimple ? 24 : 12}>{defaultSlots}</el-col>
-        )}
-        {slots.chart ? (
-          <el-col
-            class={
-              props.isRightCenter ? Style['statistics__simple--center'] : ''
-            }
-            span={props.isSimple ? 24 : 12}
-          >
-            {slots.chart?.()}
-          </el-col>
-        ) : null}
-      </el-row>
-    </el-card>
-  );
-};
+    );
 
-export default SimpleStatistics;
+    return () => (
+      <el-card class={Style.statistics__simple}>
+        <el-row align="middle">
+          {slots.icon ? <el-col>{slots.icon?.()}</el-col> : null}
+          {slots.default ? (
+            <el-col span={props.isSimple ? 24 : 12}>{slots.default}</el-col>
+          ) : (
+            <el-col span={props.isSimple ? 24 : 12}>{defaultSlots}</el-col>
+          )}
+          {slots.chart ? (
+            <el-col
+              class={
+                props.isRightCenter ? Style['statistics__simple--center'] : ''
+              }
+              span={props.isSimple ? 24 : 12}
+            >
+              {slots.chart?.()}
+            </el-col>
+          ) : null}
+        </el-row>
+      </el-card>
+    );
+  },
+});

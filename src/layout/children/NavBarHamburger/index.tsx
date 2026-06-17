@@ -15,23 +15,21 @@ const handleClickToggleNavbarStatus = () => {
   store.toggleNavBarCollapse();
 };
 
-const NavbarHamburger = defineComponent({
+export default defineComponent({
   name: 'NavBarHamburger',
   setup() {
     const isActive: ComputedRef<boolean> = computed<boolean>(() => {
       const store = useAPPStore();
       return store.isCollapse;
     });
-    return { isActive, handleClickToggleNavbarStatus };
-  },
-  render() {
-    return (
+
+    return () => (
       <div
         class={Style['layout__navbar--hamburger']}
         onClick={() => handleClickToggleNavbarStatus()}
       >
         <svg
-          class={[Style.hamburger, this.isActive ? Style['is-active'] : '']}
+          class={[Style.hamburger, isActive.value ? Style['is-active'] : '']}
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -41,5 +39,3 @@ const NavbarHamburger = defineComponent({
     );
   },
 });
-
-export default NavbarHamburger;

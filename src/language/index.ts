@@ -51,7 +51,10 @@ const i18n = createI18n({
   locale: getLanguage(),
   fallbackLocale: 'en',
   allowComposition: true,
-  messages: MultiLanguageConfig,
+  // Cast away the deep message schema: the spread Element Plus locales are
+  // huge and full inference triggers TS2589 ("excessively deep").
+   
+  messages: MultiLanguageConfig as any,
   silentTranslationWarn: true,
 });
 

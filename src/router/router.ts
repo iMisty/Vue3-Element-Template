@@ -6,15 +6,15 @@
  * @LastEditors: Miya
  * @LastEditTime: 2023-11-08 15:05:44
  */
-import { createRouter, createWebHistory, Router } from 'vue-router';
-import Login from '@/views/Login/Login';
+import { createRouter, createWebHistory } from 'vue-router';
+import Login from '@/views/login/login';
 import type RouterData from '@/interface/Router';
 
 const constantRouter: Array<RouterData> = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/layout/Admin'),
+    component: () => import('@/layout/admin'),
     redirect: '/dashboard',
     meta: { title: 'HomePage' },
     children: [
@@ -28,7 +28,7 @@ const constantRouter: Array<RouterData> = [
         path: 'example',
         name: 'Example',
         redirect: '/example/table',
-        component: () => import('@/views/RouterViews'),
+        component: () => import('@/views/routerViews'),
         meta: {
           title: 'Components',
           icon: 'Headset',
@@ -66,7 +66,7 @@ const constantRouter: Array<RouterData> = [
         path: 'system',
         name: 'System',
         redirect: '/system/options',
-        component: () => import('@/views/RouterViews'),
+        component: () => import('@/views/routerViews'),
         meta: {
           title: 'System',
           icon: 'location',
@@ -76,7 +76,7 @@ const constantRouter: Array<RouterData> = [
           {
             path: 'options',
             name: 'Options',
-            component: () => import('@/views/system/Options'),
+            component: () => import('@/views/system/options'),
             meta: { title: 'Options', icon: 'Document' },
           },
         ],

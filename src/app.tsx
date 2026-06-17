@@ -6,8 +6,10 @@
  * @LastEditors: Miya
  * @LastEditTime: 2022-09-17 01:39:29
  */
-import { FunctionalComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-const rootAPP: FunctionalComponent = () => (<router-view></router-view>);
-
-export default rootAPP;
+export default defineComponent({
+  setup() {
+    return () => <router-view></router-view>;
+  },
+});

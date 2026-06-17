@@ -2,6 +2,7 @@
   "name": "vue-element-mermaid-template",
   "version": "2.0.0",
   "description": "A Vue Admin Template with Vue3 & Vite & Pinia & ElementPlus",
+  "type": "module",
   "author": {
     "name": "Miya",
     "email": "kannadukishizuma@gmail.com"
@@ -9,53 +10,51 @@
   "scripts": {
     "dev": "vite",
     "serve": "vite preview",
-    "lint": "eslint src/**",
-    "lint:fix": "eslint src/** --fix",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "build:dev": "vue-tsc --noEmit && vite build --mode development",
-    "build:prod": "vue-tsc --noEmit && vite build --mode production",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "build:prod": "vue-tsc --noEmit && vite build --mode production"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.3.1",
-    "@intlify/vite-plugin-vue-i18n": "^5.0.0",
+    "@element-plus/icons-vue": "^2.3.2",
     "@miramiya/request": "^1.1.11",
-    "axios": "^1.6.0",
-    "element-plus": "^2.8.0",
-    "idb-keyval": "^6.2.0",
+    "axios": "^1.18.0",
+    "element-plus": "^2.14.2",
+    "idb-keyval": "^6.2.5",
     "nprogress": "^0.2.0",
-    "pinia": "^2.0.16",
-    "qs": "^6.11.0",
-    "tailwindcss": "^3.4.10",
-    "vite-plugin-svg-icons": "^2.0.1",
-    "vue": "^3.3.8",
-    "vue-i18n": "^9.1.10",
-    "vue-router": "^4.2.5"
+    "pinia": "^3.0.4",
+    "qs": "^6.15.2",
+    "validator": "^13.15.35",
+    "vue": "^3.5.38",
+    "vue-i18n": "^11.4.5",
+    "vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.24.7",
-    "@babel/plugin-transform-class-properties": "^7.24.7",
-    "@types/node": "^20.9.0",
+    "@eslint/js": "^10.0.1",
+    "@intlify/unplugin-vue-i18n": "^11.2.3",
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/node": "^25.9.3",
     "@types/nprogress": "^0.2.0",
-    "@types/qs": "^6.9.7",
-    "@typescript-eslint/eslint-plugin": "^5.36.0",
-    "@typescript-eslint/parser": "^5.36.0",
-    "@vitejs/plugin-vue": "^2.2.4",
-    "@vitejs/plugin-vue-jsx": "^1.3.10",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.19.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-import-resolver-typescript": "^3.5.1",
-    "eslint-plugin-import": "^2.26.0",
-    "fast-glob": "^3.2.11",
-    "less": "^4.1.2",
-    "postcss": "^8.4.41",
-    "typescript": "^5.2.2",
-    "vite": "^2.9.13",
-    "vite-plugin-compression": "^0.5.1",
-    "vue-eslint-parser": "^9.1.0",
-    "vue-tsc": "^0.32.1"
+    "@types/qs": "^6.15.1",
+    "@types/validator": "^13.15.10",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "@vitejs/plugin-vue-jsx": "^5.1.5",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-vue": "^10.9.2",
+    "globals": "^17.6.0",
+    "less": "^4.6.6",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1",
+    "terser": "^5.44.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.61.1",
+    "vite": "^8.0.16",
+    "vite-plugin-compression2": "^2.5.3",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vue-eslint-parser": "^10.4.1",
+    "vue-tsc": "^3.3.5"
   },
   "maintainers": [
     {
@@ -68,8 +67,7 @@
     "last 2 versions"
   ],
   "engines": {
-    "node": ">=12.0",
-    "npm": ">= 6.9.0"
+    "node": ">=20.19.0"
   },
   "license": "MIT"
 }

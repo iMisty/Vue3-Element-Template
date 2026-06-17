@@ -8,17 +8,22 @@
  */
 import { defineStore } from 'pinia';
 import Router from '@/router/router';
-import RouterData from '@/interface/Router';
+import type RouterData from '@/interface/Router';
 
 interface LoginData {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
 }
 
-export const useAPPStore = defineStore({
-  id: 'app',
-  // https://pinia.esm.dev/core-concepts/state.html
-  state: () => ({
+interface AppState {
+  isCollapse: boolean;
+  router: RouterData[];
+  token: string;
+}
+
+export const useAPPStore = defineStore('app', {
+  // https://pinia.vuejs.org/core-concepts/state.html
+  state: (): AppState => ({
     // SideMenu Status
     isCollapse: true,
     // Router

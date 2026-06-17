@@ -17,7 +17,7 @@ interface SidebarRoute extends RouterData {
 }
 
 
-const itemMultiRoute = defineComponent({
+export default defineComponent({
   components:{
     Location,
     Document,
@@ -40,33 +40,29 @@ const itemMultiRoute = defineComponent({
       type: Array<SidebarRoute>
     },
   },
-  render() {
-    const getPropsIcon = () => h(resolveComponent(this.$props.icon ? this.$props.icon : ''))
-    const slotSubMenuTitle: Slots = {
-      title: () => [
-        <span>
-          <el-icon>
-            {getPropsIcon()}
-          </el-icon>
-          {this.$props.title}
-        </span>,
-      ],
-    };
-    return (
-      <el-sub-menu index={this.$props.name} v-slots={slotSubMenuTitle}>
-        {this.$props.children &&
-          this.$props.children.map((sub: SidebarRoute) => {
-            return (
+  setup(props) {
+    return () => {
+      const getPropsIcon = () => h(resolveComponent(props.icon ? props.icon : ''));
+      const slotSubMenuTitle: Slots = {
+        title: () => [
+          <span>
+            <el-icon>{getPropsIcon()}</el-icon>
+            {props.title}
+          </span>,
+        ],
+      };
+      return (
+        <el-sub-menu index={props.name} v-slots={slotSubMenuTitle}>
+          {props.children &&
+            props.children.map((sub: SidebarRoute) => (
               <SingleRoute
                 name={sub.name}
                 icon={sub.meta?.icon}
                 title={sub.meta?.title}
               ></SingleRoute>
-            );
-          })}
-      </el-sub-menu>
-    );
+            ))}
+        </el-sub-menu>
+      );
+    };
   },
 });
-
-export default itemMultiRoute;

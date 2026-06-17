@@ -13,12 +13,9 @@ const data = reactive({
   listData: MockTableData,
 });
 
-const ExampleTable = defineComponent({
+export default defineComponent({
   setup() {
-    return { data };
-  },
-  render() {
-    return (
+    return () => (
       <el-card>
         <el-table data={data.listData} stripe={true} show-summary={true}>
           <el-table-column prop="id" label="ID"></el-table-column>
@@ -30,4 +27,3 @@ const ExampleTable = defineComponent({
     );
   },
 });
-export default ExampleTable;

@@ -10,7 +10,7 @@ import { defineComponent } from 'vue';
 import MultiRoute from './itemMultiRoute';
 import SingleList from './itemRoutesSingle';
 
-const itemRouteCollapse = defineComponent({
+export default defineComponent({
   components: {
     MultiRoute,
     SingleList,
@@ -20,27 +20,27 @@ const itemRouteCollapse = defineComponent({
       type: Object,
     },
   },
-  render() {
-    <el-row>
-      <el-col span={24}>
-        {this.$props.routes?.children ? (
-          <multi-route
-            children={this.$props.routes}
-            name={this.$props.routes.name}
-            title={this.$props.routes.meta?.title}
-            icon={this.$props.routes.meta?.icon}
-            meta={this.$props.routes.meta}
-          ></multi-route>
-        ) : (
-          <single-route
-            name={this.$props.routes?.name}
-            icon={this.$props.routes?.meta?.icon}
-            title={this.$props.routes?.meta?.title}
-          ></single-route>
-        )}
-      </el-col>
-    </el-row>;
+  setup(props) {
+    return () => (
+      <el-row>
+        <el-col span={24}>
+          {props.routes?.children ? (
+            <multi-route
+              children={props.routes}
+              name={props.routes.name}
+              title={props.routes.meta?.title}
+              icon={props.routes.meta?.icon}
+              meta={props.routes.meta}
+            ></multi-route>
+          ) : (
+            <single-route
+              name={props.routes?.name}
+              icon={props.routes?.meta?.icon}
+              title={props.routes?.meta?.title}
+            ></single-route>
+          )}
+        </el-col>
+      </el-row>
+    );
   },
 });
-
-export default itemRouteCollapse;

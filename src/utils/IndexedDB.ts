@@ -126,7 +126,7 @@ class IndexedDB {
    * @param key Object key in Active Database Store
    * @returns {Promise<String | undefined>} String or undefined
    */
-  public async getItem(key: string): Promise<String | undefined> {
+  public async getItem(key: string): Promise<string | undefined> {
     const getItemMethod = await get(key, this.getStore());
     return getItemMethod;
   }

@@ -10,11 +10,11 @@
 import { $t } from '@/language';
 
 interface ThemeOption {
-  label: String;
-  value: String;
-  model?: String;
+  label: string;
+  value: string;
+  model?: string;
   options?: Array<ThemeOption>;
-  isDisabled?: Boolean;
+  isDisabled?: boolean;
 }
 
 type themeSidebar = 'default' | 'overlay' | 'slim' | 'horizontal';
@@ -56,5 +56,5 @@ const optionsTheme: Array<ThemeOption> = [
   },
 ];
 
-export { ThemeOption };
+export type { ThemeOption };
 export default optionsTheme;

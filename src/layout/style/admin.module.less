@@ -1,12 +1,11 @@
+/*
+ * Base (non-responsive) box for the admin content area.
+ * Margin / padding / transition are handled with Tailwind utilities in
+ * admin.tsx so the layout can adapt to mobile breakpoints.
+ */
 .layout {
   box-sizing: border-box;
-  margin-left: 14rem;
-  padding: 2rem;
   height: 100%;
   min-height: 100vh;
   background-color: @var-overlay-background;
-  transition-duration: @var-transition-duration;
-}
-.isCollapse {
-  margin-left: 0;
 }

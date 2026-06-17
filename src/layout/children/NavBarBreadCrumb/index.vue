@@ -21,7 +21,6 @@
 
 <script lang="ts">
 import { defineComponent, reactive, onMounted, watch } from 'vue';
-import { ArrowRight } from '@element-plus/icons-vue';
 import { useAPPStore } from '@/store/appStore';
 import { useRoute } from 'vue-router';
 
@@ -35,9 +34,6 @@ const getRouterData = () => {
 };
 const NavBarBreadCrumb = defineComponent({
   name: 'NavBarBreadCrumb',
-  components: {
-    ArrowRight,
-  },
   setup() {
     onMounted(() => {
       getRouterData();

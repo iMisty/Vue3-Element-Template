@@ -7,10 +7,10 @@
  * @LastEditTime: 2022-07-27 17:08:42
  */
 import { defineComponent } from 'vue';
-import RouterData from '@/interface/Router';
+import type RouterData from '@/interface/Router';
 import SingleRoute from './itemSingleRoute';
 
-const itemRouteSingleList = defineComponent({
+export default defineComponent({
   name: 'itemRouteSingleList',
   components: { SingleRoute },
   props: {
@@ -18,21 +18,19 @@ const itemRouteSingleList = defineComponent({
       type: Object,
     },
   },
-  render() {
-    return (
+  setup(props) {
+    return () => (
       <el-row>
         <el-col span={24}>
-          {this.$props.routes?.map((item: RouterData) => (
-              <single-route
-                name={item.name}
-                icon={item.meta?.icon}
-                title={item.meta?.title}
-              ></single-route>
+          {props.routes?.map((item: RouterData) => (
+            <single-route
+              name={item.name}
+              icon={item.meta?.icon}
+              title={item.meta?.title}
+            ></single-route>
           ))}
         </el-col>
       </el-row>
     );
   },
 });
-
-export default itemRouteSingleList;

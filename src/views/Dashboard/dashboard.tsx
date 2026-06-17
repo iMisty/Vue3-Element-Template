@@ -6,14 +6,14 @@
  * @LastEditors: Miya
  * @LastEditTime: 2023-11-08 15:00:20
  */
-import { defineComponent, FunctionalComponent, h, onMounted, VNode } from 'vue';
+import { defineComponent, FunctionalComponent, h, VNode } from 'vue';
 import SimpleStatistics from '@/components/SimpleStatistics/statistics';
 import type {
   SimpleStatisticsProps,
   StatisticsSlot,
 } from '@/components/SimpleStatistics/statistics';
 
-const Dashboard = defineComponent({
+export default defineComponent({
   name: 'Dashboard',
   setup() {
     /**
@@ -22,16 +22,6 @@ const Dashboard = defineComponent({
      */
     const renderCircle: FunctionalComponent = (): VNode => (
       <el-progress type="circle" percentage={24} width={90}></el-progress>
-    );
-
-    /**
-     * Render Chart Card Container
-     * @returns {VNode | JSX.Element} Render Chart Container DOM
-     */
-    const renderCharts = (): VNode => (
-      <el-card>
-        <div id="charts" ref="charts" style="width: 100%;height: 300px;"></div>
-      </el-card>
     );
 
     /**
@@ -64,5 +54,3 @@ const Dashboard = defineComponent({
     return renderTemplate;
   },
 });
-
-export default Dashboard;

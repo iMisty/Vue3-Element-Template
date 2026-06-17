@@ -27,6 +27,11 @@ import i18n from './language/index';
 import 'element-plus/dist/index.css';
 
 /**
+ * Tailwind CSS
+ */
+import './style/tailwind.css';
+
+/**
  * Import Custom Style
  */
 // Global APP Style
@@ -41,7 +46,7 @@ import './style/elementChange.less';
 /**
  * Import Root Component
  */
-import App from './App';
+import App from './app';
 
 const app = createApp(App);
 

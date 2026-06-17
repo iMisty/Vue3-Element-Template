@@ -1,5 +1,3 @@
-import { Component } from 'vue';
-
 /*
  * @Description: Router interface
  * @Version: 1.0
@@ -11,7 +9,7 @@ import { Component } from 'vue';
 interface RouterData {
   path: string;
   name: string;
-  component: Object;
+  component: object;
   redirect?: string;
   meta?: RouterDataMeta;
   children?: Array<RouterData>;
@@ -23,10 +21,10 @@ interface RouterDataMeta {
   /**
    * @deprecated hidden is deprecated since 2.1 and will be remove on 2.2.Use isHidden
    */
-  hidden?: Boolean;
-  isHidden?: Boolean;
-  isFirstRoute?: Boolean;
-  isCollapse?: Boolean;
+  hidden?: boolean;
+  isHidden?: boolean;
+  isFirstRoute?: boolean;
+  isCollapse?: boolean;
 }
 
 export default RouterData;

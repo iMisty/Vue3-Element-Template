@@ -16,12 +16,6 @@ import {
 } from '@element-plus/icons-vue';
 import router from '@/router/router';
 
-interface SidebarRoute {
-  name: string;
-  icon?: string;
-  title?: string;
-}
-
 /**
  * @description Click Methods after Select Menu Item
  * @param {string} payload - Menu Item's Index
@@ -33,7 +27,7 @@ const handleSelect = (payload: string) => {
   });
 };
 
-const itemSingleRoute = defineComponent({
+export default defineComponent({
   components: {
     Location,
     Document,
@@ -52,19 +46,19 @@ const itemSingleRoute = defineComponent({
       type: String,
     },
   },
-  render() {
-    const getPropsIcon = () => h(resolveComponent(this.$props.icon ? this.$props.icon : ''));
+  setup(props) {
+    return () => {
+      const getPropsIcon = () => h(resolveComponent(props.icon ? props.icon : ''));
 
-    return (
-      <el-menu-item
-        index={this.$props.name}
-        onClick={() => handleSelect(this.$props.name as string)}
-      >
-        <el-icon>{getPropsIcon}</el-icon>
-        <span>{this.$props.title}</span>
-      </el-menu-item>
-    );
+      return (
+        <el-menu-item
+          index={props.name}
+          onClick={() => handleSelect(props.name as string)}
+        >
+          <el-icon>{getPropsIcon}</el-icon>
+          <span>{props.title}</span>
+        </el-menu-item>
+      );
+    };
   },
 });
-
-export default itemSingleRoute;

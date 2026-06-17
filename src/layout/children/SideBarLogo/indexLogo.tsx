@@ -6,24 +6,19 @@
  * @LastEditors: Mirage
  * @LastEditTime: 2022-08-17 17:00:08
  */
-import { FunctionalComponent } from 'vue';
+import { defineComponent } from 'vue';
 import Style from './style/logo.module.less';
 
-type Emit = {
-  click: () => void;
-};
-
-const SidebarLogo: FunctionalComponent<unknown, Emit> = (props, ctx) => {
-  const { slots, emit } = ctx;
-
-  return (
-    <article
-      class={Style['layout__sidebar--logo']}
-      onClick={() => emit('click')}
-    >
-      {slots?.default && slots.default()}
-    </article>
-  );
-};
-
-export default SidebarLogo;
+export default defineComponent({
+  emits: ['click'],
+  setup(props, { slots, emit }) {
+    return () => (
+      <article
+        class={Style['layout__sidebar--logo']}
+        onClick={() => emit('click')}
+      >
+        {slots?.default && slots.default()}
+      </article>
+    );
+  },
+});

@@ -25,21 +25,21 @@ type DrawerCardItem = {
   /**
    * Drawer Item's Title
    */
-  title: String;
+  title: string;
   /**
    * Drawer Item's Content
    */
-  content: String;
+  content: string;
   /**
    * Close Drawer Component Param
    * @description If this is true,It's will be close drawer after callback function
    */
-  isClose: Boolean;
+  isClose: boolean;
   /**
    * Click Event Function
    * @description This function will be start on click event
    */
-  callback?: Function;
+  callback?: () => void;
 };
 
 /**

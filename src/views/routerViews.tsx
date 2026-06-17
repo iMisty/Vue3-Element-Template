@@ -8,10 +8,8 @@
  */
 import { defineComponent } from 'vue';
 
-const RouterView = defineComponent({
-  render() {
-    return <router-view></router-view>;
+export default defineComponent({
+  setup() {
+    return () => <router-view></router-view>;
   },
 });
-
-export default RouterView;

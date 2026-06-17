@@ -27,7 +27,7 @@ const getRouterData = () => {
   routerData.router = data;
 };
 
-const NavBarBreadCrumb = defineComponent({
+export default defineComponent({
   name: 'NavBarBreadCrumb',
   components: {
     ArrowRight,
@@ -41,14 +41,8 @@ const NavBarBreadCrumb = defineComponent({
       console.log(newVal);
       routerData.router = newVal[0].matched;
     });
-    return {
-      routerData,
-      getRouterData,
-    };
-  },
 
-  render() {
-    return (
+    return () => (
       <el-breadcrumb class={Style.nav__breadcrumb}>
         <transition-group name="breadcrumb">
           {
@@ -70,5 +64,3 @@ const NavBarBreadCrumb = defineComponent({
     );
   },
 });
-
-export default NavBarBreadCrumb;

@@ -6,9 +6,11 @@
  * @LastEditors: Mirage
  * @LastEditTime: 2022-08-17 15:27:20
  */
-import { FunctionalComponent } from 'vue';
+import { defineComponent } from 'vue';
 import '@/layout/style/normal.module.less';
 
-const LayoutNormal: FunctionalComponent<unknown> = () => <router-view></router-view>;
-
-export default LayoutNormal;
+export default defineComponent({
+  setup() {
+    return () => <router-view></router-view>;
+  },
+});

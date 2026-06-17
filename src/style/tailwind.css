@@ -1,0 +1,6 @@
+/*
+ * Tailwind CSS v4 entry.
+ * CSS-first configuration: customise via @theme here if needed.
+ * Source files are auto-detected by @tailwindcss/vite.
+ */
+@import 'tailwindcss';

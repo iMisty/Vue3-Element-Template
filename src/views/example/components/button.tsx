@@ -123,9 +123,9 @@ const buttonCardSize = () => (
     </>
 );
 
-const ExampleButton = defineComponent({
-  render() {
-    return (
+export default defineComponent({
+  setup() {
+    return () => (
       <el-row gutter={16}>
         <el-col span={12}>
           <el-card header="Default">{buttonCardDefault}</el-card>
@@ -152,5 +152,3 @@ const ExampleButton = defineComponent({
     );
   },
 });
-
-export default ExampleButton;

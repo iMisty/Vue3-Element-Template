@@ -7,21 +7,16 @@
  * @LastEditTime: 2022-08-17 15:28:21
  */
 
-import { defineComponent, computed, Transition } from 'vue';
+import { defineComponent, Transition } from 'vue';
 import type { Slots } from 'vue';
-import { useRoute } from 'vue-router';
 import '@/layout/style/main.module.less';
 
-const LayoutMain = defineComponent({
+export default defineComponent({
   components: {
     Transition,
   },
   setup() {
-    const computedRoute = computed(() => useRoute().path);
-    return { computedRoute };
-  },
-  render() {
-    return (
+    return () => (
       <div class="layout__main">
         <router-view
           v-slots={{
@@ -36,4 +31,3 @@ const LayoutMain = defineComponent({
     );
   },
 });
-export default LayoutMain;

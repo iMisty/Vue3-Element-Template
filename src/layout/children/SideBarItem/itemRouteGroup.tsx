@@ -9,7 +9,7 @@
 import { defineComponent } from 'vue';
 import Style from '@/layout/style/sidebar.module.less';
 
-const itemRouteGroup = defineComponent({
+export default defineComponent({
   name: 'itemRouteGroup',
   props: {
     title: {
@@ -20,22 +20,20 @@ const itemRouteGroup = defineComponent({
       default: false,
     },
   },
-  render() {
-    return (
+  setup(props, { slots }) {
+    return () => (
       <el-row>
         <el-col span={24}>
-          {this.$props.isHiddenTitle ? (
+          {props.isHiddenTitle ? (
             ''
           ) : (
             <div class={Style['layout__sidebar--group-title']}>
-              {this.$props.title}
+              {props.title}
             </div>
           )}
-          {this.$slots.default?.()}
+          {slots.default?.()}
         </el-col>
       </el-row>
     );
   },
 });
-
-export default itemRouteGroup;

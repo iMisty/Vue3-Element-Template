@@ -1,41 +1,42 @@
 /*
  * @Description: Vite Config
- * @Version: 2.1
+ * @Version: 3.0
  * @Author: Mirage
  * @Date: 2021-11-26 10:33:44
  * @LastEditors: Miya
- * @LastEditTime: 2022-07-27 22:10:52
  */
 import { defineConfig } from 'vite';
-import path from 'path';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import vue from '@vitejs/plugin-vue';
 import vueJSX from '@vitejs/plugin-vue-jsx';
-import vueI18n from '@intlify/vite-plugin-vue-i18n';
-import Gzip from 'vite-plugin-compression';
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
+import tailwindcss from '@tailwindcss/vite';
+import { compression } from 'vite-plugin-compression2';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
-// https://vitejs.dev/config/
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    Gzip({
-      verbose: true,
-      disable: false,
+    vueJSX(),
+    tailwindcss(),
+    compression({
       threshold: 10240,
-      algorithm: 'gzip',
-      ext: '.gz',
+      algorithms: ['gzip'],
     }),
     createSvgIconsPlugin({
       iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
       symbolId: 'icon-[dir]-[name]',
     }),
-    vueJSX(),
-    /**
-     * https://github.com/intlify/vue-i18n-next/issues/789
-     * https://blog.csdn.net/yjl13598765406/article/details/125498134
-     */
-    vueI18n({
-      include: path.resolve(__dirname, './path/to/src/locales/**'),
+    VueI18nPlugin({
+      // No `include`: locale messages are assembled at runtime in
+      // src/language/index.ts rather than precompiled resource files.
+      // Keep the full build so runtime locale objects (e.g. Element Plus
+      // locales) are compiled on the fly, preserving the previous behaviour.
+      runtimeOnly: false,
     }),
   ],
   base: './',
@@ -47,22 +48,19 @@ export default defineConfig({
       config: path.resolve(__dirname, 'config'),
       store: path.resolve(__dirname, 'store'),
       utils: path.resolve(__dirname, 'utils'),
-      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
     },
   },
   build: {
+    minify: 'terser',
     terserOptions: {
       /**
-       *
        *  Remove Console and Debugger on Production Mode
-       *
        */
       compress: {
         drop_console: true,
         drop_debugger: true,
       },
     },
-    minify: 'terser',
   },
   css: {
     modules: {
@@ -71,9 +69,7 @@ export default defineConfig({
     },
     preprocessorOptions: {
       /**
-       *
        *  Global Less Variable
-       *
        */
       less: {
         additionalData: '@import "@/style/variable.less";',
@@ -81,17 +77,15 @@ export default defineConfig({
       },
     },
   },
-
   server: {
     host: '0.0.0.0',
     port: 12458,
     open: true,
-    https: false,
     proxy: {
       '/api': {
         // target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (p) => p.replace(/^\/api/, ''),
       },
     },
   },

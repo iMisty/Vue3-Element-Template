@@ -6,7 +6,7 @@
  * @Description: Avatar on Navbar
  * @FilePath: \Vue3-Element-Template\src\components\NavBarDrawer\indexAvatar.tsx
  */
-import { FunctionalComponent } from 'vue';
+import { defineComponent } from 'vue';
 import image from '@/assets/avatar.jpg';
 import Style from './style/avatar.module.less';
 
@@ -14,16 +14,16 @@ const style = {
   maxWidth: '100%',
 };
 
-const NavbarAvatar: FunctionalComponent = (props, context) => {
-  const { emit } = context;
-  return (
-    <div
-      class={Style['layout__navbar--right-avatar']}
-      onClick={() => emit('avatar', true)}
-    >
-      <el-image circle src={image} style={style} fit="fill"></el-image>
-    </div>
-  );
-};
-
-export default NavbarAvatar;
+export default defineComponent({
+  emits: ['avatar'],
+  setup(props, { emit }) {
+    return () => (
+      <div
+        class={Style['layout__navbar--right-avatar']}
+        onClick={() => emit('avatar', true)}
+      >
+        <el-image circle src={image} style={style} fit="fill"></el-image>
+      </div>
+    );
+  },
+});

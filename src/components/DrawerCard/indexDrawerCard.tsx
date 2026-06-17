@@ -6,31 +6,38 @@
  * @LastEditors: Mirage
  * @LastEditTime: 2022-08-17 16:54:06
  */
-import { Component, FunctionalComponent, h } from 'vue';
+import { defineComponent, h } from 'vue';
+import type { Component, PropType } from 'vue';
 import Style from './style/drawer-card.module.less';
 
-type DrawerCard = {
-  icon: Component;
-  title: String;
-  content: String;
-};
-
-const DrawerCard: FunctionalComponent<DrawerCard> = (props: DrawerCard) => {
-  const { icon, title, content } = props;
-  const getIcon = () => h(icon);
-  return (
-    <el-card shadow="never" body-style={{ padding: '0px' }}>
-      <section class={Style.drawer__card}>
-        <article class={Style['drawer__card--icon']}>
-          <el-icon>{getIcon()}</el-icon>
-        </article>
-        <article class={Style['drawer__card--container']}>
-          <header class={Style.title}>{title}</header>
-          <div class={Style.text}>{content}</div>
-        </article>
-      </section>
-    </el-card>
-  );
-};
-
-export default DrawerCard;
+export default defineComponent({
+  props: {
+    icon: {
+      type: Object as PropType<Component>,
+      required: true,
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    content: {
+      type: String,
+      default: '',
+    },
+  },
+  setup(props) {
+    return () => (
+      <el-card shadow="never" body-style={{ padding: '0px' }}>
+        <section class={Style.drawer__card}>
+          <article class={Style['drawer__card--icon']}>
+            <el-icon>{h(props.icon)}</el-icon>
+          </article>
+          <article class={Style['drawer__card--container']}>
+            <header class={Style.title}>{props.title}</header>
+            <div class={Style.text}>{props.content}</div>
+          </article>
+        </section>
+      </el-card>
+    );
+  },
+});

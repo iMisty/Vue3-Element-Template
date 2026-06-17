@@ -4,7 +4,7 @@
  * @Author: Miya
  * @Date: 2021-12-18 20:30:02
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-17 15:06:24
+ * @LastEditTime: 2026-06-17 14:30:49
  */
 import { defineComponent, reactive } from 'vue';
 import { useRouter } from 'vue-router';
@@ -23,7 +23,7 @@ const status = reactive({
   isLoading: false,
 });
 
-const Login = defineComponent({
+export default defineComponent({
   setup() {
     status.isLoading = false;
     const router = useRouter();
@@ -39,7 +39,7 @@ const Login = defineComponent({
           useAPPStore().setLoginData(dataLoginForm);
           router.push({ path: '/' });
         }, 1000);
-      } catch (error) {
+      } catch (_error) {
         // todo: throw error
         status.isLoading = false;
       }
@@ -106,4 +106,3 @@ const Login = defineComponent({
     );
   },
 });
-export default Login;

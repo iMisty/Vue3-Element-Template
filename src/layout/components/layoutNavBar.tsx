@@ -10,9 +10,8 @@
 import {
   defineComponent, reactive, onMounted, markRaw,
 } from 'vue';
-import { useRouter } from 'vue-router';
 import { CaretBottom } from '@element-plus/icons-vue';
-import { getLanguage } from '@/language';
+import { getLanguage, $t } from '@/language';
 import NavBarAvatar from '@/layout/children/NavBarAvatar/indexAvatar';
 import DrawerCard from '@/components/DrawerCard/indexDrawerCard';
 import DrawerCardItem from '@/config/DrawerCardItem';
@@ -41,7 +40,7 @@ const setUserDrawer = () => {
   dataStatus.isDrawerActive = true;
 };
 
-const LayoutNavBar = defineComponent({
+export default defineComponent({
   components: {
     NavBarHamburger,
     NavBarBreadCrumb,
@@ -50,19 +49,16 @@ const LayoutNavBar = defineComponent({
     DrawerCard,
   },
   setup() {
-    const Router = useRouter();
-
-    const handleDrawerEvent = (event: Function | undefined, close: Boolean) => {
+    const handleDrawerEvent = (
+      event: (() => void) | undefined,
+      close: boolean,
+    ) => {
       if (event) {
         event();
       }
       if (close) {
         dataStatus.isDrawerActive = false;
       }
-    };
-
-    const handleClickLogout = () => {
-      Router.replace({ path: '/login' });
     };
 
     const getLanguageInDrawer = (): string => {
@@ -85,46 +81,33 @@ const LayoutNavBar = defineComponent({
       const getUsername = 'admin';
       data.username = getUsername || '';
     });
-    return {
-      data,
-      handleDrawerEvent,
-      handleClickLogout,
-      getLanguageInDrawer,
-      setLanguage,
-      setUserDrawer,
-      dataStatus,
-      listLanguage,
-      listDrawer,
-    };
-  },
 
-  render() {
     const drawerFooter = () => (
-        <el-row justify="space-around" align="middle">
-          <span>{this.$t('GlobalLanguage.labelSelector')}: </span>
-          <el-select v-model={data.selectedLanguage} placeholder="Select">
-            {listLanguage.map((item: listLanguage) => (
-                <el-option
-                  key={item.value}
-                  label={item.label}
-                  value={item.value}
-                  onClick={() => this.setLanguage(item.value)}
-                ></el-option>
-            ))}
-          </el-select>
-        </el-row>
+      <el-row justify="space-around" align="middle">
+        <span>{$t('GlobalLanguage.labelSelector')}: </span>
+        <el-select v-model={data.selectedLanguage} placeholder="Select">
+          {listLanguage.map((item: listLanguage) => (
+            <el-option
+              key={item.value}
+              label={item.label}
+              value={item.value}
+              onClick={() => setLanguage(item.value)}
+            ></el-option>
+          ))}
+        </el-select>
+      </el-row>
     );
-    return (
+
+    return () => (
       <div class={Style.layout__navbar}>
         <div class={Style['layout__navbar--left']}>
           <NavBarHamburger></NavBarHamburger>
-          <NavBarBreadCrumb></NavBarBreadCrumb>
+          <NavBarBreadCrumb class="hidden md:block"></NavBarBreadCrumb>
         </div>
         <div
           class={Style['layout__navbar--right']}
           onClick={() => setUserDrawer}
         >
-          {/* @ts-ignore */}
           <NavBarAvatar onAvatar={() => setUserDrawer()}></NavBarAvatar>
         </div>
         <el-drawer
@@ -133,19 +116,16 @@ const LayoutNavBar = defineComponent({
           size={360}
           v-slots={{ footer: drawerFooter }}
         >
-          {this.listDrawer.map((item) => (
-              <drawer-card
-                icon={item.icon}
-                title={item.title}
-                content={item.content}
-                onClick={() => this.handleDrawerEvent(item.callback, item.isClose)
-                }
-              ></drawer-card>
+          {listDrawer.map((item) => (
+            <drawer-card
+              icon={item.icon}
+              title={item.title}
+              content={item.content}
+              onClick={() => handleDrawerEvent(item.callback, item.isClose)}
+            ></drawer-card>
           ))}
         </el-drawer>
       </div>
     );
   },
 });
-
-export default LayoutNavBar;

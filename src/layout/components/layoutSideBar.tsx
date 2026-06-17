@@ -16,10 +16,10 @@ import SingleRoute from '@/layout/children/SideBarItem/itemSingleRoute';
 import MultiRoute from '@/layout/children/SideBarItem/itemMultiRoute';
 import SingleList from '@/layout/children/SideBarItem/itemRoutesSingle';
 import CollapseRoute from '@/layout/children/SideBarItem/itemRoutesCollapse';
-import RouterData from '@/interface/Router';
+import type RouterData from '@/interface/Router';
 import Style from '../style/sidebar.module.less';
 
-const layoutSidebar = defineComponent({
+export default defineComponent({
   components: {
     SidebarLogo,
     GroupRoute,
@@ -78,15 +78,6 @@ const layoutSidebar = defineComponent({
       useAPPStore().setRouteData(matched);
     });
 
-    return {
-      initSideMenu,
-      handleSelect,
-      getActiveRoute,
-      getCollapseStatus,
-    };
-  },
-
-  render() {
     const templateMultiRouteList = (item: RouterData) => {
       if (item.meta?.isCollapse) {
         return (
@@ -102,17 +93,21 @@ const layoutSidebar = defineComponent({
       return <single-list routes={item.children}></single-list>;
     };
     const templateSingleRouteList = (item: RouterData) => (
-        <single-route
-          name={item.name}
-          icon={item.meta?.icon}
-          title={item.meta?.title}
-        ></single-route>
+      <single-route
+        name={item.name}
+        icon={item.meta?.icon}
+        title={item.meta?.title}
+      ></single-route>
     );
-    return (
+
+    return () => (
       <el-row
         class={[
           Style.layout__sidebar,
-          this.getCollapseStatus ? '' : Style.collapse,
+          // Overlay drawer on mobile: sit above the backdrop with an opaque,
+          // theme-aware background and a shadow (dropped on desktop).
+          'z-50 bg-[var(--el-bg-color)] shadow-lg md:shadow-none',
+          getCollapseStatus.value ? '' : Style.collapse,
         ]}
       >
         <sidebar-logo>
@@ -120,20 +115,20 @@ const layoutSidebar = defineComponent({
         </sidebar-logo>
         <el-scrollbar>
           <el-menu
-            collapse={!this.getCollapseStatus}
+            collapse={!getCollapseStatus.value}
             collapse-transition={false}
-            default-active={this.getActiveRoute}
-            onSelect={() => this.handleSelect}
+            default-active={getActiveRoute.value}
+            onSelect={() => handleSelect}
           >
-            {this.initSideMenu.map((item: RouterData) => (
-                <group-route
-                  title={item.meta?.title}
-                  isHiddenTitle={!item.meta?.isFirstRoute}
-                >
-                  {item.children
-                    ? templateMultiRouteList(item)
-                    : templateSingleRouteList(item)}
-                </group-route>
+            {initSideMenu.value.map((item: RouterData) => (
+              <group-route
+                title={item.meta?.title}
+                isHiddenTitle={!item.meta?.isFirstRoute}
+              >
+                {item.children
+                  ? templateMultiRouteList(item)
+                  : templateSingleRouteList(item)}
+              </group-route>
             ))}
           </el-menu>
         </el-scrollbar>
@@ -141,5 +136,3 @@ const layoutSidebar = defineComponent({
     );
   },
 });
-
-export default layoutSidebar;

@@ -58,3 +58,5 @@ const textString = {
     DISCONNECTED: 'ネットワークを切断されました',
   },
 };
+
+export { textHTTPBase, textString };

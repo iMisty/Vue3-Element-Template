@@ -24,7 +24,7 @@ const dataPagination = {
   size: 10,
 };
 
-const indexPagination = defineComponent({
+export default defineComponent({
   name: 'ComponentPagination',
   props: {
     pageSizes: {
@@ -60,6 +60,7 @@ const indexPagination = defineComponent({
       default: 0,
     },
   },
+  emits: ['current', 'size'],
   setup(props, { emit }) {
     const currentPage = computed({
       get() {
@@ -82,25 +83,21 @@ const indexPagination = defineComponent({
         emit('size', value);
       },
     });
-    return { dataPagination, currentPage, sizePage };
-  },
-  render() {
-    return (
+
+    return () => (
       <el-pagination
-        v-model:currentPage={this.currentPage}
-        v-model:page-size={this.sizePage}
-        page-sizes={this.$props.pageSizes}
-        small={this.$props.small}
-        disabled={this.$props.disabled}
-        background={this.$props.background}
-        layout={this.$props.layout}
-        total={this.$props.total}
-        // onSize-change={() => this.$emit('size', this.dataPagination.size)}
-        onSize-change={() => this.sizePage}
-        onCurrent-change={() => this.currentPage}
+        v-model:currentPage={currentPage.value}
+        v-model:page-size={sizePage.value}
+        page-sizes={props.pageSizes}
+        small={props.small}
+        disabled={props.disabled}
+        background={props.background}
+        layout={props.layout}
+        total={props.total}
+        // onSize-change={() => emit('size', dataPagination.size)}
+        onSize-change={() => sizePage.value}
+        onCurrent-change={() => currentPage.value}
       />
     );
   },
 });
-
-export default indexPagination;

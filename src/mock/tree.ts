@@ -7,7 +7,7 @@
  * @FilePath: \vue3-element-template\src\mock\tree.ts
  */
 interface Tree {
-  label: String;
+  label: string;
   children?: Tree[];
 }
 export const MockTreeData: Tree[] = [
