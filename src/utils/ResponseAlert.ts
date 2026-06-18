@@ -4,12 +4,12 @@
  * @Author: Mirage
  * @Date: 2022-08-09 14:54:16
  * @LastEditors: Mirage
- * @LastEditTime: 2022-08-09 15:06:31
+ * @LastEditTime: 2026-06-17 16:55:53
  */
 import { ElMessage } from 'element-plus';
-import type { messageType } from 'element-plus';
+import type { MessageType } from 'element-plus';
 
-const responseAlert = (message: string, type: messageType = 'error'): void => {
+const responseAlert = (message: string, type: MessageType = 'error'): void => {
   ElMessage({
     message,
     type,
